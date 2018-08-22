@@ -1,0 +1,61 @@
+@import '../App.scss';
+
+#skills-container {
+    display: grid;
+    grid-template-columns: $sectionTitleWidth 1fr;
+    grid-template-rows: 1fr;
+
+    .section-title {
+        grid-column-start: 1;
+        align-self: center;
+    }
+
+    #skills-columns {
+        grid-column-start: 2;
+        display: flex;
+        flex-direction: columns;
+        justify-content: space-around;
+        max-width: 1000px;
+
+        #languages, #tools, #databases {
+
+            ul {
+                list-style-type: none;
+                padding-left: 20px;
+                margin-top: 10px;
+
+                li {
+                    opacity: 0.9;
+                    padding: 5px;
+                    font-size: 20px;
+
+                    &:before { 
+                        content:''; 
+                        display:inline-block; 
+                        height:8px; 
+                        width:8px; 
+                        mask-image:url('../images/bullet.svg');
+                        margin-right: 8px;
+                        margin-bottom: 2px; 
+                        }
+                }
+            }
+        }
+
+        #languages li::before {
+            background-color: $red;
+            grid-column-start: 1;
+        }
+
+        #tools li::before {
+            background-color: $gray;
+            grid-column-start: 2;
+        }
+
+        #databases li::before {
+            background-color: $yellow;
+            grid-column-start: 3;
+        }
+
+    }
+}

@@ -1,18 +1,30 @@
 @import url("https://fonts.googleapis.com/css?family=Arimo|PT+Sans:400,700");
+@media all and (max-width: 329px) {
+  .hide-mobile {
+    display: none; } }
+
+@media all and (max-width: 767px) {
+  .hide-mobile {
+    display: none; }
+  .hide-tablet {
+    display: none; } }
+
+@media all and (min-width: 330px) {
+  .only-mobile {
+    display: none; } }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
   * :not(h1), * :not(h2), * :not(h3), * :not(h4), * :not(h5), * :not(h6) {
-    font-family: "Arimo", sans-serif; }
+    font-family: "Arimo", sans-serif;
+    color: #FDFFFE; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "PT Sans", sans-serif;
-  font-weight: bold; }
-
-#hero-section {
-  height: 80vh;
-  padding: 0 50px; }
+  font-weight: bold;
+  color: #FDFFFE; }
 
 body {
   background: #fcab10;
@@ -26,3 +38,5 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcab10', endColorstr='#f71735',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
   background-repeat: no-repeat; }
+  body > div {
+    padding: 0 50px; }

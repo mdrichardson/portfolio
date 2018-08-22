@@ -14,6 +14,36 @@ $white: #FDFFFE;
 $headerFont: 'PT Sans';
 $textFont: 'Arimo';
 
+// Other Global Variables
+
+$sectionTitleWidth: 100px;
+
+// Media Breaks
+
+$tablet: 768px;
+$mobile: 330px;
+
+@media all and (max-width: #{$mobile - 1px}) {
+    .hide-mobile {
+        display: none;
+    }
+}
+
+@media all and (max-width: #{$tablet - 1px}) {
+    .hide-mobile {
+        display: none;
+    }
+    .hide-tablet {
+        display: none;
+    }
+}
+
+@media all and (min-width: $mobile) {
+    .only-mobile {
+        display: none;
+    }
+}
+
 
 * {
     margin: 0;
@@ -22,17 +52,14 @@ $textFont: 'Arimo';
 
     :not(h1), :not(h2), :not(h3), :not(h4), :not(h5), :not(h6) {
         font-family: $textFont, sans-serif;
+        color: $white;
     }
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: $headerFont, sans-serif;
     font-weight: bold;
-}
-
-#hero-section {
-    height: 80vh;
-    padding: 0 50px;
+    color: $white;
 }
 
 body {
@@ -42,5 +69,10 @@ body {
     background: linear-gradient(45deg, #fcab10 0%,#f71735 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcab10', endColorstr='#f71735',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     background-repeat: no-repeat;
+
+    > div {
+        padding: 0 50px;
+    }
 }
+
 

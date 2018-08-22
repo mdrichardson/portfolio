@@ -13,9 +13,9 @@ const Hero = () => {
                     <div><img src={ bracketSVG } alt="left_bracket" /></div>
                 </div>
                 <div id="hero-properties">
-                    <p>full_stack: <span class="bool">true</span>,</p>
-                    <p>ui_experience: <span class="bool">true</span>,</p>
-                    <p>great_to_work_with: <span class="bool">true</span></p>
+                    <p>full_stack: <span className="bool">true</span>,</p>
+                    <p>ui_experience: <span className="bool">true</span>,</p>
+                    <p>great_to_work_with: <span className="bool">true</span></p>
                 </div>
                 <div className="bracket">
                     <div><img src={ bracketSVG } alt="right_bracket" className="flip-h" /></div>
