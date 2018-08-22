@@ -4,7 +4,7 @@ import skillsTitle from '../images/skills.svg'
 
 const Skills = () => {
     return (
-        <div id="skills-container">
+        <div id="Skills">
             <div className="section-title">
                 <img src={ skillsTitle } alt="Skills" />
             </div>

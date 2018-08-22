@@ -3,6 +3,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import './nav.css'
+import { NavHashLink as NavLink } from 'react-router-hash-link';
 
 const NavBar = () => {
     return(
@@ -14,11 +15,11 @@ const NavBar = () => {
                 </Typography>
                 <div id="menu-container" className="hide-mobile">
                     <ul id="menu">
-                        <li><div><a href="#Hero">Home</a></div></li>
-                        <li><div><a href="#Skills">Skills</a></div></li>
-                        <li><div><a href="#Projects">Projects</a></div></li>
-                        <li><div><a href="#About">About</a></div></li>
-                        <li><div><a href="#Contact">Contact</a></div></li>
+                        <li><div><NavLink to="/#Hero" smooth activeClassName="selected">Home</NavLink></div></li>
+                        <li><div><NavLink to="/#Skills" smooth activeClassName="selected">Skills</NavLink></div></li>
+                        <li><div><NavLink to="/#Projects" smooth activeClassName="selected">Projects</NavLink></div></li>
+                        <li><div><NavLink to="/#About" smooth activeClassName="selected">About</NavLink></div></li>
+                        <li><div><NavLink to="/#Contact" smooth activeClassName="selected">Contact</NavLink></div></li>
                     </ul>
                 </div>
             </Toolbar>

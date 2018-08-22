@@ -4,7 +4,7 @@ import bracketSVG from '../images/bracket.svg'
 
 const Hero = () => {
     return (
-        <div id="hero-container">
+        <div id="Hero">
             <div id="hero-name" className="hide-mobile">
                 <p>Michael Richardson <span>=</span></p>
             </div>
