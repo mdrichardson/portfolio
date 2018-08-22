@@ -1,0 +1,65 @@
+@import '../App.scss';
+
+#hero-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr;
+    height: 100%;
+
+    #hero-name, #bracket-container {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        text-align: center;
+        -ms-grid-column-align: center;
+        -ms-grid-row-align: center;
+        height: 100%;
+    }
+
+    #hero-name {
+        grid-column-start: 1;
+        align-items: center;
+
+        p {
+            color: $white;
+            font-family: $headerFont;
+            font-weight: bold;
+            font-size: 4.5vw;
+        }
+    }
+
+    #bracket-container {
+        grid-column-start: 2;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: space-between;
+        height: 100%;
+
+        .bracket {
+            height: 100%;
+            align-items: center;
+            display: flex;
+
+            img {
+                height: 15vw;
+            }
+        }
+
+        #hero-properties {
+            margin: auto 5px;
+            font-size: 3vw;
+            text-align: left;
+            color: $white;
+
+            span {
+                color: $yellow;
+            }
+        }
+    }
+}
+
+.flip-h {
+    transform: scaleX(-1);
+}

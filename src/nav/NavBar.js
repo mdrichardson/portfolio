@@ -12,7 +12,7 @@ const NavBar = () => {
                 <Typography variant="title" id="name">
                 Michael Richardson
                 </Typography>
-                <div id="menu-container" class="hide-mobile">
+                <div id="menu-container" className="hide-mobile">
                     <ul id="menu">
                         <li><div><a href="#Hero">Home</a></div></li>
                         <li><div><a href="#Skills">Skills</a></div></li>

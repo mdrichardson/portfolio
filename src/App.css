@@ -11,7 +11,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold; }
 
 #hero-section {
-  height: 80vh; }
+  height: 80vh;
+  padding: 0 50px; }
 
 body {
   background: #fcab10;
