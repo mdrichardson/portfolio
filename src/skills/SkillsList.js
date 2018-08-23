@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SkillsList = (props,) => (
+const SkillsList = (props) => (
     <div id={props.list.title.toLowerCase()}>
         <h2>{props.list.title}</h2>
         <ul>
