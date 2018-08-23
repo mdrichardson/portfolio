@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: 400px 300px;
     grid-template-rows: auto 30px;
+    margin-bottom: 50px;
 
     .text {
         grid-column-start: 1;
@@ -13,6 +14,15 @@
         -ms-grid-column-align: right;
         -ms-grid-row-align: center;
         margin-right: 15px;
+
+        h2 {
+            margin-bottom: 5px;
+            color: $blue;
+        }
+
+        p {
+            line-height: 1.2em;
+        }
 
         .read-more {
             color: $green;

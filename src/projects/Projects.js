@@ -3,13 +3,19 @@ import './projects.css';
 import ProjectList from './ProjectList';
 import projectsTitle from '../images/projects.svg';
 import TreatDispenser from './project-details/TreatDispenser';
+import FUTpuppeteer from './project-details/FUTpuppeteer'
+import Portfolio from './project-details/Portfolio'
+import RESfilterer from './project-details/RESfilterer';
 
 class Projects extends React.Component {
 
     state = {
         anyExpanded: false,
         projects: [
-            TreatDispenser
+            TreatDispenser,
+            FUTpuppeteer,
+            Portfolio,
+            RESfilterer
         ]
     }
 

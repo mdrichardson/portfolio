@@ -5,11 +5,11 @@
     grid-template-columns: 1fr $sectionTitleWidth;
     grid-template-rows: 1fr;
     padding: 100px 50px;
-    background: #62686b; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #62686b 0%, #a1e8af 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, #62686b 0%,#a1e8af 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, #62686b 0%,#a1e8af 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#62686b', endColorstr='#a1e8af',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: $gray; /* Old browsers */
+    background: -moz-linear-gradient(45deg, $blue 0%, $green 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, $blue 0%,$green 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, $blue 0%,$green 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$blue, endColorstr=$green,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     min-height: 100vh;
 
     #project-list {
@@ -17,7 +17,19 @@
         display: flex;
         align-items: flex-end;
         flex-direction: column;
-        margin-right: 50px;
+        margin: 0 5vw;
+
+        > :nth-child(2) {
+            align-self: center;
+        }
+
+        > :nth-child(3) {
+            align-self: flex-start;
+        }
+
+        > :nth-child(4) {
+            align-self: center;
+        }
     }
 
     .section-title {
