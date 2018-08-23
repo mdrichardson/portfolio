@@ -4,7 +4,21 @@
     display: grid;
     grid-template-columns: 1fr $sectionTitleWidth;
     grid-template-rows: 1fr;
-    margin: 50px 0;
+    padding: 100px 50px;
+    background: #62686b; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #62686b 0%, #a1e8af 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #62686b 0%,#a1e8af 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #62686b 0%,#a1e8af 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#62686b', endColorstr='#a1e8af',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    min-height: 100vh;
+
+    #project-list {
+        grid-column-start: 1;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        margin-right: 50px;
+    }
 
     .section-title {
         grid-column-start: 2;

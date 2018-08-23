@@ -69,11 +69,7 @@ body {
     background: linear-gradient(45deg, #fcab10 0%,#f71735 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcab10', endColorstr='#f71735',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     background-repeat: no-repeat;
-    background-size: 100% 200vh;
-
-    > div {
-        padding: 0 50px;
-    }
+    background-size: 100% 250vh;
 }
 
 

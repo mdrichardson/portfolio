@@ -1,0 +1,50 @@
+@import '../index.scss';
+
+.project-container {
+    display: grid;
+    grid-template-columns: 400px 300px;
+    grid-template-rows: auto 30px;
+
+    .text {
+        grid-column-start: 1;
+        grid-row-start: 1;
+        align-self: center;
+        text-align: right;
+        -ms-grid-column-align: right;
+        -ms-grid-row-align: center;
+        margin-right: 15px;
+
+        .read-more {
+            color: $green;
+            margin-top: 5px;
+        }
+
+    }
+
+    .main-image {
+        grid-column-start: 2;
+        grid-row-start: 1;
+
+        img {
+            width: 300px;
+            border: 7px solid $green;
+        }
+    }
+
+    .tool-icons {
+        grid-column-start: 2;
+        grid-row-start: 2;
+        display: flex;
+        flex-direction: row;
+        justify-self: right;
+
+        svg, img {
+            height: 28px;
+            margin: 5px;
+    
+            path {
+                fill: $green;
+            }
+        }
+    }
+}

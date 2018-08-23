@@ -1,17 +1,30 @@
 import React from 'react';
 import './projects.css';
-import ProjectsList from './ProjectsList';
-import projectsTitle from '../images/projects.svg'
+import ProjectList from './ProjectList';
+import projectsTitle from '../images/projects.svg';
+import TreatDispenser from './project-details/TreatDispenser';
 
-const Projects = () => {
-    return (
-        <div id="Projects">
-            <ProjectsList />
-            <div className="section-title">
-                <img src={ projectsTitle } alt="Projects" />
+class Projects extends React.Component {
+
+    state = {
+        anyExpanded: false,
+        projects: [
+            TreatDispenser
+        ]
+    }
+
+    render() {
+        return (
+            <div id="Projects">
+                <div id="project-list">
+                    <ProjectList list={this.state.projects} />
+                </div>
+                <div className="section-title">
+                    <img src={ projectsTitle } alt="Projects" />
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default Projects;

@@ -2,9 +2,10 @@
 
 #Hero {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr;
     grid-template-rows: 1fr;
     height: 100vh;
+    padding: 50px;
 
     #hero-name, #bracket-container {
         display: flex;
@@ -20,6 +21,7 @@
     #hero-name {
         grid-column-start: 1;
         align-items: center;
+        margin-right: 1.5vw;
 
         p {
             color: $white;

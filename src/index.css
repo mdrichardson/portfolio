@@ -38,6 +38,4 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcab10', endColorstr='#f71735',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
   background-repeat: no-repeat;
-  background-size: 100% 200vh; }
-  body > div {
-    padding: 0 50px; }
+  background-size: 100% 250vh; }
