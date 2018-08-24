@@ -9,24 +9,27 @@ class ProjectsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            expandedKey: null
+            expandedKey: 'temp'
         }
     }
 
     toggleExpand = (key) => {
-        this.setState({ expandedKey: this.state.expandedKey === key ? null : key})
+            this.setState({ expandedKey: this.state.expandedKey === key ? null : key})
     }
 
     render() {
         return (
             this.props.list.map(proj => (
-                <div key={proj.id} 
+                <div key={proj.id} id={proj.id}
                     className={`project-container ${this.state.expandedKey === proj.id ? 'expanded': ''}`}
-                    onMouseEnter={() => this.toggleExpand(proj.id)} onMouseLeave={() => this.toggleExpand(proj.id)}>
+                    onClick={() => this.toggleExpand(proj.id)}>
                     <div className="text">
                         <h2>{proj.name }</h2>
                         <div className="short-desc">
-                            <p>{ this.state.expandedKey === proj.id ? proj.long_desc : proj.short_desc }</p>
+                            <p>{proj.short_desc}</p>
+                        </div>
+                        <div className="long-desc">
+                            <p>{proj.long_desc}</p>
                         </div>
                         <ul className="bullets">
                             <ProjectBullets list={proj.bullets}/>

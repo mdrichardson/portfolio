@@ -1,4 +1,4 @@
-@import '../index.scss';
+@import '../global-variables.scss';
 
 #Projects {
     display: grid;
@@ -10,14 +10,16 @@
     background: -webkit-linear-gradient(45deg, $blue 0%,$green 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(45deg, $blue 0%,$green 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$blue, endColorstr=$green,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    min-height: 100vh;
 
     #project-list {
         grid-column-start: 1;
         display: flex;
-        align-items: flex-end;
         flex-direction: column;
         margin: 0 5vw;
+
+        > :first-child {
+            align-self: flex-end;
+        }
 
         > :nth-child(2) {
             align-self: center;
@@ -34,6 +36,5 @@
 
     .section-title {
         grid-column-start: 2;
-        align-self: center;
     }
 }
