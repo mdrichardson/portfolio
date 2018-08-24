@@ -1,31 +1,59 @@
 @import '../global-variables.scss';
 
-@keyframes title-expand {
-    0% {
-        transform: translate(20vw, 0px);
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.2
-    }
-    100% {
-        transform: translate(0);
-        opacity: 1;
-    }
+// Transition is consuming too many resources, so we're going to set up a bunch
+// of animation keyframes. This will also allow finer control over left and right transitions
+// Directions indicate which way the animation moves towards, greatest change first
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
-
-@keyframes title-collapse {
-    0% {
-        transform: translate(-20vw, 0px);
-        opacity: 0
-    }
-    50% {
-        opacity: 0.2
-    }
-    100% {
-        transform: translate(0);
-        opacity: 1;
-    }
+@keyframes right-up {
+    from {transform: translate(-20vw, 20px)}
+    to {transform: translate(0)}
+}
+@keyframes left-up {
+    from {transform: translate(20vw, 20px)}
+    to {transform: translate(0)}
+}
+@keyframes left-down {
+    from {transform: translate(20vw, -20px)}
+    to {transform: translate(0)}
+}
+@keyframes right-down {
+    from {transform: translate(-20vw, -20px)}
+    to {transform: translate(0)}
+}
+@keyframes down-left {
+    from {transform: translate(10vw, -100px)}
+    to {transform: translate(0)}
+}
+@keyframes down-right {
+    from {transform: translate(-10vw, -100px)}
+    to {transform: translate(0)}
+}
+@keyframes up-right {
+    from {transform: translate(-10vw, 100px)}
+    to {transform: translate(0)}
+}
+@keyframes up-left {
+    from {transform: translate(10vw, 100px)}
+    to {transform: translate(0)}
+}
+@keyframes down {
+    from {transform: translateY(-20px)}
+    to {transform: translateY(0)}
+}
+@keyframes up {
+    from {transform: translateY(20px)}
+    to {transform: translateY(0)}
+}
+@keyframes green-blue {
+    from {fill: $green}
+    to {fill: $blue}
+}
+@keyframes blue-green {
+    from {fill: $blue}
+    to {fill: $green}
 }
 
 // Styling for expanded project
@@ -34,12 +62,13 @@
     grid-template-columns: 1fr 500px;
     grid-template-rows: 1fr;
     margin: 50px 0px;
-    background-color: rgba(161, 232, 175, 0.2);;
+    background-color: rgba(161, 232, 175, 0.2);
     padding: 15px;
     border-radius: 5px;
-    transition: all 1s ease;
-    transform-origin: right top;
+    transition: background-color 0.75s ease-in,
+                margin 1s ease-in;
     cursor: pointer;
+    will-change: contents;
 
     .text {
         grid-column-start: 1;
@@ -55,20 +84,21 @@
             align-self: flex-start;
             color: $blue;
             margin-bottom: 10px;
-            animation: title-expand 0.75s ease-out;
+            animation: left-up 0.3s ease-in, fade-in .7s ease-in;
+            will-change: position;
+
         }
 
         .long-desc {
             line-height: 1.2em;
             margin-bottom: 10px;
-            transition: opacity 0.75s ease-in 0.25s, width 0s, height 0s;
+            opacity: 0;
+            animation: fade-in 0.75s ease-out 0.2s;
+            animation-fill-mode: forwards;
         }
 
         .short-desc {
-            display: block;
-            height: 0;
-            width: 0;
-            opacity: 0;
+            display: none;
         }
 
         ul {
@@ -78,7 +108,9 @@
             width: 80%;
             margin-left: 30px;
             text-indent: -20px;
-            transition: opacity 0.5s ease-in 0.3s, width 0s, height 0s;
+            opacity: 0;
+            animation: fade-in 0.75s ease-out 0.4s;
+            animation-fill-mode: forwards;
 
             li {
                 opacity: 0.9;
@@ -100,7 +132,9 @@
             margin-top: 20px;
             display: flex;
             flex-direction: row;
-            transition: opacity 0.5s ease-in 0.35s, width 0s, height 0s;
+            opacity: 0;
+            animation: fade-in 0.75s ease-out 0.6s;
+            animation-fill-mode: forwards;
             
             .web-link {
                 margin-left: 20px;
@@ -128,13 +162,14 @@
         display: grid;
         grid-template-columns: 500px;
         grid-template-rows: auto 1fr;
-        transition: all 1.5s;
 
         img {
             grid-row-start: 1;
             width: 500px;
             border: 0;
-            transition: border 1s;
+            justify-self: end;
+            transition: width 0.25s ease-in,
+                        border 0.5s ease-in;
         }
         .expanded-tool-icons {
             grid-row-start: 2;
@@ -142,7 +177,8 @@
             flex-direction: row;
             justify-content: space-around;
             margin-top: 10px;
-            transition: opacity 0.5s ease-in 0.35s, width 0s, height 0s;
+            animation: down-left 0.3s ease-out, fade-in 0.8s ease-out;
+            will-change: position;
     
             svg, img {
                 height: 28px;
@@ -151,6 +187,7 @@
         
                 path {
                     fill: $blue;
+                    animation: green-blue 1s ease-out;
                 }
             }
     
@@ -161,10 +198,7 @@
     }
 
     .tool-icons {
-        display: block;
-        height: 0;
-        width: 0;
-        opacity: 0;
+        display: none;
     }
     
 }
@@ -176,9 +210,9 @@
     grid-template-columns: 400px 300px;
     grid-template-rows: auto 30px;
     margin: 50px 0;
-    transition: all 0.3s ease-out;
-    transform-origin: left top;
+    transition: all 0.5s ease-out;
     cursor: pointer;
+    will-change: position;
 
     .text {
         grid-column-start: 1;
@@ -192,33 +226,26 @@
         h2 {
             margin-bottom: 5px;
             color: $blue;
-            animation: title-collapse 0.3s ease-out;
+            animation: right-down 0.3s ease-out;
+            will-change: position;
         }
 
         .short-desc {
             line-height: 1.2em;
-            transition: opacity 0.2s ease-in 0.1s, width 0s, height 0s;
+            animation: fade-in 1s ease-out;
+            will-change: opacity;
         }
 
         .long-desc {
-            display: block;
-            height: 0;
-            width: 0;
-            opacity: 0;
+            display: none;
         }
 
         .bullets {
-            display: block;
-            height: 0;
-            width: 0;
-            opacity: 0;
+            display: none;
         }
 
         .links {
-            display: block;
-            height: 0;
-            width: 0;
-            opacity: 0;
+            display: none;
         }
 
     }
@@ -230,14 +257,11 @@
         img {
             width: 300px;
             border: 7px solid rgba(161, 232, 175, 0.4);
-            transition: border 0.3s ease;
+            transition: border 0.5s ease-out;
         }
 
         .expanded-tool-icons {
-            display: block;
-            height: 0;
-            width: 0;
-            opacity: 0;
+            display: none;
         }
     }
 
@@ -247,6 +271,8 @@
         display: flex;
         flex-direction: row;
         justify-self: right;
+        animation: fade-in 1s ease-out, up-right 0.2s ease-out;
+        will-change: position;
 
         svg, img {
             height: 28px;
@@ -254,14 +280,12 @@
     
             path {
                 fill: $green;
+                animation: blue-green 1s ease-out;
             }
         }
 
         .tool-name {
-            display: block;
-            height: 0;
-            width: 0;
-            opacity: 0;
+            display: none;
         }
     }
 }

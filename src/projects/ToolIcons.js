@@ -86,7 +86,7 @@ const iconMap = {
 
 const ToolIcons = (props) => (
     props.list.map(icon => (
-        <div key={icon} title={icon} aria-hidden>{iconMap[icon]}<p class="tool-name">{icon}</p></div>
+        <div key={icon} title={icon} aria-hidden>{iconMap[icon]}<p className="tool-name">{icon}</p></div>
     ))
 )        
 

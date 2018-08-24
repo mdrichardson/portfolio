@@ -23,14 +23,65 @@
 
         > :nth-child(2) {
             align-self: center;
+            
+            &.expanded {
+                img {
+                        justify-self: start !important;
+                }
+                .expanded-tool-icons {
+                    animation: down 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+            }
+            &:not(.expanded) {
+                img {
+                        justify-self: start !important;
+                }
+                .tool-icons {
+                    animation: up 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+            }
         }
 
         > :nth-child(3) {
             align-self: flex-start;
+
+            &.expanded {
+                img {
+                        justify-self: start !important;
+                }
+                .expanded-tool-icons {
+                    animation: down-right 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+            }
+            &:not(.expanded) {
+                img {
+                        justify-self: start !important;
+                }
+                .tool-icons {
+                    animation: up-left 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+            }
         }
 
         > :nth-child(4) {
             align-self: center;
+
+            &.expanded {
+                img {
+                        justify-self: start !important;
+                }
+                .expanded-tool-icons {
+                    animation: down 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+            }
+            &:not(.expanded) {
+                img {
+                        justify-self: start !important;
+                }
+                .tool-icons {
+                    animation: up 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+            }
         }
     }
 
