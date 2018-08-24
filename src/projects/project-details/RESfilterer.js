@@ -14,7 +14,7 @@ const RESfilterer = {
     short_desc: <span>Scrapes domains from selected pages of <a href="mediabiasfactcheck.com">MediaBiasFactCheck </a> 
                         and adds them to Reddit Enhancement Suite's Domain Filters</span>,
     long_desc: <span>This is a command-line tool written in Python that scrapes domains from selected pages of 
-                <a href="mediabiasfactcheck.com">MediaBiasFactCheck</a> and adds them to Reddit Enhancement Suite's Domain Filters. 
+                <a href="mediabiasfactcheck.com"> MediaBiasFactCheck</a> and adds them to Reddit Enhancement Suite's Domain Filters. 
                 For example, I used this to hide the most biased and untrustworthy news sources (about 1200 unique domains) so that 
                 I no longer see them when browsing Reddit.</span>,
     bullets: [
