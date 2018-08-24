@@ -10,7 +10,6 @@ import RESfilterer from './project-details/RESfilterer';
 class Projects extends React.Component {
 
     state = {
-        anyExpanded: false,
         projects: [
             TreatDispenser,
             FUTpuppeteer,

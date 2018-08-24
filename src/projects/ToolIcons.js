@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngular, faNodeJs, faPython, faReact, faJs, faSass, faRedditAlien } from '@fortawesome/free-brands-svg-icons';
+import { faAngular, faNodeJs, faPython, faReact, faJs, faSass, faRedditAlien, faAws, faLinux } from '@fortawesome/free-brands-svg-icons';
 
 const fa_size = '2x';
 
@@ -79,12 +79,14 @@ const iconMap = {
     'React': <FontAwesomeIcon icon={faReact} size={fa_size} />,
     'JavaScript': <FontAwesomeIcon icon={faJs} size={fa_size} />,
     'Sass': <FontAwesomeIcon icon={faSass} size={fa_size} />,
-    'RES': <FontAwesomeIcon icon={faRedditAlien} size={fa_size} />
+    'RES': <FontAwesomeIcon icon={faRedditAlien} size={fa_size} />,
+    'AWS': <FontAwesomeIcon icon={faAws} size={fa_size} />,
+    'Linux': <FontAwesomeIcon icon={faLinux} size={fa_size} />
 }
 
 const ToolIcons = (props) => (
     props.list.map(icon => (
-        <div key={icon} title={icon} aria-hidden>{iconMap[icon]}</div>
+        <div key={icon} title={icon} aria-hidden>{iconMap[icon]}<p class="tool-name">{icon}</p></div>
     ))
 )        
 
