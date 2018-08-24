@@ -1,0 +1,18 @@
+@import '../global-variables.scss';
+
+#About {
+    display: grid;
+    grid-template-columns: $sectionTitleWidth 1fr;
+    grid-template-rows: auto;
+
+    #about-me {
+        grid-column-start: 2;
+        margin: 0 5w;
+        color: $white;
+        font-size: 100px;
+    }
+
+    .section-title {
+        grid-column-start: 1;
+    }
+}

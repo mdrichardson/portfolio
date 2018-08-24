@@ -5,7 +5,7 @@
     grid-template-columns: $sectionTitleWidth 1fr;
     grid-template-rows: 1fr;
     padding: 0 50px;
-    height: 100vh;
+    min-height: 100vh;
     align-items: center;
     -ms-grid-row-align: center;
 

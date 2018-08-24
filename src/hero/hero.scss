@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr;
-    height: 100vh;
+    min-height: 80vh;
     padding: 50px;
 
     #hero-name, #bracket-container {
@@ -64,4 +64,18 @@
 
 .flip-h {
     transform: scaleX(-1);
+}
+
+#down-arrow {
+    margin: auto;
+
+    svg {
+        display: block;
+        margin: auto;
+
+        path {
+            fill: $yellow;
+            opacity: 0.5;
+        }
+    }
 }
