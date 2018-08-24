@@ -177,7 +177,7 @@
             flex-direction: row;
             justify-content: space-around;
             margin-top: 10px;
-            animation: down-left 0.3s ease-out, fade-in 0.8s ease-out;
+            animation: down-left 0.3s ease-out, fade-in 0.3s ease-out;
             will-change: position;
     
             svg, img {
@@ -186,13 +186,15 @@
                 margin: 5px auto;
         
                 path {
-                    fill: $blue;
+                    fill: $green;
                     animation: green-blue 1s ease-out;
+                    animation-fill-mode: forwards;
                 }
             }
     
             .tool-name {
                 align-self: bottom;
+                animation: fade-in 1s ease-out;
             }
         }
     }
@@ -271,7 +273,7 @@
         display: flex;
         flex-direction: row;
         justify-self: right;
-        animation: fade-in 1s ease-out, up-right 0.2s ease-out;
+        animation: fade-in 0.5s ease-out, up-right 0.25s ease-out;
         will-change: position;
 
         svg, img {
@@ -280,7 +282,7 @@
     
             path {
                 fill: $green;
-                animation: blue-green 1s ease-out;
+                animation: blue-green 0.5s ease-out;
             }
         }
 
