@@ -36,13 +36,13 @@ class ProjectsList extends React.Component {
                         </ul>
                         <div className="links">
                             <div className="github-link">
-                                <a href={proj.github} alt="Github link">
+                                <a href={proj.github} alt="Github link" target="_blank">
                                     <FontAwesomeIcon icon={faGithub} />
                                     <span>Github Repo</span>
                                 </a>
                             </div>
                             <div className="web-link" hidden={proj.url ? false : true}>
-                                <a href={proj.url} alt="Project link">
+                                <a href={proj.url} alt="Project link" target="_blank">
                                     <FontAwesomeIcon icon={faGlobe} />
                                     <span>Website</span>
                                 </a>
