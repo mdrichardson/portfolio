@@ -22,7 +22,7 @@ class ProjectsList extends React.Component {
             this.props.list.map(proj => (
                 <div key={proj.id} id={proj.id}
                     className={`project-container ${this.state.expandedKey === proj.id ? 'expanded': ''}`}
-                    onClick={() => this.toggleExpand(proj.id)}>
+                    onMouseEnter={() => this.toggleExpand(proj.id)} onMouseLeave={() => this.toggleExpand(proj.id)}>
                     <div className="text">
                         <h2>{proj.name }</h2>
                         <div className="short-desc">
