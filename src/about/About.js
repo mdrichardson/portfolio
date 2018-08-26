@@ -2,6 +2,7 @@ import React from 'react';
 import './about.css';
 import aboutTitle from '../images/about.svg';
 import AboutMeText from './AboutMeText';
+import OtherDetails from './OtherDetails';
 
 class About extends React.Component {
 
@@ -14,6 +15,7 @@ class About extends React.Component {
                 <div id="about-me">
                     { AboutMeText }
                 </div>
+                <OtherDetails />
             </div>
         );
     }

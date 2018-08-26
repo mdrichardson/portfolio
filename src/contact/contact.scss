@@ -1,1 +1,48 @@
 @import '../global-variables.scss';
+
+#Contact {
+    display: grid;
+    grid-template-columns: 1fr $sectionTitleWidth;
+    grid-template-rows: 1fr;
+    padding: 0px 50px;
+
+    #contact-content {
+        grid-column-start: 1;
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
+
+        #contact-links {
+            grid-row-start: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            height: 30px;
+
+            a {
+                margin: 0px 50px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                font-size: 20px;
+                text-decoration: none;
+
+                &:visited {
+                    color: $white;
+                }
+
+                path {
+                    fill: $yellow;
+                }
+
+                p {
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+
+    .section-title {
+        grid-column-start: 2;
+    }
+}

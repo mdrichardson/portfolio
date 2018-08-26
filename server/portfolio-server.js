@@ -44,6 +44,11 @@ let smtpTransport = nodemailer.createTransport({
     }
 })
 
+// For contact form submit limiting by IP
+// When somebody submits contact form, adds day to contact_log
+// Under that day, add's that person's IP address and counts +1 each time they submit
+var contact_log = {}
+
 const app = express();
 
 // Body parser middleware setup
@@ -61,6 +66,23 @@ app.get('/', (req, res) => {
 
 app.post('/send', (req, res) => {
     const body = req.body;
+    // Limit ip to send max 3x per day
+    const ip = body.ip;
+    const today = new Date()
+    const date = `${today.getFullYear()}${today.getMonth()}${today.getDate()}`
+    if (!contact_log[date]) {
+        contact_log[date] = {}
+    }
+    if (contact_log[date][ip] != undefined) {
+        contact_log[date][ip] = contact_log[date][ip] + 1;
+        if (contact_log[date][ip] > 3) {
+            return res.status(401).send('Permission Denied. Exceeded Contact Form Limit.')
+        }
+    } else {
+        contact_log[date][ip] = 1;
+    }
+    console.log(contact_log);
+
     const output = `
         <p>You have a new contact request</p>
         <h3>Contact Details:</h3>
@@ -84,7 +106,7 @@ app.post('/send', (req, res) => {
     // send mail with defined transport object
     smtpTransport.sendMail(mailOptions, (error, info) => {
         if (error) {
-            res.status(400).send('Unable to send contact form');
+            res.status(500).send('Unable to send contact form ', error);
             return console.log(error);
         }
         console.log('Message sent: %s', info.messageId);
