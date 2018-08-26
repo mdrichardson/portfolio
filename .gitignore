@@ -22,3 +22,7 @@ yarn-error.log*
 
 # Ignore CSS since we're using SASS
 src/**/*.css
+
+# Server
+/server/node_modules
+/server/private.js
