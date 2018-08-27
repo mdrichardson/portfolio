@@ -40,6 +40,121 @@
                 }
             }
         }
+
+        form {
+            padding-left: 200px;
+            padding-right: 150px;
+            display: grid;
+            grid-template-rows: auto 50px auto 50px auto;
+            grid-template-columns: 1fr;
+            margin-top: 50px;
+            font-size: 20px;
+
+            .exceeded-limit, :disabled {
+                opacity: 0.2;
+            }
+
+            input,
+            textarea,
+            input:-webkit-autofill,
+            textarea:-webkit-autofill {
+                padding: 10px;
+                color: $white;
+                -webkit-text-fill-color: $white !important;
+                font-size: 22px;
+                background-color: rgba(255, 255, 255, 0.3);
+                border: 2px solid rgba(0, 0, 0, 0.2);
+                // necessary for removing the yellow autofill background color
+                transition: background-color 5000s ease-in-out 0s;
+
+                &:focus,
+                &:active,
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.4);
+                    outline: none;
+                    // necessary for removing the yellow autofill background color
+                    transition: background-color 5000s ease-in-out 0s;
+                }
+
+                &::placeholder {
+                    color: rgba(0, 0, 0, 0.6);
+                }
+            }
+
+            #name-and-email {
+                grid-row-start: 1;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+
+                input {
+                    margin: 0px 40px;
+                    flex: 1 1 auto;
+                }
+            }
+
+            .error p {
+                color: $red;
+                background-color: rgba(255, 255, 255, 0.3);
+                border-radius: 5px;
+                padding: 3px 8px;
+                display: inline-block;
+                font-size: 16px;
+            }
+
+            .err-border {
+                border: 2px solid $red;
+            }
+
+            #name-email-errors {
+                grid-row-start: 2;
+                margin: 5px 0px 10px 40px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr;
+
+                #name-error {
+                    grid-column-start: 1;
+                }
+
+                #email-error {
+                    grid-column-start: 2;
+                    margin-left: 20px;
+                }
+            }
+
+            #message-area {
+                grid-row-start: 3;
+
+                margin: 0px 40px;
+                
+                textarea {
+                    width: 100%;
+                    height: 200px;
+                }
+            }
+
+            #message-error {
+                grid-row-start: 4;
+                margin: 0px 0px 10px 40px;
+            }
+
+            #submit {
+                grid-row-start: 5;
+                margin-bottom: 40px;
+
+                button {
+                    display: block;
+                    margin: auto;
+                    width: 250px;
+                    height: 40px;
+                    font-size: 18px;
+                    background-color: $yellow;
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    color: $black;
+                }
+            }
+        }
     }
 
     .section-title {

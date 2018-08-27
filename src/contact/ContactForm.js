@@ -7,21 +7,21 @@ const FormStructure = ({
     touched,
     isSubmitting
 }) => (
-    <div>
+    <div id="form-container">
         <Form className={ errors.exceededLimit ? "exceeded-limit" : ""}>
-            <div>
-                <Field type="text" name="name" id="name" placeholder="Name" disabled={ errors.exceededLimit }/>
-                { touched.name && errors.name && <p>{ errors.name }</p>}
+            <div id="name-and-email">
+                <Field type="text" name="name" id="name" placeholder="Name" className={ touched.name && errors.name ? "err-border" : "" } disabled={ errors.exceededLimit }/>
+                <Field type="email" name="email" id="email" placeholder="Email" className={ touched.email && errors.email ? "err-border" : "" } disabled={ errors.exceededLimit }/>
             </div>
-            <div>
-                <Field type="email" name="email" id="email" placeholder="Email"  disabled={ errors.exceededLimit }/>
-                { touched.email && errors.email && <p>{ errors.email }</p>}
+            <div id="name-email-errors">
+                <div id="name-error" className="error" hidden={ !touched.name || !errors.name }><p>{ errors.name }</p></div>
+                <div id="email-error" className="error" hidden={ !touched.email || !errors.email }><p>{ errors.email }</p></div>
             </div>
-            <div>
-                <Field component="textarea" name="message" id="message" placeholder="Message" disabled={ errors.exceededLimit }/>
-                { touched.message && errors.message && <p>{ errors.message }</p>}
+            <div id="message-area">
+                <Field component="textarea" name="message" id="message" placeholder="Message" className={ touched.message && errors.message ? "err-border" : "" } disabled={ errors.exceededLimit }/>
             </div>
-            <button type="submit" disabled={ isSubmitting || errors.exceededLimit }>Submit</button>
+            <div id="message-error" className="error" hidden={ !touched.message || !errors.message }><p>{ errors.message }</p></div>
+            <div id="submit"><button type="submit" disabled={ isSubmitting || errors.exceededLimit }>Submit</button></div>
         </Form>
         <div id="exceeded-limit-message" hidden={ !errors.exceededLimit }>
             <p>Your IP address has exceeded the submission limit. Try again tomorrow</p>
