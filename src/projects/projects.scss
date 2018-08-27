@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: 1fr $sectionTitleWidth;
     grid-template-rows: 1fr;
-    padding: 100px 50px;
+    padding: $verticalSectionMargin 50px;
     background: $gray; /* Old browsers */
     background: -moz-linear-gradient(45deg, $blue 0%, $green 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(45deg, $blue 0%,$green 100%); /* Chrome10-25,Safari5.1-6 */
@@ -19,6 +19,7 @@
 
         > :first-child {
             align-self: flex-end;
+            margin-top: 0px;
         }
 
         > :nth-child(2), > :nth-child(4) {
@@ -65,6 +66,10 @@
                     animation: up-left 0.3s ease-out, fade-in 0.8s ease-out !important;
                 }
             }
+        }
+
+        > :last-child {
+            margin-bottom: 0px;
         }
     }
 

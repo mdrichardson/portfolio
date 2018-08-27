@@ -5,21 +5,24 @@
     grid-template-columns: $sectionTitleWidth 1fr;
     grid-template-rows: 1fr;
     padding: 0 50px;
-    min-height: 100vh;
+    margin: $verticalSectionMargin 0px;
     align-items: center;
     -ms-grid-row-align: center;
+    min-height: 60vh;
 
     .section-title {
         grid-column-start: 1;
+        grid-row-start: 1;
         align-self: center;
     }
 
     #skills-columns {
         grid-column-start: 2;
+        grid-row-start: 1;
         display: flex;
-        flex-direction: columns;
+        flex-direction: row;
         justify-content: space-around;
-        max-width: 1000px;
+        position: relative;
 
         #languages, #tools, #databases {
 
@@ -46,6 +49,20 @@
             }
         }
 
+        #databases {
+            width: 600px;
+        }
+
+        #databases::after{
+            content: 'Everything needed to build beautiful, efficient, full-stack web apps and software.';
+            font-size: 38px;
+            font-family: $headerFont;
+            font-weight: bold;
+            color: $yellow;
+            position: absolute;
+            bottom: 0;
+        }
+
         #languages li::before {
             background-color: $red;
             grid-column-start: 1;
@@ -60,6 +77,5 @@
             background-color: $yellow;
             grid-column-start: 3;
         }
-
     }
 }
