@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 const FormStructure = ({
+    values,
     errors,
     touched,
     isSubmitting
@@ -20,12 +21,20 @@ const FormStructure = ({
             <div id="message-area">
                 <Field component="textarea" name="message" id="message" placeholder="Message" className={ touched.message && errors.message ? "err-border" : "" } disabled={ errors.exceededLimit }/>
             </div>
-            <div id="message-error" className="error" hidden={ !touched.message || !errors.message }><p>{ errors.message }</p></div>
-            <div id="submit"><button type="submit" className="hvr-underline-from-center hvr-grow" disabled={ isSubmitting || errors.exceededLimit }>Submit</button></div>
+            <div id="message-info-row" className="error">
+                <div id="message-error" hidden={ !touched.message || !errors.message }><p>{ errors.message }</p></div>
+                <div id="message-count" hidden={ values.message.length <= 1000 }><p>{ values.message.length }/2000</p></div>
+            </div>
+            <div id="submit">
+                <button type="submit" 
+                    className={ !isSubmitting && !errors.exceededLimit && !errors.name && !errors.email && !errors.message && values.message != '' ? "hvr-underline-from-center hvr-grow" : "" } 
+                    disabled={ isSubmitting || errors.exceededLimit || errors.name || errors.email || errors.message || values.message == ''}>
+                    Submit</button>
+            </div>
+            <div id="exceeded-limit-message" className="error" hidden={ !errors.exceededLimit }>
+                <p>Your IP address has exceeded the submission limit. Try again tomorrow</p>
+            </div>
         </Form>
-        <div id="exceeded-limit-message" hidden={ !errors.exceededLimit }>
-            <p>Your IP address has exceeded the submission limit. Try again tomorrow</p>
-        </div>
     </div>
 )
 
@@ -41,7 +50,7 @@ const FormikForm = withFormik({
     validationSchema: Yup.object().shape({
         name: Yup.string().min(5).max(50).required(),
         email: Yup.string().email().min(8).max(50).required(),
-        message: Yup.string().min(20).max(2000).required()
+        message: Yup.string().min(1).max(2000).required()
     }),
     handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
         fetch('http://localhost:3100/send', {

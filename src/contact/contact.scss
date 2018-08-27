@@ -43,44 +43,47 @@
         }
 
         form {
-            padding-left: 200px;
-            padding-right: 150px;
+            padding: 0px 200px;
             display: grid;
             grid-template-rows: auto 50px auto 50px auto;
             grid-template-columns: 1fr;
             margin-top: 50px;
             font-size: 20px;
+            position: relative;
 
             .exceeded-limit, :disabled {
                 opacity: 0.2;
             }
 
             input,
-            textarea,
-            input:-webkit-autofill,
-            textarea:-webkit-autofill {
+            textarea {
                 padding: 10px;
                 color: $white;
-                -webkit-text-fill-color: $white !important;
                 font-size: 22px;
                 background-color: rgba(255, 255, 255, 0.3);
                 border: 2px solid rgba(0, 0, 0, 0.2);
                 // necessary for removing the yellow autofill background color
                 transition: background-color 5000s ease-in-out 0s;
 
+                &::placeholder {
+                    color: rgba(255, 255, 255, 0.5);
+                }
+
                 &:focus,
                 &:active,
                 &:hover {
-                    background-color: rgba(255, 255, 255, 0.4);
+                    background-color: rgba(255, 255, 255, 0.6);
                     outline: none;
                     // necessary for removing the yellow autofill background color
                     transition: background-color 5000s ease-in-out 0s;
                 }
-
-                &::placeholder {
-                    color: rgba(0, 0, 0, 0.6);
-                }
             }
+
+            input:-webkit-autofill,
+            textarea:-webkit-autofill {
+                -webkit-text-fill-color: $white !important;
+            }
+            
 
             #name-and-email {
                 grid-row-start: 1;
@@ -109,7 +112,7 @@
 
             #name-email-errors {
                 grid-row-start: 2;
-                margin: 5px 0px 10px 40px;
+                margin: 5px 40px 10px 40px;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 1fr;
@@ -126,6 +129,7 @@
 
             #message-area {
                 grid-row-start: 3;
+                grid-column-start: 1;
 
                 margin: 0px 40px;
                 
@@ -135,9 +139,25 @@
                 }
             }
 
-            #message-error {
+            #message-info-row {
                 grid-row-start: 4;
-                margin: 0px 0px 10px 40px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr;
+                margin: 0px 40px;
+
+                #message-error {
+                    grid-column-start: 1;
+                }
+
+                #message-count {
+                    grid-column-start: 2;
+                    justify-self: end;
+
+                    p {
+                        color: rgba(0, 0, 0, 0.5);
+                    }
+                }
             }
 
             #submit {
@@ -154,11 +174,25 @@
                     border: 1px solid rgba(0, 0, 0, 0.2);
                     color: $black;
 
-                    &:hover {
+                    &:hover:not(:disabled) {
                         cursor: pointer;
+                    }
+
+                    &:hover:disabled {
+                        cursor: not-allowed;
                     }
                 }
             }
+        }
+
+        #exceeded-limit-message {
+            grid-row-start: 3;
+            grid-column-start: 1;
+            z-index: 2;
+            font-size: 20px;
+            justify-self: center;
+            align-self: center;
+
         }
     }
 
