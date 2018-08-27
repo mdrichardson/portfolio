@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: 1fr $sectionTitleWidth;
     grid-template-rows: 1fr;
-    padding: 0px 50px;
+    padding: 50px 0px;
 
     #contact-content {
         grid-column-start: 1;
@@ -104,6 +104,7 @@
                 padding: 3px 8px;
                 display: inline-block;
                 font-size: 16px;
+                animation: fade-in 0.5s ease-out;
             }
 
             .err-border {
@@ -123,7 +124,7 @@
 
                 #email-error {
                     grid-column-start: 2;
-                    margin-left: 20px;
+                    margin-left: 40px;
                 }
             }
 
@@ -185,14 +186,45 @@
             }
         }
 
-        #exceeded-limit-message {
+        #exceeded-limit-message, #loading, #success {
             grid-row-start: 3;
             grid-column-start: 1;
             z-index: 2;
             font-size: 20px;
             justify-self: center;
             align-self: center;
+            animation: fade-in 0.5s ease-out;
 
+        }
+
+        #loading {
+            font-size: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            animation: fade-in 0.5s ease-out;
+
+
+            p {
+                margin-top: 10px;
+                color: $red;
+            }
+        }
+        
+        #success {
+            margin: 0px 200px;
+            font-size: 26px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            padding: 30px;
+            animation: fade-in 1.5s ease-out;
+
+            h1 {
+                margin-bottom: 5px;
+                color: $red;
+            }
         }
     }
 

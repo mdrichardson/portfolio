@@ -1,14 +1,17 @@
 import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import loadingSVG from '../images/loading.svg';
 
 const FormStructure = ({
     values,
     errors,
     touched,
-    isSubmitting
+    isSubmitting,
+    status
 }) => (
     <div id="form-container">
+        <div hidden={ status === 'success' }>
         <Form className={ errors.exceededLimit ? "exceeded-limit" : ""}>
             <div id="name-and-email">
                 <Field type="text" name="name" id="name" placeholder="Name" className={ touched.name && errors.name ? "err-border" : "" } disabled={ errors.exceededLimit }/>
@@ -27,14 +30,23 @@ const FormStructure = ({
             </div>
             <div id="submit">
                 <button type="submit" 
-                    className={ !isSubmitting && !errors.exceededLimit && !errors.name && !errors.email && !errors.message && values.message != '' ? "hvr-underline-from-center hvr-grow" : "" } 
-                    disabled={ isSubmitting || errors.exceededLimit || errors.name || errors.email || errors.message || values.message == ''}>
+                    className={ !isSubmitting && !errors.exceededLimit && !errors.name && !errors.email && !errors.message && values.message !== '' ? "hvr-underline-from-center hvr-grow" : "" } 
+                    disabled={ isSubmitting || errors.exceededLimit || errors.name || errors.email || errors.message || values.message === ''}>
                     Submit</button>
             </div>
             <div id="exceeded-limit-message" className="error" hidden={ !errors.exceededLimit }>
                 <p>Your IP address has exceeded the submission limit. Try again tomorrow</p>
             </div>
+            <div id="loading" hidden={ !isSubmitting }>
+                <img src={ loadingSVG } alt="Submitting" />
+                <p>Submitting...</p>
+            </div>
         </Form>
+        </div>
+        <div id="success" hidden={ status !== 'success' }>
+            <h1>Thank you for getting in touch!</h1>
+            <p>You should hear from me soon.</p>
+        </div>
     </div>
 )
 
@@ -52,20 +64,21 @@ const FormikForm = withFormik({
         email: Yup.string().email().min(8).max(50).required(),
         message: Yup.string().min(1).max(2000).required()
     }),
-    handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
+    handleSubmit(values, { setErrors, setSubmitting, setStatus }) {
+        setSubmitting(true);
         fetch('http://localhost:3100/send', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(values)
         })
         .then(res => {
-            console.log(res)
             if (res.status === 401) {
-                setErrors({ exceededLimit: true })
+                setErrors({ exceededLimit: true });
+            } else {
+                setStatus('success');
             }
+            setSubmitting(false);
         })
-        resetForm();
-        setSubmitting(false);
     }
 })(FormStructure)
 
