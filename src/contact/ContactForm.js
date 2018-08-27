@@ -21,7 +21,7 @@ const FormStructure = ({
                 <Field component="textarea" name="message" id="message" placeholder="Message" className={ touched.message && errors.message ? "err-border" : "" } disabled={ errors.exceededLimit }/>
             </div>
             <div id="message-error" className="error" hidden={ !touched.message || !errors.message }><p>{ errors.message }</p></div>
-            <div id="submit"><button type="submit" disabled={ isSubmitting || errors.exceededLimit }>Submit</button></div>
+            <div id="submit"><button type="submit" className="hvr-underline-from-center hvr-grow" disabled={ isSubmitting || errors.exceededLimit }>Submit</button></div>
         </Form>
         <div id="exceeded-limit-message" hidden={ !errors.exceededLimit }>
             <p>Your IP address has exceeded the submission limit. Try again tomorrow</p>

@@ -1,0 +1,114 @@
+@import '../global-variables.css';
+
+// My custom animations. Mostly used in ProjectList
+// Transition is consuming too many resources, so we're going to set up a bunch
+// of animation keyframes. This will also allow finer control over left and right transitions
+// Directions indicate which way the animation moves towards, greatest change first
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes right-up {
+    from {transform: translate(-20vw, 20px)}
+    to {transform: translate(0)}
+}
+@keyframes left-up {
+    from {transform: translate(20vw, 20px)}
+    to {transform: translate(0)}
+}
+@keyframes left-down {
+    from {transform: translate(20vw, -20px)}
+    to {transform: translate(0)}
+}
+@keyframes right-down {
+    from {transform: translate(-20vw, -20px)}
+    to {transform: translate(0)}
+}
+@keyframes down-left {
+    from {transform: translate(10vw, -100px)}
+    to {transform: translate(0)}
+}
+@keyframes down-right {
+    from {transform: translate(-10vw, -100px)}
+    to {transform: translate(0)}
+}
+@keyframes up-right {
+    from {transform: translate(-10vw, 100px)}
+    to {transform: translate(0)}
+}
+@keyframes up-left {
+    from {transform: translate(10vw, 100px)}
+    to {transform: translate(0)}
+}
+@keyframes down {
+    from {transform: translateY(-20px)}
+    to {transform: translateY(0)}
+}
+@keyframes up {
+    from {transform: translateY(20px)}
+    to {transform: translateY(0)}
+}
+@keyframes left {
+    from {transform: translateX(20px)}
+    to {transform: translateX(0)}
+}
+@keyframes right {
+    from {transform: translateX(-20px)}
+    to {transform: translateX(0)}
+}
+@keyframes green-blue {
+    from {fill: $green}
+    to {fill: $blue}
+}
+@keyframes blue-green {
+    from {fill: $blue}
+    to {fill: $green}
+}
+
+// From hover.css
+/* Underline From Center */
+.hvr-underline-from-center {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  .hvr-underline-from-center:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background: $red;
+    height: 2px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+    left: 0;
+    right: 0;
+  }
+  /* Grow */
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+  }
+  .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
