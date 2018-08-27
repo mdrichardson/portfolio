@@ -4,10 +4,10 @@ import LookingForList from './LookingForList';
 class OtherDetails extends React.Component {
     state = {
         lookingFor: [
-            ['Full-Time Employment', true],
-            ['Weekend Contract Work', true],
-            ['Open to Offers', false],
-            ['Nothing', false]
+            {title: 'Full-Time Employment', looking: true},
+            {title: 'Weekend Contract Work', looking: true},
+            {title: 'Open to Offers', looking: false},
+            {title: 'Nothing', looking: false}
         ],
         location: 'Seattle',
     }

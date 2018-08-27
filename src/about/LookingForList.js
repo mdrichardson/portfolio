@@ -5,7 +5,7 @@ const LookingForList = (props) => (
         <h2>Looking For</h2>
         <ul>
             {props.list.map((item, index) => (
-                <li key={index} hidden={!item[1]}>{item[0]}</li>
+                <li key={index} hidden={!item.looking}>{item.title}</li>
             ))}
         </ul>
     </div>
