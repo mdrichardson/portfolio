@@ -30,17 +30,17 @@ class Projects extends React.Component {
     render() {
         return (
             <StickyContainer>
-            <div id="Projects">
-                <div id="project-list">
-                    <ProjectList list={this.state.projects} />
+                <div id="Projects">
+                    <div id="project-list">
+                        <ProjectList list={this.state.projects} />
+                    </div>
+                    <div className={ `section-title ${ this.state.sectionPlacement }` }>
+                            <Sticky bottomOffset={130}>
+                                {({ style, isSticky }) =>
+                                    <img style={ style } className={ isSticky ? "sticky" : "" } src={ projectsTitle } alt="Projects" />}
+                            </Sticky>
+                    </div>
                 </div>
-                <div className={ `section-title ${ this.state.sectionPlacement }` }>
-                        <Sticky bottomOffset={130}>
-                            {({ style, isSticky }) =>
-                                <img style={ style } className={ isSticky ? "sticky" : "" } src={ projectsTitle } alt="Projects" />}
-                        </Sticky>
-                </div>
-            </div>
             </StickyContainer>
         );
     }
