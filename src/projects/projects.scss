@@ -75,5 +75,9 @@
 
     .section-title {
         grid-column-start: 2;
+
+        .sticky {
+            margin-top: 80px;
+        }
     }
 }

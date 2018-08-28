@@ -15,7 +15,7 @@ const NavBar = (props) => {
                     </Typography>
                     <div id="menu-container" className="hide-mobile">
                         <ul id="menu">
-                            <li><div><NavLink to="/#Hero" smooth activeClassName="selected">Home</NavLink></div></li>
+                            <li><div><NavLink to="/#Home" smooth activeClassName="selected">Home</NavLink></div></li>
                             <li><div><NavLink to="/#Skills" smooth activeClassName="selected">Skills</NavLink></div></li>
                             <li><div><NavLink to="/#Projects" smooth activeClassName="selected">Projects</NavLink></div></li>
                             <li><div><NavLink to="/#About" smooth activeClassName="selected">About</NavLink></div></li>

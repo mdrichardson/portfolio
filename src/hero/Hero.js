@@ -39,7 +39,7 @@ class Hero extends React.Component {
     render() {
         return (
             <div>
-                <div id="Hero">
+                <div id="Home">
                     <div id="hero-name" className="hide-mobile">
                         <p>Michael Richardson <span>=</span></p>
                     </div>
