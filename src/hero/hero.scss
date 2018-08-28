@@ -23,7 +23,7 @@
         grid-column-start: 1;
         align-items: center;
         margin-right: 1.5vw;
-        text-shadow: $textShadow;
+        text-shadow: $bigShadow;
 
         p {
             color: $white;
@@ -82,7 +82,7 @@
             font-size: 3vw;
             text-align: left;
             color: $white;
-            text-shadow: $textShadow;
+            text-shadow: $bigShadow;
 
             span {
                 color: $yellow;
