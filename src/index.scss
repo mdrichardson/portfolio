@@ -49,6 +49,7 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$red,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     background-repeat: no-repeat;
     background-size: 100% 250vh;
+    overflow-x: hidden;
 }
 
 #about-section {
@@ -62,4 +63,45 @@ body {
 
 .section-title {
     opacity: 0.7 !important;
+}
+
+// Custom Scrollbar - webkit-only
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $gray;
+    border-radius: 20px;
+
+    &:hover {
+        background: $yellow;
+    }
+
+    &:active {
+        background: $red;
+    }
+}
+::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece {
+    
+    background: $black;
+
+    &:hover {
+        background: $yellow;
+    }
+
+    &:active {
+        background: $black;
+    } 
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
 }

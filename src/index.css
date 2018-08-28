@@ -38,7 +38,8 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$red,GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
   background-repeat: no-repeat;
-  background-size: 100% 250vh; }
+  background-size: 100% 250vh;
+  overflow-x: hidden; }
 
 #about-section {
   min-height: 100vh;
@@ -55,3 +56,29 @@ body {
 
 .section-title {
   opacity: 0.7 !important; }
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; }
+
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px; }
+
+::-webkit-scrollbar-thumb {
+  background: #A9BCD0;
+  border-radius: 20px; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FCAB10; }
+  ::-webkit-scrollbar-thumb:active {
+    background: #F71735; }
+
+::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece {
+  background: #011627; }
+  ::-webkit-scrollbar-track:hover, ::-webkit-scrollbar-track-piece:hover {
+    background: #FCAB10; }
+  ::-webkit-scrollbar-track:active, ::-webkit-scrollbar-track-piece:active {
+    background: #011627; }
+
+::-webkit-scrollbar-corner {
+  background: transparent; }
