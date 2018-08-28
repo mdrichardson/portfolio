@@ -6,16 +6,25 @@ import TreatDispenser from './project-details/TreatDispenser';
 import FUTpuppeteer from './project-details/FUTpuppeteer'
 import Portfolio from './project-details/Portfolio'
 import RESfilterer from './project-details/RESfilterer';
+import Waypoint from 'react-waypoint';
 
 class Projects extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            projects: []
+        }
+    }
 
-    state = {
-        projects: [
-            TreatDispenser,
-            FUTpuppeteer,
-            Portfolio,
-            RESfilterer
-        ]
+    componentDidMount() {
+        this.setState({
+            projects: [
+                TreatDispenser,
+                FUTpuppeteer,
+                Portfolio,
+                RESfilterer
+            ]
+        })
     }
 
     render() {
