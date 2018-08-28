@@ -16,6 +16,7 @@
         p {
             margin-bottom: 35px;
             line-height: 1.5em;
+            text-shadow: $smallShadow;
         }
     }
 
@@ -36,6 +37,8 @@
             li {
                 opacity: 0.9;
                 padding: 5px;
+                text-shadow: $smallShadow;
+                filter: $dropShadow;
 
                 &:before { 
                     content:''; 
@@ -62,4 +65,5 @@
 
 h2 {
     color: $yellow;
+    text-shadow: $smallShadow;
 }
