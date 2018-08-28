@@ -22,6 +22,10 @@
 
     .section-title {
         grid-column-start: 1;
+
+        .sticky {
+            margin-top: 80px;
+        }
     }
 
     #other-details {

@@ -3,20 +3,26 @@ import './about.css';
 import aboutTitle from '../images/about.svg';
 import AboutMeText from './AboutMeText';
 import OtherDetails from './OtherDetails';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 class About extends React.Component {
 
     render() {
         return (
-            <div id="About">
-                <div className="section-title">
-                    <img src={ aboutTitle } alt="About" />
+            <StickyContainer>
+                <div id="About">
+                    <div className="section-title">
+                        <Sticky bottomOffset={150}>
+                            {({ style, isSticky }) =>
+                                <img style={ style } className={ isSticky ? "sticky" : "" } src={ aboutTitle } alt="About" />}
+                        </Sticky>
+                    </div>
+                    <div id="about-me">
+                        { AboutMeText }
+                    </div>
+                    <OtherDetails />
                 </div>
-                <div id="about-me">
-                    { AboutMeText }
-                </div>
-                <OtherDetails />
-            </div>
+            </StickyContainer>
         );
     }
 }
