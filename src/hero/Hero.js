@@ -7,13 +7,21 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 
 class Hero extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            properties: []
+        }
+    }
 
-    state = {
-        properties: [
-            { name: 'full_stack_dev', value: 'true', id: 'full_stack'},
-            { name: 'makes_pretty_ui', value: 'true', id: 'ui'},
-            { name: 'easy_to_work_with', value: 'true', id: 'work'},
-        ]
+    componentDidMount() {
+        this.setState({
+            properties: [
+                { name: 'full_stack_dev', value: 'true', id: 'full_stack'},
+                { name: 'makes_pretty_ui', value: 'true', id: 'ui'},
+                { name: 'easy_to_work_with', value: 'true', id: 'work'},
+            ]
+        })
     }
 
     render() {

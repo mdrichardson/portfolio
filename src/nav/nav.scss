@@ -1,15 +1,19 @@
 @import '../global-variables.scss';
+@import '../animations.scss';
 
 #nav {
     box-shadow: none;
     background: none;
 
-    .show-background {
+    &.fixed {
+        position: fixed;
+        top: 0;
         background: #f95725; /* Old browsers */
         background: -moz-linear-gradient(45deg, #f95725 0%, #f71735 100%); /* FF3.6-15 */
         background: -webkit-linear-gradient(45deg, #f95725 0%,#f71735 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(45deg, #f95725 0%,#f71735 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f95725', endColorstr='#f71735',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        animation: down 0.3s ease-out, fade-in 0.5s ease-out;
     }
 }
 
@@ -23,6 +27,11 @@
         color: $white;
         font-family: $headerFont, sans-serif;
         font-weight: bold;
+
+        .hidden {
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
     }
 
     ul {
@@ -58,7 +67,7 @@
 }
 
 #menu-hr {
-    margin: 0 50px;
+    margin: 0px 50px;
     display: block;
     height: 1px;
     border: 0;
