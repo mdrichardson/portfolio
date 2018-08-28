@@ -1,7 +1,8 @@
 import React from 'react';
 import './skills.css';
-import skillsTitle from '../images/skills.svg'
-import SkillsList from './SkillsList'
+import skillsTitle from '../images/skills.svg';
+import SkillsList from './SkillsList';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 class Skills extends React.Component {
 
@@ -46,9 +47,13 @@ class Skills extends React.Component {
 
     render() {
         return (
+            <StickyContainer>
             <div id="Skills">
                 <div className="section-title">
-                    <img src={ skillsTitle } alt="Skills" />
+                    <Sticky bottomOffset={50}>
+                        {({ style, isSticky }) =>
+                            <img style={ style } className={ isSticky ? "sticky" : "" } src={ skillsTitle } alt="Skills" />}
+                    </Sticky>
                 </div>
                 <div id="skills-columns">
                     <SkillsList list={this.state.skills.languages}/>
@@ -56,6 +61,7 @@ class Skills extends React.Component {
                     <SkillsList list={this.state.skills.databases}/>
                 </div>
             </div>
+            </StickyContainer>
         );
     }
 }
