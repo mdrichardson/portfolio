@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: 1fr $sectionTitleWidth;
     grid-template-rows: 1fr;
-    padding: 50px 0px;
+    padding: $verticalSectionMargin 50px;
 
     #contact-content {
         grid-column-start: 1;
