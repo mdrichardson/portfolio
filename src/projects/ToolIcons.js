@@ -4,7 +4,7 @@ import { faAngular, faNodeJs, faPython, faReact, faJs, faSass, faRedditAlien, fa
 
 const fa_size = '2x';
 
-// React doesn't work well with SVG files, so we have to copy the code inside the SVG and use it here.
+// React doesn't allow you to import SVG files directly (forces as img), so we have to copy the code inside the SVG and use it here.
 // Convert to valid JSX at https://svg2jsx.herokuapp.com/
 const typescriptSVG = (<svg version='1' xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 256.000000 256.000000'>

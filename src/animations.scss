@@ -68,6 +68,17 @@
     from {fill: $blue}
     to {fill: $green}
 }
+@keyframes bg-diagonal {
+    0% {
+      background-position: 0% 100%;
+    }
+    50% {
+      background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+      }
+}
 
 // From hover.css
 /* Underline From Center */

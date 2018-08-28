@@ -1,4 +1,5 @@
 @import '../global-variables.scss';
+@import '../animations.scss';
 
 #Hero {
     display: grid;
@@ -28,6 +29,11 @@
             font-family: $headerFont;
             font-weight: bold;
             font-size: 4.5vw;
+
+            span {
+                color: $yellow;
+                opacity: 0.8;
+            }
         }
 
         .hidden {
@@ -40,16 +46,32 @@
         display: flex;
         flex-direction: row;
         align-items: stretch;
-        justify-content: space-between;
+        justify-content: space-around;
         height: 100%;
 
         .bracket {
-            height: 100%;
             align-items: center;
             display: flex;
 
-            img {
+            &::before { 
+                content:''; 
                 height: 15vw;
+                min-width: 6vh;
+                display:inline-block;
+                mask-image:url('../images/bracket.svg');
+                background: $yellow; /* Old browsers */
+                background: -moz-linear-gradient(45deg, $yellow 0%, $red 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(45deg, $yellow 0%,$red 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(45deg, $yellow 0%,$red 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$red,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+                mask-repeat: no-repeat;
+                background-size: 300% 300%;
+                animation: bg-diagonal 10s infinite both;
+                }
+
+            #right-bracket::before {
+                background-size: 400% 400%;
+                animation: bg-diagonal 15s infinite both;
             }
         }
 
