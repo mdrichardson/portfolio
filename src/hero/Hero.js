@@ -51,8 +51,8 @@ class Hero extends React.Component {
                         <div className="bracket flip-h" id="right-bracket"></div>
                     </div>
                 </div>
-                <div id="down-arrow">
-                    <FontAwesomeIcon icon={faSortDown} size="6x" />
+                <div id="down-arrow" className={ this.props.hideArrow ? "hidden" : "" }>
+                    <FontAwesomeIcon icon={faSortDown} size="6x"/>
                 </div>
             </div>
         );

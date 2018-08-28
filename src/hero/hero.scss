@@ -94,14 +94,23 @@
 
 #down-arrow {
     margin: auto;
+    overflow: hidden;
 
     svg {
         display: block;
         margin: auto;
+        animation: ping 1s ease-out infinite;
+        overflow: hidden;
 
         path {
             fill: $yellow;
-            opacity: 0.5;
+            opacity: 1;
+            overflow: hidden;            
         }
+    }
+
+    &.hidden, &.hidden svg, &.hidden path {
+        opacity: 0;
+        animation: none !important;
     }
 }

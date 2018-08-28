@@ -26,7 +26,7 @@ class App extends Component {
                 <NavBar navFixed={ this.state.navFixed }/>
                 <div id="hero-section">
                     <Waypoint onEnter={ this.unfixNav } />
-                    <Hero />
+                    <Hero hideArrow={ this.state.navFixed }/>
                     <Waypoint onLeave={ this.fixNav } topOffset="50%"/>
                     <Skills />
                 </div>
