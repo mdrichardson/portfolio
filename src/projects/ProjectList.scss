@@ -12,8 +12,10 @@
     border-radius: 5px;
     transition: background-color 0.75s ease-in,
                 margin 1s ease-in;
+    box-shadow: $giantShadow;
     cursor: pointer;
     will-change: contents;
+    transition: box-shadow 1s ease-out 0.5s;
 
     .text {
         grid-column-start: 1;
@@ -68,7 +70,7 @@
                     width:10px; 
                     mask-image:url('../images/bullet.svg');
                     margin-right: 10px;
-                    background-color: $blue; 
+                    background-color: $blue;
                     }
             }
         }
@@ -124,6 +126,7 @@
             margin-top: 10px;
             animation: down-left 0.3s ease-out, fade-in 0.3s ease-out;
             will-change: position;
+            filter: $dropShadow;
     
             svg, img {
                 height: 28px;
@@ -175,6 +178,7 @@
             color: $blue;
             animation: right-down 0.3s ease-out;
             will-change: position;
+            text-shadow: $smallShadow;
         }
 
         .short-desc {
@@ -205,6 +209,7 @@
             width: 300px;
             border: 7px solid rgba(161, 232, 175, 0.4);
             transition: border 0.5s ease-out;
+            box-shadow: $smallShadow;
         }
 
         .expanded-tool-icons {
@@ -220,6 +225,7 @@
         justify-self: right;
         animation: fade-in 0.5s ease-out, up-right 0.25s ease-out;
         will-change: position;
+        filter: $dropShadow;
 
         svg, img {
             height: 28px;
