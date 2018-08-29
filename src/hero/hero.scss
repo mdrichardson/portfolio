@@ -84,8 +84,21 @@
             color: $white;
             text-shadow: $bigShadow;
 
-            span {
+            input.bool {
                 color: $yellow;
+                background: none;
+                font-size: 3vw;
+                border: none;
+                resize: horizontal;
+
+                &:active, &:focus, &:hover {
+                    background: none;
+                    outline: none;
+                }
+
+                &:focus {
+                    border-bottom: 1px solid $yellow;
+                }
             }
         }
     }
