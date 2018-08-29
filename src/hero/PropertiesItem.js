@@ -11,7 +11,9 @@ const dynamicClassesToHide = [
     'skillsItem',
     'project-container',
     'submit',
-    'looking-for'
+    'looking-for',
+    'navItem',
+    'bracket'
 ]
 
 var dynamicElements = []
