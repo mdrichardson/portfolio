@@ -29,17 +29,19 @@ class App extends Component {
         return (
             <div>
                 <NavBar navFixed={ this.state.navFixed }/>
-                <div id="hero-section">
-                    <Waypoint onEnter={ this.unfixNav } />
-                    <Hero hideArrow={ this.state.navFixed }/>
-                    <Waypoint onLeave={ this.fixNav } topOffset="50%"/>
-                    <Skills />
-                </div>
-                <Projects />
-                <div id="about-section">
-                    <About />
-                    <Contact />
-                </div>
+                <main>
+                    <div id="hero-section">
+                        <Waypoint onEnter={ this.unfixNav } />
+                        <Hero hideArrow={ this.state.navFixed }/>
+                        <Waypoint onLeave={ this.fixNav } topOffset="50%"/>
+                        <Skills />
+                    </div>
+                    <Projects />
+                    <div id="about-section">
+                        <About />
+                        <Contact />
+                    </div>
+                </main>
                 <div id="broken-notification"><p>You broke something. Return the value to <span>true</span> to fix it!</p></div>
             </div>
         )
