@@ -18,6 +18,38 @@ var dynamicElements = []
 
 var boolElements = []
 
+const cssChange = `
+    #ui-block {
+        z-index: 5;
+        margin-top: -40vh;
+        display: block;
+    }
+    #ui-block::before {
+        content: 'Oh boy. Here we go...';
+        font-size: 2em;
+        font-weight: bold;
+    }
+    #ui-block {
+        font-size: 1.5em;
+        text-align: center;
+        align-self: center;
+        justify-self: center;
+        height: 30vh;
+        width: 80vw;
+        background: rgba(255, 255, 255, 0.5);
+        color: white;
+    }
+    body {
+        background: black;
+    }
+    #bracket::before {
+        height: 40px;
+        min-width: 1px;
+    }
+    #hero-name p {
+        font-size: 7vw;
+    }
+`
 class PropertiesItem extends React.Component {
     constructor(props) {
         super(props);
@@ -55,11 +87,9 @@ class PropertiesItem extends React.Component {
         switch(event.target.value) {
             case 'false':
                 this.easterEggFalse();
-                this.setState({ value: 'false' });
                 break;
             case 'true':
                 this.easterEggTrue();
-                this.setState({ value: 'true' });
                 break;
             default:
                 // Otherwise, reset value to true and do nothing
@@ -83,14 +113,22 @@ class PropertiesItem extends React.Component {
                     console.error('I swear I\'m a full-stack developer!!')
                     break;
                 case 'dynamic_items':
-                    // Hide items on the page by class
+                    // Hide items on the page by class in dynamicElements
+                    // Much easier to use opacity vs. display: none or something
                     this.generateDynamicElements();
-                    // Hide the dynamic Elements
                     dynamicElements.forEach(elem => {
-                        elem.style.display = 'none';
+                        elem.style.opacity = '0';
                     })
                     break;
                 case 'ui':
+                    // Mess up the Hero UI
+                    this.changeUI();
+                    break;
+                case 'scroll':
+                    // Break scrolling
+                    document.body.style.height = '100%';
+                    document.body.style.overflow = 'hidden';
+                    break;
                 default:
                     return
             }
@@ -99,8 +137,34 @@ class PropertiesItem extends React.Component {
 
     // Revert UI back to normal for the value that changed back
     easterEggTrue = () => {
-        this.generateBoolElements();
-        // Check if all values are true so we can hide notification
+        // First handle the eggs
+        this.state.easterEgg.forEach(egg => {
+            switch(egg) {
+                case 'console':
+                    // Clear console
+                    console.clear();
+                    break;
+                case 'dynamic_items':
+                    // Make items visible on the page by class in dynamicElements
+                    this.generateDynamicElements();
+                    dynamicElements.forEach(elem => {
+                        elem.style.opacity = '1';
+                    })
+                    break;
+                case 'ui':
+                    // Fix the Hero UI
+                    this.changeUI('reverse');
+                    break;
+                case 'scroll':
+                    // Enable scrolling
+                    document.body.style.height = 'auto';
+                    document.body.style.overflow = 'visible';
+                    break;
+                default:
+                    return
+            }
+        })
+        // Now check if all values are true so we can hide notification
         let allTrue = this.checkIfTrue();
         if (allTrue) {
             // Hide notification that user broke something, so they can return it to normal and don't miss anything
@@ -134,6 +198,7 @@ class PropertiesItem extends React.Component {
 
     // Check if all of our Hero properties are true
     checkIfTrue = () => {
+        this.generateBoolElements();
         let allTrue = true;
         boolElements.forEach(elem => {
             if (elem.value === 'false') {
@@ -141,6 +206,23 @@ class PropertiesItem extends React.Component {
             }
         })
         return allTrue;
+    }
+
+    changeUI = (direction='forwards') => {
+        var uiBlock = document.getElementById('ui-block');
+        var CSSArray = cssChange.split('');
+        let delay = direction === 'reverse' ? 5 : 15;
+        let i = 0;
+        var write = function() {
+            if (direction === 'reverse') {
+                uiBlock.innerHTML = uiBlock.innerHTML.slice(0, -1);
+            } else {
+                uiBlock.innerHTML += CSSArray[i];
+            }
+            i++;
+            if (i >= CSSArray.length){ clearInterval(loop) }
+        }
+        var loop = setInterval(write, delay)
     }
 
     render() {
