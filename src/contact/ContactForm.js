@@ -43,7 +43,7 @@ const FormStructure = ({
             </div>
         </Form>
         </div>
-        <div id="success" hidden={ status !== 'success' }>
+        <div id="success" hidden={ status !== 'success' } className="submit">
             <h1>Thank you for getting in touch!</h1>
             <p>You should hear from me soon.</p>
         </div>

@@ -1,0 +1,19 @@
+@import './global-variables.scss';
+@import './animations.scss';
+
+#broken-notification {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    padding: 0.2em;
+    bottom: 0;
+    font-size: 1.25em;
+    background-color: $red;
+    color: $white;
+    text-align: center;
+    animation: up 1s ease-out, fade-in 1s ease-out;
+
+    span {
+        color: $yellow;
+    }
+}

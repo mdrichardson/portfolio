@@ -5,7 +5,7 @@ const SkillsList = (props) => (
         <h2>{props.list.title}</h2>
         <ul>
             {props.list.items.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index} className="skillsItem">{item}</li>
             ))}
         </ul>
     </div>

@@ -68,6 +68,7 @@ class App extends Component {
                     <About />
                     <Contact />
                 </div>
+                <div id="broken-notification"><p>You broke something. Return the value to <span>true</span> to fix it!</p></div>
             </div>
         )
     }
