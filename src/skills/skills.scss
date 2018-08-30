@@ -1,23 +1,11 @@
 @import '../global-variables.scss';
 
 #Skills {
-    display: grid;
-    grid-template-columns: $sectionTitleWidth 1fr;
-    grid-template-rows: 1fr;
-    padding: 0 50px;
-    margin: $verticalSectionMargin 0px;
-    align-items: center;
-    -ms-grid-row-align: center;
     min-height: 60vh;
 
     .section-title {
         grid-column-start: 1;
         grid-row-start: 1;
-        align-self: center;
-        
-        .sticky {
-            margin-top: 80px;
-        }
     }
 
     #skills-columns {
@@ -25,53 +13,60 @@
         grid-row-start: 1;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        justify-content: space-between;
         position: relative;
 
         h2 {
             text-shadow: $smallShadow;
+            font-size: 3em;
         }
 
         #languages, #tools, #databases {
 
+            flex: 1 1 auto;
+
             ul {
                 list-style-type: none;
-                padding-left: 20px;
-                margin-top: 10px;
+                padding-left: 2em;
+                margin-top: 1em;
 
                 li {
                     opacity: 0.9;
-                    padding: 5px;
-                    font-size: 20px;
+                    padding: 0.35em;
+                    font-size: 1.8rem;
                     text-shadow: $smallShadow;
                     filter: $dropShadow;
 
                     &::before { 
                         content:''; 
                         display:inline-block; 
-                        height:8px; 
-                        width:8px; 
+                        height:0.8rem; 
+                        width:0.8rem; 
                         mask-image:url('../images/bullet.svg');
-                        margin-right: 8px;
-                        margin-bottom: 2px; 
+                        margin-right: 0.8rem;
+                        margin-bottom: 0.2rem; 
                         }
                 }
             }
         }
 
         #databases {
-            width: 600px;
-        }
+            flex: 0 1 auto;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
 
-        #databases::after{
-            content: 'Everything needed to build beautiful, efficient, full-stack web apps and software.';
-            font-size: 38px;
-            font-family: $headerFont;
-            font-weight: bold;
-            color: $yellow;
-            position: absolute;
-            bottom: 0;
-            text-shadow: $smallShadow;
+            #skills-statement p {
+                padding-left: 0.35em;
+                font-size: 3rem;
+                font-family: $headerFont;
+                font-weight: bold;
+                color: $yellow;
+                text-shadow: $smallShadow;
+                max-width: 500px;
+                margin-top: 3vw;
+            }
         }
 
         #languages li::before {

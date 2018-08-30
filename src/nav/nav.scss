@@ -20,13 +20,14 @@
 #toolbar {
     display: grid;
     display: grid;
-    grid-template-columns: 1fr 500px;
+    grid-template-columns: 1fr minmax(500px, 40vw);
 
     #name {
         grid-column-start: 1;
         color: $white;
         font-family: $headerFont, sans-serif;
         font-weight: bold;
+        font-size: 2.25rem;
 
         .hidden {
             opacity: 0;
@@ -53,6 +54,7 @@
                 display: block;
                 text-decoration: none;
                 color: $white;
+                font-size: 1.75rem;
 
                 &:visited {
                     color: $white;
@@ -60,7 +62,7 @@
             }
 
             .selected {
-                border-bottom: 3px solid $white;
+                border-bottom: 0.3rem solid $white;
             }
         }
     }

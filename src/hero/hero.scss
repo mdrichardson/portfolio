@@ -2,11 +2,11 @@
 @import '../animations.scss';
 
 #Home {
+    grid-column-start: 2;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr;
     min-height: 80vh;
-    padding: 50px;
 
     #hero-name, #bracket-container {
         display: flex;
@@ -29,7 +29,7 @@
             color: $white;
             font-family: $headerFont;
             font-weight: bold;
-            font-size: 4.5vw;
+            font-size: 4vw;
 
             span {
                 color: $yellow;
@@ -56,9 +56,10 @@
             filter: $dropShadow;
 
             &::before { 
-                content:''; 
-                height: 15vw;
-                min-width: 6vh;
+                content:'';
+                $height: 15vw;
+                height: $height;
+                width: $height / 5.17; // the svg shows dimensions of 300x58, 300/58 = 5.17, so we can keep the scale easily
                 display:inline-block;
                 mask-image:url('../images/bracket.svg');
                 background: $yellow; /* Old browsers */
@@ -67,6 +68,7 @@
                 background: linear-gradient(45deg, $yellow 0%,$red 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$red,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
                 mask-repeat: no-repeat;
+                mask-size: contain;
                 background-size: 300% 300%;
                 animation: bg-diagonal 10s infinite both;
                 }
@@ -77,9 +79,11 @@
             }
         }
 
+        $propertySize: 3.2vw;
+
         #hero-properties {
-            margin: auto 5px;
-            font-size: 3vw;
+            margin: auto 0.5em;
+            font-size: $propertySize;
             text-align: left;
             color: $white;
             text-shadow: $bigShadow;
@@ -87,7 +91,7 @@
             input.bool {
                 color: $yellow;
                 background: none;
-                font-size: 3vw;
+                font-size: $propertySize;
                 border: none;
                 resize: horizontal;
 
@@ -133,8 +137,8 @@
 
 #ui-block {
     display: none;
-    height: 30px;
-    width: 200px;
+    height: 3em;
+    width: 20em;
     background: transparent;
     color: black;
 }

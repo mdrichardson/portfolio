@@ -69,14 +69,14 @@ class Skills extends React.Component {
     render() {
         return (
             <StickyContainer>
-            <div id="Skills">
+            <div id="Skills" className="section-container">
                 <div className="section-title">
                     <Sticky bottomOffset={50}>
                         {({ style, isSticky }) =>
                             <img style={ style } className={ isSticky ? "sticky" : "" } src={ skillsTitle } alt="Skills" />}
                     </Sticky>
                 </div>
-                <div id="skills-columns">
+                <div id="skills-columns" className="content-container">
                     <SkillsList list={this.state.skills.languages}/>
                     <SkillsList list={this.state.skills.tools}/>
                     <SkillsList list={this.state.skills.databases}/>

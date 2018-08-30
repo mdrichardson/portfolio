@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Arimo|PT+Sans:400,700');
 @import './global-variables.scss';
 
+// Set root font size to 62.5% so 1rem = 10px, 1.2rem = 12px, etc
+html {
+    font-size: 62.5%;
+}
+
 
 @media all and (max-width: #{$mobile - 1px}) {
     .hide-mobile {
@@ -52,6 +57,10 @@ body {
     overflow-x: hidden;
 }
 
+main {
+    padding: 0em 5em;
+}
+
 #about-section {
     min-height: 100vh;
     background: #fcab10; /* Old browsers */
@@ -61,15 +70,11 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcab10', endColorstr='#f8312e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.section-title {
-    opacity: 0.7 !important;
-}
-
 // Custom Scrollbar - webkit-only
 
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 1em;
+    height: 1em;
 }
 
 ::-webkit-scrollbar-button {
@@ -79,7 +84,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: $gray;
-    border-radius: 20px;
+    border-radius: 2em;
 
     &:hover {
         background: $yellow;
