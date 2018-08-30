@@ -66,16 +66,25 @@ main {
 
 #about-section {
   min-height: 100vh;
-  background: #fcab10;
-  /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #fcab10 0%, #f8312e 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #fcab10 0%, #f8312e 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #fcab10 0%, #f8312e 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcab10', endColorstr='#f8312e',GradientType=1 );
-  /* IE6-9 fallback on horizontal gradient */ }
+  position: relative; }
+  #about-section::before {
+    content: '';
+    position: absolute;
+    height: 200vh;
+    width: 120vw;
+    z-index: -1;
+    left: -100px;
+    overflow: hidden;
+    background: #fcab10;
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #fcab10 0%, #f8312e 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #fcab10 0%, #f8312e 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #fcab10 0%, #f8312e 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcab10', endColorstr='#f8312e',GradientType=1 );
+    /* IE6-9 fallback on horizontal gradient */ }
 
 ::-webkit-scrollbar {
   width: 1em;

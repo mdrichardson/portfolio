@@ -10,17 +10,19 @@ class About extends React.Component {
     render() {
         return (
             <StickyContainer>
-                <div id="About">
+                <div id="About" className="section-container">
                     <div className="section-title">
                         <Sticky bottomOffset={150}>
                             {({ style, isSticky }) =>
                                 <img style={ style } className={ isSticky ? "sticky" : "" } src={ aboutTitle } alt="About" />}
                         </Sticky>
                     </div>
-                    <div id="about-me">
-                        { AboutMeText }
+                    <div className="content-container">
+                        <div id="about-me">
+                            { AboutMeText }
+                        </div>
+                        <OtherDetails />
                     </div>
-                    <OtherDetails />
                 </div>
             </StickyContainer>
         );

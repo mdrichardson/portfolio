@@ -1,73 +1,68 @@
 @import '../global-variables.scss';
 
 #About {
-    display: grid;
-    grid-template-columns: $sectionTitleWidth 2fr 1fr;
-    grid-template-rows: auto;
-    padding: $verticalSectionMargin 50px;
-
-    #about-me {
-        padding: 0px 50px;
-        grid-column-start: 2;
-        margin: 0 5w;
-        color: $white;
-        font-size: 20px;
-
-        p {
-            margin-bottom: 35px;
-            line-height: 1.5em;
-            text-shadow: $smallShadow;
-        }
-    }
-
+    
     .section-title {
         grid-column-start: 1;
-
-        .sticky {
-            margin-top: 80px;
-        }
     }
 
-    #other-details {
-        grid-column-start: 3;
-        padding: 0px 50px;
-        font-size: 20px;
+    .content-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
 
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
-            margin-top: 10px;
+        h2 {
+            color: $yellow;
+            text-shadow: $smallShadow;
+        }
 
-            li {
-                opacity: 0.9;
-                padding: 5px;
+        #about-me {
+            grid-column-start: 1;
+            color: $white;
+            font-size: 2rem;
+    
+            p {
+                margin-bottom: 3.5rem;
+                line-height: 2.75rem;
                 text-shadow: $smallShadow;
-                filter: $dropShadow;
+            }
+        }
 
-                &:before { 
-                    content:''; 
-                    display:inline-block; 
-                    height:8px; 
-                    width:8px; 
-                    mask-image:url('../images/bullet.svg');
-                    margin-right: 8px;
-                    margin-bottom: 2px;
-                    background-color: $yellow;
-                    }
-
-                &.inactive {
-                    opacity: 0.3;
-
-                    &:before {
-                        background-color: $red;
+        #other-details {
+            grid-column-start: 2;
+            padding-left: 5vw;
+            font-size: 2rem;
+    
+            ul {
+                list-style-type: none;
+                padding-left: 2rem;
+                margin-top: 0.25rem;
+    
+                li {
+                    opacity: 0.9;
+                    padding: 0.5rem;
+                    text-shadow: $smallShadow;
+                    filter: $dropShadow;
+    
+                    &:before { 
+                        content: ''; 
+                        display: inline-block; 
+                        height: 0.8rem; 
+                        width: 0.8rem; 
+                        mask-image: url('../images/bullet.svg');
+                        margin-right: 0.8rem;
+                        margin-bottom: 0.2rem;
+                        background-color: $yellow;
+                        }
+    
+                    &.inactive {
+                        opacity: 0.3;
+    
+                        &:before {
+                            background-color: $red;
+                        }
                     }
                 }
             }
         }
     }
-}
-
-h2 {
-    color: $yellow;
-    text-shadow: $smallShadow;
 }
