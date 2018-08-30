@@ -11,15 +11,15 @@ const FormStructure = ({
     status
 }) => (
     <div id="form-container">
-        <div hidden={ status === 'success' }>
+        <div hidden={ status === 'success' || status === 'error' }>
         <Form className={ errors.exceededLimit ? "exceeded-limit" : ""}>
             <div id="name-and-email">
                 <div id="name-container">
-                    <Field type="text" name="name" id="name" placeholder="Name" className={ touched.name && errors.name ? "err-border" : "" } disabled={ errors.exceededLimit }/>
+                    <div className="input-container"><Field type="text" name="name" id="name" placeholder="Name" className={ touched.name && errors.name ? "err-border" : "" } disabled={ errors.exceededLimit }/></div>
                     <div id="name-error" className="error" hidden={ !touched.name || !errors.name }><p>{ errors.name }</p></div>
                 </div>
                 <div id="email-container">
-                    <Field type="email" name="email" id="email" placeholder="Email" className={ touched.email && errors.email ? "err-border" : "" } disabled={ errors.exceededLimit }/>
+                    <div className="input-container"><Field type="email" name="email" id="email" placeholder="Email" className={ touched.email && errors.email ? "err-border" : "" } disabled={ errors.exceededLimit }/></div>
                     <div id="email-error" className="error" hidden={ !touched.email || !errors.email }><p>{ errors.email }</p></div>
                 </div>
             </div>
@@ -48,6 +48,10 @@ const FormStructure = ({
         <div id="success" hidden={ status !== 'success' } className="submit">
             <h1>Thank you for getting in touch!</h1>
             <p>You should hear from me soon.</p>
+        </div>
+        <div id="error" hidden={ status !== 'error' } className="submit">
+            <h1>There was an error connecting to the server!</h1>
+            <p>Try again another time.</p>
         </div>
     </div>
 )
@@ -80,6 +84,13 @@ const FormikForm = withFormik({
                 setStatus('success');
             }
             setSubmitting(false);
+        })
+        .catch(err => {
+            if (err) {
+                console.log(`Error: ${err}`);
+                setStatus('error');
+                setSubmitting(false);
+            }
         })
     }
 })(FormStructure)
