@@ -71,7 +71,7 @@ class Skills extends React.Component {
             <StickyContainer>
             <div id="Skills" className="section-container">
                 <div className="section-title">
-                    <Sticky bottomOffset={50}>
+                    <Sticky bottomOffset={150}>
                         {({ style, isSticky }) =>
                             <img style={ style } className={ isSticky ? "sticky" : "" } src={ skillsTitle } alt="Skills" />}
                     </Sticky>
