@@ -91,12 +91,14 @@
 
             input.bool {
                 color: $yellow;
+                width: 9rem;
                 background: none;
                 font-size: $propertySize;
                 border: none;
                     border-bottom: 1px solid transparent;
                     margin-bottom: -1px;
                 resize: horizontal;
+                text-shadow: $bigShadow;
 
                 &:active, &:focus, &:hover {
                     background: none;

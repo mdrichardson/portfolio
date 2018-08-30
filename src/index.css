@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato|Ubuntu:400,700");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu|Lato:400,700");
 .section-container {
   display: grid;
   grid-template-columns: minmax(50px, 7vw) 1fr minmax(50px, 7vw);
@@ -38,11 +38,11 @@ html {
   padding: 0;
   box-sizing: border-box; }
   * :not(h1), * :not(h2), * :not(h3), * :not(h4), * :not(h5), * :not(h6) {
-    font-family: "Lato", sans-serif;
+    font-family: "Ubuntu", sans-serif;
     color: #FDFFFE; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: bold;
   color: #FDFFFE; }
 

@@ -20,8 +20,8 @@ class PropertiesItem extends React.Component {
         if (event.target.value.length > 5) { return }
         this.setState({ value: event.target.value });
         // This dynamically adjusts input size. For some reason, it adds an extra 3 characters
-        // The Math.max keeps the size attribute from going negative
-        event.target.setAttribute('size', Math.max(1, event.target.value.length - 3));
+        // The Math.max keeps the size attribute from going negative. Currently not necessary, but saving just in case
+        // event.target.setAttribute('size', Math.max(1, event.target.value.length - 3));
     }
 
     // Allow easter egg trigger when pressing enter, as well as onBlur
@@ -58,7 +58,7 @@ class PropertiesItem extends React.Component {
                 onChange={ this.handleChange }
                 onBlur={ this.easterEgg }
                 onKeyPress={ this.handleKeyPress }
-                size="1" />,{/* Comma is necessary */}
+                />,{/* Comma is necessary */}
             </p>
             )
         }
