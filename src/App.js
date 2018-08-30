@@ -24,7 +24,7 @@ class App extends Component {
     componentDidMount() {
         fancyLog();
     }
-        
+    // We put a lot of Waypoints here so that we can ensure the Nav sticks, even if we refresh the page and start at the bottom
     render() {
         return (
             <div>
@@ -35,10 +35,15 @@ class App extends Component {
                         <Hero hideArrow={ this.state.navFixed }/>
                         <Waypoint onLeave={ this.fixNav } topOffset="50%"/>
                         <Skills />
+                        <Waypoint onEnter={ this.fixNav } />
                     </div>
+                    <Waypoint onEnter={ this.fixNav } />
                     <Projects />
+                    <Waypoint onEnter={ this.fixNav } />
                     <div id="about-section">
+                        <Waypoint onEnter={ this.fixNav } />
                         <About />
+                        <Waypoint onEnter={ this.fixNav } />
                         <Contact />
                     </div>
                 </main>
