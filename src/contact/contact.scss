@@ -9,6 +9,7 @@
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: 1fr;
+        padding: 0 3vw;
 
         #contact-links {
             grid-row-start: 1;
@@ -18,7 +19,7 @@
             height: 3rem;
 
             a {
-                margin: 0px 3em;
+                margin: 0px 2em;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -172,7 +173,6 @@
 
             #submit {
                 grid-row-start: 4;
-                margin-bottom: 4rem;
 
                 button {
                     display: block;
