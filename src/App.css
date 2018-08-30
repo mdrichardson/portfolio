@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: minmax(50px, 7vw) 1fr minmax(50px, 7vw);
   grid-template-rows: 1fr;
-  margin: 10em 0;
-  align-items: flex-start; }
+  align-items: flex-start;
+  padding: 10em 2vw; }
   .section-container .content-container {
     padding: 5em 3vw; }
 
@@ -19,8 +19,8 @@
   display: grid;
   grid-template-columns: minmax(50px, 7vw) 1fr minmax(50px, 7vw);
   grid-template-rows: 1fr;
-  margin: 10em 0;
-  align-items: flex-start; }
+  align-items: flex-start;
+  padding: 10em 2vw; }
   .section-container .content-container {
     padding: 5em 3vw; }
 
