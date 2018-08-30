@@ -9,7 +9,7 @@ const LookingForList = (props) => (
                     return (
                         <li key={index} className="looking-for">{item.title}</li>
                     )
-                }
+                } else { return null }
             })}
         </ul>
     </div>
