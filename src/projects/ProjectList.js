@@ -19,7 +19,7 @@ class ProjectsList extends React.Component {
 
     expandIt = (key) => this.setState({ expandedKey: key })
 
-    collapseIt = (key) => this.setState({ expandedKey: null })
+    collapseIt = () => this.setState({ expandedKey: null })
 
     render() {
         return (
