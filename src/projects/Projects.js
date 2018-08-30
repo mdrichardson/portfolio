@@ -30,8 +30,8 @@ class Projects extends React.Component {
     render() {
         return (
             <StickyContainer>
-                <div id="Projects">
-                    <div id="project-list">
+                <div id="Projects" className="section-container">
+                    <div id="project-list" className="content-container">
                         <ProjectList list={this.state.projects} />
                     </div>
                     <div className={ `section-title ${ this.state.sectionPlacement }` }>

@@ -38,7 +38,7 @@ $dropShadow: drop-shadow(0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1));
     align-items: flex-start;
 
     .content-container {
-        padding: 3vh 3vw;
+        padding: 10em 3vw;
     }
 }
 
@@ -49,5 +49,5 @@ $dropShadow: drop-shadow(0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1));
 .section-title {
     opacity: 0.7;
     align-self: start;
-    padding-top: 3vh;
+    padding-top: 10em;
 }

@@ -1,25 +1,30 @@
 @import '../global-variables.scss';
 
 #Projects {
-    display: grid;
-    grid-template-columns: 1fr $sectionTitleWidth;
-    grid-template-rows: 1fr;
-    padding: $verticalSectionMargin 50px;
-    background: $gray; /* Old browsers */
-    background: -moz-linear-gradient(45deg, $blue 0%, $green 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, $blue 0%,$green 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, $blue 0%,$green 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$blue, endColorstr=$green,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 200vh;
+        width: 120vw;
+        z-index: -1;
+        left: -100px;
+        overflow: hidden;
+        background: $gray; /* Old browsers */
+        background: -moz-linear-gradient(45deg, $blue 0%, $green 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg, $blue 0%,$green 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg, $blue 0%,$green 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$blue, endColorstr=$green,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
 
     #project-list {
-        grid-column-start: 1;
+        grid-column-start: 2;
         display: flex;
         flex-direction: column;
-        margin: 0 5vw;
 
         > :first-child {
             align-self: flex-end;
-            margin-top: 0px;
+            margin-top: 0;
         }
 
         > :nth-child(2), > :nth-child(4) {
@@ -69,15 +74,11 @@
         }
 
         > :last-child {
-            margin-bottom: 0px;
+            margin-bottom: 0;
         }
     }
 
     .section-title {
-        grid-column-start: 2;
-
-        .sticky {
-            margin-top: 80px;
-        }
+        grid-column-start: 3;
     }
 }

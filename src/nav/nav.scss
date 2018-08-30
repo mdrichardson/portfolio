@@ -20,7 +20,7 @@
 #toolbar {
     display: grid;
     display: grid;
-    grid-template-columns: 1fr minmax(500px, 40vw);
+    grid-template-columns: 1fr minmax(400px, 40vw);
 
     #name {
         grid-column-start: 1;
