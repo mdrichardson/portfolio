@@ -2,7 +2,6 @@ import React from 'react';
 
 const SkillsList = (props) => {
     if (props.list.title === 'Databases') {
-        console.log(props.list.title)
         return (
             <div id={props.list.title.toLowerCase()}>
                 <div>
