@@ -2,13 +2,10 @@
 @import '../animations.scss';
 
 #Contact {
-    display: grid;
-    grid-template-columns: 1fr $sectionTitleWidth;
-    grid-template-rows: 1fr;
-    padding: $verticalSectionMargin 50px;
+    margin-top: 0;
 
     #contact-content {
-        grid-column-start: 1;
+        grid-column-start: 2;
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: 1fr;
@@ -18,14 +15,14 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            height: 30px;
+            height: 3rem;
 
             a {
-                margin: 0px 50px;
+                margin: 0px 3em;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                font-size: 20px;
+                font-size: 2rem;
                 text-decoration: none;
                 filter: $dropShadow;
                 text-shadow: $smallShadow;
@@ -39,18 +36,17 @@
                 }
 
                 p {
-                    margin-left: 15px;
+                    margin-left: 1.5em;
                 }
             }
         }
 
         form {
-            padding: 0px 20px;
-            margin: 50px auto 0 auto;
+            margin: 5em auto 0 auto;
             display: grid;
             grid-template-rows: auto 50px auto 50px auto;
             grid-template-columns: 1fr;
-            font-size: 20px;
+            font-size: 2rem;
             position: relative;
             max-width: 1200px;
 
@@ -60,9 +56,9 @@
 
             input,
             textarea {
-                padding: 10px;
+                padding: 1rem;
                 color: $white;
-                font-size: 22px;
+                font-size: 2.2rem;
                 background-color: rgba(255, 255, 255, 0.3);
                 border: 2px solid rgba(0, 0, 0, 0.2);
                 box-shadow: $smallShadow;
@@ -92,12 +88,15 @@
             #name-and-email {
                 grid-row-start: 1;
                 display: flex;
-                flex-direction: row;
+                flex-flow: row wrap;
                 justify-content: center;
 
-                input {
-                    margin: 0px 40px;
+                #name-container, #email-container {
+                    margin: 0px 4rem;
                     flex: 1 1 auto;
+                    display: grid;
+                    grid-template-rows: 1fr 1fr;
+                    grid-template-columns: 1fr;
                 }
             }
 
@@ -105,9 +104,9 @@
                 color: $red;
                 background-color: rgba(255, 255, 255, 0.3);
                 border-radius: 5px;
-                padding: 3px 8px;
+                padding: 0.3rem 0.8rem;
                 display: inline-block;
-                font-size: 16px;
+                font-size: 1.6rem;
                 animation: fade-in 0.5s ease-out;
             }
 
@@ -117,7 +116,7 @@
 
             #name-email-errors {
                 grid-row-start: 2;
-                margin: 5px 40px 10px 40px;
+                margin: 0.5rem 4rem 1rem 4rem;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 1fr;
@@ -128,7 +127,7 @@
 
                 #email-error {
                     grid-column-start: 2;
-                    margin-left: 40px;
+                    margin-left: 4rem;
                 }
             }
 
@@ -136,11 +135,11 @@
                 grid-row-start: 3;
                 grid-column-start: 1;
 
-                margin: 0px 40px;
+                margin: 0 4rem;
                 
                 textarea {
                     width: 100%;
-                    height: 200px;
+                    height: 25rem;
                 }
             }
 
@@ -149,7 +148,7 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 1fr;
-                margin: 0px 40px;
+                margin: 0 40rem;
 
                 #message-error {
                     grid-column-start: 1;
@@ -167,14 +166,14 @@
 
             #submit {
                 grid-row-start: 5;
-                margin-bottom: 40px;
+                margin-bottom: 4rem;
 
                 button {
                     display: block;
                     margin: auto;
-                    width: 250px;
-                    height: 40px;
-                    font-size: 18px;
+                    width: 25rem;
+                    height: 4rem;
+                    font-size: 1.8rem;
                     background-color: $yellow;
                     border: 1px solid rgba(0, 0, 0, 0.2);
                     color: $black;
@@ -195,7 +194,7 @@
             grid-row-start: 3;
             grid-column-start: 1;
             z-index: 2;
-            font-size: 20px;
+            font-size: 2rem;
             justify-self: center;
             align-self: center;
             animation: fade-in 0.5s ease-out;
@@ -203,31 +202,31 @@
         }
 
         #loading {
-            font-size: 20px;
+            font-size: 2rem;
             text-align: center;
             background-color: rgba(255, 255, 255, 0.3);
             border-radius: 5px;
-            padding: 10px;
+            padding: 1rem;
             animation: fade-in 0.5s ease-out;
 
 
             p {
-                margin-top: 10px;
+                margin-top: 1rem;
                 color: $red;
             }
         }
         
         #success {
             margin: 0px 200px;
-            font-size: 26px;
+            font-size: 2.6rem;
             text-align: center;
             background-color: rgba(255, 255, 255, 0.3);
             border-radius: 5px;
-            padding: 30px;
+            padding: 3rem;
             animation: fade-in 1.5s ease-out;
 
             h1 {
-                margin-bottom: 5px;
+                margin-bottom: 0.5rem;
                 color: $red;
             }
 
@@ -238,6 +237,6 @@
     }
 
     .section-title {
-        grid-column-start: 2;
+        grid-column-start: 3;
     }
 }

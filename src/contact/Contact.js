@@ -8,8 +8,8 @@ class Contact extends React.Component {
 
     render() {
         return (
-            <div id="Contact">
-                <div id="contact-content">
+            <div id="Contact" className="section-container">
+                <div id="contact-content" className="content-container">
                     <ContactLinks />
                     <ContactForm />
                 </div>

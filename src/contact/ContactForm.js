@@ -14,12 +14,14 @@ const FormStructure = ({
         <div hidden={ status === 'success' }>
         <Form className={ errors.exceededLimit ? "exceeded-limit" : ""}>
             <div id="name-and-email">
-                <Field type="text" name="name" id="name" placeholder="Name" className={ touched.name && errors.name ? "err-border" : "" } disabled={ errors.exceededLimit }/>
-                <Field type="email" name="email" id="email" placeholder="Email" className={ touched.email && errors.email ? "err-border" : "" } disabled={ errors.exceededLimit }/>
-            </div>
-            <div id="name-email-errors">
-                <div id="name-error" className="error" hidden={ !touched.name || !errors.name }><p>{ errors.name }</p></div>
-                <div id="email-error" className="error" hidden={ !touched.email || !errors.email }><p>{ errors.email }</p></div>
+                <div id="name-container">
+                    <Field type="text" name="name" id="name" placeholder="Name" className={ touched.name && errors.name ? "err-border" : "" } disabled={ errors.exceededLimit }/>
+                    <div id="name-error" className="error" hidden={ !touched.name || !errors.name }><p>{ errors.name }</p></div>
+                </div>
+                <div id="email-container">
+                    <Field type="email" name="email" id="email" placeholder="Email" className={ touched.email && errors.email ? "err-border" : "" } disabled={ errors.exceededLimit }/>
+                    <div id="email-error" className="error" hidden={ !touched.email || !errors.email }><p>{ errors.email }</p></div>
+                </div>
             </div>
             <div id="message-area">
                 <Field component="textarea" name="message" id="message" placeholder="Message" className={ touched.message && errors.message ? "err-border" : "" } disabled={ errors.exceededLimit }/>
