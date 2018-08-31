@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu|Lato:400,700");
 .section-container {
   display: grid;
-  grid-template-columns: minmax(1.5rem, 5vw) 1fr minmax(1.5rem, 5vw);
+  grid-template-columns: minmax(1.5rem, 3vw) 1fr minmax(1.5rem, 3vw);
   grid-template-rows: 1fr;
   align-items: flex-start;
-  padding: 10em 5vw; }
+  padding: 10em 3vw; }
   .section-container .content-container {
-    padding: 5em 3vw; }
+    padding: 5em 2vw; }
 
 .sticky {
   margin-top: 8em; }

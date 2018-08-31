@@ -32,16 +32,16 @@ class ProjectsList extends React.Component {
                         <div className="short-desc">
                             <p>{proj.short_desc}</p>
                         </div>
-                        <div className="long-desc">
-                            <p>{proj.long_desc}</p>
-                        </div>
                         <ul className="bullets">
                             <ProjectBullets list={proj.bullets}/>
                         </ul>
+                        <div className="long-desc">
+                            <p>{proj.long_desc}</p>
+                        </div>
                     </div>
                     <div className="main-image" onClick={() => this.toggleExpand(proj.id)}>
                         <img src={proj.image} alt={proj.name}></img>
-                        {/* We need to duplicate this so creating the expanded layout is easier */}
+                        {/* We need to duplicate the tool icons so creating the expanded layout is easier */}
                         <div className="expanded-tool-icons">
                             <ToolIcons list={proj.tools} />
                         </div>

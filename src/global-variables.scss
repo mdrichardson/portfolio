@@ -15,7 +15,7 @@ $textFont: 'Ubuntu';
 
 // Other Global Variables
 
-$sectionTitleWidth: minmax(1.5rem, 5vw);
+$sectionTitleWidth: minmax(1.5rem, 3vw);
 $verticalSectionMargin: 10em;
 $navHeight: 6.4em;
 
@@ -36,10 +36,10 @@ $dropShadow: drop-shadow(0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1));
     grid-template-columns: $sectionTitleWidth 1fr $sectionTitleWidth;
     grid-template-rows: 1fr;
     align-items: flex-start;
-    padding: $verticalSectionMargin 5vw;
+    padding: $verticalSectionMargin 3vw;
 
     .content-container {
-        padding: 5em 3vw;
+        padding: 5em 2vw;
     }
 }
 
