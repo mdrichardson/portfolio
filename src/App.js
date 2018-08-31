@@ -14,36 +14,40 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            navFixed: false
+            navFixed: false,
+            activeComponent: null
         }
     }
 
     fixNav = () => this.setState({ navFixed: true });
     unfixNav = () => this.setState({ navFixed: false });
 
+    setActiveComponent = (comp) => this.setState({ activeComponent: comp });
+
     componentDidMount() {
         fancyLog();
     }
-    // We put a lot of Waypoints here so that we can ensure the Nav sticks, even if we refresh the page and start at the bottom
+    // There's a lot of Waypoints here so that we can ensure the Nav sticks, even if we refresh the page and start at the bottom
+    // setActiveComponent uses a bottomOffset of 50% to make sure we don't activate the nav link before we're really in the component
     render() {
         return (
             <div>
-                <NavBar navFixed={ this.state.navFixed }/>
+                <NavBar navFixed={ this.state.navFixed } active={ this.state.activeComponent } />
                 <main>
                     <div id="hero-section">
+                        <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('home') } }  bottomOffset="50%"/>
                         <Waypoint onEnter={ this.unfixNav } />
                         <Hero hideArrow={ this.state.navFixed }/>
                         <Waypoint onLeave={ this.fixNav } topOffset="50%"/>
+                        <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('skills') } }  bottomOffset="50%"/>
                         <Skills />
-                        <Waypoint onEnter={ this.fixNav } />
                     </div>
-                    <Waypoint onEnter={ this.fixNav } />
+                    <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('projects') } }  bottomOffset="50%"/>
                     <Projects />
-                    <Waypoint onEnter={ this.fixNav } />
+                    <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('about') } }  bottomOffset="50%"/>
                     <div id="about-section">
-                        <Waypoint onEnter={ this.fixNav } />
                         <About />
-                        <Waypoint onEnter={ this.fixNav } />
+                        <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('contact') } }  bottomOffset="50%"/>
                         <Contact />
                     </div>
                 </main>

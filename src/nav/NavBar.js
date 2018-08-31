@@ -5,6 +5,9 @@ import Typography from '@material-ui/core/Typography'
 import './nav.css'
 import { NavHashLink as NavLink } from 'react-router-hash-link';
 
+
+// props.active is set in App.js, using Waypoints. This sets a white underline to the active component
+
 const NavBar = (props) => {
     return(
         <div>
@@ -15,11 +18,21 @@ const NavBar = (props) => {
                     </Typography>
                     <div id="menu-container" className="hide-mobile">
                         <ul id="menu">
-                            <li className="navItem"><div><NavLink to="/#Home" smooth activeClassName="selected">Home</NavLink></div></li>
-                            <li className="navItem"><div><NavLink to="/#Skills" smooth activeClassName="selected">Skills</NavLink></div></li>
-                            <li className="navItem"><div><NavLink to="/#Projects" smooth activeClassName="selected">Projects</NavLink></div></li>
-                            <li className="navItem"><div><NavLink to="/#About" smooth activeClassName="selected">About</NavLink></div></li>
-                            <li className="navItem"><div><NavLink to="/#Contact" smooth activeClassName="selected">Contact</NavLink></div></li>
+                            <li className="navItem"><div>
+                                <NavLink to="/#Home" smooth>Home</NavLink>
+                            </div></li>
+                            <li className={ props.active === 'skills' ? "active navItem" : "navItem" }><div>
+                                <NavLink to="/#Skills" smooth>Skills</NavLink>
+                            </div></li>
+                            <li className={ props.active === 'projects' ? "active navItem" : "navItem" }><div>
+                                <NavLink to="/#Projects" smooth>Projects</NavLink>
+                            </div></li>
+                            <li className={ props.active === 'about' ? "active navItem" : "navItem" }>
+                                <div><NavLink to="/#About" smooth>About</NavLink>
+                            </div></li>
+                            <li className={ props.active === 'contact' ? "active navItem" : "navItem" }><div>
+                                <NavLink to="/#Contact" smooth>Contact</NavLink>
+                            </div></li>
                         </ul>
                     </div>
                 </Toolbar>
