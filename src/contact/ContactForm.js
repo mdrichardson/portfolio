@@ -37,7 +37,7 @@ const FormStructure = ({
                     Submit</button>
             </div>
             <div id="exceeded-limit-message" className="error" hidden={ !errors.exceededLimit }>
-                <p>Your IP address has exceeded the submission limit. Try again tomorrow</p>
+                <p>You have exceeded the submission limit. Try again tomorrow</p>
             </div>
             <div id="loading" hidden={ !isSubmitting }>
                 <img src={ loadingSVG } alt="Submitting" />
@@ -57,21 +57,20 @@ const FormStructure = ({
 )
 
 const FormikForm = withFormik({
-    mapPropsToValues({ ip }) {
-        return {
+    mapPropsToValues: props => ({
             name: '',
             email: '',
             message: '',
-            ip: ip
-        }
-    },
+            id: props.id
+        }),
     validationSchema: Yup.object().shape({
         name: Yup.string().min(5).max(50).required(),
         email: Yup.string().email().min(8).max(50).required(),
         message: Yup.string().min(1).max(2000).required()
     }),
-    handleSubmit(values, { setErrors, setSubmitting, setStatus }) {
+    handleSubmit(values, { props, setErrors, setSubmitting, setStatus }) {
         setSubmitting(true);
+        values.id = props.id;
         fetch('http://localhost:3100/send', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -87,7 +86,7 @@ const FormikForm = withFormik({
         })
         .catch(err => {
             if (err) {
-                console.log(`Error: ${err}`);
+                console.log(`Submit Error: ${err}`);
                 setStatus('error');
                 setSubmitting(false);
             }
@@ -95,26 +94,44 @@ const FormikForm = withFormik({
     }
 })(FormStructure)
 
+
+// Combine user information into a big string, used as an identifier if IP address fails
+const getUserData = () => {
+    return navigator.userAgent + 
+           navigator.language +
+           navigator.javaEnabled().toString() +
+           window.innerHeight.toString() +
+           window.innerWidth.toString()
+}
+
 class ContactForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ip: null,
+            id: null,
             exceededLimit: false
         }
     }
 
+    // Try to get the user's IP address so we can limit their form submission frequency
     componentDidMount() {
         fetch('//api.ipify.org?format=json')
         .then(res => res.json())
         .then(res => { 
-            this.setState({ ip: res.ip })
+            this.setState({ id: res.ip })
+        })
+        // If user blocks ipify (uBlock blocks it), we'll just make a string of their
+        // browser information and use that
+        .catch(err => {
+            console.log('IP error: ', err)
+            console.log('Using userAgent strings as \'unique\' identifier', err)
+            this.setState({ id: getUserData() })
         })
     }
 
     render() {
         return (
-            <FormikForm ip= { this.state.ip } />
+            <FormikForm id={ this.state.id } />
         );
     }
 }

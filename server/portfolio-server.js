@@ -44,9 +44,9 @@ let smtpTransport = nodemailer.createTransport({
     }
 })
 
-// For contact form submit limiting by IP
+// For contact form submit limiting by user ID (IP address or userAgent strings if IP fails)
 // When somebody submits contact form, adds day to contact_log
-// Under that day, add's that person's IP address and counts +1 each time they submit
+// Under that day, add that person's ID and counts +1 each time they submit
 var contact_log = {}
 
 const app = express();
@@ -66,20 +66,20 @@ app.get('/', (req, res) => {
 
 app.post('/send', (req, res) => {
     const body = req.body;
-    // Limit ip to send max 3x per day
-    const ip = body.ip;
+    // Limit id to send max 3x per day
+    const id = body.id;
     const today = new Date()
     const date = `${today.getFullYear()}${today.getMonth()}${today.getDate()}`
     if (!contact_log[date]) {
         contact_log[date] = {}
     }
-    if (contact_log[date][ip] != undefined) {
-        contact_log[date][ip] = contact_log[date][ip] + 1;
-        if (contact_log[date][ip] > 3) {
+    if (contact_log[date][id] != undefined) {
+        contact_log[date][id] = contact_log[date][id] + 1;
+        if (contact_log[date][id] > 3) {
             return res.status(401).send('Permission Denied. Exceeded Contact Form Limit.')
         }
     } else {
-        contact_log[date][ip] = 1;
+        contact_log[date][id] = 1;
     }
     console.log(contact_log);
 
