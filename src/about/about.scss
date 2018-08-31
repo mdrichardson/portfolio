@@ -8,6 +8,7 @@
     }
 
     .content-container {
+        grid-column: 2 / 4;
         display: grid;
         grid-template-columns: 2fr 1fr;
         padding-bottom: 0;
