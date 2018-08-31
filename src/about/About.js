@@ -12,7 +12,7 @@ class About extends React.Component {
             <StickyContainer>
                 <div id="About" className="section-container">
                     <div className="section-title">
-                        <Sticky bottomOffset={150}>
+                        <Sticky bottomOffset={100}>
                             {({ style, isSticky }) =>
                                 <img style={ style } className={ isSticky ? "sticky" : "" } src={ aboutTitle } alt="About" />}
                         </Sticky>
