@@ -1,6 +1,6 @@
 .section-container {
   display: grid;
-  grid-template-columns: minmax(50px, 5vw) 1fr minmax(50px, 5vw);
+  grid-template-columns: minmax(1.5rem, 5vw) 1fr minmax(1.5rem, 5vw);
   grid-template-rows: 1fr;
   align-items: flex-start;
   padding: 10em 5vw; }
@@ -17,7 +17,7 @@
 
 .section-container {
   display: grid;
-  grid-template-columns: minmax(50px, 5vw) 1fr minmax(50px, 5vw);
+  grid-template-columns: minmax(1.5rem, 5vw) 1fr minmax(1.5rem, 5vw);
   grid-template-rows: 1fr;
   align-items: flex-start;
   padding: 10em 5vw; }
