@@ -107,12 +107,12 @@ $collapsedImgWidth: 30vw;
     background-color: rgba(161, 232, 175, 0.2);
     padding: 1.5em;
     border-radius: 0.5em;
-    transition: background-color 0.75s ease-in,
-                margin 1s ease-in;
+    transition: background-color 1.25s ease-in,
+                margin 1.25s ease-in;
     box-shadow: $giantShadow;
     cursor: pointer;
     will-change: contents;
-    transition: box-shadow 1s ease-out 0.5s;
+    transition: box-shadow 1.75s ease-out 0.5s;
 
     .text {
         grid-column-start: 1;
@@ -127,16 +127,16 @@ $collapsedImgWidth: 30vw;
         h2 {
             align-self: flex-start;
             color: $blue;
-            animation: left-up 0.3s ease-in, fade-in .7s ease-in;
+            animation: left-up 0.4s ease-in, fade-in .5s ease-in;
             will-change: position;
-            font-size: 3rem;
+            font-size: 3vw;
 
         }
 
         .long-desc {
             line-height: 1.2em;
             opacity: 0;
-            animation: fade-in 0.75s ease-out 0.2s;
+            animation: fade-in 1.25s ease-out 0.2s;
             animation-fill-mode: forwards;
             font-size: 2rem;
             line-height: 2.5rem;
@@ -158,7 +158,7 @@ $collapsedImgWidth: 30vw;
             margin-left: 1vw;
             text-indent: -2rem;
             opacity: 0;
-            animation: fade-in 0.75s ease-out 0.4s;
+            animation: fade-in 1.25s ease-out 0.4s;
             animation-fill-mode: forwards;
 
             li {
@@ -193,8 +193,8 @@ $collapsedImgWidth: 30vw;
             width: $expandedImgWidth;
             border: 0;
             justify-self: end;
-            transition: width 0.25s ease-in,
-                        border 0.5s ease-in;
+            transition: width 0.5s ease-out,
+                        border 1s ease-in;
         }
         .expanded-tool-icons {
             grid-row-start: 2;
@@ -204,7 +204,7 @@ $collapsedImgWidth: 30vw;
             justify-content: space-around;
             align-content: flex-start;
             margin-top: 1em;
-            animation: down-left 0.3s ease-out, fade-in 0.3s ease-out;
+            animation: down-left 0.5s ease-out, fade-in 0.5s ease-out;
             will-change: position;
             filter: $dropShadow;
 
