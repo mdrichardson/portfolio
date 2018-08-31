@@ -1,8 +1,102 @@
 @import '../global-variables.scss';
 @import '../animations.scss';
 
-$expandedImgWidth: 35vw;
-$collapsedImgWidth: 20vw;
+$expandedImgWidth: 40vw;
+$collapsedImgWidth: 30vw;
+
+
+// Styling for collapsed/un-expanded project
+
+.project-container:not(.expanded) {
+    display: grid;
+    grid-template-columns: 1fr $collapsedImgWidth;
+    grid-template-rows: auto 4rem;
+    margin: 5em 0;
+    transition: all 0.5s ease-out;
+    will-change: position;
+
+    .text {
+        grid-column-start: 1;
+        grid-row-start: 1;
+        align-self: center;
+        text-align: right;
+        -ms-grid-column-align: right;
+        -ms-grid-row-align: center;
+        margin-right: 1.5rem;
+
+        h2 {
+            margin-bottom: 0.5rem;
+            color: $blue;
+            animation: right-down 0.3s ease-out;
+            will-change: position;
+            text-shadow: $smallShadow;
+            font-size: 4vw;
+        }
+
+        .short-desc {
+            line-height: 1.2em;
+            animation: fade-in 1s ease-out;
+            will-change: opacity;
+            font-size: 1.9rem;
+        }
+
+        .long-desc {
+            display: none;
+        }
+
+        .bullets {
+            display: none;
+        }
+    }
+
+    .main-image {
+        grid-column-start: 2;
+        grid-row-start: 1;
+        cursor: pointer;
+
+        img {
+            width: $collapsedImgWidth;
+            border: 0.7em solid rgba(161, 232, 175, 0.4);
+            transition: border 0.5s ease-out;
+            box-shadow: $smallShadow;
+        }
+
+        .expanded-tool-icons {
+            display: none;
+        }
+
+        
+        .links {
+            display: none;
+        }
+    }
+
+    .tool-icons {
+        grid-column-start: 2;
+        grid-row-start: 2;
+        display: flex;
+        flex-direction: row;
+        justify-self: right;
+        animation: fade-in 0.5s ease-out, up-right 0.25s ease-out;
+        will-change: position;
+        filter: $dropShadow;
+
+        svg, img {
+            height: 28px;
+            margin: 5px;
+    
+            path {
+                fill: $green;
+                animation: blue-green 0.5s ease-out;
+            }
+        }
+
+        .tool-name {
+            display: none;
+        }
+    }
+}
+
 
 // Styling for expanded project
 .project-container.expanded {
@@ -25,15 +119,14 @@ $collapsedImgWidth: 20vw;
         text-align: left;
         -ms-grid-column-align: right;
         -ms-grid-row-align: center;
-        margin-right: 2em;
+        margin-right: 3vw;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: space-around;
 
         h2 {
             align-self: flex-start;
             color: $blue;
-            margin-bottom: 1em;
             animation: left-up 0.3s ease-in, fade-in .7s ease-in;
             will-change: position;
             font-size: 3rem;
@@ -42,12 +135,16 @@ $collapsedImgWidth: 20vw;
 
         .long-desc {
             line-height: 1.2em;
-            margin-bottom: 1em;
             opacity: 0;
             animation: fade-in 0.75s ease-out 0.2s;
             animation-fill-mode: forwards;
-            font-size: 1.5rem;
-            line-height: 2.25rem;
+            font-size: 2rem;
+            line-height: 2.5rem;
+            margin: 0.5em 0;
+
+            @media all and (max-width: 1000px) {
+                display: none;
+            }
         }
 
         .short-desc {
@@ -57,9 +154,8 @@ $collapsedImgWidth: 20vw;
         ul {
             list-style-type: none;
             padding-left: 2em;
-            margin-top: 1em;
-            width: 80%;
-            margin-left: 3em;
+            width: 100%;
+            margin-left: 1vw;
             text-indent: -2rem;
             opacity: 0;
             animation: fade-in 0.75s ease-out 0.4s;
@@ -68,7 +164,7 @@ $collapsedImgWidth: 20vw;
             li {
                 opacity: 0.9;
                 padding: 0.5rem;
-                font-size: 1.3rem;
+                font-size: 1.7rem;
 
                 &:before { 
                     content: ''; 
@@ -111,6 +207,10 @@ $collapsedImgWidth: 20vw;
             animation: down-left 0.3s ease-out, fade-in 0.3s ease-out;
             will-change: position;
             filter: $dropShadow;
+
+            & > * {
+                margin: 1em;
+            }
     
             svg, img {
                 height: 28px;
@@ -165,96 +265,4 @@ $collapsedImgWidth: 20vw;
         display: none;
     }
     
-}
-
-// Styling for collapsed/un-expanded project
-
-.project-container:not(.expanded) {
-    display: grid;
-    grid-template-columns: 1fr $collapsedImgWidth;
-    grid-template-rows: auto 30px;
-    margin: 50px 0;
-    transition: all 0.5s ease-out;
-    will-change: position;
-
-    .text {
-        grid-column-start: 1;
-        grid-row-start: 1;
-        align-self: center;
-        text-align: right;
-        -ms-grid-column-align: right;
-        -ms-grid-row-align: center;
-        margin-right: 15px;
-
-        h2 {
-            margin-bottom: 5px;
-            color: $blue;
-            animation: right-down 0.3s ease-out;
-            will-change: position;
-            text-shadow: $smallShadow;
-            font-size: 3rem;
-        }
-
-        .short-desc {
-            line-height: 1.2em;
-            animation: fade-in 1s ease-out;
-            will-change: opacity;
-            font-size: 1.7rem;
-        }
-
-        .long-desc {
-            display: none;
-        }
-
-        .bullets {
-            display: none;
-        }
-    }
-
-    .main-image {
-        grid-column-start: 2;
-        grid-row-start: 1;
-        cursor: pointer;
-
-        img {
-            width: $collapsedImgWidth;
-            border: 7px solid rgba(161, 232, 175, 0.4);
-            transition: border 0.5s ease-out;
-            box-shadow: $smallShadow;
-        }
-
-        .expanded-tool-icons {
-            display: none;
-        }
-
-        
-        .links {
-            display: none;
-        }
-    }
-
-    .tool-icons {
-        grid-column-start: 2;
-        grid-row-start: 2;
-        display: flex;
-        flex-direction: row;
-        justify-self: right;
-        animation: fade-in 0.5s ease-out, up-right 0.25s ease-out;
-        will-change: position;
-        filter: $dropShadow;
-
-        svg, img {
-            height: 28px;
-            margin: 5px;
-    
-            path {
-                fill: $green;
-                animation: blue-green 0.5s ease-out;
-            }
-        }
-
-        .tool-name {
-            display: none;
-        }
-    }
 }

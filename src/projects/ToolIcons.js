@@ -6,13 +6,13 @@ const fa_size = '2x';
 
 // React doesn't allow you to import SVG files directly (forces as img), so we have to copy the code inside the SVG and use it here.
 // Convert to valid JSX at https://svg2jsx.herokuapp.com/
-const typescriptSVG = (<svg version='1' xmlns='http://www.w3.org/2000/svg'
+const typescriptSVG = (<svg style={{padding: '0.3em'}} version='1' xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 256.000000 256.000000'>
         <path d='M0 128v128h256V0H0v128zm157-4.5V135h-33v105H97V135H64v-23h93v11.5zm65-10.1c4.1.8 8.7 1.9 10.3 2.5l2.7 1.1v12.5c0 6.9-.2 12.5-.4 12.5s-2.3-1.1-4.7-2.4c-9-5.1-23.4-7-32.2-4.4-2.1.6-5.2 2.5-6.8 4.1-2.4 2.3-2.9 3.7-2.9 7.4 0 4 .5 5.1 3.8 8.2 2.1 2 9.9 6.6 17.5 10.4 16 7.9 24.1 14.6 27.8 22.9 3.3 7.4 3.4 23 .2 30-3 6.6-9.6 13.3-16.1 16.4-13.8 6.5-36.3 7.1-53.9 1.3l-6.3-2.1V206l5 3.6c6.5 4.7 14.9 7.6 23.7 8.2 8.8.6 15.3-1 19.3-4.8 2.5-2.3 3-3.6 3-7.4 0-7.3-4.2-11.1-21.4-19.5-15.2-7.5-20-10.9-24.5-17.5-10-14.5-7-36.7 6.4-46.8 11.4-8.7 30.3-11.9 49.5-8.4z'
         />
     </svg>)
 
-const mongodbSVG = (<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg'
+const mongodbSVG = (<svg style={{padding: '0.2em'}} id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 895.39 2000'>
     <defs />
     <path className='cls-1' d='M454.69,1494.67c-10.33,131.42-25.17,227.34-39.76,260.8,0,0-2.06-1.41-5.77-4.12,36.65,85.35,33,231.39,33,231.39l53.58,17.76s-10.88-141.69,4.29-210.2c4.59-20.72,15.16-38.85,27.64-54.08-2,1.39-3.06,2.09-3.06,2.09C472.21,1714.17,457,1600.59,454.69,1494.67Z'
@@ -24,7 +24,7 @@ const mongodbSVG = (<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.o
     </svg>
     )
 
-const cSVG = (<svg id='Layer_1' viewBox='0 0 96 96' xmlns='http://www.w3.org/2000/svg'>
+const cSVG = (<svg style={{padding: '0.3em'}} id='Layer_1' viewBox='0 0 96 96' xmlns='http://www.w3.org/2000/svg'>
     <path d='M87,9v67.4L48.8,86.6c-0.1,0-0.4,0.1-0.8,0.1s-0.8,0-0.8-0.1L9,76.4V9h36.6h4.9H87 M90.6,3H50.4c-1.3,0-3.6,0-4.9,0H5.4 C4.1,3,3,4.1,3,5.4v73.1c0,1.3,1.1,2.7,2.4,3.1l40.3,10.7c0.7,0.2,1.5,0.3,2.4,0.3s1.7-0.1,2.4-0.3l40.3-10.7 c1.3-0.3,2.4-1.7,2.4-3.1V5.4C93,4.1,91.9,3,90.6,3L90.6,3z'
     />
     <line className='st0' x1='3' x2='93' y1='18' y2='18' />
