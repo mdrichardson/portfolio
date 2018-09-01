@@ -28,7 +28,7 @@ class Hero extends React.Component {
         return (
             <div>
                 <div id="Home">
-                    <div id="hero-name" className="hide-mobile">
+                    <div id="hero-name">
                         <p>Michael Richardson <span>=</span></p>
                     </div>
                     <div id="bracket-container">

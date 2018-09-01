@@ -16,7 +16,7 @@ const NavBar = (props) => {
                     <Typography variant="title" id="name">
                     <span className={ !props.navFixed ? "hidden" : "" }>Michael Richardson</span>
                     </Typography>
-                    <div id="menu-container" className="hide-mobile">
+                    <div id="menu-container">
                         <ul id="menu">
                             <li className="navItem"><div>
                                 <NavLink to="/#Home" smooth>Home</NavLink>

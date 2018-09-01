@@ -19,20 +19,6 @@
 html {
   font-size: 62.5%; }
 
-@media all and (max-width: 329px) {
-  .hide-mobile {
-    display: none; } }
-
-@media all and (max-width: 767px) {
-  .hide-mobile {
-    display: none; }
-  .hide-tablet {
-    display: none; } }
-
-@media all and (min-width: 330px) {
-  .only-mobile {
-    display: none; } }
-
 * {
   margin: 0;
   padding: 0;
