@@ -11,10 +11,29 @@
         grid-column: 1 / 3;
         display: flex;
         flex-direction: column;
+        justify-items: space-between;
+        transform-origin: right top;
 
         > :first-child {
             align-self: flex-end;
             margin-top: 0;
+            &.expanded {
+                img {
+                        animation: down-left 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+                .expanded-tool-icons {
+                    animation: down 0.3s ease-out, fade-in 0.8s ease-out !important;
+                    animation: down 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+            }
+            &:not(.expanded) {
+                img {
+                        animation: up-right 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+                .tool-icons {
+                    animation: up 0.3s ease-out, fade-in 0.8s ease-out !important;
+                }
+            }
         }
 
         > :nth-child(2), > :nth-child(4) {
@@ -22,20 +41,19 @@
             
             &.expanded {
                 img {
-                        justify-self: start !important;
+                        animation: down-left 0.3s ease-out, fade-in 0.8s ease-out !important;
                 }
                 .expanded-tool-icons {
-                    animation: down 0.3s ease-out, fade-in 0.8s ease-out !important;
-                    animation: right 0.3s ease-out, fade-in 0.8s ease-out !important;
+                    animation: down-left 0.3s ease-out, fade-in 0.8s ease-out !important;
+                    animation: down-left 0.3s ease-out, fade-in 0.8s ease-out !important;
                 }
             }
             &:not(.expanded) {
                 img {
-                        justify-self: start !important;
-                        animation: left 0.3s ease-out, fade-in 0.8s ease-out !important;
+                        animation: up-right 0.3s ease-out, fade-in 0.8s ease-out !important;
                 }
                 .tool-icons {
-                    animation: up 0.3s ease-out, fade-in 0.8s ease-out !important;
+                    animation: up-right 0.3s ease-out, fade-in 0.8s ease-out !important;
                 }
             }
         }
@@ -45,20 +63,18 @@
 
             &.expanded {
                 img {
-                        justify-self: start !important;
-                        animation: right-down 0.3s ease-out, fade-in 0.8s ease-out !important;
+                        animation: down-left 0.3s ease-out, fade-in 0.8s ease-out !important;
                 }
                 .expanded-tool-icons {
-                    animation: down-right 0.3s ease-out, fade-in 0.8s ease-out !important;
+                    animation: left-down 0.3s ease-out, fade-in 0.8s ease-out !important;
                 }
             }
             &:not(.expanded) {
                 img {
-                        justify-self: start !important;
-                        animation: left-up 0.3s ease-out, fade-in 0.8s ease-out !important;
+                        animation: up-right 0.1s ease-out, fade-in 0.8s ease-out !important;
                 }
                 .tool-icons {
-                    animation: up-left 0.3s ease-out, fade-in 0.8s ease-out !important;
+                    animation: right-up 0.1s ease-out, fade-in 0.8s ease-out !important;
                 }
             }
         }
