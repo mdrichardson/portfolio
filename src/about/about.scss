@@ -14,7 +14,6 @@
         padding-bottom: 0;
 
         h2 {
-            color: $yellow;
             text-shadow: $smallShadow;
         }
 
@@ -28,12 +27,20 @@
                 line-height: 2.75rem;
                 text-shadow: $smallShadow;
             }
+
+            h2 {
+                color: $red;
+            }
         }
 
         #other-details {
             grid-column-start: 2;
             padding-left: 5vw;
             font-size: 2rem;
+
+            h2 {
+                color: $yellow;
+            }
     
             ul {
                 list-style-type: none;
