@@ -4,6 +4,8 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import './nav.css'
 import { NavHashLink as NavLink } from 'react-router-hash-link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 
 // props.active is set in App.js, using Waypoints. This sets a white underline to the active component
@@ -34,6 +36,9 @@ const NavBar = (props) => {
                                 <NavLink to="/#Contact" smooth>Contact</NavLink>
                             </div></li>
                         </ul>
+                    </div>
+                    <div id="hamburger-menu">
+                        <FontAwesomeIcon icon={faBars} size="2x" />
                     </div>
                 </Toolbar>
             </AppBar>

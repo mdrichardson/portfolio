@@ -13,6 +13,14 @@ $white: #FDFFFE;
 $headerFont: 'Lato';
 $textFont: 'Ubuntu';
 
+// Media queries
+
+@mixin eight-hundred {
+    @media all and (max-width: 800px) {
+        @content;
+    }
+}
+
 // Other Global Variables
 
 $sectionTitleWidth: minmax(1.5rem, 3vw);

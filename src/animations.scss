@@ -79,6 +79,14 @@
         background-position: 0% 100%;
       }
 }
+@keyframes swing-out {
+    from {
+        transform: translateX(0) rotate(0deg);
+    }
+    to {
+        transform: translateX(0) rotate(90deg);
+    }
+}
 
 // From hover.css
 /* Underline From Center */
