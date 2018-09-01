@@ -44,6 +44,7 @@ class App extends Component {
                     </div>
                     <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('projects') } }  bottomOffset="50%"/>
                     <Projects />
+                    <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('projects') } }  topOffset="50%"/>
                     <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('about') } }  bottomOffset="50%"/>
                     <div id="about-section">
                         <About />
