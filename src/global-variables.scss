@@ -25,6 +25,11 @@ $textFont: 'Ubuntu';
         @content;
     }
 }
+@mixin four-hundred {
+    @media all and (max-width: 400px) {
+        @content;
+    }
+}
 
 // Other Global Variables
 

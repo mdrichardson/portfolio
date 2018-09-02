@@ -14,7 +14,7 @@
         #contact-links {
             grid-row-start: 1;
             display: flex;
-            flex-direction: row;
+            flex-flow: row wrap;
             justify-content: center;
             height: 3rem;
 
@@ -67,6 +67,10 @@
                 // necessary for removing the yellow autofill background color
                 transition: background-color 5000s ease-in-out 0s;
 
+                @include four-hundred {
+                    font-size: 1.6rem;
+                }
+
                 &::placeholder {
                     color: rgba(255, 255, 255, 0.5);
                 }
@@ -95,7 +99,7 @@
                 max-width: 80vw;
 
                 #name-container, #email-container {
-                    flex: 1 0 320px;
+                    flex: 1 0 auto;
                     display: grid;
                     grid-template-rows: auto 50px;
                     grid-template-columns: 1fr;
