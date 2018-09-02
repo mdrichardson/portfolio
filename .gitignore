@@ -27,3 +27,4 @@ src/**/*.css
 # Server
 /server/node_modules
 /server/private.js
+src/projects/temp.scss

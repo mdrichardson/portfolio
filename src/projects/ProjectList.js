@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProjectList-Small.css';
-import './ProjectList-Med.css';
+import './ProjectList-Medium.css';
 import './ProjectList-Large.css';
 import ToolIcons from './ToolIcons';
 import ProjectBullets from './ProjectBullets';
@@ -19,17 +19,24 @@ class ProjectsList extends React.Component {
     // so that clicking and then leaving doesn't mess things up if we only have toggle
     toggleExpand = (key) => this.setState({ expandedKey: this.state.expandedKey === key ? null : key})
 
-    expandIt = (key) => this.setState({ expandedKey: key })
+    expandIt = (key) => {
+        console.log(key, this.state)
+        this.setState({ expandedKey: key })
+        console.log(this.state)
+    }
 
-    collapseIt = () => this.setState({ expandedKey: null })
+    collapseIt = () => {
+        console.log('collapse')
+        this.setState({ expandedKey: null })
+    }
 
     render() {
         return (
             this.props.list.map(proj => (
                 <div key={proj.id} id={proj.id}
                     className={`project-container ${this.state.expandedKey === proj.id ? 'expanded': ''}`}
-                    onMouseEnter={() => this.expandIt(proj.id)} onMouseLeave={() => this.collapseIt(proj.id)}>
-                    <div className="main-image" onClick={() => this.toggleExpand(proj.id)}>
+                    onClick={() => this.toggleExpand(proj.id)}>
+                    <div className="main-image">
                         <img src={proj.image} alt={proj.name}></img>
                     </div>
                     <h2>{ proj.name }</h2>
@@ -48,17 +55,18 @@ class ProjectsList extends React.Component {
                     <div className="links">
                         <div className="github-link">
                             <a href={proj.github} alt="Github link" target="_blank">
-                                <FontAwesomeIcon icon={faGithub} />
+                                <FontAwesomeIcon icon={faGithub}  size="2x"/>
                                 <span>Github Repo</span>
                             </a>
                         </div>
                         <div className="web-link" hidden={proj.url ? false : true}>
                             <a href={proj.url} alt="Project link" target="_blank">
-                                <FontAwesomeIcon icon={faGlobe} />
+                                <FontAwesomeIcon icon={faGlobe} size="2x"/>
                                 <span>Website</span>
                             </a>
                         </div>
                     </div>
+                    <p className="read-more">read more</p>
                 </div>
             ))
         )
