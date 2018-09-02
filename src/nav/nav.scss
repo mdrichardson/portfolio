@@ -23,6 +23,12 @@
     grid-template-columns: 1fr minmax(400px, 40vw);
     height: $navHeight;
 
+    @include eight-hundred {
+        & {
+            grid-template-columns: 1fr auto;
+        }
+    }
+
     #name {
         grid-column-start: 1;
         color: $white;
