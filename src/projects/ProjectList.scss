@@ -152,8 +152,13 @@ $collapsedImgWidth: 25vw;
             height: 28px;
             margin: 5px;
 
-            @include six-hundred {
+            @include eight-hundred {
                 transform: scale(0.75);
+                margin: 0;
+            }
+
+            @include six-hundred {
+                transform: scale(0.5);
                 margin: 0;
             }
     
@@ -221,17 +226,27 @@ $collapsedImgWidth: 25vw;
         animation-fill-mode: forwards;
         font-size: 1.8rem;
         line-height: 2rem;
-        margin: 0.5em 0 1em 0;
+        margin-top: 0.5em;
+
+        @include eight-hundred {
+            font-size: 2.5vw;
+            line-height: 3.5vw;
+        }
+
+        @include six-hundred {
+            font-size: 3.25vw;
+            line-height: 4vw;
+        }
     }
 
     ul {
-        flex: 1 0 250px;
+        flex: 1 0 20vw;
         display: flex;
         // max-height: 35rem;
         justify-content: space-around;
         flex-flow: column nowrap;
         list-style-type: none;
-        margin: 0 3vw;
+        margin: 1em 3vw;
         text-indent: -2rem;
         opacity: 0;
         animation: fade-in 1.25s ease-out 0.4s;
@@ -241,6 +256,14 @@ $collapsedImgWidth: 25vw;
             opacity: 0.9;
             font-size: 1.7rem;
             line-height: 1.9rem;
+
+            @include eight-hundred {
+                font-size: 2vw;
+            }
+
+            @include six-hundred {
+                font-size: 3vw;
+            }
 
             &:before { 
                 content: ''; 
@@ -255,7 +278,7 @@ $collapsedImgWidth: 25vw;
     }
 
     .main-image {
-        flex: 2 1 200px;
+        flex: 2 1 30vw;
         cursor: pointer;
 
         img {
@@ -286,6 +309,10 @@ $collapsedImgWidth: 25vw;
                 height: 28px;
                 display: block;
                 margin: 5px auto;
+
+                @include six-hundred {
+                    transform: scale(0.75);
+                }
         
                 path {
                     fill: $green;
@@ -298,6 +325,10 @@ $collapsedImgWidth: 25vw;
                 align-self: bottom;
                 animation: fade-in 1s ease-out;
                 font-size: 1.5rem;
+
+                @include six-hundred {
+                    font-size: 2.5vw;
+                }
             }
         }
     }
@@ -317,6 +348,10 @@ $collapsedImgWidth: 25vw;
         animation: fade-in 0.75s ease-out 0.6s;
         animation-fill-mode: forwards;
         margin-top: 2em;
+
+        @include six-hundred {
+            font-size: 2.5vw;
+        }
         
         .web-link {
             margin-left: 2em;
