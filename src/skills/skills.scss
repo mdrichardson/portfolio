@@ -20,11 +20,18 @@
         h2 {
             text-shadow: $smallShadow;
             font-size: 3em;
+
+            @include six-hundred {
+                font-size: 1.75rem;
+            }
         }
 
         #languages, #tools, #databases {
-
             flex: 1 1 auto;
+            
+            @include four-hundred {
+                margin-bottom: 3em;
+            }
 
             ul {
                 list-style-type: none;
@@ -37,6 +44,10 @@
                     font-size: 1.8rem;
                     text-shadow: $smallShadow;
                     filter: $dropShadow;
+                    
+                    @include six-hundred {
+                        font-size: 1.25rem;
+                    }
 
                     &::before { 
                         content:''; 
@@ -66,6 +77,10 @@
                 text-shadow: $smallShadow;
                 max-width: 500px;
                 margin-top: 3vw;
+
+                @include six-hundred {
+                    font-size: 2rem;
+                }
             }
         }
 

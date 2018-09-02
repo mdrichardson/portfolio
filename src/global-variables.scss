@@ -26,16 +26,17 @@ $textFont: 'Ubuntu';
     }
 }
 @mixin four-hundred {
-    @media all and (max-width: 00px) {
+    @media all and (max-width: 400px) {
         @content;
     }
 }
 
 // Other Global Variables
 
-$sectionTitleWidth: minmax(1.5rem, 3vw);
-$verticalSectionMargin: 10em;
+$sectionTitleWidth: minmax(2.5rem, 3vw);
+$verticalSectionMargin: 5vw;
 $navHeight: 6.4em;
+
 
 // Shadowing
 
@@ -52,7 +53,7 @@ $dropShadow: drop-shadow(0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1));
     padding: $verticalSectionMargin 3vw;
 
     .content-container {
-        padding: 5em 2vw;
+        padding: 5em 5vw;
     }
 }
 

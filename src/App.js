@@ -26,8 +26,11 @@ class App extends Component {
 
     componentDidMount() {
         fancyLog();
+        // Instead of tons of waypoints to catch a refresh, just fix the nav if we're greater than 100px from the top
+        if (window.scrollY >= 100) {
+            this.fixNav()
+        }
     }
-    // There's a lot of Waypoints here so that we can ensure the Nav sticks, even if we refresh the page and start at the bottom
     // setActiveComponent uses a bottomOffset of 50% to make sure we don't activate the nav link before we're really in the component
     render() {
         return (
@@ -38,7 +41,6 @@ class App extends Component {
                         <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('home') } }  bottomOffset="50%"/>
                         <Waypoint onEnter={ this.unfixNav } />
                         <Hero hideArrow={ this.state.navFixed }/>
-                        <Waypoint onLeave={ this.fixNav } topOffset="50%"/>
                         <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('skills') } }  bottomOffset="50%"/>
                         <Skills />
                     </div>
