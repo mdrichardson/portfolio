@@ -1,8 +1,9 @@
 @import '../global-variables.scss';
 @import '../animations.scss';
 
-$collapsedImgWidth: 25vw;
+// THE NEXT TWO SECTIONS ARE > 400px. < 400px is down below
 
+$collapsedImgWidth: 25vw;
 
 // Styling for collapsed/un-expanded project
 
@@ -16,10 +17,23 @@ $collapsedImgWidth: 25vw;
     will-change: position;
     transform-origin: right top;
 
+    @include six-hundred {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        justify-self: flex-end !important;
+    }
+
     .project-text {
         grid-column-start: 1;
         grid-row-start: 1;
         align-self: center;
+
+        @include six-hundred {
+            flex: 1 1 38vw;
+            align-self: flex-start;
+        }
 
         h2 {
             margin-bottom: 0.5rem;
@@ -42,6 +56,13 @@ $collapsedImgWidth: 25vw;
             text-align: right;;
             margin-right: 1rem;
 
+            @include eight-hundred {
+                font-size: 2vw;
+            }
+
+            @include six-hundred {
+                font-size: 1.1rem;
+            }
         }
     }
 
@@ -64,10 +85,49 @@ $collapsedImgWidth: 25vw;
             border: 0.7em solid rgba(161, 232, 175, 0.4);
             transition: border 0.5s ease-out;
             box-shadow: $smallShadow;
+
+            @include six-hundred {
+                $imgWidth: 35vw;
+                flex: 1 0 $imgWidth;
+                width: $imgWidth;
+                height: $imgWidth / 2;
+                border-width: 0.3em;
+            }
         }
 
         .expanded-tool-icons {
             display: none;
+
+            @include six-hundred {
+                display: flex;
+                flex-flow: row wrap;
+                justify-self: flex-end;
+                justify-content: flex-end;
+                align-content: flex-start;
+                animation: fade-in 0.5s ease-out, up-right 0.25s ease-out;
+                will-change: position;
+                filter: $dropShadow;
+
+                svg, img {
+                    height: 28px;
+                    max-width: 28px;
+                    margin: 5px;
+        
+                    @include six-hundred {
+                        transform: scale(0.75);
+                        margin: 0;
+                    }
+            
+                    path {
+                        fill: $green;
+                        animation: blue-green 0.5s ease-out;
+                    }
+                }
+
+                .tool-name {
+                    display: none;
+                }
+            }
         }
     }
 
@@ -75,15 +135,27 @@ $collapsedImgWidth: 25vw;
         grid-column-start: 2;
         grid-row-start: 2;
         display: flex;
-        flex-direction: row;
+        flex-flow: row wrap;
         justify-self: right;
+        justify-content: space-between;
+        align-content: flex-start;
         animation: fade-in 0.5s ease-out, up-right 0.25s ease-out;
         will-change: position;
         filter: $dropShadow;
 
+        @include six-hundred {
+            display: none;
+        }
+
+
         svg, img {
             height: 28px;
             margin: 5px;
+
+            @include six-hundred {
+                transform: scale(0.75);
+                margin: 0;
+            }
     
             path {
                 fill: $green;

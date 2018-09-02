@@ -26,6 +26,7 @@ class ProjectsList extends React.Component {
             this.props.list.map(proj => (
                 <div key={proj.id} id={proj.id}
                     className={`project-container ${this.state.expandedKey === proj.id ? 'expanded': ''}`}
+                    onClick={() => this.toggleExpand(proj.id)}
                     onMouseEnter={() => this.expandIt(proj.id)} onMouseLeave={() => this.collapseIt(proj.id)}>
                     <div className="project-text">
                         <h2>{proj.name }</h2>
@@ -39,7 +40,7 @@ class ProjectsList extends React.Component {
                     <ul className="bullets">
                         <ProjectBullets list={proj.bullets}/>
                     </ul>
-                    <div className="main-image" onClick={() => this.toggleExpand(proj.id)}>
+                    <div className="main-image">
                         <img src={proj.image} alt={proj.name}></img>
                         <div className="expanded-tool-icons">
                             <ToolIcons list={proj.tools} />

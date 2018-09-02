@@ -11,8 +11,14 @@
         grid-column: 1 / 3;
         display: flex;
         flex-direction: column;
-        justify-items: space-between;
         transform-origin: right top;
+
+        @include eight-hundred {
+            & > div {
+                margin-right: 0;
+                align-self: end;
+            }
+        }
 
         > :first-child {
             align-self: flex-end;
