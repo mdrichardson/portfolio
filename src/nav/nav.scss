@@ -39,10 +39,59 @@
     @include eight-hundred {
         #menu-container {
             display: none;
+
+            &.animated {
+                display: block;
+                position: absolute;
+                top: 64px;
+                right: 0;
+                width: 275px;
+
+                #menu {
+                    display: flex;
+                    flex-direction: column;
+                    height: 300px;
+                    align-items: center;
+                    z-index: 3;
+
+                    #menu-background {
+                        display: block;
+                        position: absolute;
+                        width: 275px;
+                        height: 300px;
+                        animation: fade-in 0.5s ease-out, big-down 0.5s ease-out;
+                    }
+
+                    li {
+                        opacity: 0;
+
+                        &:nth-child(2) {
+                            animation: menu-slide-right 0.25s ease-in 0.4s, fade-in 0.75s ease-in 0.3s;
+                            animation-fill-mode: forwards;   
+                        }
+                        &:nth-child(3) {
+                            animation: menu-slide-right 0.25s ease-in 0.42s, fade-in 0.75s ease-in 0.32s;
+                            animation-fill-mode: forwards;   
+                        }
+                        &:nth-child(4) {
+                            animation: menu-slide-right 0.25s ease-in 0.44s, fade-in 0.75s ease-in 0.34s;
+                            animation-fill-mode: forwards;   
+                        }
+                        &:nth-child(5) {
+                            animation: menu-slide-right 0.25s ease-in 0.46s, fade-in 0.75s ease-in 0.36s;
+                            animation-fill-mode: forwards;   
+                        }
+                        &:nth-child(6) {
+                            animation: menu-slide-right 0.25s ease-in 0.48s, fade-in 0.75s ease-in 0.38s;
+                            animation-fill-mode: forwards;   
+                        }
+                    }
+                }
+            }
         }
 
         #hamburger-menu {
-            display: block;
+            display: block !important;
             justify-self: end;
         }
     }
@@ -51,6 +100,10 @@
         grid-column-start: 2;
         display: flex;
         flex-direction: row;
+
+        #menu-background {
+            display: none;
+        }
 
         li {
             flex: 1 1 auto;
@@ -82,6 +135,10 @@
             }
         }
     }
+
+    #hamburger-menu {
+        display: none;
+    }
 }
 
 #menu-hr {
@@ -90,5 +147,14 @@
     height: 1px;
     border: 0;
     border-top: 1px solid $white;
-    animation: swing-out 2s;
+    transition: margin-bottom 0.5s ease;
+
+    &.animated {
+        animation: swing-out 0.75s ease-out;
+        animation-fill-mode: forwards;
+    }
+
+    &:not(.load):not(.animated) {
+        animation: swing-in 0.25s ease-out;
+    }
 }

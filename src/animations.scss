@@ -48,6 +48,10 @@
     from {transform: translateY(-20px)}
     to {transform: translateY(0)}
 }
+@keyframes big-down {
+    from {transform: translateY(-300px)}
+    to {transform: translateY(0)}
+}
 @keyframes up {
     from {transform: translateY(20px)}
     to {transform: translateY(0)}
@@ -79,12 +83,43 @@
         background-position: 0% 100%;
       }
 }
+
+$hrAnimLeftMargin: calc(100vw - 275px);
+
 @keyframes swing-out {
     from {
-        transform: translateX(0) rotate(0deg);
+        transform: rotate(0deg);
+        transform-origin: left top;
+        width: 80vw;
     }
     to {
-        transform: translateX(0) rotate(90deg);
+        transform: rotate(90deg);
+        transform-origin: left top;
+        width: 300px;
+        margin-left: $hrAnimLeftMargin;
+        // margin-bottom: 100vh;
+    }
+}
+@keyframes swing-in {
+    from {
+        transform: rotate(90deg);
+        transform-origin: left top;
+        width: 300px;
+        margin-left: $hrAnimLeftMargin;
+        // margin-bottom: 100vh;
+    }
+    to {
+        transform: rotate(0deg);
+        transform-origin: left top;
+        width: calc(100% - 100px);
+    }
+}
+@keyframes menu-slide-right {
+    from {
+        transform: translateX(-125px);
+    }
+    to {
+        transform: translateX(0);
     }
 }
 
