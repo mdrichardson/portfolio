@@ -26,6 +26,10 @@
         margin-right: 1.5vw;
         text-shadow: $bigShadow;
 
+        @include six-hundred {
+            display: none;
+        }
+
         p {
             color: $white;
             font-family: $headerFont;
@@ -72,6 +76,12 @@
                 mask-size: contain;
                 background-size: 300% 300%;
                 animation: bg-diagonal 10s infinite both;
+
+                @include six-hundred {
+                    $newHeight: 30vw;
+                    height: $newHeight;
+                    width: $newHeight / 5.17;
+                }
                 }
 
             #right-bracket::before {
@@ -89,6 +99,10 @@
             color: $white;
             text-shadow: $bigShadow;
 
+            @include six-hundred {
+                font-size: 5vw;
+            }
+
             input.bool {
                 color: $yellow;
                 width: 6.5vw;
@@ -99,6 +113,11 @@
                     margin-bottom: -1px;
                 resize: horizontal;
                 text-shadow: $bigShadow;
+
+                @include six-hundred {
+                    font-size: 5vw;
+                    width: 10vw;
+                }
 
                 &:active, &:focus, &:hover {
                     background: none;
