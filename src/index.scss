@@ -32,6 +32,10 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 250vh;
     overflow-x: hidden;
+
+    @include six-hundred {
+        background-size: 100% 350vh;
+    }
 }
 
 #about-section {
