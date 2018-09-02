@@ -1,5 +1,7 @@
 import React from 'react';
-import './ProjectList.css';
+import './ProjectList-Small.css';
+import './ProjectList-Med.css';
+import './ProjectList-Large.css';
 import ToolIcons from './ToolIcons';
 import ProjectBullets from './ProjectBullets';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,11 +29,15 @@ class ProjectsList extends React.Component {
                 <div key={proj.id} id={proj.id}
                     className={`project-container ${this.state.expandedKey === proj.id ? 'expanded': ''}`}
                     onMouseEnter={() => this.expandIt(proj.id)} onMouseLeave={() => this.collapseIt(proj.id)}>
-                    <div className="project-text">
-                        <h2>{proj.name }</h2>
-                        <div className="short-desc">
-                            <p>{proj.short_desc}</p>
-                        </div>
+                    <div className="main-image" onClick={() => this.toggleExpand(proj.id)}>
+                        <img src={proj.image} alt={proj.name}></img>
+                    </div>
+                    <h2>{ proj.name }</h2>
+                    <div className="tool-icons">
+                        <ToolIcons list={proj.tools} />
+                    </div>                  
+                    <div className="short-desc">
+                        <p>{proj.short_desc}</p>
                     </div>
                     <div className="long-desc">
                         <p>{proj.long_desc}</p>
@@ -39,15 +45,6 @@ class ProjectsList extends React.Component {
                     <ul className="bullets">
                         <ProjectBullets list={proj.bullets}/>
                     </ul>
-                    <div className="main-image" onClick={() => this.toggleExpand(proj.id)}>
-                        <img src={proj.image} alt={proj.name}></img>
-                        <div className="expanded-tool-icons">
-                            <ToolIcons list={proj.tools} />
-                        </div>
-                    </div>
-                    <div className="tool-icons">
-                        <ToolIcons list={proj.tools} />
-                    </div>
                     <div className="links">
                         <div className="github-link">
                             <a href={proj.github} alt="Github link" target="_blank">
