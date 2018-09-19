@@ -1,7 +1,7 @@
 import React from 'react';
-import './ProjectList-Small.css';
-import './ProjectList-Medium.css';
 import './ProjectList-Large.css';
+import './ProjectList-Medium.css';
+import './ProjectList-Small.css';
 import ToolIcons from './ToolIcons';
 import ProjectBullets from './ProjectBullets';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
