@@ -1,4 +1,5 @@
 import React from 'react';
+import './ProjectList-Max.css';
 import './ProjectList-Large.css';
 import './ProjectList-Medium.css';
 import './ProjectList-Small.css';

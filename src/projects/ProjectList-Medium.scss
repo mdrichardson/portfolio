@@ -3,7 +3,7 @@
 
 // SMALL SCREENS > 600px and <= 800px -- Only collapsed is changed
 
-@include one-thousand {
+@include eight-hundred {
 
     // NOT EXPANDED
     .project-container:not(.expanded) {
