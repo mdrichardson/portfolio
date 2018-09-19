@@ -16,6 +16,22 @@
         > :last-child {
             margin-bottom: 0;
         }
+
+        @include one-thousand {
+            & > *{
+                align-self: flex-end;
+            }
+        }
+
+        & > :nth-child(1), & > :nth-child(4) {
+            align-self: flex-end;
+        }
+        & > :nth-child(2), & > :nth-child(5) {
+            align-self: center;
+        }
+        & > :nth-child(3), & > :nth-child(6) {
+            align-self: flex-start;
+        }
     }
 
     .section-title {
