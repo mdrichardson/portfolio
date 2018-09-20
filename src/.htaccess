@@ -9,6 +9,4 @@
   # HTTPS-only
   RewriteCond %{HTTPS} !=on
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  # Don't show hash links
-  RewriteRule ^#/(.*)$ /$1 [L,NC,R]
 </IfModule>
