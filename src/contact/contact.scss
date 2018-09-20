@@ -19,7 +19,7 @@
             height: 3rem;
 
             a {
-                margin: 0px 2em;
+                margin: 0.5em 2em;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -67,7 +67,7 @@
                 // necessary for removing the yellow autofill background color
                 transition: background-color 5000s ease-in-out 0s;
 
-                @include four-hundred {
+                @include six-hundred {
                     font-size: 1.6rem;
                 }
 
@@ -96,10 +96,9 @@
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: space-between;
-                max-width: 80vw;
 
                 #name-container, #email-container {
-                    flex: 1 0 auto;
+                    flex: 1 1 325px;
                     display: grid;
                     grid-template-rows: auto 50px;
                     grid-template-columns: 1fr;
