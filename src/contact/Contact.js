@@ -12,8 +12,13 @@ class Contact extends React.Component {
             <StickyContainer>
                 <div id="Contact" className="section-container">
                     <div id="contact-content" className="content-container">
-                        <ContactLinks />
+                        <div id="contact-message">
+                            <h2>Get in Touch</h2>
+                            <p>Whether you have a project you'd like some help with
+                            or just want to say hello, contact me and we can chat.</p>
+                        </div>
                         <ContactForm />
+                        <ContactLinks />
                     </div>
                     <div id="section-title">
                         <Sticky>
