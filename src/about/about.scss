@@ -75,4 +75,31 @@
             }
         }
     }
+
+    @include eight-hundred {
+        .content-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto;
+
+            #about-me {
+                grid-column-start: 1;
+                grid-row-start: 1;
+                margin-bottom: 3.5rem;
+            }
+            #other-details {
+                grid-column-start: 1;
+                grid-row-start: 2;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-around;
+                padding-left: 0;
+
+                #location, #looking-for {
+                    flex: 0 0 200px;
+                    margin-bottom: 3.5rem;
+                }
+            }
+        }
+    }
 }
