@@ -14,17 +14,22 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            navFixed: false,
-            activeComponent: null
+            navFixed: false, // Whether or not nav bar is fixed to top
+            activeComponent: null  // Which component is in view, for highlighting menu
         }
     }
 
+    // Fix the nav bar to the top
     fixNav = () => this.setState({ navFixed: true });
+
+    // Unfix the nav bar
     unfixNav = () => this.setState({ navFixed: false });
 
+    // Set which component is active. Triggered by view
     setActiveComponent = (comp) => this.setState({ activeComponent: comp });
 
     componentDidMount() {
+        // Fancy message in console.log
         fancyLog();
         // Instead of tons of waypoints to catch a refresh, just fix the nav if we're greater than 100px from the top
         if (window.scrollY >= 100) {

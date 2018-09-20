@@ -92,6 +92,7 @@
     to {transform: scale(1);}
 }
 
+// For animating hr underneath nav bar
 $hrAnimLeftMargin: calc(100vw - 275px);
 
 @keyframes swing-out {

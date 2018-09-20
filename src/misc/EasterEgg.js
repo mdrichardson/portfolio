@@ -20,6 +20,7 @@ var dynamicElements = []
 
 var boolElements = []
 
+// This is intentionally a template string. Only works this way
 const cssChange = `
     #ui-block {
         z-index: 5;

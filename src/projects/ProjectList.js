@@ -21,10 +21,10 @@ class ProjectsList extends React.Component {
     // so that clicking and then leaving doesn't mess things up if we only have toggle
     toggleExpand = (key) => this.setState({ expandedKey: this.state.expandedKey === key ? null : key})
 
+
+    // Expand the project. Triggers CSS animations
     expandIt = (key) => {
-        console.log(key, this.state)
         this.setState({ expandedKey: key })
-        console.log(this.state)
         // Log expand in Google Analytics
         ReactGA.event({
             category: 'ProjectExpand',
@@ -32,8 +32,8 @@ class ProjectsList extends React.Component {
           });
     }
 
+    // Collapse the project. Triggers CSS animations
     collapseIt = () => {
-        console.log('collapse')
         this.setState({ expandedKey: null })
     }
 

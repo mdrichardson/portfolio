@@ -4,6 +4,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 class ContactLinks extends React.Component {
 
+    // Size of fontawesome icons, using FA's preferred '2x', '3x', etc
     fa_size = '2x'
 
     render() {
