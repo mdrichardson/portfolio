@@ -38,7 +38,8 @@
             margin: 0.1em 0;
             justify-self: end;
             text-shadow: $smallShadow;
-            will-change: position;
+            animation: right-down 0.25s ease-out, shrink 0.25s ease-out;            
+            transform-origin: right bottom;
         }
 
         .tool-icons {
@@ -123,9 +124,10 @@
             img {
                 width: 100%;
                 border: 0 solid transparent;
-                transition: border 0.5s ease-out;
                 box-shadow: $smallShadow;
                 transition: border 0.25s ease-out;
+                animation: grow 0.75s ease-out, down 0.75s ease-out;
+                transform-origin: right top;
             }
         }   
         h2 {
@@ -134,7 +136,8 @@
             color: $blue;
             font-size: 5vw;
             text-shadow: $smallShadow;
-            will-change: position;
+            animation: left-up 0.5s ease-out, grow 0.5s ease-out, fade-in 2s ease-out;            
+            transform-origin: right bottom;
         }
 
         .tool-icons {
@@ -142,7 +145,7 @@
             grid-column: 2;
             display: flex;
             flex-flow: row wrap;
-            justify-content: flex-end;
+            justify-content: space-around;
             align-items: center;
             width: 100%;
 
@@ -152,7 +155,8 @@
                 max-width: 28px;
                 fill: $blue;
                 margin-left: 0.5em;
-                animation: green-blue 1s ease-out;
+                animation: green-blue 2.5s ease-out;
+                transition: all 0.5s ease-out;
             }
 
             .tool-name {

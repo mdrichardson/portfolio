@@ -28,6 +28,8 @@
                 transition: border 0.5s ease-out;
                 box-shadow: $smallShadow;
                 transition: border 0.5s ease-out;
+                animation: shrink 0.1s ease-out, fade-in 0.5s ease-out;
+                transform-origin: right top;
             }
         }   
         h2 {
@@ -104,7 +106,7 @@
         display: grid;
         grid-template-columns: 1.25fr auto;
         grid-template-rows: auto auto auto auto auto;
-        transition: all 0.75s ease-out;
+        transition: all 0.5s ease-out;
         will-change: position;
         max-width: 100%;
         margin-bottom: 5em;
@@ -121,10 +123,11 @@
             img {
                 width: 100%;
                 border: 0 solid transparent;
-                transition: border 0.5s ease-out;
                 box-shadow: $smallShadow;
                 margin-bottom: 0.5em;
                 transition: border 0.25s ease-out;
+                animation: grow 0.5s ease-out, fade-in 0.75s ease-out;
+                transform-origin: right top;
             }
         }   
         h2 {
@@ -134,6 +137,7 @@
             font-size: 5vw;
             text-shadow: $smallShadow;
             will-change: position;
+            animation: fade-in 1s ease-out, down-left 0.5s ease-out;
         }
 
         .tool-icons {
@@ -170,7 +174,7 @@
             font-size: 1.4rem;
             line-height: 1.9rem;
             opacity: 0;
-            animation: fade-in 0.75s ease-out 0.6s;
+            animation: fade-in 1s ease-out 0.5s;
             animation-fill-mode: forwards;
         }
 
@@ -183,7 +187,7 @@
             list-style-type: none;
             text-indent: -1.8rem;
             opacity: 0;
-            animation: fade-in 0.75s ease-out 0.7s;
+            animation: fade-in 0.5s ease-out 0.7s;
             animation-fill-mode: forwards;
             
             li {
