@@ -26,10 +26,19 @@
                 margin-bottom: 3.5rem;
                 line-height: 2.75rem;
                 text-shadow: $smallShadow;
+
+                @include six-hundred {
+                    font-size: 1.6rem;
+                    line-height: 2rem;
+                }
             }
 
             h2 {
                 color: $red;
+
+                @include six-hundred {
+                    font-size: 2rem;
+                }
             }
         }
 
@@ -40,16 +49,25 @@
 
             h2 {
                 color: $yellow;
+                
+                @include six-hundred {
+                    font-size: 2rem;
+                }
             }
     
             ul {
                 list-style-type: none;
                 padding-left: 2rem;
                 margin-top: 0.25rem;
+
+                @include six-hundred {
+                    font-size: 1.8rem;
+                }
     
                 li {
                     opacity: 0.9;
                     padding: 0.5rem;
+                    line-height: 2.25rem;
                     text-shadow: $smallShadow;
                     filter: $dropShadow;
     
@@ -96,8 +114,8 @@
                 padding-left: 0;
 
                 #location, #looking-for {
-                    flex: 0 0 200px;
-                    margin-bottom: 3.5rem;
+                    flex: 1 0 200px;
+                    margin-bottom: 3.5vw;
                 }
             }
         }

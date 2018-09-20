@@ -28,16 +28,28 @@
                 filter: $dropShadow;
                 text-shadow: $smallShadow;
 
+                @include six-hundred {
+                    font-size: 1.75rem;
+                }
+
                 &:visited {
                     color: $white;
                 }
 
                 path {
                     fill: $yellow;
+
+                    @include six-hundred {
+                        transform: scale(0.8);
+                    }
                 }
 
                 p {
                     margin-left: 1.5em;
+
+                    @include six-hundred {
+                        margin-left: 1rem;
+                    }
                 }
             }
         }
