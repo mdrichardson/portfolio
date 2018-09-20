@@ -28,3 +28,6 @@ src/**/*.css
 /server/node_modules
 /server/private.js
 src/projects/temp.scss
+
+# SSL
+/ssl

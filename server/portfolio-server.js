@@ -51,6 +51,21 @@ var contact_log = {}
 
 const app = express();
 
+// Force SSL
+const https = require('https');
+const fs = require('fs');
+
+const privateKey = fs.readFileSync('../ssl/server.key', 'utf8');
+const certificate = fs.readFileSync('../ssl/server.crt', 'utf8');
+
+const credentials = {
+	key: privateKey,
+	cert: certificate,
+};
+
+// Starting both http & https servers
+const httpsServer = https.createServer(credentials, app);
+
 // Body parser middleware setup
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -115,5 +130,5 @@ app.post('/send', (req, res) => {
     });
 })
 
-app.listen(port, () => console.log('Portfolio server started on port ' + port))
+httpsServer.listen(port, () => console.log('Portfolio server started on port ' + port))
 
