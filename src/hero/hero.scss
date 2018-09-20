@@ -105,7 +105,8 @@
 
             input.bool {
                 color: $yellow;
-                width: 6.5vw;
+                width: 7vw;
+                text-align: right;
                 background: none;
                 font-size: $propertySize;
                 border: none;
@@ -116,7 +117,7 @@
 
                 @include six-hundred {
                     font-size: 5vw;
-                    width: 10vw;
+                    width: 11vw;
                 }
 
                 &:active, &:focus, &:hover {
