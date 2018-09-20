@@ -2,6 +2,7 @@ import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import loadingSVG from '../images/loading.svg';
+import ReactGA from 'react-ga';
 
 const FormStructure = ({
     values,
@@ -69,6 +70,11 @@ const FormikForm = withFormik({
         message: Yup.string().min(1).max(2000).required()
     }),
     handleSubmit(values, { props, setErrors, setSubmitting, setStatus }) {
+        // Log expand in Google Analytics
+        ReactGA.event({
+            category: 'Contact',
+            action: 'Submit'
+          });
         setSubmitting(true);
         values.id = props.id;
         fetch('http://localhost:3100/send', {

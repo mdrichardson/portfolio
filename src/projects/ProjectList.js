@@ -7,7 +7,8 @@ import ToolIcons from './ToolIcons';
 import ProjectBullets from './ProjectBullets';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import ReactGA from 'react-ga';
 class ProjectsList extends React.Component {
     constructor(props) {
         super(props);
@@ -24,6 +25,11 @@ class ProjectsList extends React.Component {
         console.log(key, this.state)
         this.setState({ expandedKey: key })
         console.log(this.state)
+        // Log expand in Google Analytics
+        ReactGA.event({
+            category: 'ProjectExpand',
+            action: key
+          });
     }
 
     collapseIt = () => {

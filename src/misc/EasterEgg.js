@@ -1,4 +1,5 @@
 import fancyLog from './fancyLog';
+import ReactGA from 'react-ga';
 
 const errorStyle = [
     'color: white',
@@ -63,6 +64,11 @@ class Easter_Egg {
         brokenNotification.style.display = 'block';
         // Now handle the eggs
         eggs.forEach(egg => {
+            // Track eggs in GA
+            ReactGA.event({
+                category: 'EasterEggs',
+                action: egg
+              });
             switch(egg) {
                 case 'console':
                     // Make a bunch of weird messages in the console
