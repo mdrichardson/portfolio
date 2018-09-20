@@ -20,18 +20,22 @@ class NavBar extends React.Component {
     }
 
     toggleMenuAnimation = () => {
-        // We need a separate state for animateClassName so that animation doesn't start on page load--only when menu is expanded
-        let animateClassName = this.state.animateClassName === 'animated' ? '' : 'animated' ;
-        this.setState({ animateClassName })
-        // If menu is open, we need to make sure it closes
-        if (this.state.animateClassName === 'animated') {
-            this.closeMenu();
-        // We need to set the bottom margin of the hr dynamically so it only applies when it's visible, which is when we're at the top of the page
-        } else if (window.scrollY < 64){
-            document.getElementById('menu-hr').style.marginBottom = '100vh';
-        } 
-        if (this.state.animateClassName !== 'animated') {
-            this.watchScroll();
+        // Only animate if hamburger menu shown (smaller screens)
+        if (window.innerWidth <= 800) {
+            // We need a separate state for animateClassName so that animation doesn't start on page load--only when menu is expanded
+            let animateClassName = this.state.animateClassName === 'animated' ? '' : 'animated' ;
+            this.setState({ animateClassName })
+            // If menu is open, we need to make sure it closes
+            if (this.state.animateClassName === 'animated') {
+                this.closeMenu();
+            // We need to set the bottom margin of the hr dynamically so it only applies when it's visible, which is when we're at the top of the page
+            } else if (window.scrollY < 64){
+                document.getElementById('menu-hr').style.marginBottom = '100vh';
+            }
+            // Add event listener for scrolling so that the menu closes on scroll
+            if (this.state.animateClassName !== 'animated') {
+                this.watchScroll();
+            }
         }
     }
 
@@ -40,9 +44,12 @@ class NavBar extends React.Component {
 
     // Always close the menu when we click on the inner links
     closeMenu = () => {
-        this.setState({ animateClassName: '' });
-        document.getElementById('menu-hr').style.marginBottom = '0';
-        document.removeEventListener('scroll', this.closeMenu)
+        // Don't close the menu if it isn't shown anyway -- keeps hr from animating
+        if (window.innerWidth <= 800) {
+            this.setState({ animateClassName: '' });
+            document.getElementById('menu-hr').style.marginBottom = '0';
+            document.removeEventListener('scroll', this.closeMenu)
+        }
     }
 
     // When we add the bottom margin to the <hr> it moves everything down 100vh, so we need to scroll that much further when links are clicked
@@ -62,7 +69,7 @@ class NavBar extends React.Component {
                 <AppBar position="static" id="nav" className={ this.props.navFixed ? "fixed" : "" }>
                     <Toolbar id="toolbar">
                         <Typography variant="title" id="name">
-                        <span className={ !this.props.navFixed ? "hidden" : "" }>Michael Richardson</span>
+                            <span className={ !this.props.navFixed ? "hidden" : "shown" }>Michael Richardson</span>
                         </Typography>
                         <div id="menu-container" className={ this.state.animateClassName }>
                             <ul id="menu">
