@@ -40,6 +40,10 @@
                     font-size: 2rem;
                 }
             }
+
+            a, a:visited {
+                color: $red;
+            }
         }
 
         #other-details {
