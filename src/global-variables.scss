@@ -51,8 +51,11 @@ $dropShadow: drop-shadow(0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1));
 
 .section-container {
     display: grid;
+    display: -ms-grid;
     grid-template-columns: $sectionTitleWidth 1fr $sectionTitleWidth;
+    -ms-grid-columns: $sectionTitleWidth 1fr $sectionTitleWidth;
     grid-template-rows: 1fr;
+    -ms-grid-rows: 1fr;
     align-items: flex-start;
     padding: $verticalSectionMargin 3vw;
 
