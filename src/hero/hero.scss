@@ -2,11 +2,15 @@
 @import '../animations.scss';
 
 #Home {
-    grid-column-start: 2;
+    grid-column: 2;
+    -ms-grid-column: 2;
     display: grid;
+    display: -ms-grid;
     grid-template-columns: auto 1fr;
+    -ms-grid-columns: auto 1fr;
     grid-template-rows: 1fr;
-    min-height: 80vh;
+    -ms-grid-rows: 1fr;
+    height: 80vh;
     padding: 0 5vw;
 
     #hero-name, #bracket-container {
@@ -21,7 +25,8 @@
     }
 
     #hero-name {
-        grid-column-start: 1;
+        grid-column: 1;
+        -ms-grid-column: 1;
         align-items: center;
         margin-right: 1.5vw;
         text-shadow: $bigShadow;
@@ -48,7 +53,8 @@
     }
 
     #bracket-container {
-        grid-column-start: 2;
+        grid-column: 2;
+        -ms-grid-column: 2;
         display: flex;
         flex-direction: row;
         align-items: stretch;
@@ -65,28 +71,39 @@
                 $height: 15vw;
                 height: $height;
                 width: $height / 5.17; // the svg shows dimensions of 300x58, 300/58 = 5.17, so we can keep the scale easily
-                display:inline-block;
-                mask-image:url('../images/bracket.svg');
-                background: $yellow; /* Old browsers */
-                background: -moz-linear-gradient(45deg, $yellow 0%, $red 100%); /* FF3.6-15 */
-                background: -webkit-linear-gradient(45deg, $yellow 0%,$red 100%); /* Chrome10-25,Safari5.1-6 */
-                background: linear-gradient(45deg, $yellow 0%,$red 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$red,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-                mask-repeat: no-repeat;
-                mask-size: contain;
-                background-size: 300% 300%;
-                animation: bg-diagonal 10s infinite both;
+                display: inline-block;
+                background-image: url('../images/bracket.svg');
 
                 @include six-hundred {
                     $newHeight: 30vw;
                     height: $newHeight;
                     width: $newHeight / 5.17;
                 }
-                }
+            }
+        }
 
-            #right-bracket::before {
-                background-size: 400% 400%;
-                animation: bg-diagonal 15s infinite both;
+        @supports(mask-image: url('../images/bracket.svg')) {
+            .bracket {
+    
+                &::before { 
+                    content:'';
+                    background-image: none;
+                    mask-image: url('../images/bracket.svg');
+                    background: $yellow; /* Old browsers */
+                    background: -moz-linear-gradient(45deg, $yellow 0%, $red 100%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(45deg, $yellow 0%,$red 100%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(45deg, $yellow 0%,$red 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$red,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+                    mask-repeat: no-repeat;
+                    mask-size: contain;
+                    background-size: 300% 300%;
+                    animation: bg-diagonal 10s infinite both;
+                }
+    
+                #right-bracket::before {
+                    background-size: 400% 400%;
+                    animation: bg-diagonal 15s infinite both;
+                }
             }
         }
 
@@ -94,6 +111,7 @@
 
         #hero-properties {
             margin: auto 0.5em;
+            align-self: center;
             font-size: $propertySize;
             text-align: left;
             color: $white;
