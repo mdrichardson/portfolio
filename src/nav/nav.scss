@@ -19,18 +19,20 @@
 
 #toolbar {
     display: grid;
-    display: grid;
     grid-template-columns: 1fr minmax(400px, 40vw);
+    -ms-grid-columns: 1fr minmax(400px, 40vw);
     height: $navHeight;
 
     @include eight-hundred {
         & {
             grid-template-columns: 1fr auto;
+            -ms-grid-columns: 1fr auto;
         }
     }
 
     #name {
-        grid-column-start: 1;
+        grid-column: 1;
+        -ms-grid-column: 1;
         color: $white;
         font-family: $headerFont, sans-serif;
         font-weight: bold;
@@ -114,42 +116,45 @@
             justify-self: end;
         }
     }
+    #menu-container {
+        grid-column: 2;
+        -ms-grid-column: 2;
 
-    #menu {
-        grid-column-start: 2;
-        display: flex;
-        flex-direction: row;
-
-        #menu-background {
-            display: none;
-        }
-
-        li {
-            flex: 1 1 auto;
-            text-align: center;
+        #menu {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: $navHeight;
-
-            a {
-                flex: 1 1 auto;
-                display: block;
-                text-decoration: none;
-                color: $white;
-                font-size: 1.75rem;
-
-                &:visited {
-                    color: $white;
-                }
+            flex-direction: row;
+    
+            #menu-background {
+                display: none;
             }
-
-            &.active {
-                border-bottom: 0.2rem solid $white;
-
+    
+            li {
+                flex: 1 1 auto;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: $navHeight;
+    
                 a {
-                    margin-bottom: -0.2rem;
+                    flex: 1 1 auto;
+                    display: block;
+                    text-decoration: none;
+                    color: $white;
+                    font-size: 1.75rem;
+    
+                    &:visited {
+                        color: $white;
+                    }
+                }
+    
+                &.active {
+                    border-bottom: 0.2rem solid $white;
+    
+                    a {
+                        margin-bottom: -0.2rem;
+                    }
                 }
             }
         }
