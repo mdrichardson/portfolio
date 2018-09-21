@@ -19,6 +19,7 @@
 
 #toolbar {
     display: grid;
+    display: -ms-grid;
     grid-template-columns: 1fr minmax(400px, 40vw);
     -ms-grid-columns: 1fr minmax(400px, 40vw);
     height: $navHeight;
@@ -33,6 +34,7 @@
     #name {
         grid-column: 1;
         -ms-grid-column: 1;
+        -ms-grid-row-align: center;
         color: $white;
         font-family: $headerFont, sans-serif;
         font-weight: bold;
