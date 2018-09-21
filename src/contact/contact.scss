@@ -9,10 +9,16 @@
         display: grid;
         grid-template-rows: auto auto auto;
         grid-template-columns: 1fr;
+        -ms-grid-column: 1;
+        -ms-grid-column-span: 2;
+        display: -ms-grid;
+        -ms-grid-rows: auto auto auto;
+        -ms-grid-columns: 1fr;
         padding: 0 3vw;
 
         #contact-message {
-            grid-row-start: 1;
+            grid-row: 1;
+            -ms-grid-row: 1;
             text-align: center;
             margin-bottom: 3em;
 
@@ -40,7 +46,8 @@
         }
 
         #contact-links {
-            grid-row-start: 3;
+            grid-row: 3;
+            -ms-grid-row: 3;
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
@@ -83,12 +90,19 @@
             }
         }
 
+        #form-container {
+            grid-row: 2;
+            -ms-grid-row: 2;
+        }
+
         form {
-            grid-row-start: 2;
             margin: 2em auto 0 auto;
             display: grid;
             grid-template-rows: 1fr auto 50px auto;
             grid-template-columns: 1fr;
+            display: -ms-grid;
+            -ms-grid-rows: 1fr auto 50px auto;
+            -ms-grid-columns: 1fr;
             font-size: 2rem;
             position: relative;
             max-width: 1200px;
@@ -134,7 +148,8 @@
             
 
             #name-and-email {
-                grid-row-start: 1;
+                grid-row: 1;
+                -ms-grid-row: 1;
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: space-between;
@@ -144,10 +159,14 @@
                     display: grid;
                     grid-template-rows: auto 35px;
                     grid-template-columns: 1fr;
+                    display: -ms-grid;
+                    -ms-grid-rows: auto 35px;
+                    -ms-grid-columns: 1fr;
                     margin: 0 1em;
 
                     .input-container {
-                        grid-row-start: 1;
+                        grid-row: 1;
+                        -ms-grid-row: 1;
                         margin-bottom: 0.1em;
                         height: 100%;
 
@@ -157,7 +176,8 @@
                     }
 
                     .error {
-                        grid-row-start: 2;
+                        grid-row: 2;
+                        -ms-grid-row: 2;
                     }
                 }
 
@@ -185,8 +205,10 @@
             }
 
             #message-area {
-                grid-row-start: 2;
-                grid-column-start: 1;
+                grid-row: 2;
+                grid-column: 1;
+                -ms-grid-row: 2;
+                -ms-grid-column: 1;
                 margin: 0 1em;
                 
                 textarea {
@@ -196,19 +218,25 @@
             }
 
             #message-info-row {
-                grid-row-start: 3;
+                grid-row: 3;
                 display: grid;
                 grid-template-columns: 1fr auto;
                 grid-template-rows: 1fr;
+                -ms-grid-row: 3;
+                display: -ms-grid;
+                -ms-grid-columns: 1fr auto;
+                -ms-grid-rows: 1fr;
                 margin: -0.1em 1em;
 
                 #message-error {
                     grid-column: 1;
+                    -ms-grid-column: 1;
                     justify-self: start;
                 }
 
                 #message-count {
-                    grid-column-start: 2;
+                    grid-column: 2;
+                    -ms-grid-column: 2;
                     justify-self: end;
 
                     p {
@@ -218,7 +246,8 @@
             }
 
             #submit {
-                grid-row-start: 4;
+                grid-row: 4;
+                -ms-grid-row: 4;
 
                 button {
                     display: block;
@@ -243,8 +272,10 @@
         }
 
         #exceeded-limit-message, #loading, #success {
-            grid-row-start: 2;
-            grid-column-start: 1;
+            grid-row: 2;
+            grid-column: 1;
+            -ms-grid-row: 2;
+            -ms-grid-column: 1;
             z-index: 2;
             font-size: 2rem;
             justify-self: center;
@@ -254,7 +285,8 @@
         }
 
         #loading {
-            grid-row-start: 2;
+            grid-row: 2;
+            -ms-grid-row: 2;
             font-size: 2rem;
             text-align: center;
             background-color: rgba(255, 255, 255, 0.3);
@@ -290,6 +322,7 @@
     }
 
     .section-title {
-        grid-column-start: 3;
+        grid-column: 3;
+        -ms-grid-column: 3;
     }
 }
