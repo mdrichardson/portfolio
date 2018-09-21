@@ -63,9 +63,6 @@ const credentials = {
 	cert: certificate,
 };
 
-// Starting both http & https servers
-const httpsServer = https.createServer(credentials, app);
-
 // Body parser middleware setup
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -129,6 +126,8 @@ app.post('/send', (req, res) => {
         smtpTransport.close()
     });
 })
+// Starting both http & https servers
+const httpsServer = https.createServer(credentials, app);
 
 httpsServer.listen(port, () => console.log('Portfolio server started on port ' + port))
 
