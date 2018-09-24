@@ -24,7 +24,7 @@ const Portfolio = {
         'Works in Chrome, Edge, IE, and mobile',
         'Hosted on an AWS EC2 instance running Ubuntu',
         <span>100s on all Lighthouse Audits<br />
-        <img src={ lighthouse } width="100%" style={{ paddingTop: "0.25em" }}/></span>,
+        <img src={ lighthouse } width="100%" style={{ paddingTop: "0.25em" }} alt="Lighthouse scores"/></span>,
         'Did you find any easter eggs?'
     ]
 }
