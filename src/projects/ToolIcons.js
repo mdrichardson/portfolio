@@ -25,7 +25,7 @@ const mongodbSVG = (<svg style={{padding: '0.2em'}} id='Layer_1' data-name='Laye
     </svg>
     )
 
-const cSVG = (<svg style={{padding: '0.3em'}} id='Layer_1' viewBox='0 0 96 96' xmlns='http://www.w3.org/2000/svg'>
+const cSVG = (<svg style={{padding: '0.3em'}} id='Layer_2' viewBox='0 0 96 96' xmlns='http://www.w3.org/2000/svg'>
     <path d='M87,9v67.4L48.8,86.6c-0.1,0-0.4,0.1-0.8,0.1s-0.8,0-0.8-0.1L9,76.4V9h36.6h4.9H87 M90.6,3H50.4c-1.3,0-3.6,0-4.9,0H5.4 C4.1,3,3,4.1,3,5.4v73.1c0,1.3,1.1,2.7,2.4,3.1l40.3,10.7c0.7,0.2,1.5,0.3,2.4,0.3s1.7-0.1,2.4-0.3l40.3-10.7 c1.3-0.3,2.4-1.7,2.4-3.1V5.4C93,4.1,91.9,3,90.6,3L90.6,3z'
     />
     <line className='st0' x1='3' x2='93' y1='18' y2='18' />
@@ -40,7 +40,7 @@ const cSVG = (<svg style={{padding: '0.3em'}} id='Layer_1' viewBox='0 0 96 96' x
     </svg>
     )
 
-const sqlSVG = (<svg style={{padding: '0.3em'}} baseProfile='tiny' id='Layer_1' overflow='scroll' viewBox='0 0 24 24'
+const sqlSVG = (<svg style={{padding: '0.3em'}} baseProfile='tiny' id='Layer_3' overflow='scroll' viewBox='0 0 24 24'
     xmlns='http://www.w3.org/2000/svg'>
     <path d='M22.2138672,22.75V20c0-0.4140625-0.3359375-0.75-0.75-0.75s-0.75,0.3359375-0.75,0.75v2H3.2617188v-2 c0-0.4140625-0.3359375-0.75-0.75-0.75s-0.75,0.3359375-0.75,0.75v2.75c0,0.4140625,0.3359375,0.75,0.75,0.75h18.9521484 C21.8779297,23.5,22.2138672,23.1640625,22.2138672,22.75z'
     fill='#1D1D1D' />
