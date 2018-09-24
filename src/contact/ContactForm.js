@@ -16,16 +16,23 @@ const FormStructure = ({
         <Form className={ errors.exceededLimit ? "exceeded-limit" : ""}>
             <div id="name-and-email">
                 <div id="name-container">
-                    <div className="input-container"><Field type="text" name="name" id="name" placeholder="Name" className={ touched.name && errors.name ? "err-border" : "" } disabled={ errors.exceededLimit }/></div>
+                    <div className="input-container">
+                        <Field type="text" name="name" id="name" placeholder="Name" 
+                            className={ touched.name && errors.name ? "err-border" : "" } disabled={ errors.exceededLimit } aria-label="name"/>
+                    </div>
                     <div id="name-error" className="error" hidden={ !touched.name || !errors.name }><p>{ errors.name }</p></div>
                 </div>
                 <div id="email-container">
-                    <div className="input-container"><Field type="email" name="email" id="email" placeholder="Email" className={ touched.email && errors.email ? "err-border" : "" } disabled={ errors.exceededLimit }/></div>
+                    <div className="input-container">
+                        <Field type="email" name="email" id="email" placeholder="Email" 
+                            className={ touched.email && errors.email ? "err-border" : "" } disabled={ errors.exceededLimit } aria-label="email"/>
+                    </div>
                     <div id="email-error" className="error" hidden={ !touched.email || !errors.email }><p>{ errors.email }</p></div>
                 </div>
             </div>
             <div id="message-area">
-                <Field component="textarea" name="message" id="message" placeholder="Message" className={ touched.message && errors.message ? "err-border" : "" } disabled={ errors.exceededLimit }/>
+                <Field component="textarea" name="message" id="message" placeholder="Message" 
+                    className={ touched.message && errors.message ? "err-border" : "" } disabled={ errors.exceededLimit } aria-label="message"/>
             </div>
             <div id="message-info-row" className="error">
                 <div id="message-error" hidden={ !touched.message || !errors.message }><p>{ errors.message }</p></div>

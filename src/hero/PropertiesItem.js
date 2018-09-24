@@ -50,15 +50,17 @@ class PropertiesItem extends React.Component {
 
     render() {
         return(
-            <p>{this.props.name}:{' '}  
-                <input type="text"
-                className="bool"
-                name={ this.props.name }
-                value={ this.state.value }
-                onChange={ this.handleChange }
-                onBlur={ this.easterEgg }
-                onKeyPress={ this.handleKeyPress }
-                />,{/* Comma is necessary */}
+            <p>
+                <label for={ this.props.name }>{ this.props.name }: 
+                    <input type="text"
+                    className="bool"
+                    name={ this.props.name }
+                    value={ this.state.value }
+                    onChange={ this.handleChange }
+                    onBlur={ this.easterEgg }
+                    onKeyPress={ this.handleKeyPress }
+                    />,{/* Comma is necessary */}
+                </label>
             </p>
             )
         }
