@@ -1,4 +1,6 @@
 import imageSRC from '../../images/portfolio.png'
+import React from 'react';
+import lighthouse from '../../images/lighthouse.png'
 
 const Portfolio = {
     id: 'portfolio',
@@ -21,6 +23,8 @@ const Portfolio = {
         'The properties for the "Michael Richardson" object at the top, as well as all of these projects, are dynamically loaded',
         'Works in Chrome, Edge, IE, and mobile',
         'Hosted on an AWS EC2 instance running Ubuntu',
+        <span>100s on all Lighthouse Audits<br />
+        <img src={ lighthouse } width="100%" style={{ paddingTop: "0.25em" }}/></span>,
         'Did you find any easter eggs?'
     ]
 }
