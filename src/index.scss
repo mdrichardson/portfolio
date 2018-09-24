@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu|Lato:400,700');
 @import './global-variables.scss';
 
-// Set root font size to 62.5% so 1rem = 10px, 1.2rem = 12px, etc
+// Set root font size to 12px (for Lighthouse mobile audit)
 html {
-    font-size: 62.5%;
+    font-size: 75%;
 }
 
 * {
