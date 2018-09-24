@@ -24,19 +24,19 @@
 
             h2 {
                 color: $yellow;
-                font-size: 5rem;
+                font-size: 4rem;
                 text-shadow: $smallShadow;
                 margin-bottom: 0.3em;
 
                 @include six-hundred {
-                    font-size: 4rem;
+                    font-size: 2.75rem;
                 }
 
             }
 
             p {
-                font-size: 2rem;
-                line-height: 3rem;
+                font-size: 1.75rem;
+                line-height: 2.5rem;
 
                 @include six-hundred {
                     font-size: 1.5rem;
@@ -103,7 +103,7 @@
             display: -ms-grid;
             -ms-grid-rows: 1fr auto 50px auto;
             -ms-grid-columns: 1fr;
-            font-size: 2rem;
+            font-size: 1.75rem;
             position: relative;
             max-width: 1200px;
             padding: 0.5em;
@@ -116,7 +116,7 @@
             textarea {
                 padding: 1rem;
                 color: $white;
-                font-size: 2.2rem;
+                font-size: 2rem;
                 background-color: rgba(255, 255, 255, 0.3);
                 border: 2px solid rgba(0, 0, 0, 0.2);
                 box-shadow: $smallShadow;
