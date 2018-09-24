@@ -177,6 +177,9 @@
         justify-content: space-around;
         align-items: start;
         width: 100%;
+        opacity: 0;
+        animation: fade-in 1s ease-out 0.25s, down-left 0.75s ease-out;
+        animation-fill-mode: forwards;
 
         svg {
             height: 28px;
@@ -193,6 +196,8 @@
         }
 
         .tool-name {
+            display: block;
+            margin: auto;
             margin-top: 1em;
             text-align: center;
             opacity: 0;

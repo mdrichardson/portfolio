@@ -44,7 +44,7 @@
     from {transform: translate(10vw, 100px)}
     to {transform: translate(0)}
 }
-@keyframes down {
+@keyframes only-down {
     from {transform: translateY(-20px)}
     to {transform: translateY(0)}
 }
@@ -52,15 +52,15 @@
     from {transform: translateY(-300px)}
     to {transform: translateY(0)}
 }
-@keyframes up {
+@keyframes only-up {
     from {transform: translateY(20px)}
     to {transform: translateY(0)}
 }
-@keyframes left {
+@keyframes only-left {
     from {transform: translateX(20px)}
     to {transform: translateX(0)}
 }
-@keyframes right {
+@keyframes only-right {
     from {transform: translateX(-20px)}
     to {transform: translateX(0)}
 }

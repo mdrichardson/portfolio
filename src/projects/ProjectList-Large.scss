@@ -174,17 +174,27 @@
             justify-content: space-around;
             align-items: center;
             width: 100%;
+            opacity: 0;
+            animation: fade-in 1s ease-out 0.25s, down-left 0.75s ease-out;
+            animation-fill-mode: forwards;
 
-            svg, path {
-                margin-left: 0.1em;
+            svg {
                 height: 28px;
-                max-width: 28px;
-                fill: $blue;
-                margin-left: 0.5em;
-                animation: green-blue 2.5s ease-out;
+                width: 28px;
+                display: block;
+                margin: auto;
+                transform: scale(1);
+                transition: transform 0.5s ease-out;
+    
+                path {
+                    fill: $blue;
+                    animation: green-blue 2.5s ease-out;
+                }
             }
 
             .tool-name {
+                display: block;
+                margin: auto;
                 margin-top: 1em;
                 text-align: center;
                 opacity: 0;

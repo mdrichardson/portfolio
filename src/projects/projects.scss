@@ -23,12 +23,6 @@
             margin-bottom: 0;
         }
 
-        @include one-thousand {
-            & > *{
-                align-self: flex-end;
-            }
-        }
-
         & > :nth-child(1), & > :nth-child(4) {
             align-self: flex-end;
         }
@@ -37,6 +31,12 @@
         }
         & > :nth-child(3), & > :nth-child(6) {
             align-self: flex-start;
+        }
+
+        @include one-thousand {
+            & > * {
+                align-self: flex-end;
+            }
         }
     }
 

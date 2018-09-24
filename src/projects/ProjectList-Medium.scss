@@ -179,6 +179,8 @@
                 margin-left: 0.1em;
                 height: 28px;
                 max-width: 28px;
+                display: block;
+                margin: auto;
                 fill: $blue;
                 transform: scale(0.85);
                 animation: green-blue 1s ease-out;
