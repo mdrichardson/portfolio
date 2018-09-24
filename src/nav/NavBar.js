@@ -72,8 +72,8 @@ class NavBar extends React.Component {
                             <span className={ !this.props.navFixed ? "hidden" : "shown" }>Michael Richardson</span>
                         </Typography>
                         <div id="menu-container" className={ this.state.animateClassName }>
+                        <div id="menu-background"  className={ this.state.animateClassName } style={ window.scrollY >= 64 ? { backgroundColor: '#F71735' } : {} }></div>
                             <ul id="menu">
-                                <div id="menu-background"  className={ this.state.animateClassName } style={ window.scrollY >= 64 ? { backgroundColor: '#F71735' } : {} }></div>
                                 <li className="navItem"><div>
                                     <NavLink to="/#Home" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Home</NavLink>
                                 </div></li>
