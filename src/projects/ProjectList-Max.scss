@@ -181,8 +181,10 @@
         svg {
             height: 28px;
             width: 28px;
+            display: block;
+            margin: auto;
             transform: scale(1.5);
-            transition: all 0.5s ease-out;
+            transition: transform 0.5s ease-out;
 
             path {
                 fill: $blue;
@@ -191,7 +193,11 @@
         }
 
         .tool-name {
-            display: none;
+            margin-top: 1em;
+            text-align: center;
+            opacity: 0;
+            animation: fade-in 2s ease-out;
+            animation-fill-mode: forwards;
         }
     }
 

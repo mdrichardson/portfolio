@@ -182,11 +182,14 @@
                 fill: $blue;
                 margin-left: 0.5em;
                 animation: green-blue 2.5s ease-out;
-                transition: all 0.5s ease-out;
             }
 
             .tool-name {
-                display: none;
+                margin-top: 1em;
+                text-align: center;
+                opacity: 0;
+                animation: fade-in 2s ease-out;
+                animation-fill-mode: forwards;
             }
         }
 
