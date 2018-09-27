@@ -126,6 +126,15 @@ app.post('/send', (req, res) => {
         smtpTransport.close()
     });
 })
+
+// Init Blog
+const blog = require('./routes/blog');
+
+app.use('/blog', blog);
+app.get('/', function(req, res){
+    res.send('Test successful!')
+})
+
 // Starting both http & https servers
 const httpsServer = https.createServer(credentials, app);
 
