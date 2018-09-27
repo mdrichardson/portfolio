@@ -6,7 +6,7 @@ const Portfolio = {
     id: 'portfolio',
     name: 'Portfolio Site',
     url: 'https://www.mdrichardson.net',
-    github: 'https://github.com/mdrichardson/portfolio-blog',
+    github: 'https://github.com/mdrichardson/portfolio',
     image: imageSRC,
     tools: [
         'React',
