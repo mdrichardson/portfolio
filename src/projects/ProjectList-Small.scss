@@ -40,6 +40,7 @@
             grid-column: 1;
             -ms-grid-row: 2;
             -ms-grid-column: 1;
+            align-self: center;
             color: $blue;
             font-size: 5vw;
             justify-self: start;
@@ -48,7 +49,6 @@
             will-change: position;
             animation: none;
             text-align: left;
-            align-self: center;
         }
 
         .tool-icons {

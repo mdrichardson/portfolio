@@ -151,3 +151,77 @@ h2 {
 h3 {
     font-size: 2.25rem;
 }
+
+@include one-thousand {
+    p {
+        font-size: 1.5rem;
+        line-height: 1.85rem;
+    }
+    
+    li {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+    
+    .statement {
+        font-size: 2.5rem;
+        line-height: 2.75rem;
+        font-family: $headerFont;
+        font-weight: bold;
+        text-shadow: $smallShadow;
+    }
+    
+    .small-text {
+        font-size: 1.2rem;
+        line-height: 1.25rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2.25rem;
+    }
+    
+    h3 {
+        font-size: 2rem;
+    }
+}
+
+@include eight-hundred {
+    p {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+    
+    li {
+        font-size: 1.15rem;
+        line-height: 1.45rem;
+    }
+    
+    .statement {
+        font-size: 2rem;
+        line-height: 2.5rem;
+        font-family: $headerFont;
+        font-weight: bold;
+        text-shadow: $smallShadow;
+    }
+    
+    .small-text {
+        font-size: 1.2rem;
+        line-height: 1.25rem;
+    }
+    
+    h1 {
+        font-size: 2.25rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.75rem;
+    }
+}
