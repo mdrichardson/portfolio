@@ -17,8 +17,8 @@ const TreatDispenser = {
     ],
     short_desc: 'PWA with user authorization that controls a self-built and self-programmed dog treat dispenser',
     long_desc: 'This is a progressive web app used to control a dog treat dispenser made with a Particle Photon ' +
-                '(similar to Arduino). The treat dispenser dispenses treats based off of input from the web app, ' +
-                'time intervals, and/or customizable feeding schedule.',
+                '(similar to Arduino). The treat dispenser can be triggered to dispense via a web app, ' +
+                'custom time intervals, and/or a customizable feeding schedule.',
     bullets: [
         'Full-stack (MEAN) application with user authentication',
         'Works in Chrome, Edge, and IE (despite using CSS Grid and a lot of things IE hates)',
