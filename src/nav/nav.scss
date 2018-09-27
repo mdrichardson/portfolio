@@ -70,6 +70,19 @@
                 right: 0;
                 width: 275px;
 
+               #menu-background {
+                    display: block;
+                    position: absolute;
+                    width: 275px;
+                    height: 300px;
+                    background: #f95725; /* Old browsers */
+                    background: -moz-linear-gradient(45deg, #f95725 0%, #f71735 100%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(45deg, #f95725 0%,#f71735 100%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(45deg, #f95725 0%,#f71735 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f95725', endColorstr='#f71735',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+                    animation: fade-in 0.5s ease-out, big-down 0.5s ease-out;
+                }
+
                 #menu {
                     display: flex;
                     flex-direction: column;
@@ -77,16 +90,13 @@
                     align-items: center;
                     z-index: 3;
 
-                    #menu-background {
-                        display: block;
-                        position: absolute;
-                        width: 275px;
-                        height: 300px;
-                        animation: fade-in 0.5s ease-out, big-down 0.5s ease-out;
-                    }
-
                     li {
                         opacity: 0;
+
+                        &:nth-child(1) {
+                            animation: menu-slide-right 0.25s ease-in 0.38s, fade-in 0.75s ease-in 0.28s;
+                            animation-fill-mode: forwards;   
+                        }
 
                         &:nth-child(2) {
                             animation: menu-slide-right 0.25s ease-in 0.4s, fade-in 0.75s ease-in 0.3s;
