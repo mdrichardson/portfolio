@@ -39,7 +39,7 @@ $textFont: 'Ubuntu';
 
 $sectionTitleWidth: minmax(2.5rem, 3vw);
 $verticalSectionMargin: 5vw;
-$navHeight: 6.4em;
+$navHeight: 76px;
 
 
 // Shadowing
@@ -48,28 +48,3 @@ $giantShadow: 0.3rem 0.3rem 2rem rgba(0,0,0,0.1);
 $bigShadow: 0.3rem 0.3rem 1rem rgba(0,0,0,0.3);
 $smallShadow: 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.05);
 $dropShadow: drop-shadow(0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1));
-
-.section-container {
-    display: grid;
-    display: -ms-grid;
-    grid-template-columns: $sectionTitleWidth 1fr $sectionTitleWidth;
-    -ms-grid-columns: $sectionTitleWidth 1fr $sectionTitleWidth;
-    grid-template-rows: 1fr;
-    -ms-grid-rows: 1fr;
-    align-items: flex-start;
-    padding: $verticalSectionMargin 3vw;
-
-    .content-container {
-        padding: 5em 5vw;
-    }
-}
-
-.sticky {
-    margin-top: 8em;
-}
-
-.section-title {
-    opacity: 0.7;
-    align-self: start;
-    padding-top: 5em;
-}

@@ -124,7 +124,7 @@
 
         #menu {
             display: flex;
-            flex-direction: row;
+            flex-flow: row nowrap;
     
             #menu-background {
                 display: none;

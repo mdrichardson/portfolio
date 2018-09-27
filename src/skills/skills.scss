@@ -24,11 +24,6 @@
 
         h2 {
             text-shadow: $smallShadow;
-            font-size: 3em;
-
-            @include six-hundred {
-                font-size: 1.75rem;
-            }
         }
 
         #languages, #tools, #databases {
@@ -46,13 +41,8 @@
                 li {
                     opacity: 0.9;
                     padding: 0.35em;
-                    font-size: 1.8rem;
                     text-shadow: $smallShadow;
                     filter: $dropShadow;
-                    
-                    @include six-hundred {
-                        font-size: 1.5rem;
-                    }
 
                     &::before { 
                         content:''; 
@@ -75,17 +65,9 @@
 
             #skills-statement p {
                 padding-left: 0.35em;
-                font-size: 3rem;
-                font-family: $headerFont;
-                font-weight: bold;
                 color: $yellow;
-                text-shadow: $smallShadow;
                 max-width: 500px;
                 margin-top: 3vw;
-
-                @include six-hundred {
-                    font-size: 2rem;
-                }
             }
         }
 

@@ -18,7 +18,7 @@ const AboutMeText =
             Call me a masochist, but I really, truly enjoy banging my head against a wall trying to solve a problem just to get that 
             tiny little rush of endorphins once I figure it out and make things work.
         </p>
-        <h2>I'm results-driven, quick-learning, can code just about anything, and love a good challenge.</h2>
+        <p className="statement">I'm results-driven, quick-learning, can code just about anything, and love a good challenge.</p>
     </div>
 
 export default AboutMeText;

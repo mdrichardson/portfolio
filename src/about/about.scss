@@ -26,25 +26,14 @@
             grid-column: 1;
             -ms-grid-column: 1;
             color: $white;
-            font-size: 2rem;
     
             p {
                 margin-bottom: 3.5rem;
-                line-height: 2.75rem;
                 text-shadow: $smallShadow;
-
-                @include six-hundred {
-                    font-size: 1.6rem;
-                    line-height: 2rem;
-                }
             }
 
-            h2 {
+            .statement {
                 color: $red;
-
-                @include six-hundred {
-                    font-size: 2rem;
-                }
             }
 
             a, a:visited {
@@ -56,29 +45,19 @@
             grid-column: 2;
             -ms-grid-column: 2;
             padding-left: 5vw;
-            font-size: 2rem;
 
             h2 {
                 color: $yellow;
-                
-                @include six-hundred {
-                    font-size: 2rem;
-                }
             }
     
             ul {
                 list-style-type: none;
                 padding-left: 2rem;
                 margin-top: 0.25rem;
-
-                @include six-hundred {
-                    font-size: 1.8rem;
-                }
     
                 li {
                     opacity: 0.9;
                     padding: 0.5rem;
-                    line-height: 2.25rem;
                     text-shadow: $smallShadow;
                     filter: $dropShadow;
     

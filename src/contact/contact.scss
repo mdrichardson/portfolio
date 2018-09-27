@@ -24,24 +24,9 @@
 
             h2 {
                 color: $yellow;
-                font-size: 4rem;
                 text-shadow: $smallShadow;
                 margin-bottom: 0.3em;
 
-                @include six-hundred {
-                    font-size: 2.75rem;
-                }
-
-            }
-
-            p {
-                font-size: 1.75rem;
-                line-height: 2.5rem;
-
-                @include six-hundred {
-                    font-size: 1.5rem;
-                    line-height: 2rem;
-                }
             }
         }
 

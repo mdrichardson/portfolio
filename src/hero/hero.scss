@@ -112,13 +112,16 @@
         #hero-properties {
             margin: auto 0.5em;
             align-self: center;
-            font-size: $propertySize;
             text-align: left;
             color: $white;
             text-shadow: $bigShadow;
 
-            @include six-hundred {
-                font-size: 5vw;
+            p { 
+                font-size: $propertySize;
+
+                @include six-hundred {
+                    font-size: 5vw;
+                }
             }
 
             input.bool {

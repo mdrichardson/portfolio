@@ -7,7 +7,7 @@ const SkillsList = (props) => {
         return (
             <div id={props.list.title.toLowerCase()}>
                 <div>
-                    <h2>{props.list.title}</h2>
+                    <h3>{props.list.title}</h3>
                     <ul>
                         {props.list.items.map((item, index) => (
                             <li key={index} className="skillsItem">{item}</li>
@@ -15,13 +15,13 @@ const SkillsList = (props) => {
                     </ul>
                 </div>
                 <div id="skills-statement">
-                    <p>Everything needed to build beautiful, efficient, full-stack web apps and software.</p>
+                    <p class="statement">Everything needed to build beautiful, efficient, full-stack web apps and software.</p>
                 </div>
             </div>
         )
     } return (
         <div id={props.list.title.toLowerCase()}>
-            <h2>{props.list.title}</h2>
+            <h3>{props.list.title}</h3>
             <ul>
                 {props.list.items.map((item, index) => (
                     <li key={index} className="skillsItem">{item}</li>

@@ -61,19 +61,19 @@ class ProjectsList extends React.Component {
                     </ul>
                     <div className="links">
                         <div className="github-link">
-                            <a href={proj.github} alt="Github link" target="_blank" rel="noopener noreferrer">
+                            <a href={proj.github} alt="Github link" target="_blank" rel="noopener noreferrer" class="small-text">
                                 <FontAwesomeIcon icon={faGithub}  size="2x"/>
                                 <span>Github Repo</span>
                             </a>
                         </div>
                         <div className="web-link" hidden={proj.url ? false : true}>
-                            <a href={proj.url} alt="Project link" target="_blank" rel="noopener noreferrer">
+                            <a href={proj.url} alt="Project link" target="_blank" rel="noopener noreferrer" class="small-text">
                                 <FontAwesomeIcon icon={faGlobe} size="2x"/>
                                 <span>Website</span>
                             </a>
                         </div>
                     </div>
-                    <p className="read-more">read more</p>
+                    <p className="read-more small-text">read more</p>
                 </div>
             ))
         )
