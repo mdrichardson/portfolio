@@ -51,7 +51,7 @@ class PropertiesItem extends React.Component {
     render() {
         return(
             <p>
-                <label for={ this.props.name }>{ this.props.name }: 
+                <label htmlFor={ this.props.name }>{ this.props.name }: 
                     <input type="text"
                     className="bool"
                     name={ this.props.name }

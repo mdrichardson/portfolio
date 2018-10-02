@@ -15,7 +15,7 @@ const SkillsList = (props) => {
                     </ul>
                 </div>
                 <div id="skills-statement">
-                    <p class="statement">Everything needed to build beautiful, efficient, full-stack web apps and software.</p>
+                    <p className="statement">Everything needed to build beautiful, efficient, full-stack web apps and software.</p>
                 </div>
             </div>
         )
