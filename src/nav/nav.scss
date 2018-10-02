@@ -148,6 +148,11 @@
                 justify-content: center;
                 align-items: center;
                 height: $navHeight;
+
+                &:hover {
+                    background-color: $yellow;
+                    transition: background-color 0.5s ease-out;
+                }
     
                 a {
                     flex: 1 1 auto;
