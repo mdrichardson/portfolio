@@ -19,7 +19,7 @@ class ContactLinks extends React.Component {
                     <FontAwesomeIcon icon={ faLinkedin } size={this.fa_size} />
                     <p>Michael Richardson</p>
                 </a>
-                <a id="resume-link" href="https://www.mdrichardson.net/static/RichardsonResume.pdf" title="Michael Richardson Resume" target="_blank" rel="noopener noreferrer">
+                <a id="resume-link" href="https://www.mdrichardson.net/RichardsonResume.pdf" title="Michael Richardson Resume" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={ faFileAlt } size={this.fa_size} />
                     <p>Resumé</p>
                 </a>
