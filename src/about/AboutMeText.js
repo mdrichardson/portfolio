@@ -18,6 +18,10 @@ const AboutMeText =
             Call me a masochist, but I really, truly enjoy banging my head against a wall trying to solve a problem just to get that 
             tiny little rush of endorphins once I figure it out and make things work.
         </p>
+        <p>
+            Outside of programming, I enjoy spending time with my wife, with my dog (whom the treat dispenser was built for), watching either the 
+            Cougs or the Sounders, playing video games, homebrewing beer, playing guitar, or outdoors in the beautiful PNW.
+        </p>
         <p className="statement">I'm results-driven, quick-learning, can code just about anything, and love a good challenge.</p>
     </div>
 

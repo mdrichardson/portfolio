@@ -18,7 +18,7 @@ class Hero extends React.Component {
         this.setState({
             properties: [
                 { name: 'full_stack_dev', value: 'true', id: 'full_stack', easterEggs: ['console', 'dynamic_items']},
-                { name: 'makes_pretty_ui', value: 'true', id: 'ui', easterEggs: ['ui']},
+                { name: 'designs_sweet_ui', value: 'true', id: 'ui', easterEggs: ['ui']},
                 { name: 'great_to_work_with', value: 'true', id: 'work', easterEggs: ['scroll']},
             ]
         })

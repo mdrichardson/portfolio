@@ -11,16 +11,16 @@ const Portfolio = {
     tools: [
         'React',
         'JavaScript',
+        'Node.js',
         'Sass',
         'AWS',
-        'Linux'
     ],
     short_desc: 'You\'re here! Building this in React is definitely overkill, but I wanted the practice.',
-    long_desc: 'Like many aspiring developers, I built this site to showcase my previous work and let you know ' +
-                'a little bit more about me. It\'s definitely overkill to build this in React, since it\'s mostly ' +
-                'a static site. However, this sets me up well for when I add a blog.',
+    long_desc: 'Like many web developers, I built this site to showcase my previous work and let you know ' +
+                'a little bit more about me. I know it\'s overkill to build this in React, since it\'s mostly ' +
+                'a static site but, I hadn\'t used React before and wanted to learn it. It was a surprisingly easy transition from Angular.',
     bullets: [
-        'The properties for the "Michael Richardson" object at the top, as well as all of these projects, are dynamically loaded',
+        'Uses Node.js, Express, and NodeMailer for Contact form',
         'Works in Chrome, Edge, IE, and mobile',
         'Hosted on an AWS EC2 instance running Ubuntu',
         <span>100s on all Lighthouse Audits<br />
