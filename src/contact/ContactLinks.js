@@ -11,15 +11,15 @@ class ContactLinks extends React.Component {
     render() {
         return (
             <div id="contact-links">
-                <a id="github-link" href="https://github.com/mdrichardson" title="mdrichardson GitHub" target="_blank" rel="noopener noreferrer">
+                <a id="github-link" href="https://github.com/mdrichardson" title="mdrichardson GitHub" target="_blank" rel="noopener noreferrer" className="hvr-grow">
                     <FontAwesomeIcon icon={ faGithub } size={this.fa_size} />
                     <p>mdrichardson</p>
                 </a>
-                <a id="linkedin-link" href="https://www.linkedin.com/in/richardsonmichaeld/" title="Michael Richardson LinkedIn" target="_blank" rel="noopener noreferrer">
+                <a id="linkedin-link" href="https://www.linkedin.com/in/richardsonmichaeld/" title="Michael Richardson LinkedIn" target="_blank" rel="noopener noreferrer" className="hvr-grow">
                     <FontAwesomeIcon icon={ faLinkedin } size={this.fa_size} />
                     <p>Michael Richardson</p>
                 </a>
-                <a id="resume-link" href="https://www.mdrichardson.net/RichardsonResume.pdf" title="Michael Richardson Resume" target="_blank" rel="noopener noreferrer">
+                <a id="resume-link" href="https://www.mdrichardson.net/RichardsonResume.pdf" title="Michael Richardson Resume" target="_blank" rel="noopener noreferrer" className="hvr-grow">
                     <FontAwesomeIcon icon={ faFileAlt } size={this.fa_size} />
                     <p>Resumé</p>
                 </a>
