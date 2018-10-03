@@ -32,6 +32,47 @@
                 text-shadow: $smallShadow;
             }
 
+            .hover-text {
+                cursor: help;
+                border-bottom: solid 1px $yellow;
+
+                &:hover::before, &:focus::before {
+                    position: absolute;
+                    z-index: 2;
+                    transform: translateY(-2rem);
+                    background: $blue;
+                    padding: 0.1em 0.75em;
+                    border-radius: 1em;
+                    color: $yellow;
+                    font-size: 1.25rem;
+                }
+
+                &.wife:hover::before, &.focus:hover::before {
+                    content: 'I seriously lucked out with her. She\'s amazing';
+                }
+                &.dog:hover::before, &.focus:hover::before {
+                    content: 'Trip is my spunky, goofy Norwegian Buhund, whom I built the treat dispenser for';
+                }
+                &.cougs:hover::before, &.focus:hover::before {
+                    content: 'GO COUGS!';
+                }
+                &.sounders:hover::before, &.focus:hover::before {
+                    content: 'I\'ve been a fan for awhile. If only we could be good the WHOLE season...';
+                }
+                &.games:hover::before, &.focus:hover::before {
+                    content: 'Rocket League is Siiiick!';
+                }
+                &.homebrewing:hover::before, &.focus:hover::before {
+                    content: 'Beer tastes better when you make it yourself. My best is a chocolate hazelnut brown with a hint of orange';
+                }
+                &.guitar:hover::before, &.focus:hover::before {
+                    content: 'I\'m self-taught and have a beautiful PRS Singlecut';
+                }
+                &.outdoors:hover::before, &.focus:hover::before {
+                    content: 'Cliché, I know, but we really do live in the best area for outdoor activities';
+                }
+            }
+
             .statement {
                 color: $red;
             }
