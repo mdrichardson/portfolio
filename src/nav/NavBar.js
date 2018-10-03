@@ -75,7 +75,7 @@ class NavBar extends React.Component {
                         <div id="menu-background"  className={ this.state.animateClassName } style={ window.scrollY >= 64 ? { } : { background: 'none' } }></div>
                             <ul id="menu">
                                 <li className="navItem"><div>
-                                    <NavLink to="/#Home" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Home</NavLink>
+                                    <NavLink to="/" onClick={ () => {this.customScroll(document.getElementsByTagName('body')); this.closeMenu()} }>Home</NavLink>
                                 </div></li>
                                 <li className={ this.props.active === 'skills' ? "active navItem" : "navItem" }><div>
                                     <NavLink to="/#Skills" scroll={el => this.customScroll(el) } onClick={ this.closeMenu }>Skills</NavLink>
