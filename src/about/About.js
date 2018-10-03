@@ -4,8 +4,20 @@ import aboutTitle from '../images/about.svg';
 import AboutMeText from './AboutMeText';
 import OtherDetails from './OtherDetails';
 import { StickyContainer, Sticky } from 'react-sticky';
+import Waypoint from 'react-waypoint';
 
 class About extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            entranceAnimation: false
+        }
+    }
+
+    animateEntrance = ()  => {
+        this.setState({ entranceAnimation: true })
+    }
 
     render() {
         return (
@@ -18,10 +30,12 @@ class About extends React.Component {
                         </Sticky>
                     </div>
                     <div className="content-container">
-                        <div id="about-me">
+                        <Waypoint onEnter={ () => this.animateEntrance() } />
+                        <div id="about-me"className={ this.state.entranceAnimation ? 'animated' : '' }>
                             { AboutMeText }
                         </div>
-                        <OtherDetails />
+                        <OtherDetails className={ this.state.entranceAnimation ? 'animated' : '' }/>
+                        <Waypoint onEnter={ () => this.animateEntrance() } />
                     </div>
                 </div>
             </StickyContainer>

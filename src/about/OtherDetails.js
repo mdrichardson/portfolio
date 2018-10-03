@@ -14,7 +14,7 @@ class OtherDetails extends React.Component {
 
     render() {
         return (
-            <div id="other-details">
+            <div id="other-details" className={ this.props.className }>
                 <div id="location">
                     <h2>Location</h2>
                     <ul id="location-name"><li>{ this.state.location }</li></ul>

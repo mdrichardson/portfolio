@@ -77,9 +77,9 @@ class Skills extends React.Component {
                     </Sticky>
                 </div>
                 <div id="skills-columns" className="content-container">
-                    <SkillsList list={this.state.skills.languages}/>
-                    <SkillsList list={this.state.skills.tools}/>
-                    <SkillsList list={this.state.skills.databases}/>
+                    <SkillsList list={this.state.skills.languages} className={ this.props.nowVisible ? "animated" : "" }/>
+                    <SkillsList list={this.state.skills.tools} className={ this.props.nowVisible ? "animated" : "" }/>
+                    <SkillsList list={this.state.skills.databases} className={ this.props.nowVisible ? "animated" : "" }/>
                 </div>
             </div>
             </StickyContainer>

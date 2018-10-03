@@ -9,11 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import ReactGA from 'react-ga';
+import Waypoint from 'react-waypoint';
 class ProjectsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            expandedKey: 'temp'
+            expandedKey: 'temp',
+            animated: {}
         }
     }
 
@@ -37,12 +39,21 @@ class ProjectsList extends React.Component {
         this.setState({ expandedKey: null })
     }
 
+    // Animate entrance of each project individually on first visibility
+    animateEntrance = (key) => {
+        let currentState = this.state;
+        currentState.animated[key] = true;
+        this.setState(currentState);
+    }
+
+
     render() {
         return (
             this.props.list.map(proj => (
                 <div key={proj.id} id={proj.id}
-                    className={`project-container ${this.state.expandedKey === proj.id ? 'expanded': ''}`}
+                    className={ `project-container ${ this.state.expandedKey === proj.id ? 'expanded' : '' } ${ this.state.animated[proj.id] ? 'enter' : 'leave' }` }
                     onClick={() => this.toggleExpand(proj.id)}>
+                    <Waypoint onEnter={ () => this.animateEntrance(proj.id) } />
                     <div className="main-image">
                         <img src={proj.image} alt={proj.name}></img>
                     </div>

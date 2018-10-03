@@ -75,6 +75,7 @@ class NavBar extends React.Component {
                         <div id="menu-background"  className={ this.state.animateClassName } style={ window.scrollY >= 64 ? { } : { background: 'none' } }></div>
                             <ul id="menu">
                                 <li className="navItem"><div>
+                                    { /* This one is a little different so we can get rid of '#Home' in the url bar and still scroll to top */}
                                     <NavLink to="/" onClick={ () => {this.customScroll(document.getElementsByTagName('body')); this.closeMenu()} }>Home</NavLink>
                                 </div></li>
                                 <li className={ this.props.active === 'skills' ? "active navItem" : "navItem" }><div>

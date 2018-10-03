@@ -52,6 +52,10 @@
     from {transform: translateY(-300px)}
     to {transform: translateY(0)}
 }
+@keyframes big-up {
+    from {transform: translateY(200px)}
+    to {transform: translateY(0)}
+}
 @keyframes only-up {
     from {transform: translateY(20px)}
     to {transform: translateY(0)}
@@ -62,6 +66,14 @@
 }
 @keyframes only-right {
     from {transform: translateX(-20px)}
+    to {transform: translateX(0)}
+}
+@keyframes big-left {
+    from {transform: translateX(100px)}
+    to {transform: translateX(0)}
+}
+@keyframes big-right {
+    from {transform: translateX(-100px)}
     to {transform: translateX(0)}
 }
 @keyframes green-blue {

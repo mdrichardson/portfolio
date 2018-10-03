@@ -17,6 +17,12 @@
         
         & > * {
             flex: 0 0 auto;
+            opacity: 0;
+
+            &.enter {
+                animation: fade-in 1s ease-out, big-left 1s ease-out;
+                animation-fill-mode: forwards;
+            }
         }
         
         & > :last-child {
@@ -26,9 +32,11 @@
         & > :nth-child(1), & > :nth-child(4) {
             align-self: flex-end;
         }
+
         & > :nth-child(2), & > :nth-child(5) {
             align-self: center;
         }
+
         & > :nth-child(3), & > :nth-child(6) {
             align-self: flex-start;
         }

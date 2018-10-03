@@ -1,4 +1,5 @@
 @import '../global-variables.scss';
+@import '../animations.scss';
 
 #About {
     padding-bottom: 0;
@@ -26,6 +27,7 @@
             grid-column: 1;
             -ms-grid-column: 1;
             color: $white;
+            opacity: 0;
     
             p {
                 margin-bottom: 3.5rem;
@@ -80,12 +82,18 @@
             a, a:visited {
                 color: $red;
             }
+
+            &.animated {
+                animation: fade-in 1s ease-out, big-up 1s ease-out;
+                animation-fill-mode: forwards;
+            }
         }
 
         #other-details {
             grid-column: 2;
             -ms-grid-column: 2;
             padding-left: 5vw;
+            opacity: 0;
 
             h2 {
                 color: $yellow;
@@ -121,6 +129,11 @@
                         }
                     }
                 }
+            }
+
+            &.animated {
+                animation: fade-in 1s ease-out, big-left 1s ease-out;
+                animation-fill-mode: forwards;
             }
         }
     }
