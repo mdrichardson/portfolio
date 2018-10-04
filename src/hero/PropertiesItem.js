@@ -59,7 +59,7 @@ class PropertiesItem extends React.Component {
                     onChange={ this.handleChange }
                     onBlur={ this.easterEgg }
                     onKeyPress={ this.handleKeyPress }
-                    />,{/* Comma is necessary */}
+                    />{ this.props.name !== 'great_to_work_with' ? ',' : ''} {/* Prevents comma on last item. Needs to change if property name changes */}
                 </label>
             </p>
             )
