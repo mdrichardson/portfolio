@@ -18,7 +18,7 @@
         opacity: 0;
 
         &.animated {
-            animation: fade-in 1s ease-out, big-up 1s ease-out;
+            animation: fade-in 1.5s ease-out;
             animation-fill-mode: forwards;
         }
 
