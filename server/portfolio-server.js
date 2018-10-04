@@ -111,6 +111,9 @@ app.post('/send', (req, res) => {
         from: `${body.name} <${body.email}>`, // sender address
         to: email, // list of receivers
         subject: '### NEW PORTFOLIO CONTACT ###', // Subject line
+        replyTo: body.email, // Reply directly to sender
+        priority: 'high', // High priority flag for email
+        disableFileAccess: true, // Don't allow somebody to send files
         generateTextFromHTML: true,
         html: output // html body
     };
