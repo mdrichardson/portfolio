@@ -19,7 +19,7 @@ const AboutMeText =
             tiny little rush of endorphins once I figure it out and make things work.
         </p>
         <p>
-            { /* Multiple  classes are use ('games' and 'games') so that if a multi-word activity ('video games') is has a line break in the
+            { /* Multiple  classes are used ('games' and 'games') so that if a multi-word activity ('video games') is has a line break in the
                     middle, the tooltip pops up on the appropriate line */ }
             Outside of programming, I enjoy spending time with my <span className="wife hover-text">wife</span> and my <span className="dog hover-text">dog</span>,&nbsp;
             watching either the <span className="cougs hover-text">Cougars</span> or the <span className="sounders hover-text">Sounders</span>,&nbsp;

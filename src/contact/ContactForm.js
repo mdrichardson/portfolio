@@ -12,6 +12,7 @@ const FormStructure = ({
     status
 }) => (
     <div id="form-container">
+        { /* Hide the form after submission */ }
         <div hidden={ status === 'success' || status === 'error' }>
         <Form className={ errors.exceededLimit ? "exceeded-limit" : ""}>
             <div id="name-and-email">
@@ -77,7 +78,7 @@ const FormikForm = withFormik({
         message: Yup.string().min(1).max(2000).required()
     }),
     handleSubmit(values, { props, setErrors, setSubmitting, setStatus }) {
-        // Log expand in Google Analytics
+        // Log submission in Google Analytics
         ReactGA.event({
             category: 'Contact',
             action: 'Submit'
@@ -136,8 +137,8 @@ class ContactForm extends React.Component {
         // If user blocks ipify (uBlock blocks it), we'll just make a string of their
         // browser information and use that
         .catch(err => {
-            console.log('IP error: ', err)
-            console.log('Using userAgent strings as \'unique\' identifier', err)
+            console.log('Unable to get IP address: ', err)
+            console.log('Using userAgent strings as \'unique\' identifier for submission limitation purposes', err)
             this.setState({ id: getUserData() })
         })
     }

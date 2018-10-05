@@ -36,6 +36,7 @@ class App extends Component {
             this.fixNav()
         }
     }
+    // The Waypoints are used for setting the active component (highlighting the link in the nav)
     // setActiveComponent uses a bottomOffset of 50% to make sure we don't activate the nav link before we're really in the component
     render() {
         return (
@@ -59,6 +60,7 @@ class App extends Component {
                         <Contact />
                     </div>
                 </main>
+                { /* broken-notification is shown when Easter Egg is activated */ }
                 <div id="broken-notification"><p>You broke something. Return the value to <span>true</span> to fix it!</p></div>
             </div>
         )

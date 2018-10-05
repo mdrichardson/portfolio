@@ -14,8 +14,8 @@ class ProjectsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            expandedKey: 'temp',
-            animated: {}
+            expandedKey: 'temp', // Whether or not the project by that key name is currently expanded
+            animated: {} // Map of which projects (by id/key) have had their entrance animation played
         }
     }
 

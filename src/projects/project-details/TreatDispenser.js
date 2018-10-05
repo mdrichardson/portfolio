@@ -23,6 +23,7 @@ const TreatDispenser = {
         'Full-stack (MEAN) application with user authentication',
         'Works in Chrome, Edge, and IE',
         'Treat dispenser hardware was programmed by me, using C/C++',
+        // Spans have to be used in order to use HTML within the object
         <span>If you'd like to test it, <Link to="/#Contact">contact me</Link> for the login details</span>
     ]
 }

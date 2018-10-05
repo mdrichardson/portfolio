@@ -11,6 +11,7 @@ const RESfilterer = {
         'Python',
         'RES'
     ],
+    // Spans have to be used in order to use HTML within the object
     short_desc: <span>Scrapes domains from selected pages of <a href="mediabiasfactcheck.com" target="_blank" rel="noopener noreferrer">MediaBiasFactCheck </a> 
                         and adds them to Reddit Enhancement Suite's Domain Filters</span>,
     long_desc: <span>This is a command-line tool written in Python that scrapes domains from selected pages of 

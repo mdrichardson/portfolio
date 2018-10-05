@@ -10,15 +10,18 @@ class Contact extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            entranceAnimation: false
+            entranceAnimation: false // track whether or not entrance animation has been played
         }
     }
 
+    // Change the state, and therefore the class of the elements that need entrance animations
     animateEntrance = ()  => {
         this.setState({ entranceAnimation: true })
     }
 
     render() {
+        // Waypoints are used to trigger entrance animations
+        // StickyContainer makes it so section heading follows the section. bottomOffset isn't needed because this is the last component
         return (
             <StickyContainer>
                 <div id="Contact" className="section-container">

@@ -23,6 +23,7 @@ const Portfolio = {
         'Uses Node.js, Express, and NodeMailer for Contact form',
         'Works in Chrome, Edge, IE, and mobile',
         'Hosted on an AWS EC2 instance running Ubuntu',
+        // Spans have to be used in order to use HTML within the object
         <span>100s on all Lighthouse Audits<br />
         <img src={ lighthouse } id="lighthouse-img" alt="Lighthouse scores"/></span>,
         'Did you find any easter eggs?'

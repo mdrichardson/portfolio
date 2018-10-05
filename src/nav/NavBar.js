@@ -15,7 +15,7 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            animateClassName: 'load'
+            animateClassName: 'load'  // Used for animating the nav bar expansion in mobile. 'load' just prevents it from loading when the page loads
         }
     }
 

@@ -6,10 +6,11 @@ class SkillsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            entranceAnimation: false
+            entranceAnimation: false // Whether or not the entrance animation has been played
         }
     }
 
+    // Change the state, and therefore the class of the elements that need entrance animations
     animateEntrance = ()  => {
         this.setState({ entranceAnimation: true })
     }
@@ -17,6 +18,7 @@ class SkillsList extends React.Component {
     render() {
         // Databases is the last one and we need to add a statement after it. I want it to always be the same width as and to move
         //  with the databases list, so it needs to go here
+        // Waypoints are used to trigger entrance animations
         if (this.props.list.title === 'Databases') {
             return (
                 <div id={this.props.list.title.toLowerCase()} className={ this.state.entranceAnimation ? 'animated' : '' }>

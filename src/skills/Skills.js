@@ -67,6 +67,7 @@ class Skills extends React.Component {
     }
 
     render() {
+        // StickyContainer makes it so section heading follows the section. bottomOffset of 150 keeps if from following down too far
         return (
             <StickyContainer>
                 <div id="Skills" className="section-container">

@@ -4,8 +4,8 @@ import { EasterEgg } from '../misc/EasterEgg';
 class PropertiesItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: '',
-                       easterEgg: [],
+        this.state = { value: '', // Track the value of the boolean input
+                       easterEgg: [], // Track which EasterEggs are being triggered so we can pass them as props
                       }
     }
 

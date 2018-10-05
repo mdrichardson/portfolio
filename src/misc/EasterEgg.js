@@ -175,10 +175,13 @@ class Easter_Egg {
         return allTrue;
     }
 
+    // Make the UI ugly. Direction is 'forwards' to make animation ugly, 'reverse' to reset it
     changeUI = (direction='forwards') => {
         var uiBlock = document.getElementById('ui-block');
         var CSSArray = cssChange.split('');
+        // Make it play a little slower when forwards, a bit faster when in reverse
         let delay = direction === 'reverse' ? 5 : 15;
+        // Lop through CSSArray and add contents to uiBlock in 'forwards' or 'reverse
         let i = 0;
         var write = function() {
             if (direction === 'reverse') {
@@ -187,6 +190,7 @@ class Easter_Egg {
                 uiBlock.innerHTML += CSSArray[i];
             }
             i++;
+            // Stop once we're at the end of CSSArray
             if (i >= CSSArray.length){ clearInterval(loop) }
         }
         var loop = setInterval(write, delay)

@@ -11,15 +11,18 @@ class About extends React.Component {
     constructor() {
         super();
         this.state = {
-            entranceAnimation: false
+            entranceAnimation: false // track whether or not entrance animation has been played
         }
     }
 
+    // Change the state, and therefore the class of the elements that need entrance animations
     animateEntrance = ()  => {
         this.setState({ entranceAnimation: true })
     }
 
     render() {
+        // Waypoints are used to trigger entrance animations
+        // StickyContainer makes it so section heading follows the section. bottomOffset is 100 to keep it from going down too far
         return (
             <StickyContainer>
                 <div id="About" className="section-container">

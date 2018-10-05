@@ -28,6 +28,7 @@ class Projects extends React.Component {
     }
     
     render() {
+        // StickyContainer makes it so section heading follows the section. bottomOffset of 130 keeps if from following down too far
         return (
             <StickyContainer>
                 <div id="Projects" className="section-container">
