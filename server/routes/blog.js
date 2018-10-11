@@ -116,23 +116,27 @@ router.get('/articles', (req, res, next) => {
   });
   
 
-  // Get blog article by ID
-  router.param('id', (req, res, next, id) => {
+// Get blog article by ID
+router.param('id', (req, res, next, id) => {
     return Articles.findById(id, (err, article) => {
-      if(err) {
+        if(err) {
         return res.sendStatus(404);
-      } else if(article) {
+        } else if(article && article.isPublished) {
         req.article = article;
         return next();
-      }
+        }
     }).catch(next);
-  });
-  
-  router.get('/articles:id', (req, res, next) => {
+});
+
+router.get('/articles:id', (req, res) => {
+    // Return Unauthorized if article exists but isn't published - If user has token, they can use /preview:id to preview unpublished articles
+    if(!req.article.isPublished) {
+        return res.sendStatus(401);
+    }
     return res.json({
-      article: req.article.toJSON(),
+        article: req.article.toJSON(),
     });
-  });
+});
 
 // Ensure all routes below require a token -- Must go after login/register, but before anything that should require valid token
 router.use(function(req, res, next) {
@@ -183,6 +187,10 @@ router.post('/article', (req, res, next) => {
         },
       });
     }
+
+    if(body.isPublished === 'undefined' || body.isPublished === null || !body.isPublished) {
+        body.isPublished = false;
+    }
   
     const finalArticle = new Article(body);
     return finalArticle.save()
@@ -190,26 +198,49 @@ router.post('/article', (req, res, next) => {
       .catch(next);
   });  
 
-  // Update blog article
-  router.patch('/articles:id', (req, res, next) => {
+// Get preview of unpublished article
+router.param('id', (req, res, next, id) => {
+    return Articles.findById(id, (err, article) => {
+        if(err) {
+        return res.sendStatus(404);
+        } else if(article && article.isPublished) {
+        req.article = article;
+        return next();
+        }
+    }).catch(next);
+});
+
+router.get('/preview:id', (req, res, next) => {
+    return res.json({
+        article: req.article.toJSON(),
+    });
+});
+
+
+// Update blog article
+router.patch('/articles:id', (req, res, next) => {
     const { body } = req;
-  
+
     if(typeof body.title !== 'undefined') {
-      req.article.title = body.title;
+        req.article.title = body.title;
     }
-  
+
     if(typeof body.author !== 'undefined') {
-      req.article.author = body.author;
+        req.article.author = body.author;
     }
-  
+
     if(typeof body.body !== 'undefined') {
-      req.article.body = body.body;
+        req.article.body = body.body;
     }
-  
+
+    if(typeof body.isPublished !== 'undefined') {
+        req.article.isPublished = body.isPublished;
+    }
+
     return req.article.save()
-      .then(() => res.json({ article: req.article.toJSON() }))
-      .catch(next);
-  });
+        .then(() => res.json({ article: req.article.toJSON() }))
+        .catch(next);
+});
   
 
   // Delete blog article
