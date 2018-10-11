@@ -1,14 +1,19 @@
 @import '../global-variables.scss';
 
+$footerHeight: 60px;
+
 #footer {
-    padding: 1em 3vw;
+    padding: 0 3vw;
     background: $black;
+    height: $footerHeight;
 
     #footer-container {
         grid-column: 2;
         -ms-grid-column: 2;
         display: flex;
         flex-flow: row wrap;
+        align-items: center;
+        align-self: center;
 
         #copyright {
             flex: 1 0 auto;
@@ -38,13 +43,21 @@
             justify-content: space-between;
             margin-left: auto;
             flex: 1 0 auto;
-            max-width: 400px;
+            max-width: 600px;
 
             @include one-thousand {
                 display: none;
             }
 
             li {
+
+                flex: 1 1 auto;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: $footerHeight;
     
                 &:hover {
                     background-color: $yellow;
@@ -52,7 +65,7 @@
                 }
     
                 a {
-                    flex: 1 1 400px;
+                    flex: 1 0 400px;
                     display: block;
                     text-decoration: none;
                     color: $white;
