@@ -2,10 +2,10 @@ import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import './nav.css'
-import { NavHashLink as NavLink } from 'react-router-hash-link';
+import './nav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import NavLinks from './NavLinks';
 
 
 // props.active is set in App.js, using Waypoints. This sets a white underline to the active component
@@ -73,23 +73,7 @@ class NavBar extends React.Component {
                         </Typography>
                         <div id="menu-container" className={ this.state.animateClassName }>
                         <div id="menu-background"  className={ this.state.animateClassName } style={ window.scrollY >= 64 ? { } : { background: 'none' } }></div>
-                            <ul id="menu">
-                                <li className="navItem"><div>
-                                    <NavLink to="/#Home" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Home</NavLink>
-                                </div></li>
-                                <li className={ this.props.active === 'skills' ? "active navItem" : "navItem" }><div>
-                                    <NavLink to="/#Skills" scroll={el => this.customScroll(el) } onClick={ this.closeMenu }>Skills</NavLink>
-                                </div></li>
-                                <li className={ this.props.active === 'projects' ? "active navItem" : "navItem" }><div>
-                                    <NavLink to="/#Projects" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Projects</NavLink>
-                                </div></li>
-                                <li className={ this.props.active === 'about' ? "active navItem" : "navItem" }>
-                                    <div><NavLink to="/#About" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>About</NavLink>
-                                </div></li>
-                                <li className={ this.props.active === 'contact' ? "active navItem" : "navItem" }><div>
-                                    <NavLink to="/#Contact" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Contact</NavLink>
-                                </div></li>
-                            </ul>
+                            <NavLinks />
                         </div>
                         <div id="hamburger-menu" onClick={ this.toggleMenuAnimation }>
                             <FontAwesomeIcon icon={faBars} size="2x" />

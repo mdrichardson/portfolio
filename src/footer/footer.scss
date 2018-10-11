@@ -1,0 +1,68 @@
+@import '../global-variables.scss';
+
+#footer {
+    padding: 1em 3vw;
+    background: $black;
+
+    #footer-container {
+        grid-column: 2;
+        -ms-grid-column: 2;
+        display: flex;
+        flex-flow: row wrap;
+
+        #copyright {
+            flex: 1 0 auto;
+            @include six-hundred {
+                font-size: 2.5vw;
+            }
+
+            #footer-name {
+                font-weight: bold;
+                font-size: 1.5rem;
+
+                @include six-hundred {
+                    font-size: 3vw;
+                }
+            }
+
+            @include one-thousand {
+                text-align: center;
+            }
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-flow: row nowrap;
+            align-self: center;
+            justify-content: space-between;
+            margin-left: auto;
+            flex: 1 0 auto;
+            max-width: 400px;
+
+            @include one-thousand {
+                display: none;
+            }
+
+            li {
+    
+                &:hover {
+                    background-color: $yellow;
+                    transition: background-color 0.5s ease-out;
+                }
+    
+                a {
+                    flex: 1 1 400px;
+                    display: block;
+                    text-decoration: none;
+                    color: $white;
+                    font-size: 1.5rem;
+    
+                    &:visited {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}

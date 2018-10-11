@@ -6,6 +6,7 @@ import Skills from './skills/Skills';
 import Projects from './projects/Projects';
 import About from './about/About';
 import Contact from './contact/Contact';
+import Footer from './footer/Footer';
 import Waypoint from 'react-waypoint';
 import fancyLog from './misc/fancyLog';
 
@@ -59,6 +60,7 @@ class App extends Component {
                         <Contact />
                     </div>
                 </main>
+                <Footer />
                 <div id="broken-notification"><p>You broke something. Return the value to <span>true</span> to fix it!</p></div>
             </div>
         )
