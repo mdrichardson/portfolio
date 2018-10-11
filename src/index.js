@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -13,10 +14,13 @@ ReactGA.pageview("/#Skills");
 ReactGA.pageview("/#Projects");
 ReactGA.pageview("/#About");
 ReactGA.pageview("/#Contact");
+ReactGA.pageview("/Blog");
 
 ReactDOM.render((
-    <Router>
-        <App />
+    <Router history={ createHistory() }>
+        <Switch>
+            <Route path="/" component={ App } />
+        </Switch>
     </Router>
 ), document.getElementById('root')
 );
