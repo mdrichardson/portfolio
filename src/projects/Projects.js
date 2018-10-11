@@ -34,7 +34,7 @@ class Projects extends React.Component {
                     <div id="project-list" className="content-container">
                         <ProjectList list={this.state.projects} />
                     </div>
-                    <div className={ `section-title ${ this.state.sectionPlacement }` }>
+                    <div className="section-title">
                             <Sticky bottomOffset={130}>
                                 {({ style, isSticky }) =>
                                     <img style={ style } className={ isSticky ? "sticky" : "" } src={ projectsTitle } alt="Projects" />}
