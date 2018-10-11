@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
+import { NavLink as Link } from 'react-router-dom';
 
 class NavLinks extends React.Component {
 
@@ -47,7 +48,7 @@ class NavLinks extends React.Component {
                     <div><NavLink to="/#About" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>About</NavLink>
                 </div></li>
                 <li className={ this.props.active === 'blog' ? "active navItem" : "navItem" }>
-                    <div><NavLink to="/Blog" onClick={ this.closeMenu }>Blog</NavLink>
+                    <div><Link to="/blog" onClick={ this.closeMenu }>Blog</Link>
                 </div></li>
                 <li className={ this.props.active === 'contact' ? "active navItem" : "navItem" }><div>
                     <NavLink to="/#Contact" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Contact</NavLink>

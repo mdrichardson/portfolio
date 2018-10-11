@@ -4,6 +4,7 @@ import { Route, Switch, Router } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import './index.css';
 import App from './App';
+import Blog from './blog/Blog';
 import registerServiceWorker from './registerServiceWorker';
 import ReactGA from 'react-ga';
 
@@ -19,7 +20,8 @@ ReactGA.pageview("/Blog");
 ReactDOM.render((
     <Router history={ createHistory() }>
         <Switch>
-            <Route path="/" component={ App } />
+            <Route exact path="/" component={ App } />
+            <Route exact path="/blog" component={ Blog } />
         </Switch>
     </Router>
 ), document.getElementById('root')
