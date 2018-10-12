@@ -9,7 +9,9 @@ const fs = require('fs');
 // Load models
 const User = require('../models/user');
 require('../models/article');
-const Article = mongoose.model('Article')
+const Article = mongoose.model('Article');
+require('../models/tag');
+const Tag = mongoose.model('Tag');
 
 // Load private DB info
 const db = private.DB_URL;
@@ -25,7 +27,8 @@ var connectOptions = {
     pass: private.DB_PASS,
     auth: {
       authdb: private.DB_ADMIN_DB
-    }
+    },
+    useNewUrlParser: true
   }
 
   mongoose.connect(db, connectOptions, err => {
@@ -40,6 +43,18 @@ var connectOptions = {
 router.get('/', (req, res) => {
     res.send('Blog route works!')
 })
+
+const getCurrentTags = async () => {
+    const currentTags = await Tag.find();
+    const tagMap = currentTags.map(tag => tag.name);
+    return tagMap
+}
+
+// Get Tags
+router.get('/tags', (async (req, res) => {
+    return res.send(await getCurrentTags());
+}))
+
 
 // Register users
 router.post('/register', (req, res) => {
@@ -117,7 +132,7 @@ router.get('/articles', (req, res, next) => {
   
 
 // Get blog article by ID
-router.param('id', (req, res, next, id) => {
+router.param('/articles/:id', (req, res, next, id) => {
     return Articles.findById(id, (err, article) => {
         if(err) {
         return res.sendStatus(404);
@@ -128,7 +143,7 @@ router.param('id', (req, res, next, id) => {
     }).catch(next);
 });
 
-router.get('/articles:id', (req, res) => {
+router.get('/articles/:id', (req, res) => {
     // Return Unauthorized if article exists but isn't published - If user has token, they can use /preview:id to preview unpublished articles
     if(!req.article.isPublished) {
         return res.sendStatus(401);
@@ -199,7 +214,7 @@ router.post('/article', (req, res, next) => {
   });  
 
 // Get preview of unpublished article
-router.param('id', (req, res, next, id) => {
+router.param('/preview/:id', (req, res, next, id) => {
     return Articles.findById(id, (err, article) => {
         if(err) {
         return res.sendStatus(404);
@@ -208,12 +223,6 @@ router.param('id', (req, res, next, id) => {
         return next();
         }
     }).catch(next);
-});
-
-router.get('/preview:id', (req, res, next) => {
-    return res.json({
-        article: req.article.toJSON(),
-    });
 });
 
 
@@ -243,11 +252,48 @@ router.patch('/articles:id', (req, res, next) => {
 });
   
 
-  // Delete blog article
-  router.delete('/articles:id', (req, res, next) => {
+// Delete blog article
+router.delete('/articles/:id', (req, res, next) => {
     return Articles.findByIdAndRemove(req.article._id)
-      .then(() => res.sendStatus(200))
+        .then(() => res.sendStatus(200))
+        .catch(next);
+});
+
+// Add article tags
+router.post('/tags', (async (req, res, next) => {
+    const { body } = req;
+
+    // Get current tags so we make sure we don't add any duplicates
+    const currentTags = await getCurrentTags();
+    if (currentTags.includes(body.name)) {
+        return res.status(422).json({
+            errors: {
+                name: 'exists',
+            }
+        })
+    }
+  
+    if(!body.name) {
+      return res.status(422).json({
+        errors: {
+          name: 'is required',
+        },
+      });
+    } else {
+        body.name = body.name.toLowerCase();
+    }
+
+    const finalTag = new Tag(body);
+    return finalTag.save()
+      .then(() => res.json({ tag: finalTag.toJSON() }))
       .catch(next);
-  });
+}))
+
+// Delete Tag
+router.delete('/tag/:id', (req, res, next) => {
+    return Tag.findByIdAndRemove(req.body._id)
+        .then(() => res.sendStatus(200))
+        .catch(next);
+});
 
 module.exports = router;
