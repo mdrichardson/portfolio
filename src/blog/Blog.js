@@ -1,6 +1,10 @@
 import React from 'react';
 import './blog.css';
 import NavBar from '../nav/NavBar';
+import blogTitle from '../images/blog.svg';
+import Articles from './articles/Articles';
+import Footer from '../footer/Footer';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 class Blog extends React.Component {
     constructor(props) {
@@ -14,9 +18,18 @@ class Blog extends React.Component {
             <div>
                 <NavBar navFixed={ true } />
                 <hr id ="blog-hr"/>
-                <div id="blog" className="section-container">
-                    <p>TEST</p>
-                </div>
+                <StickyContainer>
+                    <div id="blog" className="section-container">
+                        <Articles />
+                        <div className="section-title">
+                            <Sticky bottomOffset={130}>
+                                {({ style, isSticky }) =>
+                                    <img style={ style } className={ isSticky ? "sticky" : "" } src={ blogTitle } alt="Blog" />}
+                            </Sticky>
+                        </div>
+                    </div>
+                </StickyContainer>
+                <Footer />
             </div>
         );
     }
