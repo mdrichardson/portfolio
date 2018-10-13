@@ -3,8 +3,8 @@ import React from 'react';
 const AboutMeText = 
     <div id="about-me-text">
         <p>
-            I've been a hobby developer since the GeoCities and Angelfire days, back when "the internet" came on a CD, web pages were ugly, 
-            and half the text blinked or scrolled. I’ve built my own PC twice, ran Ubuntu as my main OS for ~2 years 
+            I've been a hobby developer since the GeoCities and Angelfire days, back when "the Internet" came on a CD, web pages were ugly, 
+            and half the text blinked or scrolled. I’ve built my own PCs, ran Ubuntu as my main OS for ~2 years 
             just for fun, flashed custom firmware to my router, wired my whole house up with Cat6, and have automated just about anything 
             I can think of with <a href="http://www.eventghost.net/" alt="EventGhost" target="_blank" rel="noopener noreferrer">EventGhost (Windows) </a> 
             and <a href="https://tasker.joaoapps.com/" alt="Tasker" target="_blank" rel="noopener noreferrer">Tasker (Android)</a>.
