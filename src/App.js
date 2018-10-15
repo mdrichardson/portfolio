@@ -28,6 +28,16 @@ class App extends Component {
     // Set which component is active. Triggered by view
     setActiveComponent = (comp) => this.setState({ activeComponent: comp });
 
+    clearUpdateNotification = () => {
+        const updateNotificationEl = document.getElementById('update-notification');
+        updateNotificationEl.style.display = 'none';
+    }
+
+    refreshPageAndClearUpdateNotification = () => {
+        this.clearUpdateNotification();
+        document.location.reload();
+    }
+
     componentDidMount() {
         // Fancy message in console.log
         fancyLog();
@@ -62,6 +72,16 @@ class App extends Component {
                 </main>
                 { /* broken-notification is shown when Easter Egg is activated */ }
                 <div id="broken-notification"><p>You broke something. Return the value to <span>true</span> to fix it!</p></div>
+                { /* broken-notification is shown when a service worker update is available */ }
+                <div id="update-notification">
+                    <div id="update-message">
+                        A content update is available.
+                    </div>
+                    <div id="update-actions">
+                        <div id="refresh" onClick={ this.refreshPageAndClearUpdateNotification }>REFRESH</div>
+                        <div id="dismiss" onClick={ this.clearUpdateNotification }>DISMISS</div>
+                    </div>
+                </div>
             </div>
         )
     }
