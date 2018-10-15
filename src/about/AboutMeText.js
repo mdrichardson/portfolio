@@ -25,7 +25,7 @@ const AboutMeText =
             watching either the <span className="cougs hover-text">Cougars</span> or the <span className="sounders hover-text">Sounders</span>,&nbsp;
             playing <span className="games hover-text">video </span><span className="games hover-text">games</span> and&nbsp;
             <span className="guitar hover-text">guitar</span>, <span className="homebrewing hover-text">homebrewing </span>
-            <span className="homebrewing hover-text">beer</span>, or hiking and camping <span className="outdoors hover-text">outdoors</span> in the beautiful PNW.
+            <span className="homebrewing hover-text">beer</span>, or hiking and camping <span className="outdoors hover-text">outdoors</span> in the beautiful Pacific Northwest.
         </p>
         <p className="statement">I'm results-driven, quick-learning, can code just about anything, and love a good challenge.</p>
     </div>
