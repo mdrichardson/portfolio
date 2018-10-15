@@ -8,11 +8,22 @@ class ArticlesFilter extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <p>filter test</p>
-            </div>
-        );
+        if (!this.props.tags) {
+            return (<div id="tags-loading">Loading...</div>)
+        } else {
+            return (
+                <div id="articles-filter">
+                    <h2>Filter Articles: </h2>
+                    <div id="tags">
+                        {
+                            this.props.tags.map(tag => ( 
+                                <p key={ tag } className={`tag ${this.props.activeTags.indexOf(tag) > -1 ? 'active' : ''}`} onClick={() => this.props.onClick(tag)}>{ tag }</p>
+                            ))
+                        }
+                    </div>
+                </div>
+                );
+            }
     }
 }
 

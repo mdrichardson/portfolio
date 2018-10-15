@@ -22,7 +22,7 @@ class Blog extends React.Component {
                     <div id="blog" className="section-container">
                         <Articles />
                         <div className="section-title">
-                            <Sticky bottomOffset={130}>
+                            <Sticky bottomOffset={130} topOffset={100}>
                                 {({ style, isSticky }) =>
                                     <img style={ style } className={ isSticky ? "sticky" : "" } src={ blogTitle } alt="Blog" />}
                             </Sticky>

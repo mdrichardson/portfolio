@@ -126,7 +126,7 @@ router.post('/login', (req, res) => {
 router.get('/articles', (req, res, next) => {
     return Article.find()
       .sort({ createdAt: 'descending' })
-      .then((articles) => res.json({ articles: articles.map(article => article.toJSON()) }))
+      .then((articles) => res.send(articles))
       .catch(next);
   });
   
@@ -193,10 +193,17 @@ router.post('/article', (req, res, next) => {
           imageUrl: 'is required',
         },
       });
+    } else {
+        if (!body.imageUrl.includes('/blog-images/')) {
+            body.imageUrl = `/blog-images/${body.imageUrl}`
+        }
     }
     
-    if(!body.imageYOffset) {
-        body.imageYOffset = 0;
+    if(!body.imageXOffsetPercent) {
+        body.imageXOffsetPercent = 0;
+    }
+    if(!body.imageYOffsetPercent) {
+        body.imageYOffsetPercent = 0;
     }
 
     if(!body.body) {

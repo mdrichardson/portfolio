@@ -5,7 +5,8 @@ const { Schema } = mongoose;
 const ArticleSchema = new Schema({
   title: String,
   imageUrl: String,
-  imageYOffset: Number,
+  imageXOffsetPercent: Number,
+  imageYOffsetPercent: Number,
   body: String,
   tags: Array,
 }, { timestamps: true });
@@ -15,7 +16,8 @@ ArticleSchema.methods.toJSON = function() {
     _id: this._id,
     title: this.title,
     imageUrl: this.imageUrl,
-    imageYOffset: this.imageYOffset,
+    imageXOffsetPercent: this.imageXOffsetPercent,
+    imageYOffsetPercent: this.imageYOffsetPercent,
     body: this.body,
     tags: this.tags,
     createdAt: this.createdAt,
