@@ -187,14 +187,18 @@ router.post('/article', (req, res, next) => {
       });
     }
   
-    if(!body.author) {
+    if(!body.imageUrl) {
       return res.status(422).json({
         errors: {
-          author: 'is required',
+          imageUrl: 'is required',
         },
       });
     }
-  
+    
+    if(!body.imageYOffset) {
+        body.imageYOffset = 0;
+    }
+
     if(!body.body) {
       return res.status(422).json({
         errors: {
