@@ -123,34 +123,43 @@ router.post('/login', (req, res) => {
 })
 
 // Get all blog articles
-router.get('/articles', (req, res, next) => {
-    return Article.find()
-      .sort({ createdAt: 'descending' })
-      .then((articles) => res.send(articles))
-      .catch(next);
-  });
+router.get('/articles',(async (req, res, next) => {
+    let articles = await Article.find();
+    const publishedArticles = articles.filter(article => article.isPublished);
+    return res.send(publishedArticles)
+  }));
   
 
 // Get blog article by ID
 router.param('/articles/:id', (req, res, next, id) => {
-    return Articles.findById(id, (err, article) => {
+    return Article.findById(id, (err, article) => {
         if(err) {
-        return res.sendStatus(404);
+            return res.sendStatus(404);
         } else if(article && article.isPublished) {
-        req.article = article;
-        return next();
+            req.article = article;
+            return next();
         }
     }).catch(next);
 });
 
-router.get('/articles/:id', (req, res) => {
-    // Return Unauthorized if article exists but isn't published - If user has token, they can use /preview:id to preview unpublished articles
-    if(!req.article.isPublished) {
-        return res.sendStatus(401);
-    }
-    return res.json({
-        article: req.article.toJSON(),
-    });
+// Get blog article by slug
+router.get('/articles/:slug', (req, res) => {
+    return Article.findOne({
+        slug: req.params.slug
+    }, (err, article) => {
+        console.log(article);
+        if(err) {
+            return res.sendStatus(404);
+        } else if(article && article.isPublished) {
+            return res.send(article)
+        } else {
+            return res.status(404).json({
+                error: {
+                    article: 'article doesn\'t exist or isn\'t published'
+                }
+            })
+        }
+    })
 });
 
 // Ensure all routes below require a token -- Must go after login/register, but before anything that should require valid token

@@ -52,9 +52,10 @@ class ArticlesList extends React.Component {
                 this.props.articles.map(article => {
                     if (this.articleIsShown(article.tags)) {
                         return (
-                            <div key={ article._id }
+                            <a key={ article._id }
                             id={ article._id }
-                            className={ `article-container ${ this.state.animated[article._id] ? 'enter' : 'leave' }` }>
+                            className={ `article-container ${ this.state.animated[article._id] ? 'enter' : 'leave' }` }
+                            href={ `/blog/articles/${article.slug}` }>
                                 <Waypoint onEnter={ () => this.animateEntrance(article._id) } bottomOffset="-22%"/> {/* bottomOffset is negative because waypoint needs to trigger when any part of article visible */ }
                                 <div className="main-image">
                                     <img src={ article.imageUrl } alt={ article.title } style={{ objectPosition: `${ article.imageXOffsetPercent }% ${ article.imageYOffsetPercent }%`}}></img>
@@ -72,7 +73,7 @@ class ArticlesList extends React.Component {
                                         <p key={ `${article.id}-${tag}` } className="article-tag small-text">{ tag }</p>
                                     ))}
                                 </div>
-                            </div>
+                            </a>
                         )
                     } else {
                         return null

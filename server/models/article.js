@@ -11,6 +11,7 @@ const ArticleSchema = new Schema({
   summary: String,
   body: String,
   tags: Array,
+  isPublished: Boolean
 }, { timestamps: true });
 
 ArticleSchema.methods.toJSON = function() {
@@ -24,6 +25,7 @@ ArticleSchema.methods.toJSON = function() {
     summary: this.summary,
     body: this.body,
     tags: this.tags,
+    isPublished: this.isPublished,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt,
   };
