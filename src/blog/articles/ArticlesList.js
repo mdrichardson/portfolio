@@ -41,6 +41,7 @@ class ArticlesList extends React.Component {
         let currentState = this.state;
         currentState.animated[key] = true;
         this.setState(currentState);
+        console.log(this.state);
     }
 
     render() {
@@ -54,7 +55,7 @@ class ArticlesList extends React.Component {
                             <div key={ article._id }
                             id={ article._id }
                             className={ `article-container ${ this.state.animated[article._id] ? 'enter' : 'leave' }` }>
-                                <Waypoint onEnter={ () => this.animateEntrance(article._id) } />
+                                <Waypoint onEnter={ () => this.animateEntrance(article._id) } bottomOffset="-22%"/> {/* bottomOffset is negative because waypoint needs to trigger when any part of article visible */ }
                                 <div className="main-image">
                                     <img src={ article.imageUrl } alt={ article.title } style={{ objectPosition: `${ article.imageXOffsetPercent }% ${ article.imageYOffsetPercent }%`}}></img>
                                 </div>
