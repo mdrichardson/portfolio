@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-const characterLimit = 300;
+const characterLimit = 250;
 
 class ArticlesList extends React.Component {
     constructor(props) {

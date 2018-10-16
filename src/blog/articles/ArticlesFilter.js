@@ -13,7 +13,7 @@ class ArticlesFilter extends React.Component {
         } else {
             return (
                 <div id="articles-filter">
-                    <h2>Filter Articles: </h2>
+                    <h2>Filter Articles:</h2>
                     <div id="tags">
                         {
                             this.props.tags.map(tag => ( 
