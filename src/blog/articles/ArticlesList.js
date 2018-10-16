@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import Waypoint from 'react-waypoint';
 
 const characterLimit = 250;
 
@@ -7,6 +8,7 @@ class ArticlesList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            animated: {} // Map of which articles (by id/key) have had their entrance animation played
         }
     }
 
@@ -34,6 +36,13 @@ class ArticlesList extends React.Component {
         }
     }
 
+    // Animate entrance of each project individually on first visibility
+    animateEntrance = (key) => {
+        let currentState = this.state;
+        currentState.animated[key] = true;
+        this.setState(currentState);
+    }
+
     render() {
         if (!this.props.articles) {
             return (<div id="articles-loading">Loading...</div>)
@@ -44,7 +53,8 @@ class ArticlesList extends React.Component {
                         return (
                             <div key={ article._id }
                             id={ article._id }
-                            className="article-container">
+                            className={ `article-container ${ this.state.animated[article._id] ? 'enter' : 'leave' }` }>
+                                <Waypoint onEnter={ () => this.animateEntrance(article._id) } />
                                 <div className="main-image">
                                     <img src={ article.imageUrl } alt={ article.title } style={{ objectPosition: `${ article.imageXOffsetPercent }% ${ article.imageYOffsetPercent }%`}}></img>
                                 </div>

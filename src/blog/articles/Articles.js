@@ -9,7 +9,7 @@ class Articles extends React.Component {
         this.state = {
             articles: [],
             tags: [],
-            activeTags: {}
+            activeTags: {},
         }
     }
 
