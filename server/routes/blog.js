@@ -175,10 +175,33 @@ router.use(function(req, res, next) {
     }
   });
 
+const getAllSlugs = async () => {
+    const allArticles = await Article.find();
+    const slugMap = allArticles.map(article => article.slug);
+    return slugMap
+}
+
 // Handle creating blog articles
-router.post('/article', (req, res, next) => {
+router.post('/article', (async (req, res, next) => {
     const { body } = req;
   
+    if(!body.slug) {
+        return res.status(422).json({
+          errors: {
+            slug: 'is required',
+          },
+        });
+    } else {
+        const currentSlugs = await getAllSlugs();
+        if(currentSlugs.indexOf(body.slug) > -1) {
+            return res.status(422).json({
+                errors: {
+                  slug: 'already exists. must be unique',
+                },
+              });
+        }
+    }
+
     if(!body.title) {
       return res.status(422).json({
         errors: {
@@ -206,6 +229,14 @@ router.post('/article', (req, res, next) => {
         body.imageYOffsetPercent = 0;
     }
 
+    if(!body.summary) {
+        return res.status(422).json({
+          errors: {
+            summary: 'is required',
+          },
+        });
+      }
+
     if(!body.body) {
       return res.status(422).json({
         errors: {
@@ -222,7 +253,7 @@ router.post('/article', (req, res, next) => {
     return finalArticle.save()
       .then(() => res.json({ article: finalArticle.toJSON() }))
       .catch(next);
-  });  
+  }));  
 
 // Get preview of unpublished article
 router.param('/preview/:id', (req, res, next, id) => {
