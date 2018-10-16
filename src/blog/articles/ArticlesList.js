@@ -21,12 +21,12 @@ class ArticlesList extends React.Component {
     }
 
     articleIsShown = (articleTags) => {
-        if (this.props.activeTags.indexOf('all') > -1) {
+        if (this.props.activeTags['all']) {
             return true
         } else {
             var isShown = false;
             articleTags.forEach(tag => {
-            if (this.props.activeTags.indexOf(tag) > -1) {
+            if (this.props.activeTags[tag]) {
                 isShown = true;
             }
             })

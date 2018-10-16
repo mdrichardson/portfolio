@@ -17,7 +17,7 @@ class ArticlesFilter extends React.Component {
                     <div id="tags">
                         {
                             this.props.tags.map(tag => ( 
-                                <p key={ tag } className={`tag ${this.props.activeTags.indexOf(tag) > -1 ? 'active' : ''}`} onClick={() => this.props.onClick(tag)}>{ tag }</p>
+                                <p key={ tag } className={`tag ${this.props.activeTags[tag] ? 'active' : ''}`} onClick={() => this.props.onClick(tag)}>{ tag }</p>
                             ))
                         }
                     </div>

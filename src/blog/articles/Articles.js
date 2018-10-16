@@ -9,19 +9,14 @@ class Articles extends React.Component {
         this.state = {
             articles: [],
             tags: [],
-            activeTags: []
+            activeTags: {}
         }
     }
 
     toggleFilter = (tag) => {
-        const tagIndex = this.state.activeTags.indexOf(tag);
-        let newTags = this.state.activeTags;
-        if ( tagIndex > -1 ) {
-            newTags.splice(tagIndex, 1);
-        } else {
-            newTags = [...newTags, tag]
-        }
-        this.setState({ activeTags: newTags });
+        const tempState = this.state;
+        tempState.activeTags[tag] = !tempState.activeTags[tag];
+        this.setState(tempState);
     }
 
     async componentDidMount() {
@@ -29,7 +24,13 @@ class Articles extends React.Component {
         const tagsRespose = await fetch('https://www.mdrichardson.net:3100/blog/tags');
         const tags = await tagsRespose.json();
         this.setState( { tags: tags });
-        this.setState({ activeTags: [...this.state.tags] });
+        // Set active tags, dynamically
+        tags.forEach(tag => {
+            let tempState = this.state;
+            tempState.activeTags[tag] = true;
+            this.setState(tempState);
+        })
+        console.log(this.state);
         // Fetch Articles
         const articlesRespose = await fetch('https://www.mdrichardson.net:3100/blog/articles');
         const articles = await articlesRespose.json();
