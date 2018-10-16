@@ -45,7 +45,7 @@ router.get('/', (req, res) => {
 })
 
 const getCurrentTags = async () => {
-    const currentTags = await Tag.find();
+    const currentTags = await Tag.find().sort({ name: 'ascending' });
     const tagMap = currentTags.map(tag => tag.name);
     return tagMap
 }
