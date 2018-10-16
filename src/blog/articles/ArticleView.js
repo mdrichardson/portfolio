@@ -7,6 +7,10 @@ class ArticleView extends React.Component {
         }
     }
 
+    // TODO: Handle 404/no article
+    // TODO: Display article info
+    // TODO: style
+
     async componentDidMount() {
         // Fetch Article
         const slug = this.props.match.params.slug;
