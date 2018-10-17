@@ -11,12 +11,14 @@ Like many aspiring developers, I built this site to showcase my previous work an
 * React
 * JavaScript
 * SASS
+* Node.js
+* Express
 
 ## Features:
 
-* The properties for the "Michael Richardson" object at the top, as well as all of these projects, are dynamically loaded
+* Uses Node.js, Express, and NodeMailer for Contact form
 * Works in Chrome, Edge, IE, and mobile
-* Hosted on an AWS EC2 instance running Ubuntu
+* Hosted on an AWS EC2 instance running Ubuntu and Apache
 * 100s on all Lighthouse Audits:
 
 ![Lighthouse Scores](https://www.mdrichardson.net/static/media/lighthouse.59e521b5.png)
