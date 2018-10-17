@@ -30,7 +30,6 @@ class Articles extends React.Component {
             tempState.activeTags[tag] = true;
             this.setState(tempState);
         })
-        console.log(this.state);
         // Fetch Articles
         const articlesRespose = await fetch('https://www.mdrichardson.net:3100/blog/articles');
         const articles = await articlesRespose.json();

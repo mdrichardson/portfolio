@@ -5,7 +5,6 @@ import createHistory from 'history/createBrowserHistory';
 import './index.css';
 import App from './App';
 import Blog from './blog/Blog';
-import ArticleView from './blog/articles/ArticleView';
 import registerServiceWorker from './registerServiceWorker';
 import ReactGA from 'react-ga';
 
@@ -22,8 +21,7 @@ ReactDOM.render((
     <Router history={ createHistory() }>
         <Switch>
             <Route exact path="/" component={ App } />
-            <Route exact path="/blog" component={ Blog } />
-            <Route exact path="/blog/articles/:slug" component={ ArticleView } />
+            <Route path="/blog" component={ Blog } />
         </Switch>
     </Router>
 ), document.getElementById('root')

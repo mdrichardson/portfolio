@@ -43,7 +43,8 @@ class NavBar extends React.Component {
                 this.closeMenu();
             // We need to set the bottom margin of the hr dynamically so it only applies when it's visible, which is when we're at the top of the page
             } else if (window.scrollY < 64){
-                document.getElementById('menu-hr').style.marginBottom = '100vh';
+                let marginBottom = this.props.navHrHidden ? '35vh' : '100vh;'
+                document.getElementById('menu-hr').style.marginBottom = marginBottom;
             }
             // Add event listener for scrolling so that the menu closes on scroll
             if (this.state.animateClassName !== 'animated') {
@@ -53,6 +54,7 @@ class NavBar extends React.Component {
     }
 
     render() {
+        console.log(this.props.navHrHidden)
         return(
             <div>
                 <AppBar position="static" id="nav" className={ this.props.navFixed ? "fixed" : "" }>
@@ -69,7 +71,7 @@ class NavBar extends React.Component {
                         </div>
                     </Toolbar>
                 </AppBar>
-                <hr id ="menu-hr" className={ this.state.animateClassName }/>
+                <hr id ="menu-hr" className={ this.state.animateClassName } style={ this.props.navHrHidden ? { opacity: '0' } : {} }/>
             </div>
         )
     }

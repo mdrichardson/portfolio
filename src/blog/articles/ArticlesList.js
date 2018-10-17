@@ -41,7 +41,6 @@ class ArticlesList extends React.Component {
         let currentState = this.state;
         currentState.animated[key] = true;
         this.setState(currentState);
-        console.log(this.state);
     }
 
     render() {
