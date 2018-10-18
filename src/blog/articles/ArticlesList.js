@@ -12,14 +12,14 @@ class ArticlesList extends React.Component {
         }
     }
 
-    shortenBodyIfNecessary = (body) => {
-        let outputBody = '';
-        if (body.length > characterLimit) {
-            outputBody = `${ body.substring(0, characterLimit) } ...`
+    shortenSummaryIfNecessary = (summary) => {
+        let outputSummary = '';
+        if (summary.length > characterLimit) {
+            outputSummary = `${ summary.substring(0, characterLimit) } ...`
         } else {
-            outputBody = body;
+            outputSummary = summary;
         }
-        return outputBody;
+        return outputSummary;
     }
 
     articleIsShown = (articleTags) => {
@@ -65,7 +65,7 @@ class ArticlesList extends React.Component {
                                     <div className="date-year">{ moment(article.createdAt).format('YYYY') }</div>
                                 </div>
                                 <h2>{ article.title }</h2>
-                                <p className="article-body">{ this.shortenBodyIfNecessary(article.body) }</p>
+                                <p className="article-summary">{ this.shortenSummaryIfNecessary(article.summary) }</p>
                                 <p className="article-read-more">read more </p>
                                 <div className="article-tags">
                                     { article.tags.map(tag => (
