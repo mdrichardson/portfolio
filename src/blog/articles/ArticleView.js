@@ -2,6 +2,9 @@ import React from 'react';
 import createHistory from "history/createBrowserHistory";
 import './articleView.css';
 import moment from 'moment';
+import RelatedArticles from './RelatedArticles';
+
+const ReactMarkdown = require('react-markdown');
 
 const history = createHistory();
 
@@ -26,10 +29,6 @@ class ArticleView extends React.Component {
         }, 1000)
     }
 
-    // TODO: Handle 404/no article
-    // TODO: Display article info
-    // TODO: style
-
     async componentDidMount() {
         // Fetch Article
         const slug = this.props.match.params.slug;
@@ -51,25 +50,26 @@ class ArticleView extends React.Component {
             )
         } else {
             return (
-                <div id="article-view" className="section-container">
-                    <div id="article">
-                        <div id="main-image">
+                <div id="article-view">
+                    <div id="article" className="section-container">
+                        <div id="single-main-image">
                             <img src={ this.state.article.imageUrl } alt={ this.state.article.title } style={{ objectPosition: `${ this.state.article.imageXOffsetPercent }% ${ this.state.article.imageYOffsetPercent }%`}}></img>
                         </div>
-                        <div id="article-date">
-                            <div id="date-day">{ moment(this.state.article.createdAt).format('DD') }</div>
-                            <div id="date-month">{ moment(this.state.article.createdAt).format('MMM').toUpperCase() }</div>
-                            <div id="date-year">{ moment(this.state.article.createdAt).format('YYYY') }</div>
+                        <div id="single-article-date">
+                            <div id="single-date-day">{ moment(this.state.article.createdAt).format('DD') }</div>
+                            <div id="single-date-month">{ moment(this.state.article.createdAt).format('MMM').toUpperCase() }</div>
+                            <div id="single-date-year">{ moment(this.state.article.createdAt).format('YYYY') }</div>
                         </div>
-                        <h2>{ this.state.article.title }</h2>
-                        <p id="article-body">{ this.state.article.body }</p>
-                        <div id="article-tags">
+                        <h1>{ this.state.article.title }</h1>
+                        <div id="single-article-body"><ReactMarkdown source={ this.state.article.body } /></div>
+                        <div id="single-article-tags">
                             { this.state.article.tags.map(tag => (
-                                <p key={ `${this.state.article.id}-${tag}` } className="article-tag small-text">{ tag }</p>
+                                <p key={ `${this.state.article.id}-${tag}` } className="single-article-tag">{ tag }</p>
                             ))}
                         </div>
                     </div>
                     <div id="related">
+                        <RelatedArticles tags={ this.state.article.tags } currentArticle={ this.state.article._id }/>
                     </div>
                 </div>
             )
