@@ -54,7 +54,6 @@ class NavBar extends React.Component {
     }
 
     render() {
-        console.log(this.props.navHrHidden)
         return(
             <div>
                 <AppBar position="static" id="nav" className={ this.props.navFixed ? "fixed" : "" }>

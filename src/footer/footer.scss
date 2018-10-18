@@ -53,11 +53,10 @@ $footerHeight: 60px;
 
                 flex: 1 1 auto;
                 text-align: center;
-                display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                height: $footerHeight;
+                line-height: $footerHeight;
     
                 &:hover {
                     background-color: $yellow;
