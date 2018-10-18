@@ -35,24 +35,24 @@ class NavLinks extends React.Component {
     render() {
         return(
             <ul id="menu">
-                <li className="navItem"><div>
+                <li className="navItem">
                     <NavLink to="/#Home" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Home</NavLink>
-                </div></li>
-                <li className={ this.props.active === 'skills' ? "active navItem" : "navItem" }><div>
+                </li>
+                <li className={ this.props.active === 'skills' ? "active navItem" : "navItem" }>
                     <NavLink to="/#Skills" scroll={el => this.customScroll(el) } onClick={ this.closeMenu }>Skills</NavLink>
-                </div></li>
-                <li className={ this.props.active === 'projects' ? "active navItem" : "navItem" }><div>
+                </li>
+                <li className={ this.props.active === 'projects' ? "active navItem" : "navItem" }>
                     <NavLink to="/#Projects" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Projects</NavLink>
-                </div></li>
+                </li>
                 <li className={ this.props.active === 'about' ? "active navItem" : "navItem" }>
-                    <div><NavLink to="/#About" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>About</NavLink>
-                </div></li>
+                    <NavLink to="/#About" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>About</NavLink>
+                </li>
                 <li className={ this.props.active === 'blog' ? "active navItem" : "navItem" }>
-                    <div><Link to="/blog" onClick={ this.closeMenu }>Blog</Link>
-                </div></li>
-                <li className={ this.props.active === 'contact' ? "active navItem" : "navItem" }><div>
+                    <Link to="/blog" onClick={ this.closeMenu }>Blog</Link>
+                </li>
+                <li className={ this.props.active === 'contact' ? "active navItem" : "navItem" }>
                     <NavLink to="/#Contact" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Contact</NavLink>
-                </div></li>
+                </li>
             </ul>
         )
     }
