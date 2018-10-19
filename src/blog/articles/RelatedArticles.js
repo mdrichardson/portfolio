@@ -66,9 +66,12 @@ class RelatedArticles extends React.Component {
     render() {
         return (
             <StickyContainer>
-                <div id="related-content"  className="section-container">
-                    <div id="related-articles-list">
-                        <ArticlesList articles={ this.state.displayedArticles }  activeTags={ this.state.activeTags }/>
+                <div id="related-container" className="section-container">
+                    <div id="related-content">
+                        <div id="related-articles-list">
+                            <ArticlesList articles={ this.state.displayedArticles }  activeTags={ this.state.activeTags }/>
+                        </div>
+                        <button id="view-blog" className="hvr-underline-from-center hvr-grow">View Blog</button>
                     </div>
                     <div className="section-title">
                         <Sticky bottomOffset={130}>
