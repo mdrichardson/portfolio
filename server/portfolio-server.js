@@ -152,8 +152,10 @@ app.post('/send', (req, res) => {
 
 // Init Blog
 const blog = require('./routes/blog');
+const blogAdmin = require('./routes/blogAdmin');
 
 app.use('/blog', blog);
+app.use('/blog/admin', blogAdmin);
 app.get('/', function(req, res){
     res.send('Test successful!')
 })
