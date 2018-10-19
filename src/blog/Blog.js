@@ -10,36 +10,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import { Route } from 'react-router-dom';
 
 
-const blogHome = () => {
 
-    const showLoginForm = () => {
-        const loginForm = document.getElementById('blog-login-container');
-        loginForm.style.display = 'block';
-    }
-
-    const hideLoginForm = () => {
-        const loginForm = document.getElementById('blog-login-container');
-        loginForm.style.display = 'none';
-    }
-
-    return (
-        <StickyContainer>
-            <div id="blog" className="section-container">
-                <Articles />
-                <div className="section-title">
-                    <Sticky bottomOffset={130} topOffset={100}>
-                        {({ style, isSticky }) =>
-                            <img style={ style } className={ isSticky ? "sticky" : "" } src={ blogTitle } alt="Blog" />}
-                    </Sticky>
-                </div>
-            </div>
-            <div id="login" onMouseLeave={ hideLoginForm }>
-                <p id="login-text" onClick={ showLoginForm }>Login</p>
-                <LoginForm />
-            </div>
-        </StickyContainer>
-    )
-}
 
 class Blog extends React.Component {
     constructor(props) {
@@ -48,12 +19,53 @@ class Blog extends React.Component {
         }
     }
 
+    blogHome = () => {
+    
+        return (
+            <StickyContainer>
+                <div id="blog" className="section-container">
+                    <Articles />
+                    <div className="section-title">
+                        <Sticky bottomOffset={130} topOffset={100}>
+                            {({ style, isSticky }) =>
+                                <img style={ style } className={ isSticky ? "sticky" : "" } src={ blogTitle } alt="Blog" />}
+                        </Sticky>
+                    </div>
+                </div>
+                <div id="login" onMouseLeave={ this.hideLoginForm }>
+                    <LoginForm />
+                </div>
+            </StickyContainer>
+        )
+    }
+
+    showLoginForm = () => {
+        const loginForm = document.getElementById('blog-login-container');
+        loginForm.style.display = 'block';
+    }
+
+    hideLoginForm = () => {
+        const loginForm = document.getElementById('blog-login-container');
+        loginForm.style.display = 'none';
+    }
+
+    watchForLoginHotkeys = (event) => {
+        // 76 = "L" key, for "login"
+        if (event.ctrlKey && event.altKey && event.keyCode === 76) {
+            this.showLoginForm();
+        }
+    }
+
+    componentDidMount() {
+        document.onkeydown = this.watchForLoginHotkeys;
+    }
+
     render() {
         return (
             <div>
                 <NavBar navFixed={ true } navHrHidden={ true }/>
                 <hr id ="blog-hr"/>
-                <Route exact path="/blog" component={ blogHome } />
+                <Route exact path="/blog" component={ this.blogHome } />
                 <Route path="/blog/articles/:slug" component={ ArticleView } />
                 <Footer />
             </div>

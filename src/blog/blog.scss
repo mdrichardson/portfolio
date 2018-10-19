@@ -28,16 +28,11 @@
 }
 
 #login {
-
-    #login-text {
-        opacity: 0;
-        transition: opacity 1s ease-out;
-
-        &:hover {
-            opacity: 1;
-            transition: opacity 0.25s ease-out;
-        }
-    }
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    background: $black;
+    width: 100vw;
 
     #blog-login-container {
         display: none;
