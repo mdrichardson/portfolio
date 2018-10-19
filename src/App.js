@@ -5,6 +5,7 @@ import Hero from './hero/Hero';
 import Skills from './skills/Skills';
 import Projects from './projects/Projects';
 import About from './about/About';
+import RelatedArticles from './blog/articles/RelatedArticles';
 import Contact from './contact/Contact';
 import Footer from './footer/Footer';
 import Waypoint from 'react-waypoint';
@@ -56,6 +57,9 @@ class App extends Component {
                     <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('about') } }  bottomOffset="50%"/>
                     <div id="about-section">
                         <About />
+                        <div id="related">
+                            <RelatedArticles sectionTitle="blog" loadAll={ true }/>
+                        </div>
                         <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('contact') } }  bottomOffset="50%"/>
                         <Contact />
                     </div>

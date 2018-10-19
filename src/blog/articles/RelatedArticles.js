@@ -1,7 +1,9 @@
 import React from 'react';
 import relatedTitle from '../../images/related.svg';
+import blogTitle from '../../images/blog.svg';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ArticlesList from './ArticlesList';
+import './articleView.css';
 
 const maxArticles = 3;
 
@@ -11,15 +13,21 @@ class RelatedArticles extends React.Component {
         this.state = {
             articles: [],
             activeTags: {},
-            displayedArticles: []
+            displayedArticles: [],
+            sectionTitle: null
         }
     }
 
     async componentDidMount() {
+        this.setState({ sectionTitle: this.props.sectionTitle === 'blog' ? blogTitle : relatedTitle })
         // Fetch Articles
         const articlesRespose = await fetch('https://www.mdrichardson.net:3100/blog/articles');
         const articles = await articlesRespose.json();
         this.setState({ articles: articles });
+        if (this.props.loadAll) {
+            this.filterAndLimitArticles(['all']);
+            this.setState({ activeTags: {'all': true}})
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -41,7 +49,6 @@ class RelatedArticles extends React.Component {
         let remainingArticles = maxArticles;
         this.state.articles.forEach(article => {
             if (this.atLeastOneArticleTagMatchesActiveTags(article.tags, activeTags) && remainingArticles > 0 && this.props.currentArticle !== article._id) {
-                console.log('match')
                 const currentlyDisplayedArticles = this.state.displayedArticles;
                 currentlyDisplayedArticles.push(article);
                 this.setState({ displayedArticles: currentlyDisplayedArticles })
@@ -51,23 +58,27 @@ class RelatedArticles extends React.Component {
     }
 
     atLeastOneArticleTagMatchesActiveTags = (articleTags, activeTags) => {
-        let haveMatch = false;
-        articleTags.forEach(articleTag => {
-            activeTags.forEach(activeTag => {
-                if (articleTag === activeTag) {
-                    haveMatch = true;
-                    return true
-                }
+        if (activeTags.includes('all')) {
+            return true
+        } else {
+            let haveMatch = false;
+            articleTags.forEach(articleTag => {
+                activeTags.forEach(activeTag => {
+                    if (articleTag === activeTag) {
+                        haveMatch = true;
+                        return true
+                    }
+                })
             })
-        })
-        return haveMatch
+            return haveMatch
+            }
     }
 
     render() {
         return (
             <StickyContainer>
                 <div id="related-container" className="section-container">
-                    <div id="related-content">
+                    <div id="related-content" className="content-container">
                         <div id="related-articles-list">
                             <ArticlesList articles={ this.state.displayedArticles }  activeTags={ this.state.activeTags }/>
                         </div>
@@ -76,7 +87,7 @@ class RelatedArticles extends React.Component {
                     <div className="section-title">
                         <Sticky bottomOffset={130}>
                             {({ style, isSticky }) =>
-                                <img style={ style } className={ isSticky ? "sticky" : "" } src={ relatedTitle } alt="Related" />}
+                                <img style={ style } className={ isSticky ? "sticky" : "" } src={ this.state.sectionTitle } alt={ this.props.sectionTitle === 'blog' ? 'Blog' : 'Related' } />}
                         </Sticky>
                     </div>
                 </div>

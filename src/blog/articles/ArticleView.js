@@ -69,7 +69,7 @@ class ArticleView extends React.Component {
                         </div>
                     </div>
                     <div id="related">
-                        <RelatedArticles tags={ this.state.article.tags } currentArticle={ this.state.article._id }/>
+                        <RelatedArticles tags={ this.state.article.tags } currentArticle={ this.state.article._id } sectionTitle="related" />
                     </div>
                 </div>
             )
