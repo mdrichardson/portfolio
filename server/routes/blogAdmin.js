@@ -14,7 +14,8 @@ const public_cert = fs.readFileSync(private.JWT_PUB_KEY);
 // Load models
 require('../models/article')
 const Article = mongoose.model('Article');
-const Tag = require('../models/tag');
+require('../models/tag');
+const Tag = mongoose.model('Tag');
 
 // Quick allow/disallow of registration. True for allow, false for disallow
 var allow_registration = false;

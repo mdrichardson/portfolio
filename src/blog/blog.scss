@@ -26,3 +26,98 @@
         padding-top: 10em;
     }
 }
+
+#login {
+
+    #login-text {
+        opacity: 0;
+        transition: opacity 1s ease-out;
+
+        &:hover {
+            opacity: 1;
+            transition: opacity 0.25s ease-out;
+        }
+    }
+
+    #blog-login-container {
+        display: none;
+
+        form {
+            font-size: 1.75rem;
+            max-width: 800px;
+            padding: 0.5em;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+        
+            & > * {
+                flex: 1 1 auto;
+            }
+        
+            .exceeded-limit, :disabled {
+                opacity: 0.2;
+            }
+        
+            input,
+            textarea {
+                padding: 0.5rem;
+                color: $black;
+                font-size: 1.5rem;
+                background-color: rgba(255, 255, 255, 0.3);
+                border: 2px solid rgba(0, 0, 0, 0.2);
+                box-shadow: $smallShadow;
+                // necessary for removing the yellow autofill background color
+                transition: background-color 5000s ease-in-out 0s;
+        
+                @include six-hundred {
+                    font-size: 1rem;
+                }
+        
+                &::placeholder {
+                    color: rgba(255, 255, 255, 0.5);
+                }
+        
+                &:focus,
+                &:active,
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.6);
+                    outline: none;
+                    // necessary for removing the yellow autofill background color
+                    transition: background-color 5000s ease-in-out 0s;
+                }
+            }
+        
+            input:-webkit-autofill,
+            textarea:-webkit-autofill {
+                -webkit-text-fill-color: $black !important;
+            }
+        
+            .err-border {
+                border: 2px solid $red;
+            }
+        
+            #submit {
+        
+                button {
+                    display: block;
+                    margin: auto;
+                    width: 7em;
+                    height: 3rem;
+                    font-size: 1.5rem;
+                    background-color: $yellow;
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    color: $black;
+                    box-shadow: $smallShadow;
+        
+                    &:hover:not(:disabled) {
+                        cursor: pointer;
+                    }
+        
+                    &:hover:disabled {
+                        cursor: not-allowed;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import './blog.css';
+import LoginForm from './admin/LoginForm';
 import NavBar from '../nav/NavBar';
 import blogTitle from '../images/blog.svg';
 import Articles from './articles/Articles';
@@ -10,6 +11,17 @@ import { Route } from 'react-router-dom';
 
 
 const blogHome = () => {
+
+    const showLoginForm = () => {
+        const loginForm = document.getElementById('blog-login-container');
+        loginForm.style.display = 'block';
+    }
+
+    const hideLoginForm = () => {
+        const loginForm = document.getElementById('blog-login-container');
+        loginForm.style.display = 'none';
+    }
+
     return (
         <StickyContainer>
             <div id="blog" className="section-container">
@@ -20,6 +32,10 @@ const blogHome = () => {
                             <img style={ style } className={ isSticky ? "sticky" : "" } src={ blogTitle } alt="Blog" />}
                     </Sticky>
                 </div>
+            </div>
+            <div id="login" onMouseLeave={ hideLoginForm }>
+                <p id="login-text" onClick={ showLoginForm }>Login</p>
+                <LoginForm />
             </div>
         </StickyContainer>
     )

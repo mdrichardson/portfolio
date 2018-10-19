@@ -6,7 +6,8 @@ const mongoose = require('mongoose');
 // Load models
 require('../models/article')
 const Article = mongoose.model('Article');
-const Tag = require('../models/tag');
+require('../models/tag');
+const Tag = mongoose.model('Tag');
 
 // Load private DB info
 const db = private.DB_URL;
