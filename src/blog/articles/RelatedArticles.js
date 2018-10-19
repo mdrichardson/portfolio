@@ -71,7 +71,7 @@ class RelatedArticles extends React.Component {
                         <div id="related-articles-list">
                             <ArticlesList articles={ this.state.displayedArticles }  activeTags={ this.state.activeTags }/>
                         </div>
-                        <button id="view-blog" className="hvr-underline-from-center hvr-grow">View Blog</button>
+                        <a id="view-blog" href="/blog" className="hvr-underline-from-center hvr-grow">View Blog</a>
                     </div>
                     <div className="section-title">
                         <Sticky bottomOffset={130}>
