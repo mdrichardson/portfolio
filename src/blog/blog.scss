@@ -1,8 +1,15 @@
 @import '../global-variables.scss';
 @import '../animations.scss';
 
+#nav {
+    
+    #header-name > span.hidden {
+        opacity: 1;
+    }
+}
+
 #blog-hr {
-    margin: $navHeight 50px;
+    margin: 0 50px;
     display: block;
     height: 1px;
     border: 0;
@@ -10,6 +17,17 @@
 }
 
 #blog {
+
+    background: $red; /* Old browsers */
+    background: -moz-linear-gradient(45deg, $yellow 0%, $red 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, $yellow 0%,$red 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, $yellow 0%,$red 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$red,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
     min-height: 100vh;
 
     :first-child {

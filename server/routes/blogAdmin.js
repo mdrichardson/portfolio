@@ -86,20 +86,50 @@ router.post('/login', (req, res) => {
     }) 
 })
 
+const validateToken = (token) => {
+    const response = jwt.verify(token, public_cert, { algorithm: 'RS256' }, function(err, decoded) {      
+        if (err) {
+          console.log(err)
+          return false  
+        } else {
+          return decoded
+        }
+      });
+    return response
+}
+
+router.post('/validateToken', (req, res) => {
+    const { body } = req;
+
+    if(!body.token) {
+        return res.status(422).json({
+            errors: {
+                token: 'is required'
+            }
+        });
+    } else {
+        const validTokenIfExists = validateToken(body.token);
+        if (validTokenIfExists) {
+            return res.status(200).send();
+        } else {
+            return res.status(401).json({ success: false, message: 'Failed to authenticate token.' }).send();    
+        }
+    }
+
+
+})
+
 // Ensure all routes below require a token -- Must go after login/register, but before anything that should require valid token
 router.use(function(req, res, next) {
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
     if (token) {
-      jwt.verify(token, public_cert, { algorithm: 'RS256' }, function(err, decoded) {      
-        if (err) {
-            console.log(err)
-          return res.json({ success: false, message: 'Failed to authenticate token.' });    
+        const validTokenIfExists = validateToken(token);
+        if (validTokenIfExists) {
+            req.decoded = validTokenIfExists;
+            next();
         } else {
-          req.decoded = decoded;    
-          next();
-        }
-      });
-  
+            return res.json({ success: false, message: 'Failed to authenticate token.' });    
+        }  
     } else {
       return res.status(403).send({ 
           success: false, 
