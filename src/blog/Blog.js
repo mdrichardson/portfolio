@@ -10,7 +10,6 @@ import AdminToolbar from './admin/AdminToolbar';
 import Footer from '../footer/Footer';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { Route } from 'react-router-dom';
-import Waypoint from 'react-waypoint';
 
 class Blog extends React.Component {
     constructor(props) {
@@ -20,21 +19,6 @@ class Blog extends React.Component {
             navFixed: false,
             token: ''
         }
-    }
-
-    // Fix the nav bar to the top
-    fixNav = () => {
-        this.setState({ navFixed: true });
-        let blogHr = document.getElementById('blog-hr');
-        blogHr.style.marginTop = '64px';
-        
-    }
-
-    // Unfix the nav bar
-    unfixNav = () => {
-        this.setState({ navFixed: false });
-        let blogHr = document.getElementById('blog-hr');
-        blogHr.style.marginTop = 0;
     }
 
     blogHome = () => {
@@ -107,10 +91,8 @@ class Blog extends React.Component {
     render() {
         return (
             <div>
-                <NavBar navFixed={ this.state.navFixed } navHrHidden={ true }/>
-                <Waypoint onEnter={ this.unfixNav } />
+                <NavBar navFixed={ true } navHrHidden={ true }/>
                 <hr id ="blog-hr"/>
-                <Waypoint onEnter={ this.fixNav } bottomOffset="3000px"/>
                 <Route exact path="/blog" component={ this.blogHome } />
                 <Route path="/blog/articles/:slug" component={ ArticleView } />
                 <Route path="/blog/admin/newPost" component={ () => <NewPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token }/> }/>
