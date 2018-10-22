@@ -31,34 +31,45 @@ const FormStructure = ({
             </div>
             <div id="summary-container">
                 <div className="input-container">
-                    <Field type="textarea" name="summary" id="summary" placeholder="Summary" 
+                    <Field component="textarea" name="summary" id="summary" placeholder="Summary" 
                         className={ touched.summary && errors.summary ? "err-border" : "" } aria-label="summary"/>
                 </div>
                 <div id="summary-error" className="error" hidden={ !touched.summary || !errors.summary }><p>{ errors.summary }</p></div>
             </div>
             <div id="body-container">
                 <div className="input-container">
-                    <Field type="textarea" name="body" id="body" placeholder="Body Text" 
+                    <Field component="textarea" name="body" id="body" placeholder="Body Text" 
                         className={ touched.body && errors.body ? "err-border" : "" } aria-label="body"/>
                 </div>
                 <div id="body-error" className="error" hidden={ !touched.body || !errors.body }><p>{ errors.body }</p></div>
             </div>
             <div id="tags-container">
-                <TagCheckboxes values={ values } />
+                <h2>Tags</h2>
+                <TagCheckboxes values={ values }/>
                 <div id="tags-error" className="error" hidden={ !touched.tags || !errors.tags }><p>{ errors.tags }</p></div>
             </div>
-            <div id="published-container">
-                <Field name="published" component="input" type="checkbox" checked={values.published} />
-                <label htmlFor="published">Published?</label>
-                <div id="published-error" className="error" hidden={ !touched.published || !errors.published }><p>{ errors.published }</p></div>
+            <div id="isPublished-container">
+                <label htmlFor="isPublished">
+                    <Field name="isPublished" component="input" type="checkbox" checked={values.isPublished} />
+                    Published?
+                </label>
+                <div id="isPublished-error" className="error" hidden={ !touched.isPublished || !errors.isPublished }><p>{ errors.isPublished }</p></div>
             </div>
             <div id="image-container">
-                <Field type="number" name="x_offset" id="x_offset" placeholder="0" aria-label="x_offset"/>
-                <Field type="number" name="y_offset" id="y_offset" placeholder="0" aria-label="y_offset"/>
-                <Field type="text" name="imageUrl" id="imageUrl" placeholder="URL" aria-label="image url"/>
+                <div id="image-fields">
+                    <label htmlFor="x_offset">
+                        <Field type="number" name="x_offset" id="x_offset" placeholder="0" aria-label="x_offset"/>
+                        X_Offset
+                    </label>
+                    <label htmlFor="x_offset">
+                    <Field type="number" name="y_offset" id="y_offset" placeholder="0" aria-label="y_offset"/>
+                    Y_Offset
+                    </label>
+                    <Field type="text" name="imageUrl" id="imageUrl" placeholder="URL" aria-label="image url"/>
+                </div>
                 <div id="image-error" className="error" hidden={ !touched.image || !errors.image }><p>{ errors.image }</p></div>
             </div>
-            <div id="submit">
+            <div id="submit" hidden={ isSubmitting }>
                 <button type="submit" 
                     className={ !isSubmitting && !errors.exceededLimit && !errors.name && !errors.email && !errors.message && values.message !== '' ? "hvr-underline-from-center hvr-grow" : "" } 
                     disabled={ isSubmitting || errors.exceededLimit || errors.name || errors.email || errors.message || values.message === ''}>
@@ -82,6 +93,7 @@ const FormikForm = withFormik({
         summary: '',
         body: '',
         tags: [],
+        isPublished: true,
         allTags: props.allTags,
         x_offset: 0,
         y_offset: 0,
@@ -98,8 +110,7 @@ const FormikForm = withFormik({
         y_offset: Yup.number().min(0).max(100).required(),
         imageUrl: Yup.string().min(1).max(2000).required()
     }),
-    handleSubmit(values, { props, setSubmitting, setStatus }) {
-        console.log('submitting')
+    handleSubmit(values, { setSubmitting, setStatus }) {
         setSubmitting(true);
         fetch('https://www.mdrichardson.net:3100/blog/admin/article', {
             method: 'POST',
@@ -130,10 +141,18 @@ class NewPost extends React.Component {
         }
     }
 
-    async componentDidMount() {
+    getTags = async () => {
         const tagsResponse = await fetch('https://www.mdrichardson.net:3100/blog/tags');
         const tags = await tagsResponse.json();
-        this.setState({ tags: tags })
+        !this.isCancelled && this.setState({ tags: tags })
+    }
+
+    componentDidMount() {
+        if (this.state.tags.length === 0) this.getTags();
+    }
+
+    componentWillUnmount() {
+        this.isCancelled = true;
     }
 
     render() {
@@ -141,15 +160,18 @@ class NewPost extends React.Component {
             return (
                 <h1>Unauthorized</h1>
             )
-        }
-        return (
-            <div id="new-post-container" className="section-container">
-                <div id="new-post-content">
-                    <h1>New Post</h1>
-                    <FormikForm allTags={ this.state.tags } token={ this.props.token } enableReinitialize={true}/>
+        } if (this.state.tags.length === 0) {
+            return (<h1>Loading...</h1>)
+        } else {
+            return (
+                <div id="new-post-container" className="section-container">
+                    <div id="new-post-content">
+                        <h1>New Post</h1>
+                        <FormikForm allTags={ this.state.tags } token={ this.props.token } />
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 
