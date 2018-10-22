@@ -21,8 +21,8 @@ class Articles extends React.Component {
 
     async componentDidMount() {
         // Fetch Tags
-        const tagsRespose = await fetch('https://www.mdrichardson.net:3100/blog/tags');
-        const tags = await tagsRespose.json();
+        const tagsResponse = await fetch('https://www.mdrichardson.net:3100/blog/tags');
+        const tags = await tagsResponse.json();
         this.setState( { tags: tags });
         // Set active tags, dynamically
         tags.forEach(tag => {

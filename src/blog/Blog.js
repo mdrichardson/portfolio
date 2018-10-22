@@ -5,6 +5,8 @@ import NavBar from '../nav/NavBar';
 import blogTitle from '../images/blog.svg';
 import Articles from './articles/Articles';
 import ArticleView from './articles/ArticleView';
+import NewPost from './admin/NewPost';
+import AdminToolbar from './admin/AdminToolbar';
 import Footer from '../footer/Footer';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { Route } from 'react-router-dom';
@@ -15,7 +17,8 @@ class Blog extends React.Component {
         super(props);
         this.state = {
             userIsAdmin: false,
-            navFixed: false
+            navFixed: false,
+            token: ''
         }
     }
 
@@ -69,6 +72,7 @@ class Blog extends React.Component {
                 if (status === 200) {
                     console.log('Successful Login with Valid Token!!')
                     this.setState({ userIsAdmin: true });
+                    this.setState({ token: token });
                 }
             } catch(err) {
                 console.error(err);
@@ -109,6 +113,8 @@ class Blog extends React.Component {
                 <Waypoint onEnter={ this.fixNav } bottomOffset="3000px"/>
                 <Route exact path="/blog" component={ this.blogHome } />
                 <Route path="/blog/articles/:slug" component={ ArticleView } />
+                <Route path="/blog/admin/newPost" component={ () => <NewPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token }/> }/>
+                { this.state.userIsAdmin ? <AdminToolbar /> : null }
                 <Footer />
             </div>
         );

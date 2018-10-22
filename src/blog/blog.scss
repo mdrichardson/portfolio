@@ -2,7 +2,7 @@
 @import '../animations.scss';
 
 #nav {
-    
+
     #header-name > span.hidden {
         opacity: 1;
     }
@@ -132,5 +132,23 @@
                 }
             }
         }
+    }
+}
+
+#admin-toolbar {
+    position: fixed;
+    top: $navHeight;
+    z-index: 10;
+    height: $navHeight;
+    width: 100vw;
+    background: $black;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 0 3em;
+
+    a {
+        font-size: 2rem;
+        color: $white;
     }
 }
