@@ -1,0 +1,90 @@
+@import '../../global-variables.scss';
+@import url('https://fonts.googleapis.com/css?family=PT+Mono:400,700');
+
+.hljs {
+    background: rgba(1,22,39, 0.75);
+    padding: 1.5em 2em;
+    margin: 1.5em 2em;
+    width: auto;
+    display: inline-block;
+    overflow: auto;
+
+    & * {
+        font-size: 1.5rem;
+        font-family: 'PT Mono', monospace;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-literal,
+    .hljs-section {
+        color: $red;
+        font-weight: bold;
+    }
+
+    .hljs-link {
+        color: $white;
+    }
+
+    .hljs-subst {
+        color: $red;
+    }
+
+    .hljs-string {
+        color: $yellow;
+    }
+
+    .hljs-title,
+    .hljs-name,
+    .hljs-type {
+        color: $gray;
+        font-weight: bold;
+    }
+
+    .hljs-attribute,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-built_in,
+    .hljs-addition,
+    .hljs-variable,
+    .hljs-template-tag,
+    .hljs-tempalte-variable {
+        color: $gray
+    }
+
+    .hljs-comment,
+    .hljs-quote,
+    .hljs-deletion,
+    .hljs-meta {
+        color: $blue;
+    }
+
+    .hljs-doctag,
+    .hljs-strong {
+        font-weight: bold;
+    }
+
+    .hljs-emphasis {
+        font-style: italic;
+    }
+}
+
+// },
+// "hljs-quote": {
+//     "color": "#777"
+// },
+// "hljs-deletion": {
+//     "color": "#777"
+// },
+// "hljs-meta": {
+//     "color": "#777"
+// },
+// "hljs-doctag": {
+//     "fontWeight": "bold"
+// },
+// "hljs-strong": {
+//     "fontWeight": "bold"
+// },
+// "hljs-emphasis": {
+//     "fontStyle": "italic"
+// }

@@ -97,7 +97,7 @@ class Blog extends React.Component {
                 <Route exact path="/blog" component={ this.blogHome } />
                 <Route path="/blog/articles/:slug" component={ ArticleView } />
                 <Route path="/blog/admin/preview/:slug" render={ (props) => <ArticleView isPreview= { true } token={ this.validateToken.bind(this) } {...props}/>} />
-                <Route path="/blog/admin/newPost" component={ () => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token }/> }/>
+                <Route path="/blog/admin/newPost" component={ (props) => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token } {...props}/> }/>
                 <Route path="/blog/admin/edit/:slug" component={ (props) => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token } {...props}/>}/>
                 { this.state.userIsAdmin ? <AdminToolbar /> : null }
                 <Footer />

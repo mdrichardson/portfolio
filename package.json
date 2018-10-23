@@ -51,6 +51,7 @@
     "react-router-dom": "^4.3.1",
     "react-router-hash-link": "^1.2.0",
     "react-sticky": "^6.0.3",
+    "react-syntax-highlighter": "^9.0.1",
     "react-waypoint": "^8.0.3",
     "resolve": "1.6.0",
     "style-loader": "0.19.0",

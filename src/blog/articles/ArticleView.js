@@ -3,6 +3,7 @@ import createHistory from "history/createBrowserHistory";
 import './articleView.css';
 import moment from 'moment';
 import RelatedArticles from './RelatedArticles';
+import CodeBlock from './CodeBlock';
 
 const ReactMarkdown = require('react-markdown');
 
@@ -33,7 +34,7 @@ class ArticleView extends React.Component {
     async componentDidMount() {
         // Fetch Article
         const slug = this.props.match.params.slug;
-        const token = await this.props.token();
+        const token = this.props.token ? await this.props.token() : '';
         const url = this.props.isPreview ? `https://www.mdrichardson.net:3100/blog/admin/preview/${slug}` : `https://www.mdrichardson.net:3100/blog/articles/${slug}`
         const articleRespose = await fetch(url, {
             method: 'GET',
@@ -67,7 +68,9 @@ class ArticleView extends React.Component {
                             <div id="single-date-year">{ moment(this.state.article.createdAt).format('YYYY') }</div>
                         </div>
                         <h1>{ this.state.article.title }</h1>
-                        <div id="single-article-body"><ReactMarkdown source={ this.state.article.body } /></div>
+                        <div id="single-article-body">
+                            <ReactMarkdown source={ this.state.article.body } renderers={{ code: CodeBlock }} />
+                        </div>
                         <div id="single-article-tags">
                             { this.state.article.tags.map(tag => (
                                 <p key={ `${this.state.article.id}-${tag}` } className="single-article-tag">{ tag }</p>
