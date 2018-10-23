@@ -74,13 +74,12 @@
             grid-row: 2;
             -ms-grid-row: 2;
             text-align: left;
-            margin-bottom: 2em;
             opacity: 0;
             animation: fade-in 1s ease-out 0.5s;
             animation-fill-mode: forwards;
             background: rgba(253, 255, 254, 1);
             margin: 3em;
-            padding: 3em 8em;
+            padding: 3em 8em 8em 8em;
             border-radius: 0.25em;
             box-shadow: $giantShadow;
 
