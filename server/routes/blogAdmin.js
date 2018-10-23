@@ -292,6 +292,12 @@ router.delete('/articles/:id', (req, res, next) => {
         .catch(next);
 });
 
+const getCurrentTags = async () => {
+    const currentTags = await Tag.find().sort({ name: 'ascending' });
+    const tagMap = currentTags.map(tag => tag.name);
+    return tagMap
+}
+
 // Add article tags
 router.post('/tags', (async (req, res, next) => {
     const { body } = req;

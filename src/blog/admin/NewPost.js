@@ -110,8 +110,6 @@ const FormikForm = withFormik({
         y_offset: Yup.number().min(0).max(100).required()
     }),
     handleSubmit(values, { setSubmitting, setStatus }) {
-        const tempImage = values.image;
-        const tempToken = values.token;
         let formData = new FormData();
         for (var key in values) {
             formData.append(key, values[key])

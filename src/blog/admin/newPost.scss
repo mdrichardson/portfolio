@@ -75,6 +75,23 @@
                     }
                 }
             }
+
+            #new-tag {
+
+                margin-top: 0.5em;
+
+                input {
+                    width: 20rem;
+                }
+
+                svg {
+                    margin-left: 0.5em;
+
+                    path {
+                        fill: $yellow;
+                    }
+                }
+            }
         }
         #isPublished-container {
             grid-row: 6;

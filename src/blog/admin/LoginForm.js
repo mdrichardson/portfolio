@@ -9,9 +9,6 @@ class LoginForm extends React.Component {
             password: '',
             isSubmitting: false
         };
-
-        // this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputChange = (event) => {
@@ -36,6 +33,7 @@ class LoginForm extends React.Component {
             if (status === 200) {
                 const json = await res.json();
                 this.saveUserToken(json.token);
+                window.location.reload();
             }
         } catch(err) {
             console.error(err);
