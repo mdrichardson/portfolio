@@ -228,4 +228,26 @@
             }
         }
     }
+    
+    #preview {
+        display: block;
+        margin: auto;
+        width: 7em;
+        height: 3rem;
+        font-size: 1.5rem;
+        background-color: $yellow;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        color: $black;
+        box-shadow: $smallShadow;
+        text-align: center;
+        line-height: 3rem;
+
+        &:hover:not(:disabled) {
+            cursor: pointer;
+        }
+
+        &:hover:disabled {
+            cursor: not-allowed;
+        }
+    }
 }

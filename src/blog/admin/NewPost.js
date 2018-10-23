@@ -72,20 +72,20 @@ const FormStructure = ({
                 </div>
                 <div id="image-error" className="error" hidden={ !touched.image || !errors.image }><p>{ errors.image }</p></div>
             </div>
-            <div id="submit" hidden={ isSubmitting }>
+            <div id="submit" hidden={ isSubmitting || status === 'success' }>
                 <button type="submit" 
                     className={ !isSubmitting && !errors.exceededLimit && !errors.name && !errors.email && !errors.message && values.message !== '' ? "hvr-underline-from-center hvr-grow" : "" } 
                     disabled={ isSubmitting || errors.exceededLimit || errors.name || errors.email || errors.message || values.message === ''}>
                     Submit</button>
-            </div>
-            <div id="exceeded-limit-message" className="error" hidden={ !errors.exceededLimit }>
-                <p>You have exceeded the submission limit. Try again tomorrow</p>
             </div>
             <div id="loading" hidden={ !isSubmitting }>
                 <img src={ loadingSVG } alt="Submitting" />
                 <p>Submitting...</p>
             </div>
         </Form>
+        <div hidden={ status !== 'success'}>
+            <a href={`/blog/articles/admin/preview/${values.slug}`} id="preview" className="hvr-underline-from-center hvr-grow">Preview</a>
+        </div>
     </div>
 )
 

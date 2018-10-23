@@ -13,7 +13,8 @@ class ArticleView extends React.Component {
         super(props);
         this.state = {
             article: {
-                tags: []
+                tags: [],
+                token: ''
             },
             redirectTimeLeft: 5
         }
@@ -32,7 +33,12 @@ class ArticleView extends React.Component {
     async componentDidMount() {
         // Fetch Article
         const slug = this.props.match.params.slug;
-        const articleRespose = await fetch(`https://www.mdrichardson.net:3100/blog/articles/${slug}`);
+        const token = await this.props.token();
+        const url = this.props.isPreview ? `https://www.mdrichardson.net:3100/blog/admin/preview/${slug}` : `https://www.mdrichardson.net:3100/blog/articles/${slug}`
+        const articleRespose = await fetch(url, {
+            method: 'GET',
+            headers: { 'x-access-token': token }
+        });
         const article = await articleRespose.json();
         this.setState({ article: article });
         if (this.state.article['error'] !== undefined) {

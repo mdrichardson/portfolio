@@ -57,6 +57,7 @@ class Blog extends React.Component {
                     console.log('Successful Login with Valid Token!!')
                     this.setState({ userIsAdmin: true });
                     this.setState({ token: token });
+                    return token
                 }
             } catch(err) {
                 console.error(err);
@@ -95,6 +96,7 @@ class Blog extends React.Component {
                 <hr id ="blog-hr"/>
                 <Route exact path="/blog" component={ this.blogHome } />
                 <Route path="/blog/articles/:slug" component={ ArticleView } />
+                <Route path="/blog/admin/preview/:slug" render={ (props) => <ArticleView isPreview= { true } token={ this.validateToken.bind(this) } {...props}/>} />
                 <Route path="/blog/admin/newPost" component={ () => <NewPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token }/> }/>
                 { this.state.userIsAdmin ? <AdminToolbar /> : null }
                 <Footer />

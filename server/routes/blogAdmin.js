@@ -246,21 +246,8 @@ router.post('/article', upload.single('image'), (async (req, res, next) => {
       .catch(next);
   }));
 
-// Get preview of unpublished article
-router.param('/preview/:id', (req, res, next, id) => {
-    return Articles.findById(id, (err, article) => {
-        if(err) {
-        return res.sendStatus(404);
-        } else if(article && article.isPublished) {
-        req.article = article;
-        return next();
-        }
-    }).catch(next);
-});
-
-
 // Update blog article
-router.patch('/articles:id', (req, res, next) => {
+router.patch('/articles/:id', (req, res, next) => {
     const { body } = req;
 
     if(typeof body.title !== 'undefined') {
@@ -333,6 +320,25 @@ router.delete('/tag/:id', (req, res, next) => {
     return Tag.findByIdAndRemove(req.body._id)
         .then(() => res.sendStatus(200))
         .catch(next);
+});
+
+// Get preview of unpublished article
+router.get('/preview/:slug', (req, res) => {
+    return Article.findOne({
+        slug: req.params.slug
+    }, (err, article) => {
+        if(err) {
+            return res.sendStatus(404);
+        } else if(article) {
+            return res.send(article)
+        } else {
+            return res.status(404).json({
+                error: {
+                    article: 'article doesn\'t exist'
+                }
+            })
+        }
+    })
 });
 
 module.exports = router;
