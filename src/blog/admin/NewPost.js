@@ -65,7 +65,6 @@ const FormStructure = ({
                     <Field type="number" name="y_offset" id="y_offset" placeholder="0" aria-label="y_offset"/>
                     Y_Offset
                     </label>
-                    {/* <Field type="text" name="imageUrl" id="imageUrl" placeholder="URL" aria-label="image url"/> */}
                     <input id="image" name="image" type="file" onChange={e => {setFieldValue("image", e.currentTarget.files[0])}} />
                 </div>
                 <div id="image-error" className="error" hidden={ !touched.image || !errors.image }><p>{ errors.image }</p></div>

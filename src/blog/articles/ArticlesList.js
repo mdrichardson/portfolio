@@ -57,7 +57,7 @@ class ArticlesList extends React.Component {
                             href={ `/blog/articles/${article.slug}` }>
                                 <Waypoint onEnter={ () => this.animateEntrance(article._id) } bottomOffset="-22%"/> {/* bottomOffset is negative because waypoint needs to trigger when any part of article visible */ }
                                 <div className="main-image">
-                                    <img src={ article.imageUrl } alt={ article.title } style={{ objectPosition: `${ article.imageXOffsetPercent }% ${ article.imageYOffsetPercent }%`}}></img>
+                                    <img src={ article.image } alt={ article.title } style={{ objectPosition: `${ article.imageXOffsetPercent }% ${ article.imageYOffsetPercent }%`}}></img>
                                 </div>
                                 <div className="article-date">
                                     <div className="date-day">{ moment(article.createdAt).format('DD') }</div>

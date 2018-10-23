@@ -19,8 +19,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 const convertFileName = (fileName) => {
-    let newName = path.parse(fileName.replace(/[|&;$%@"<>()+,]/g, "")).name;
-    return `${newName}-${Date.now()}${path.parse(fileName).ext}`
+    let newName = path.parse(fileName.replace(/[|&;$%@"<>()+, ]/g, "")).name;
+    let now = new Date();
+    let dd = now.getDate();
+    let mm = now.getMonth() + 1;
+    let yyyy = now.getFullYear();
+    if(dd<10){
+        dd='0'+dd;
+    } 
+    if(mm<10){
+        mm='0'+mm;
+    }
+    const dateString = `${yyyy}${mm}${dd}`
+    return `${newName}-${dateString}${path.parse(fileName).ext}`
 }
 
 //JWT
@@ -35,8 +46,6 @@ require('../models/article')
 const Article = mongoose.model('Article');
 require('../models/tag');
 const Tag = mongoose.model('Tag');
-require('../models/image');
-const Image = mongoose.model('Image');
 
 // Quick allow/disallow of registration. True for allow, false for disallow
 var allow_registration = false;
@@ -168,9 +177,6 @@ const getAllSlugs = async () => {
 // Handle creating blog articles
 router.post('/article', upload.single('image'), (async (req, res, next) => {
     const { body } = req;
-
-    console.log(req.file)
-    console.log(req.files)
   
     if(!body.slug) {
         return res.status(422).json({
@@ -197,13 +203,15 @@ router.post('/article', upload.single('image'), (async (req, res, next) => {
       });
     }
   
-    // if(!body.image) {
-    //   return res.status(422).json({
-    //     errors: {
-    //       image: 'is required',
-    //     },
-    //   });
-    // }
+    if(!req.file) {
+      return res.status(422).json({
+        errors: {
+          image: 'is required',
+        },
+      });
+    } else {
+        body['image'] = `/blog-images/${ convertFileName(req.file.originalname) }`;
+    }
     
     if(!body.imageXOffsetPercent) {
         body.imageXOffsetPercent = 0;
@@ -237,11 +245,6 @@ router.post('/article', upload.single('image'), (async (req, res, next) => {
       .then(() => res.json({ article: finalArticle.toJSON() }))
       .catch(next);
   }));
-
-// Handle uploading blog image
-router.post('/image', upload.single('image'), (req, res, next) => {
-    
-    });
 
 // Get preview of unpublished article
 router.param('/preview/:id', (req, res, next, id) => {

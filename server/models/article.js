@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const ArticleSchema = new Schema({
   title: String,
   slug: String,
-  image: Schema.Types.Mixed,
+  image: String,
   imageXOffsetPercent: Number,
   imageYOffsetPercent: Number,
   summary: String,
