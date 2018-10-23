@@ -175,7 +175,8 @@
         &.unpublished {
             opacity: 0.75 !important;
             animation: none;
-            border: 5px dashed $red;
+            border: 5px dashed $yellow;
+            padding: 1em;
         }
 
         .article-date {
