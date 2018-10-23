@@ -4,6 +4,25 @@ const User = require('../models/user');
 const private = require('../private');
 const mongoose = require('mongoose');
 
+// For using images
+const path = require('path');
+const upload_path = path.resolve(__dirname, '../../public/blog-images');
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, upload_path)
+    },
+    filename: (req, file, cb) => {
+        cb(null, convertFileName(file.originalname));
+    }
+});
+const upload = multer({ storage: storage });
+
+const convertFileName = (fileName) => {
+    let newName = path.parse(fileName.replace(/[|&;$%@"<>()+,]/g, "")).name;
+    return `${newName}-${Date.now()}${path.parse(fileName).ext}`
+}
+
 //JWT
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -16,6 +35,8 @@ require('../models/article')
 const Article = mongoose.model('Article');
 require('../models/tag');
 const Tag = mongoose.model('Tag');
+require('../models/image');
+const Image = mongoose.model('Image');
 
 // Quick allow/disallow of registration. True for allow, false for disallow
 var allow_registration = false;
@@ -145,8 +166,11 @@ const getAllSlugs = async () => {
 }
 
 // Handle creating blog articles
-router.post('/article', (async (req, res, next) => {
+router.post('/article', upload.single('image'), (async (req, res, next) => {
     const { body } = req;
+
+    console.log(req.file)
+    console.log(req.files)
   
     if(!body.slug) {
         return res.status(422).json({
@@ -173,17 +197,13 @@ router.post('/article', (async (req, res, next) => {
       });
     }
   
-    if(!body.imageUrl) {
-      return res.status(422).json({
-        errors: {
-          imageUrl: 'is required',
-        },
-      });
-    } else {
-        if (!body.imageUrl.includes('/blog-images/')) {
-            body.imageUrl = `/blog-images/${body.imageUrl}`
-        }
-    }
+    // if(!body.image) {
+    //   return res.status(422).json({
+    //     errors: {
+    //       image: 'is required',
+    //     },
+    //   });
+    // }
     
     if(!body.imageXOffsetPercent) {
         body.imageXOffsetPercent = 0;
@@ -216,7 +236,12 @@ router.post('/article', (async (req, res, next) => {
     return finalArticle.save()
       .then(() => res.json({ article: finalArticle.toJSON() }))
       .catch(next);
-  }));  
+  }));
+
+// Handle uploading blog image
+router.post('/image', upload.single('image'), (req, res, next) => {
+    
+    });
 
 // Get preview of unpublished article
 router.param('/preview/:id', (req, res, next, id) => {

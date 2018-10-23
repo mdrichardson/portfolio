@@ -1,6 +1,5 @@
 import React from 'react';
 import './newPost.css';
-import moment from 'moment';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import loadingSVG from '../../images/loading.svg';  
@@ -11,7 +10,8 @@ const FormStructure = ({
     errors,
     touched,
     isSubmitting,
-    status
+    status,
+    setFieldValue
 }) => (
     <div id="form-container">
         <Form>
@@ -65,7 +65,8 @@ const FormStructure = ({
                     <Field type="number" name="y_offset" id="y_offset" placeholder="0" aria-label="y_offset"/>
                     Y_Offset
                     </label>
-                    <Field type="text" name="imageUrl" id="imageUrl" placeholder="URL" aria-label="image url"/>
+                    {/* <Field type="text" name="imageUrl" id="imageUrl" placeholder="URL" aria-label="image url"/> */}
+                    <input id="image" name="image" type="file" onChange={e => {setFieldValue("image", e.currentTarget.files[0])}} />
                 </div>
                 <div id="image-error" className="error" hidden={ !touched.image || !errors.image }><p>{ errors.image }</p></div>
             </div>
@@ -97,7 +98,7 @@ const FormikForm = withFormik({
         allTags: props.allTags,
         x_offset: 0,
         y_offset: 0,
-        imageUrl: '',
+        image: '',
         token: props.token
     }),
     validationSchema: Yup.object().shape({
@@ -107,21 +108,27 @@ const FormikForm = withFormik({
         body: Yup.string().min(100).required(),
         tags: Yup.array().min(1).required(),
         x_offset: Yup.number().min(0).max(100).required(),
-        y_offset: Yup.number().min(0).max(100).required(),
-        imageUrl: Yup.string().min(1).max(2000).required()
+        y_offset: Yup.number().min(0).max(100).required()
     }),
     handleSubmit(values, { setSubmitting, setStatus }) {
+        const tempImage = values.image;
+        const tempToken = values.token;
+        let formData = new FormData();
+        for (var key in values) {
+            formData.append(key, values[key])
+        }
         setSubmitting(true);
+        console.log(values)
         fetch('https://www.mdrichardson.net:3100/blog/admin/article', {
             method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(values)
+            headers: { 'x-access-token': values.token},
+            body: formData
         })
         .then(res => {
             if (res.status === 200) {
-                setStatus('success');                
+                setStatus('success');
+                setSubmitting(false);
             }
-            setSubmitting(false);
         })
         .catch(err => {
             if (err) {
