@@ -5,6 +5,7 @@ import createHistory from 'history/createBrowserHistory';
 import './index.css';
 import App from './App';
 import Blog from './blog/Blog';
+import FourOhFour from './misc/FourOhFour';
 import registerServiceWorker from './registerServiceWorker';
 import ReactGA from 'react-ga';
 
@@ -22,6 +23,7 @@ ReactDOM.render((
         <Switch>
             <Route exact path="/" component={ App } />
             <Route path="/blog" component={ Blog } />
+            <Route component={ FourOhFour } />
         </Switch>
     </Router>
 ), document.getElementById('root')

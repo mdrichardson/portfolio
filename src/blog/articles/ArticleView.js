@@ -4,6 +4,7 @@ import './articleView.css';
 import moment from 'moment';
 import RelatedArticles from './RelatedArticles';
 import CodeBlock from './CodeBlock';
+import FourOhFour from '../../misc/FourOhFour';
 
 const ReactMarkdown = require('react-markdown');
 
@@ -51,6 +52,7 @@ class ArticleView extends React.Component {
         if (this.state.article['error'] !== undefined) {
             return (
                 <div id="article-error">
+                    <FourOhFour />
                     <p>Error: { this.state.article.error.article }</p>
                     <p>Redirecting in { this.state.redirectTimeLeft }s</p>
                 </div>
