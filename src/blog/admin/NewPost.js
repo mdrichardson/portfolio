@@ -34,7 +34,10 @@ const FormStructure = ({
                     <Field component="textarea" name="summary" id="summary" placeholder="Summary" 
                         className={ touched.summary && errors.summary ? "err-border" : "" } aria-label="summary"/>
                 </div>
-                <div id="summary-error" className="error" hidden={ !touched.summary || !errors.summary }><p>{ errors.summary }</p></div>
+                <div id="summary-error" className="error" hidden={ !touched.summary || !errors.summary }>
+                    <p>{ errors.summary }</p>
+                </div>
+                <p id="summary-char-count">{ values.summary.length }</p>
             </div>
             <div id="body-container">
                 <div className="input-container">
