@@ -188,7 +188,7 @@
                 -ms-grid-row: 1;
                 display: flex;
                 flex-flow: row wrap;
-                justify-content: space-between;
+                justify-content: space-around;
                 
                 & > * {
                     flex: 1 1 400px;
