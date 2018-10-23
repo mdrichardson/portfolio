@@ -174,6 +174,13 @@ const getAllSlugs = async () => {
     return slugMap
 }
 
+// Get unpublished blog articles
+router.get('/unpublished',(async (req, res, next) => {
+    let articles = await Article.find();
+    const unpublishedArticles = articles.filter(article => !article.isPublished);
+    return res.send(unpublishedArticles)
+  }));
+
 // Handle creating blog articles
 router.post('/article', upload.single('image'), (async (req, res, next) => {
     const { body } = req;

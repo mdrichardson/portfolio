@@ -34,6 +34,15 @@ class Articles extends React.Component {
         const articlesRespose = await fetch('https://www.mdrichardson.net:3100/blog/articles');
         const articles = await articlesRespose.json();
         this.setState( { articles: articles });
+        if (this.props.userIsAdmin) {
+            // Fetch Preview Articles
+            const previewResponse = await fetch('https://www.mdrichardson.net:3100/blog/admin/unpublished', {
+                headers: { 'x-access-token': this.props.token },
+            });
+            const unpublishedArticles = await previewResponse.json();
+            const allArticles = [...this.state.articles, ...unpublishedArticles];
+            this.setState( { articles: allArticles });
+        }
     }
 
     render() {

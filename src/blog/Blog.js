@@ -26,7 +26,7 @@ class Blog extends React.Component {
         return (
             <StickyContainer>
                 <div id="blog" className="section-container">
-                    <Articles />
+                    <Articles userIsAdmin={ this.state.userIsAdmin } token={ this.state.token }/>
                     <div className="section-title">
                         <Sticky bottomOffset={130} topOffset={100}>
                             {({ style, isSticky }) =>
@@ -96,7 +96,7 @@ class Blog extends React.Component {
                 <hr id ="blog-hr"/>
                 <Route exact path="/blog" component={ this.blogHome } />
                 <Route path="/blog/articles/:slug" component={ ArticleView } />
-                <Route path="/blog/admin/preview/:slug" render={ (props) => <ArticleView isPreview= { true } token={ this.validateToken.bind(this) } {...props}/>} />
+                <Route path="/blog/admin/preview/:slug" component={ (props) => <ArticleView isPreview= { true } token={ this.validateToken.bind(this) } {...props}/>} />
                 <Route path="/blog/admin/newPost" component={ (props) => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token } {...props}/> }/>
                 <Route path="/blog/admin/edit/:slug" component={ (props) => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token } {...props}/>}/>
                 { this.state.userIsAdmin ? <AdminToolbar /> : null }
