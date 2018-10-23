@@ -1,5 +1,5 @@
 import React from 'react';
-import './newPost.css';
+import './editPost.css';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import loadingSVG from '../../images/loading.svg';  
@@ -60,12 +60,12 @@ const FormStructure = ({
             </div>
             <div id="image-container">
                 <div id="image-fields">
-                    <label htmlFor="x_offset">
-                        <Field type="number" name="x_offset" id="x_offset" placeholder="0" aria-label="x_offset"/>
+                    <label htmlFor="imageXOffsetPercent">
+                        <Field type="number" name="imageXOffsetPercent" id="imageXOffsetPercent" placeholder="0" aria-label="x offset"/>
                         X_Offset
                     </label>
-                    <label htmlFor="x_offset">
-                    <Field type="number" name="y_offset" id="y_offset" placeholder="0" aria-label="y_offset"/>
+                    <label htmlFor="imageYOffsetPercent">
+                    <Field type="number" name="imageYOffsetPercent" id="imageYOffsetPercent" placeholder="0" aria-label="y offset"/>
                     Y_Offset
                     </label>
                     <input id="image" name="image" type="file" onChange={e => {setFieldValue("image", e.currentTarget.files[0])}} />
@@ -91,17 +91,18 @@ const FormStructure = ({
 
 const FormikForm = withFormik({
     mapPropsToValues: props => ({
-        title: '',
-        slug: '',
-        summary: '',
-        body: '',
-        tags: [],
-        isPublished: true,
+        title: props.title,
+        slug: props.slug,
+        summary: props.summary,
+        body: props.body,
+        tags: props.tags,
+        isPublished: props.isPublished,
         allTags: props.allTags,
-        x_offset: 0,
-        y_offset: 0,
-        image: '',
-        token: props.token
+        imageXOffsetPercent: props.imageXOffsetPercent,
+        imageYOffsetPercent: props.imageYOffsetPercent,
+        image: props.image,
+        token: props.token,
+        isEdit: props.isEdit
     }),
     validationSchema: Yup.object().shape({
         title: Yup.string().min(5).max(50).required(),
@@ -109,21 +110,32 @@ const FormikForm = withFormik({
         summary: Yup.string().min(50).max(300).required(),
         body: Yup.string().min(100).required(),
         tags: Yup.array().min(1).required(),
-        x_offset: Yup.number().min(0).max(100).required(),
-        y_offset: Yup.number().min(0).max(100).required()
+        imageXOffsetPercent: Yup.number().min(0).max(100).required(),
+        imageYOffsetPercent: Yup.number().min(0).max(100).required()
     }),
     handleSubmit(values, { setSubmitting, setStatus }) {
-        let formData = new FormData();
-        for (var key in values) {
-            formData.append(key, values[key])
-        }
         setSubmitting(true);
-        console.log(values)
-        fetch('https://www.mdrichardson.net:3100/blog/admin/article', {
-            method: 'POST',
-            headers: { 'x-access-token': values.token},
-            body: formData
-        })
+        let url;
+        let headers;
+        let data;
+        if (values.isEdit) {
+            console.log('editing')
+            url =`https://www.mdrichardson.net:3100/blog/admin/article/edit/${values.slug}`;
+            headers = { 'x-access-token': values.token, 'Content-Type': 'application/json' };
+            data = JSON.stringify(values);
+        } else {
+            url = 'https://www.mdrichardson.net:3100/blog/admin/article';
+            headers = { 'x-access-token': values.token };
+            data = new FormData();
+            for (var key in values) {
+                data.append(key, values[key])
+            }
+        }
+        fetch(url, {
+                method: 'POST',
+                headers: headers,
+                body: data
+            })
         .then(res => {
             if (res.status === 200) {
                 setStatus('success');
@@ -144,7 +156,12 @@ class NewPost extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tags: []
+            tags: [],
+            article: {
+                summary: '', // Only some variables are declared just to make things easier
+                tags: [] 
+            },
+            isEdit: false
         }
     }
 
@@ -154,8 +171,22 @@ class NewPost extends React.Component {
         !this.isCancelled && this.setState({ tags: tags })
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         if (this.state.tags.length === 0) this.getTags();
+        if (this.props.match.params.slug && this.props.token) {
+            // Fetch Article
+            const slug = this.props.match.params.slug;
+            const articleRespose = await fetch(`https://www.mdrichardson.net:3100/blog/admin/preview/${slug}`, {
+                method: 'GET',
+                headers: { 'x-access-token': this.props.token }
+            });
+            const article = await articleRespose.json();
+            if (article._id) {
+                console.log(article)
+                this.setState({ article: article })
+                this.setState({ isEdit: true })
+            }
+        }
     }
 
     componentWillUnmount() {
@@ -174,7 +205,7 @@ class NewPost extends React.Component {
                 <div id="new-post-container" className="section-container">
                     <div id="new-post-content">
                         <h1>New Post</h1>
-                        <FormikForm allTags={ this.state.tags } token={ this.props.token } />
+                        <FormikForm allTags={ this.state.tags } token={ this.props.token } {...this.state.article} isEdit={ this.state.isEdit } enableReinitialize/>
                     </div>
                 </div>
             )

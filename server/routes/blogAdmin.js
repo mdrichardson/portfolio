@@ -247,33 +247,37 @@ router.post('/article', upload.single('image'), (async (req, res, next) => {
   }));
 
 // Update blog article
-router.patch('/articles/:id', (req, res, next) => {
+router.post('/article/edit/:slug', (req, res, next) => {
     const { body } = req;
-
-    if(typeof body.title !== 'undefined') {
-        req.article.title = body.title;
-    }
-
-    if(typeof body.author !== 'undefined') {
-        req.article.author = body.author;
-    }
-
-    if(typeof body.body !== 'undefined') {
-        req.article.body = body.body;
-    }
-
-    if(typeof body.isPublished !== 'undefined') {
-        req.article.isPublished = body.isPublished;
-    }
-
-    return req.article.save()
-        .then(() => res.json({ article: req.article.toJSON() }))
-        .catch(next);
-});
-  
+    return Article.findOne({
+        slug: req.params.slug
+    }, (err, article) => {
+        if(err) {
+            return res.sendStatus(404);
+        } else if(article) {
+            article.title = body.title;
+            article.slug = body.slug;
+            article.summary = body.summary;
+            article.tags = body.tags;
+            article.isPublished = body.isPublished;
+            article.imageXOffsetPercent = body.imageXOffsetPercent;
+            article.imageYOffsetPercent = body.imageYOffsetPercent;
+            article.image = body.image;
+            return article.save()
+                .then(() => res.json({ article: article.toJSON() }))
+                .catch(next);
+        } else {
+            return res.status(404).json({
+                error: {
+                    article: 'article doesn\'t exist'
+                }
+            })
+        }
+    })
+});  
 
 // Delete blog article
-router.delete('/articles/:id', (req, res, next) => {
+router.delete('/article/delete/:id', (req, res, next) => {
     return Articles.findByIdAndRemove(req.article._id)
         .then(() => res.sendStatus(200))
         .catch(next);

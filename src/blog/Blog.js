@@ -5,7 +5,7 @@ import NavBar from '../nav/NavBar';
 import blogTitle from '../images/blog.svg';
 import Articles from './articles/Articles';
 import ArticleView from './articles/ArticleView';
-import NewPost from './admin/NewPost';
+import EditPost from './admin/EditPost';
 import AdminToolbar from './admin/AdminToolbar';
 import Footer from '../footer/Footer';
 import { StickyContainer, Sticky } from 'react-sticky';
@@ -97,7 +97,8 @@ class Blog extends React.Component {
                 <Route exact path="/blog" component={ this.blogHome } />
                 <Route path="/blog/articles/:slug" component={ ArticleView } />
                 <Route path="/blog/admin/preview/:slug" render={ (props) => <ArticleView isPreview= { true } token={ this.validateToken.bind(this) } {...props}/>} />
-                <Route path="/blog/admin/newPost" component={ () => <NewPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token }/> }/>
+                <Route path="/blog/admin/newPost" component={ () => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token }/> }/>
+                <Route path="/blog/admin/edit/:slug" component={ (props) => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token } {...props}/>}/>
                 { this.state.userIsAdmin ? <AdminToolbar /> : null }
                 <Footer />
             </div>
