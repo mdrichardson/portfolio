@@ -69,8 +69,8 @@ class ArticleView extends React.Component {
                             <div id="single-date-month">{ moment(this.state.article.createdAt).format('MMM').toUpperCase() }</div>
                             <div id="single-date-year">{ moment(this.state.article.createdAt).format('YYYY') }</div>
                         </div>
-                        <h1>{ this.state.article.title }</h1>
                         <div id="single-article-body">
+                            <h1 id="single-article-title">{ this.state.article.title }</h1>
                             <ReactMarkdown source={ this.state.article.body } renderers={{ code: CodeBlock }} />
                         </div>
                         <div id="single-article-tags">

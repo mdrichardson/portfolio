@@ -13,7 +13,7 @@ class AdminToolbar extends React.Component {
     }
 
     onArticlePage = (path) => {
-        return path.includes('/articles/')
+        return path.includes('/articles/') || path.includes('admin/preview/')
     }
 
     componentDidUpdate() {

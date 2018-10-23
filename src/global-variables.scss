@@ -6,7 +6,7 @@ $green: #A1E8AF; // rgba(161, 232, 175, 1)
 $blue: #2B4570;
 $gray: #A9BCD0;
 $black: #011627; // rgba(1,22,39, 1)
-$white: #FDFFFE;
+$white: #FDFFFE; // rgba(253, 255, 254, 1)
 
 // Global fonts
 
@@ -46,7 +46,7 @@ $footerHeight: 60px;
 
 // Shadowing
 
-$giantShadow: 0.3rem 0.3rem 2rem rgba(0,0,0,0.1);
+$giantShadow: 0.3rem 0.3rem 2rem rgba(0,0,0,0.2);
 $bigShadow: 0.3rem 0.3rem 1rem rgba(0,0,0,0.3);
 $smallShadow: 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.05);
 $dropShadow: drop-shadow(0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1));
