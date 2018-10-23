@@ -1,5 +1,4 @@
 import React from 'react';
-import createHistory from "history/createBrowserHistory";
 import './articleView.css';
 import moment from 'moment';
 import RelatedArticles from './RelatedArticles';
@@ -7,8 +6,6 @@ import CodeBlock from './CodeBlock';
 import FourOhFour from '../../misc/FourOhFour';
 
 const ReactMarkdown = require('react-markdown');
-
-const history = createHistory();
 
 class ArticleView extends React.Component {
     constructor(props) {
@@ -22,30 +19,23 @@ class ArticleView extends React.Component {
         }
     }
 
-    redirectToBlog = () => {
-        let countdown = setInterval(() => {
-            this.setState({ redirectTimeLeft: this.state.redirectTimeLeft - 1 })
-            if (this.state.redirectTimeLeft <= 0) {
-                clearInterval(countdown);
-                history.goBack();
-            }
-        }, 1000)
+    async componentDidMount() {
+        if (!this.isCancelled) {
+            // Fetch Article
+            const slug = this.props.match.params.slug;
+            const token = this.props.token ? await this.props.token() : '';
+            const url = this.props.isPreview ? `https://www.mdrichardson.net:3100/blog/admin/preview/${slug}` : `https://www.mdrichardson.net:3100/blog/articles/${slug}`
+            const articleRespose = await fetch(url, {
+                method: 'GET',
+                headers: { 'x-access-token': token }
+            });
+            const article = await articleRespose.json();
+            !this.isCancelled && this.setState({ article: article });
+        }
     }
 
-    async componentDidMount() {
-        // Fetch Article
-        const slug = this.props.match.params.slug;
-        const token = this.props.token ? await this.props.token() : '';
-        const url = this.props.isPreview ? `https://www.mdrichardson.net:3100/blog/admin/preview/${slug}` : `https://www.mdrichardson.net:3100/blog/articles/${slug}`
-        const articleRespose = await fetch(url, {
-            method: 'GET',
-            headers: { 'x-access-token': token }
-        });
-        const article = await articleRespose.json();
-        this.setState({ article: article });
-        if (this.state.article['error'] !== undefined) {
-            this.redirectToBlog();
-        }
+    componentWillUnmount() {
+        this.isCancelled = true;
     }
 
     render() {
@@ -54,7 +44,6 @@ class ArticleView extends React.Component {
                 <div id="article-error">
                     <FourOhFour />
                     <p>Error: { this.state.article.error.article }</p>
-                    <p>Redirecting in { this.state.redirectTimeLeft }s</p>
                 </div>
             )
         } else {

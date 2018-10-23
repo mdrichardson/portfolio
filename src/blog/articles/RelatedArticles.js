@@ -19,14 +19,14 @@ class RelatedArticles extends React.Component {
     }
 
     async componentDidMount() {
-        this.setState({ sectionTitle: this.props.sectionTitle === 'blog' ? blogTitle : relatedTitle })
+        !this.isCancelled && this.setState({ sectionTitle: this.props.sectionTitle === 'blog' ? blogTitle : relatedTitle })
         // Fetch Articles
         const articlesRespose = await fetch('https://www.mdrichardson.net:3100/blog/articles');
         const articles = await articlesRespose.json();
-        this.setState({ articles: articles });
+        !this.isCancelled && this.setState({ articles: articles });
         if (this.props.loadAll) {
             this.filterAndLimitArticles(['all']);
-            this.setState({ activeTags: {'all': true}})
+            !this.isCancelled && this.setState({ activeTags: {'all': true}})
         }
     }
 
@@ -35,6 +35,10 @@ class RelatedArticles extends React.Component {
             this.setTagsFromNewProps(this.props.tags);
             this.filterAndLimitArticles(this.props.tags);
         }
+    }
+
+    componentWillUnmount() {
+        this.isCancelled = true;
     }
 
     setTagsFromNewProps = newTags => {

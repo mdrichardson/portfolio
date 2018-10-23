@@ -54,7 +54,7 @@ class ArticlesList extends React.Component {
                             <a key={ article._id }
                             id={ article._id }
                             className={ `article-container hvr-grow ${ this.state.animated[article._id] ? 'enter' : '' } ${ article.isPublished ? '' : 'unpublished'}` }
-                            href={ `/blog/articles/${article.slug}` }>
+                            href={ article.isPublished ? `/blog/articles/${article.slug}` : `/blog/admin/preview/${article.slug}`}>
                                 <Waypoint onEnter={ () => this.animateEntrance(article._id) } bottomOffset="-22%"/> {/* bottomOffset is negative because waypoint needs to trigger when any part of article visible */ }
                                 <div className="main-image">
                                     <img src={ article.image } alt={ article.title } style={{ objectPosition: `${ article.imageXOffsetPercent }% ${ article.imageYOffsetPercent }%`}}></img>

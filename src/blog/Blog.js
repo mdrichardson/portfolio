@@ -54,9 +54,8 @@ class Blog extends React.Component {
                 })
                 const status = await res.status;
                 if (status === 200) {
-                    console.log('Successful Login with Valid Token!!')
-                    this.setState({ userIsAdmin: true });
-                    this.setState({ token: token });
+                    this.state.userIsAdmin !== true && this.setState({ userIsAdmin: true });
+                    this.state.token !== token && this.setState({ token: token });
                     return token
                 }
             } catch(err) {
@@ -86,7 +85,11 @@ class Blog extends React.Component {
 
     componentDidMount() {
         document.onkeydown = this.watchForLoginHotkeys;
-        this.validateToken();
+        !this.isCancelled && this.validateToken();
+    }
+
+    componentWillUnmount() {
+        this.isCancelled = true;
     }
 
     render() {
