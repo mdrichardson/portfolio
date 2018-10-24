@@ -2,6 +2,7 @@ import React from 'react';
 import { FieldArray } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import BlogApiService from '../BlogApiService';
 
 class TagCheckboxes extends React.Component {
     constructor(props) {
@@ -19,29 +20,17 @@ class TagCheckboxes extends React.Component {
 
     addTag = async (event) => {
         event.preventDefault();
-        try {
-            const res = await fetch('https://www.mdrichardson.net:3100/blog/admin/tags', {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    name: this.state.newTag,
-                    token: this.props.values.token
-                })
-            })
-            const status = await res.status;
-            if (status === 200) {
-                console.log('Tag added successfully');
-                this.getTags();
-                this.setState({ newTag: '' });
-            }
-        } catch(err) {
-            console.error(err);
-        }
+        await BlogApiService.addNewTag(this.state.newTag, this.props.values.token);
+        this.getTags();
+        this.setState({ newTag: '' });
     }
 
     getTags = async () => {
-        const tagsResponse = await fetch('https://www.mdrichardson.net:3100/blog/tags');
-        const tags = await tagsResponse.json();
+        const tags = await BlogApiService.getTags();
+        this.setTags(await tags);
+    }
+
+    setTags = (tags) => {
         this.setState({ tags: tags })
     }
 

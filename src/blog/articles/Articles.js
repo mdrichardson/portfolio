@@ -2,6 +2,7 @@ import React from 'react';
 import './articles.css';
 import ArticlesFilter from './ArticlesFilter';
 import ArticlesList from './ArticlesList';
+import BlogApiService from '../BlogApiService';
 
 class Articles extends React.Component {
     constructor(props) {
@@ -22,9 +23,8 @@ class Articles extends React.Component {
     }
 
     getTags = async () => {
-        const tagsResponse = await fetch('https://www.mdrichardson.net:3100/blog/tags');
-        const tags = await tagsResponse.json();
-        return this.setTags(tags);
+        const tags = await BlogApiService.getTags();
+        this.setTags(tags);
     }
 
     setTags = (tags) => {
@@ -37,8 +37,7 @@ class Articles extends React.Component {
     }
 
     getArticles = async () => {
-        const articlesRespose = await fetch('https://www.mdrichardson.net:3100/blog/articles');
-        const articles = await articlesRespose.json();
+        const articles = await BlogApiService.getArticles();
         this.setArticles(articles);
     }
 
@@ -47,13 +46,10 @@ class Articles extends React.Component {
         this.setState( { articles: allArticles });
     }
 
+    // State is set asynchronously and too slowly to use this.state.token, so we need to pass it in from newProps in componentWillReceiveProps
     getUnPublishedArticles = async (token) => {
         if (!this.isCancelled) {
-            // State is set asynchronously and too slowly to use this.state.token, so we need to pass it in from newProps in componentWillReceiveProps
-            const previewResponse = await fetch('https://www.mdrichardson.net:3100/blog/admin/unpublished', {
-                headers: { 'x-access-token': token },
-            });
-            const unpublishedArticles = await previewResponse.json();
+            const unpublishedArticles = await BlogApiService.getUnpublishedArticles(token);
             this.setUnpublishedArticles(unpublishedArticles);
         }
     }

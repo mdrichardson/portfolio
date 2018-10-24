@@ -20,15 +20,19 @@ class ArticleView extends React.Component {
     }
 
     getArticle = async () => {
-        const slug = this.props.match.params.slug;
-        const token = this.props.token ? await this.props.token() : '';
-        const url = this.props.isPreview ? `https://www.mdrichardson.net:3100/blog/admin/preview/${slug}` : `https://www.mdrichardson.net:3100/blog/articles/${slug}`
-        const articleRespose = await fetch(url, {
-            method: 'GET',
-            headers: { 'x-access-token': token }
-        });
-        const article = await articleRespose.json();
-        this.setArticle(article);
+        try {
+            const slug = this.props.match.params.slug;
+            const token = this.props.token ? await this.props.token() : '';
+            const url = this.props.isPreview ? `https://www.mdrichardson.net:3100/blog/admin/preview/${slug}` : `https://www.mdrichardson.net:3100/blog/articles/${slug}`
+            const articleRespose = await fetch(url, {
+                method: 'GET',
+                headers: { 'x-access-token': token }
+            });
+            const article = await articleRespose.json();
+            this.setArticle(article);
+        } catch(err) {
+            console.error(`Error fetching article: ${err}`);
+        }
     }
 
     setArticle = (article) => {

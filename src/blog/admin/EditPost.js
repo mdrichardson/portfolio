@@ -4,6 +4,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import loadingSVG from '../../images/loading.svg';  
 import TagCheckboxes from './TagCheckboxes';
+import BlogApiService from '../BlogApiService';
 
 const FormStructure = ({
     values,
@@ -144,7 +145,7 @@ const FormikForm = withFormik({
         })
         .catch(err => {
             if (err) {
-                console.log(`Submit Error: ${err}`);
+                console.error(`Submit Error: ${err}`);
                 setStatus('error');
                 setSubmitting(false);
             }
@@ -161,25 +162,21 @@ class NewPost extends React.Component {
                 summary: '', // Only some variables are declared just to make things easier
                 tags: [] 
             },
-            isEdit: false
+            isEdit: false,
+            slug: '',
+            token: ''
         }
     }
 
     getTags = async () => {
-        const tagsResponse = await fetch('https://www.mdrichardson.net:3100/blog/tags');
-        const tags = await tagsResponse.json();
+        const tags = await BlogApiService.getTags();
         !this.isCancelled && this.setState({ tags: tags })
     }
 
     getArticle = async () => {
         const slug = this.props.match.params.slug;
-        const articleRespose = await fetch(`https://www.mdrichardson.net:3100/blog/admin/preview/${slug}`, {
-            method: 'GET',
-            headers: { 'x-access-token': this.props.token }
-        });
-        const article = articleRespose.json();
+        const article = await BlogApiService.getSingleUnpublishedArticle(slug, this.props.token);
         if (article._id) {
-            console.log(article)
             this.setState({ article: article })
             this.setState({ isEdit: true })
         }

@@ -99,7 +99,7 @@ const FormikForm = withFormik({
         })
         .catch(err => {
             if (err) {
-                console.log(`Submit Error: ${err}`);
+                console.error(`Submit Error: ${err}`);
                 setStatus('error');
                 setSubmitting(false);
             }
@@ -136,7 +136,7 @@ class ContactForm extends React.Component {
         // If user blocks ipify (uBlock blocks it), we'll just make a string of their
         // browser information and use that
         .catch(err => {
-            console.log('IP error: ', err)
+            console.error('IP error: ', err)
             console.log('Using userAgent strings as \'unique\' identifier', err)
             this.setState({ id: getUserData() })
         })

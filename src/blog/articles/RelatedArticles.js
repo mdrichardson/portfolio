@@ -4,6 +4,7 @@ import blogTitle from '../../images/blog.svg';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ArticlesList from './ArticlesList';
 import './articleView.css';
+import BlogApiService from '../BlogApiService';
 
 const articlesToDisplay = 3;
 
@@ -23,9 +24,8 @@ class RelatedArticles extends React.Component {
     }
 
     getArticles = async () => {
-        const articlesRespose = await fetch('https://www.mdrichardson.net:3100/blog/articles');
-        const articles = await articlesRespose.json();
-        this.setArticles(articles);
+        const articles = await BlogApiService.getArticles();
+        this.setArticles(await articles);
         this.loadAllArticlesIfNecessary();
     }
 

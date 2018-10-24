@@ -59,7 +59,7 @@ class Blog extends React.Component {
                     return token
                 }
             } catch(err) {
-                console.error(err);
+                console.error(`Error validating token: ${err}`);
             }
         } else {
             return false
