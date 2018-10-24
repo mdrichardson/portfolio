@@ -265,6 +265,7 @@ router.post('/article/edit/:slug', (req, res, next) => {
             article.title = body.title;
             article.slug = body.slug;
             article.summary = body.summary;
+            article.body = body.body;
             article.tags = body.tags;
             article.isPublished = body.isPublished;
             article.imageXOffsetPercent = body.imageXOffsetPercent;
