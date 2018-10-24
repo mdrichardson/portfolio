@@ -84,7 +84,7 @@ const FormStructure = ({
             </div>
         </Form>
         <div hidden={ status !== 'success'}>
-            <a href={`/blog/articles/admin/preview/${values.slug}`} id="preview" className="hvr-underline-from-center hvr-grow">Preview</a>
+            <a href={`/blog/admin/preview/${values.slug}`} id="preview" className="hvr-underline-from-center hvr-grow">Preview</a>
         </div>
     </div>
 )
