@@ -120,7 +120,6 @@ const FormikForm = withFormik({
         let headers;
         let data;
         if (values.isEdit) {
-            console.log('editing')
             url =`https://www.mdrichardson.net:3100/blog/admin/article/edit/${values.slug}`;
             headers = { 'x-access-token': values.token, 'Content-Type': 'application/json' };
             data = JSON.stringify(values);
