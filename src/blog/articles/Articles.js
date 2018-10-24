@@ -10,6 +10,8 @@ class Articles extends React.Component {
             articles: [],
             tags: [],
             activeTags: {},
+            userIsAdmin: false,
+            token: ''
         }
     }
 
@@ -19,29 +21,66 @@ class Articles extends React.Component {
         this.setState(tempState);
     }
 
-    async componentDidMount() {
-        // Fetch Tags
+    getTags = async () => {
         const tagsResponse = await fetch('https://www.mdrichardson.net:3100/blog/tags');
         const tags = await tagsResponse.json();
+        return this.setTags(tags);
+    }
+
+    setTags = (tags) => {
         this.setState( { tags: tags });
-        // Set active tags, dynamically
         tags.forEach(tag => {
             let tempState = this.state;
             tempState.activeTags[tag] = true;
             this.setState(tempState);
         })
-        // Fetch Articles
+    }
+
+    getArticles = async () => {
         const articlesRespose = await fetch('https://www.mdrichardson.net:3100/blog/articles');
         const articles = await articlesRespose.json();
-        this.setState( { articles: articles });
-        if (this.props.userIsAdmin) {
-            // Fetch Preview Articles
+        this.setArticles(articles);
+    }
+
+    setArticles = (articles) => {
+        const allArticles = [...this.state.articles, ...articles];
+        this.setState( { articles: allArticles });
+    }
+
+    getUnPublishedArticles = async (token) => {
+        if (!this.isCancelled) {
+            // State is set asynchronously and too slowly to use this.state.token, so we need to pass it in from newProps in componentWillReceiveProps
             const previewResponse = await fetch('https://www.mdrichardson.net:3100/blog/admin/unpublished', {
-                headers: { 'x-access-token': this.props.token },
+                headers: { 'x-access-token': token },
             });
             const unpublishedArticles = await previewResponse.json();
-            const allArticles = [...this.state.articles, ...unpublishedArticles];
-            this.setState( { articles: allArticles });
+            this.setUnpublishedArticles(unpublishedArticles);
+        }
+    }
+
+    setUnpublishedArticles = async (unpublishedArticles) => {
+        const allArticles = [...this.state.articles, ...unpublishedArticles];
+        this.setState( { articles: allArticles });
+    }
+
+    componentDidMount() {
+        this.getTags();
+        this.getArticles();
+        if (!this.isCancelled && this.props.userIsAdmin && this.props.token !== '') {
+            this.getUnPublishedArticles(this.props.token);
+        }
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (newProps.userIsAdmin !== this.props.userIsAdmin) {
+            this.setState({ userIsAdmin: newProps.userIsAdmin });
+        }
+        if (newProps.token !== this.props.token) {
+            this.setState({ token: newProps.token });
+        }
+        if (this.state.userIsAdmin && newProps.token !== '') {
+            this.getUnPublishedArticles(newProps.token);
+            this.isCancelled = true;
         }
     }
 

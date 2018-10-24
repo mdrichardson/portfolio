@@ -171,21 +171,24 @@ class NewPost extends React.Component {
         !this.isCancelled && this.setState({ tags: tags })
     }
 
-    async componentDidMount() {
+    getArticle = async () => {
+        const slug = this.props.match.params.slug;
+        const articleRespose = await fetch(`https://www.mdrichardson.net:3100/blog/admin/preview/${slug}`, {
+            method: 'GET',
+            headers: { 'x-access-token': this.props.token }
+        });
+        const article = articleRespose.json();
+        if (article._id) {
+            console.log(article)
+            this.setState({ article: article })
+            this.setState({ isEdit: true })
+        }
+    }
+
+    componentDidMount() {
         if (this.state.tags.length === 0) this.getTags();
         if (this.props.match.params.slug && this.props.token) {
-            // Fetch Article
-            const slug = this.props.match.params.slug;
-            const articleRespose = await fetch(`https://www.mdrichardson.net:3100/blog/admin/preview/${slug}`, {
-                method: 'GET',
-                headers: { 'x-access-token': this.props.token }
-            });
-            const article = await articleRespose.json();
-            if (article._id) {
-                console.log(article)
-                this.setState({ article: article })
-                this.setState({ isEdit: true })
-            }
+            this.getArticle();
         }
     }
 

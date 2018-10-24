@@ -19,18 +19,25 @@ class ArticleView extends React.Component {
         }
     }
 
-    async componentDidMount() {
+    getArticle = async () => {
+        const slug = this.props.match.params.slug;
+        const token = this.props.token ? await this.props.token() : '';
+        const url = this.props.isPreview ? `https://www.mdrichardson.net:3100/blog/admin/preview/${slug}` : `https://www.mdrichardson.net:3100/blog/articles/${slug}`
+        const articleRespose = await fetch(url, {
+            method: 'GET',
+            headers: { 'x-access-token': token }
+        });
+        const article = await articleRespose.json();
+        this.setArticle(article);
+    }
+
+    setArticle = (article) => {
+        !this.isCancelled && this.setState({ article: article });
+    }
+
+    componentDidMount() {
         if (!this.isCancelled) {
-            // Fetch Article
-            const slug = this.props.match.params.slug;
-            const token = this.props.token ? await this.props.token() : '';
-            const url = this.props.isPreview ? `https://www.mdrichardson.net:3100/blog/admin/preview/${slug}` : `https://www.mdrichardson.net:3100/blog/articles/${slug}`
-            const articleRespose = await fetch(url, {
-                method: 'GET',
-                headers: { 'x-access-token': token }
-            });
-            const article = await articleRespose.json();
-            !this.isCancelled && this.setState({ article: article });
+            this.getArticle();
         }
     }
 

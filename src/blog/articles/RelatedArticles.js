@@ -18,16 +18,31 @@ class RelatedArticles extends React.Component {
         }
     }
 
-    async componentDidMount() {
+    setSectionTitle = () => {
         !this.isCancelled && this.setState({ sectionTitle: this.props.sectionTitle === 'blog' ? blogTitle : relatedTitle })
-        // Fetch Articles
+    }
+
+    getArticles = async () => {
         const articlesRespose = await fetch('https://www.mdrichardson.net:3100/blog/articles');
         const articles = await articlesRespose.json();
+        this.setArticles(articles);
+        this.loadAllArticlesIfNecessary();
+    }
+
+    setArticles = (articles) => {
         !this.isCancelled && this.setState({ articles: articles });
+    }
+
+    loadAllArticlesIfNecessary = () => {
         if (this.props.loadAll) {
             this.filterAndLimitArticles(['all']);
             !this.isCancelled && this.setState({ activeTags: {'all': true}})
         }
+    }
+
+    componentDidMount() {
+        this.setSectionTitle();
+        this.getArticles();
     }
 
     componentDidUpdate(prevProps) {
@@ -79,24 +94,30 @@ class RelatedArticles extends React.Component {
     }
 
     render() {
-        return (
-            <StickyContainer>
-                <div id="related-container" className="section-container">
-                    <div id="related-content" className="content-container">
-                        <div id="related-articles-list">
-                            <ArticlesList articles={ this.state.displayedArticles }  activeTags={ this.state.activeTags }/>
+        if (this.state.articles.length === 0) {
+            return (
+                <p>Loading...</p>
+            )
+        } else {
+            return (
+                <StickyContainer>
+                    <div id="related-container" className="section-container">
+                        <div id="related-content" className="content-container">
+                            <div id="related-articles-list">
+                                <ArticlesList articles={ this.state.displayedArticles }  activeTags={ this.state.activeTags }/>
+                            </div>
+                            <a id="view-blog" href="/blog" className="hvr-underline-from-center hvr-grow">View Blog</a>
                         </div>
-                        <a id="view-blog" href="/blog" className="hvr-underline-from-center hvr-grow">View Blog</a>
+                        <div className="section-title">
+                            <Sticky bottomOffset={130}>
+                                {({ style, isSticky }) =>
+                                    <img style={ style } className={ isSticky ? "sticky" : "" } src={ this.state.sectionTitle } alt={ this.props.sectionTitle === 'blog' ? 'Blog' : 'Related' } />}
+                            </Sticky>
+                        </div>
                     </div>
-                    <div className="section-title">
-                        <Sticky bottomOffset={130}>
-                            {({ style, isSticky }) =>
-                                <img style={ style } className={ isSticky ? "sticky" : "" } src={ this.state.sectionTitle } alt={ this.props.sectionTitle === 'blog' ? 'Blog' : 'Related' } />}
-                        </Sticky>
-                    </div>
-                </div>
-            </StickyContainer>
-        )
+                </StickyContainer>
+            )
+        }
     }
 }
 
