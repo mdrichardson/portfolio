@@ -164,6 +164,7 @@
         margin-bottom: 5em;
         cursor: pointer;
         z-index: 2;
+        transform-origin: right top;
 
         @include eight-hundred {
             grid-template-columns: 1fr;
