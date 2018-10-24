@@ -1,5 +1,6 @@
 @import '../../global-variables.scss';
 @import '../../animations.scss';
+@import url('https://fonts.googleapis.com/css?family=PT+Mono:400,700');
 
 #article-view {
     min-height: calc(100vh - #{$navHeight} - #{$navHeight} - #{$footerHeight} - 2px); // navHeight is used twice due to padding. 2px covers the hr and keeps scrollbar from showing up with short articles
@@ -67,6 +68,9 @@
                 border: 0.7em solid rgba(252, 171, 16, 0.5);
                 transition: border 0.5s ease-out;
                 box-shadow: $giantShadow;
+                opacity: 0;
+                animation: fade-in 1s ease-out;
+                animation-fill-mode: forwards;
             }
         }   
     
@@ -77,7 +81,7 @@
             opacity: 0;
             animation: fade-in 1s ease-out 0.5s;
             animation-fill-mode: forwards;
-            background: rgba(253, 255, 254, 1);
+            background: rgba(253, 255, 254, 0.15);
             margin: 3em;
             padding: 3em 8em 8em 8em;
             border-radius: 0.25em;
@@ -121,19 +125,31 @@
                     line-height: 150%;
                     color: $black;
                 }
+
+                ul {
+                    margin-bottom: 0;
+                }
             }
 
             a {
-                color: $red;
+                color: $blue;
             }
 
             strong {
-                color: $yellow;
+                color: rgba(1,22,39, 0.75);
                 font-size: 110%;
             }
 
+            em {
+                color: rgba(1,22,39, 0.85);
+            }
+
             code {
-                color: $red;
+                color: $yellow;
+                font-family: 'PT Mono', monospace;
+                background-color: rgba(1,22,39, 0.85);
+                padding: 0.25rem 0.75rem;
+                font-size: 80%;
             }
         }
 
