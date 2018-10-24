@@ -89,7 +89,6 @@ class RelatedArticles extends React.Component {
     }
 
     addArticleToDisplayedArticles = (article) => {
-        console.log(article.title)
         const currentlyDisplayedArticles = this.state.displayedArticles;
         currentlyDisplayedArticles.push(article);
         this.setState({ displayedArticles: currentlyDisplayedArticles })
