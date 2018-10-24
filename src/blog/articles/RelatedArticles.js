@@ -5,7 +5,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import ArticlesList from './ArticlesList';
 import './articleView.css';
 
-const maxArticles = 3;
+const articlesToDisplay = 3;
 
 class RelatedArticles extends React.Component {
     constructor(props) {
@@ -65,15 +65,34 @@ class RelatedArticles extends React.Component {
     }
 
     filterAndLimitArticles = (activeTags) => {
-        let remainingArticles = maxArticles;
+        let remainingArticles = articlesToDisplay;
+        let articlesInCaseUnderLimit = [];
         this.state.articles.forEach(article => {
-            if (this.atLeastOneArticleTagMatchesActiveTags(article.tags, activeTags) && remainingArticles > 0 && this.props.currentArticle !== article._id) {
-                const currentlyDisplayedArticles = this.state.displayedArticles;
-                currentlyDisplayedArticles.push(article);
-                this.setState({ displayedArticles: currentlyDisplayedArticles })
-                remainingArticles--;
+            if (remainingArticles > 0 && this.props.currentArticle !== article._id) {
+                if (this.atLeastOneArticleTagMatchesActiveTags(article.tags, activeTags)) {
+                    this.addArticleToDisplayedArticles(article);
+                    remainingArticles--;
+                } else {
+                    articlesInCaseUnderLimit.push(article)
+                }
+            }
+            // We always want to display articlesToDisplay, but we might not have enough relevant tags, so this should add the newest, that haven't been added and aren't related
+            if (remainingArticles > 0) {
+                articlesInCaseUnderLimit.forEach(article => {
+                    if (remainingArticles > 0) {
+                        this.addArticleToDisplayedArticles(article);
+                        this.setState({ activeTags: {'all' : true} })
+                    }
+                })
             }
         })
+    }
+
+    addArticleToDisplayedArticles = (article) => {
+        console.log(article.title)
+        const currentlyDisplayedArticles = this.state.displayedArticles;
+        currentlyDisplayedArticles.push(article);
+        this.setState({ displayedArticles: currentlyDisplayedArticles })
     }
 
     atLeastOneArticleTagMatchesActiveTags = (articleTags, activeTags) => {
