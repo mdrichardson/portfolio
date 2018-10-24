@@ -34,6 +34,7 @@
                 opacity: 0;
                 animation: fade-in 1s ease-out 0.5s;
                 animation-fill-mode: forwards;
+                text-shadow: $giantShadow;
             }
 
             #single-date-month {
@@ -41,6 +42,7 @@
                 opacity: 0;
                 animation: fade-in 1s ease-out 0.6s;
                 animation-fill-mode: forwards;
+                text-shadow: $giantShadow;
             }
 
             #single-date-year {
@@ -48,6 +50,7 @@
                 opacity: 0;
                 animation: fade-in 1s ease-out 0.7s;
                 animation-fill-mode: forwards;
+                text-shadow: $giantShadow;
             }
         }
     
@@ -174,6 +177,7 @@
                 border-radius: 20px;
                 padding: 0.2em 0.5em;
                 margin-left: 0.25em;
+                box-shadow: $giantShadow;
             }
         }
     }
