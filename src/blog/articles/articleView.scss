@@ -1,6 +1,6 @@
 @import '../../global-variables.scss';
 @import '../../animations.scss';
-@import url('https://fonts.googleapis.com/css?family=PT+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700');
 
 #article-view {
 
@@ -149,7 +149,7 @@
 
             code {
                 color: $yellow;
-                font-family: 'PT Mono', monospace;
+                font-family: 'Ubuntu Mono', monospace;
                 background-color: rgba(1,22,39, 0.85);
                 padding: 0.25rem 0.75rem;
                 font-size: 80%;

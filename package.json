@@ -115,6 +115,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "@types/react-syntax-highlighter": "0.0.7",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0"
   }
