@@ -138,11 +138,11 @@
 
 #admin-toolbar {
     position: fixed;
-    top: $navHeight;
+    bottom: 0;
     z-index: 10;
     height: $navHeight;
     width: 100vw;
-    background: $black;
+    background: rgba(1,22,39, 0.75);
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
