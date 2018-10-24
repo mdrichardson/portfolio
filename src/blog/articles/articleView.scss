@@ -10,6 +10,14 @@
         -ms-grid-rows: auto auto;
         padding-top: 0;
         min-height: 100vh;
+        background: $red; /* Old browsers */
+        background: -moz-linear-gradient(45deg, $yellow 0%, $red 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg, $yellow 0%,$red 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg, $yellow 0%,$red 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$red,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        overflow-x: hidden;
 
         & > * {
             grid-column: 2;
@@ -87,7 +95,7 @@
             opacity: 0;
             animation: fade-in 1s ease-out 0.5s, only-up 1s ease-out 0.5s;
             animation-fill-mode: forwards;
-            background: rgba(253, 255, 254, 0.15);
+            background: rgba(253, 255, 254, 0.2);
             margin: 3em;
             padding: 3em 8em 8em 8em;
             border-radius: 0.25em;
@@ -95,6 +103,7 @@
 
             #single-article-title {
                 margin: auto 0;
+                margin-bottom: 0.75em;
                 color: $yellow;
                 justify-self: start;
                 align-self: start;
