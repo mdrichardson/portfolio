@@ -76,16 +76,17 @@ class RelatedArticles extends React.Component {
                     articlesInCaseUnderLimit.push(article)
                 }
             }
-            // We always want to display articlesToDisplay, but we might not have enough relevant tags, so this should add the newest, that haven't been added and aren't related
-            if (remainingArticles > 0) {
-                articlesInCaseUnderLimit.forEach(article => {
-                    if (remainingArticles > 0) {
-                        this.addArticleToDisplayedArticles(article);
-                        this.setState({ activeTags: {'all' : true} })
-                    }
-                })
-            }
         })
+        // We always want to display articlesToDisplay, but we might not have enough relevant tags, so this should add the newest, that haven't been added and aren't related
+        if (remainingArticles > 0 && articlesInCaseUnderLimit.length > 0) {
+          articlesInCaseUnderLimit.forEach(article => {
+              if (remainingArticles > 0 && this.props.currentArticle !== article._id) {
+                  this.addArticleToDisplayedArticles(article);
+                  this.setState({ activeTags: {'all' : true} })
+                  remainingArticles--;
+              }
+          })
+      }
     }
 
     addArticleToDisplayedArticles = (article) => {
