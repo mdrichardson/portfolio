@@ -8,7 +8,6 @@ class PropertiesItem extends React.Component {
                        easterEgg: [], // Track which EasterEggs are being triggered so we can pass them as props
                       }
     }
-  }
 
   componentDidMount() {
     this.setState({ value: this.props.value,
@@ -65,5 +64,6 @@ class PropertiesItem extends React.Component {
             </p>
             )
         }
+}
 
 export default PropertiesItem
