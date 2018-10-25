@@ -4,13 +4,13 @@ Like many aspiring developers, I built this site to showcase my previous work an
 
 ## Portfolio Website
 
-### Uses:
+### Uses
 
 * React
 * JavaScript
 * SASS
 
-## Features:
+## Features
 
 * The properties for the "Michael Richardson" object at the top, as well as all of these projects, are dynamically loaded
 * Works in Chrome, Edge, IE, and mobile
@@ -20,5 +20,28 @@ Like many aspiring developers, I built this site to showcase my previous work an
 ![Lighthouse Scores](https://www.mdrichardson.net/static/media/lighthouse.59e521b5.png)
 
 * ...Did you find any easter eggs?
+
+## Blog
+
+### Uses
+
+* React
+* Node.js
+* Express
+* Mongoose
+* MongoDB
+* JSON Web Tokens for Authentication
+* Multer (for image uploads)
+
+## Features
+
+* All data is stored in and retrieved from a MongoDB server
+* Has a small Admin CMS
+  * Login authentication
+  * Add new posts
+  * Edit posts
+  * Add new post tags
+  * Preview unpublished articles
+* Articles are filterable by tags
 
 #### This is hosted on Github as an example of my work and may not be copied or modified in any way without my express, written permission.
