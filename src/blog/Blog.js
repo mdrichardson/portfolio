@@ -83,20 +83,38 @@ class Blog extends React.Component {
         }
     }
 
+    fixNav = () => this.setState({ navFixed: true });
+
+    unfixNav = () => this.setState({ navFixed: false });
+
+    watchForScroll = () => {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = () => {
+      if (window.scrollY >= 50) {
+        this.fixNav();
+      } else {
+        this.unfixNav();
+      }
+    }
+
     componentDidMount() {
         document.onkeydown = this.watchForLoginHotkeys;
         !this.isCancelled && this.validateToken();
+        this.watchForScroll();
     }
 
     componentWillUnmount() {
         this.isCancelled = true;
+        window.removeEventListener('scroll', this.handleScroll)
     }
 
     render() {
         return (
-            <div>
-                <NavBar navFixed={ true } navHrHidden={ true }/>
-                <hr id ="blog-hr"/>
+            <div id="blog-container">
+                <NavBar navFixed={ this.state.navFixed } navHrHidden={ true } active={ 'blog' }/>
+                <hr id ="blog-hr" className={ this.state.navFixed ? 'navFixed' : '' }/>
                 <Route exact path="/blog" component={ this.blogHome } />
                 <Route path="/blog/articles/:slug" component={ ArticleView } />
                 <Route path="/blog/admin/preview/:slug" component={ (props) => <ArticleView isPreview= { true } token={ this.validateToken.bind(this) } {...props}/>} />
