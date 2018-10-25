@@ -115,11 +115,11 @@
 // EXPANDED
 .project-container.expanded {
     display: grid;
-    grid-template-columns: auto minmax(40vw, 500px);
-    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-columns: auto minmax(35vw, 500px);
+    grid-template-rows: auto auto 1fr auto auto;
     display: -ms-grid;
     -ms-grid-columns: auto 500px;
-    -ms-grid-rows: auto auto auto auto auto auto;
+    -ms-grid-rows: auto auto auto auto auto;
     transition: all 0.75s ease-out;
     will-change: position;
     max-width: 100%;
@@ -145,7 +145,7 @@
             border: 0 solid transparent;
             box-shadow: $smallShadow;
             transition: border 0.25s ease-out;
-            animation: grow 0.75s ease-out, down 0.75s ease-out;
+            animation: grow 0.75s ease-out;
             transform-origin: right top;
         }
     }   
@@ -159,6 +159,7 @@
         will-change: position;
         animation: left-up 0.5s ease-out, grow 0.5s ease-out, fade-in 2s ease-out;            
         transform-origin: right bottom;
+        font-size: 2.5vw;
     }
 
     .tool-icons {
@@ -217,7 +218,7 @@
     }
 
     .bullets {
-        grid-row: 3 / 6;
+        grid-row: 3 / 5;
         grid-column: 1;
         -ms-grid-row: 3;
         -ms-grid-row-span: 2;
@@ -228,7 +229,7 @@
         flex-flow: column nowrap;
         justify-content: space-around;
         height: 100%;
-        align-self: center;
+        align-self: start;
         list-style-type: none;
         text-indent: -1.8rem;
         opacity: 0;
@@ -249,6 +250,9 @@
                 margin-bottom: 0.1rem;
                 background-color: $blue;
                 }
+            ul {
+              padding: 0;
+            }
         }
 
         #lighthouse-img {
@@ -258,7 +262,7 @@
     }
 
     .links {
-        grid-row: 6;
+        grid-row: 5;
         grid-column: 1;
         -ms-grid-row: 6;
         -ms-grid-column: 1;

@@ -28,9 +28,17 @@
         }
         & > :nth-child(2), & > :nth-child(4), & > :nth-child(6) {
             align-self: center;
+
+            img {
+              transform-origin: 50% top;
+            }
         }
         & > :nth-child(3), & > :nth-child(7) {
             align-self: flex-start;
+
+            img {
+              transform-origin: left 20%;
+            }
         }
 
         @include one-thousand {
