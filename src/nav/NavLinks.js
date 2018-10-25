@@ -7,7 +7,8 @@ class NavLinks extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            animateClassName: 'load'
+            animateClassName: 'load',
+            homeLink: ''
         }
     }
 
@@ -32,11 +33,30 @@ class NavLinks extends React.Component {
         })
     }
 
+    // We set the home link programatically because if we leave it as '/#Home', 
+    //   when we go to home from the blog, it will scroll down more than we want. This way, it starts at the top
+    setHomeLink = () => {
+      if (this.userOnBlog()) {
+        this.setState({ homeLink: '/'})
+      } else {
+        this.setState({ homeLink: '/#Home' })
+      }
+    }
+
+    userOnBlog = () => {
+      const pathname = new URL(window.location.href).pathname;
+      return pathname.includes('blog')
+    }
+
+    componentDidMount() {
+      this.setHomeLink();
+    }
+
     render() {
         return(
             <ul id="menu">
                 <li className="navItem">
-                    <NavLink to="/#Home" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Home</NavLink>
+                    <NavLink to={ this.state.homeLink } scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Home</NavLink>
                 </li>
                 <li className={ this.props.active === 'skills' ? "active navItem" : "navItem" }>
                     <NavLink to="/#Skills" scroll={el => this.customScroll(el) } onClick={ this.closeMenu }>Skills</NavLink>
