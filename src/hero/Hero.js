@@ -13,16 +13,16 @@ class Hero extends React.Component {
     }
   }
 
-  // The easterEgg property is a list what category the easterEgg affects
-  componentDidMount() {
-    this.setState({
-      properties: [
-        { name: 'full_stack_dev', value: 'true', id: 'full_stack', easterEggs: ['console', 'dynamic_items']},
-        { name: 'makes_pretty_ui', value: 'true', id: 'ui', easterEggs: ['ui']},
-        { name: 'great_to_work_with', value: 'true', id: 'work', easterEggs: ['scroll']},
-      ]
-    })
-  }
+    // The easterEgg property is a list what category the easterEgg affects
+    componentDidMount() {
+        this.setState({
+            properties: [
+                { name: 'full_stack_dev', value: 'true', id: 'full_stack', easterEggs: ['console', 'dynamic_items']},
+                { name: 'skilled_designer', value: 'true', id: 'ui', easterEggs: ['ui']},
+                { name: 'great_to_work_with', value: 'true', id: 'work', easterEggs: ['scroll']},
+            ]
+        })
+    }
 
   render() {
     return (

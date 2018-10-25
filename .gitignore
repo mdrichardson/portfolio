@@ -31,6 +31,7 @@ src/**/*.css
 /server/private.js
 src/projects/temp.scss
 /server/*.key
+/server/jwtRS256.key
 
 # SSL
 /ssl

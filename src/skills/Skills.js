@@ -66,25 +66,26 @@ class Skills extends React.Component {
     })
   }
 
-  render() {
-    return (
-      <StickyContainer>
-        <div id="Skills" className="section-container">
-          <div className="section-title">
-            <Sticky bottomOffset={150}>
-              {({ style, isSticky }) =>
-                <img style={ style } className={ isSticky ? "sticky" : "" } src={ skillsTitle } alt="Skills" />}
-            </Sticky>
-          </div>
-          <div id="skills-columns" className="content-container">
-            <SkillsList list={this.state.skills.languages}/>
-            <SkillsList list={this.state.skills.tools}/>
-            <SkillsList list={this.state.skills.databases}/>
-          </div>
-        </div>
-      </StickyContainer>
-    );
-  }
+    render() {
+        // StickyContainer makes it so section heading follows the section. bottomOffset of 150 keeps if from following down too far
+        return (
+            <StickyContainer>
+                <div id="Skills" className="section-container">
+                    <div className="section-title">
+                        <Sticky bottomOffset={150}>
+                            {({ style, isSticky }) =>
+                                <img style={ style } className={ isSticky ? "sticky" : "" } src={ skillsTitle } alt="Skills" />}
+                        </Sticky>
+                    </div>
+                    <div id="skills-columns" className="content-container">
+                        <SkillsList list={this.state.skills.languages} />
+                        <SkillsList list={this.state.skills.tools} />
+                        <SkillsList list={this.state.skills.databases} />
+                    </div>
+                </div>
+            </StickyContainer>
+        );
+    }
 }
 
 export default Skills;

@@ -17,6 +17,12 @@
         
         & > * {
             flex: 0 0 auto;
+            opacity: 0;
+
+            &.enter {
+                animation: fade-in 1s ease-out, big-left 1s ease-out;
+                animation-fill-mode: forwards;
+            }
         }
         
         & > :last-child {

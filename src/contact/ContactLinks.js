@@ -10,22 +10,22 @@ class ContactLinks extends React.Component {
     fa_size = '2x'
 
     render() {
-      return (
-        <div id="contact-links">
-          <a id="github-link" href="https://github.com/mdrichardson" title="mdrichardson GitHub" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={ faGithub } size={this.fa_size} />
-            <p>mdrichardson</p>
-          </a>
-          <a id="linkedin-link" href="https://www.linkedin.com/in/richardsonmichaeld/" title="Michael Richardson LinkedIn" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={ faLinkedin } size={this.fa_size} />
-            <p>Michael Richardson</p>
-          </a>
-          <a id="resume-link" href={ resume } title="Michael Richardson Resume" target="_blank" rel="noopener noreferrer" download={ resume }>
-            <FontAwesomeIcon icon={ faFileAlt } size={this.fa_size} />
-            <p>Resumé</p>
-          </a>
-        </div>
-      );
+        return (
+            <div id="contact-links">
+                <a id="github-link" href="https://github.com/mdrichardson" title="mdrichardson GitHub" target="_blank" rel="noopener noreferrer" className="hvr-grow">
+                    <FontAwesomeIcon icon={ faGithub } size={this.fa_size} />
+                    <p>mdrichardson</p>
+                </a>
+                <a id="linkedin-link" href="https://www.linkedin.com/in/richardsonmichaeld/" title="Michael Richardson LinkedIn" target="_blank" rel="noopener noreferrer" className="hvr-grow">
+                    <FontAwesomeIcon icon={ faLinkedin } size={this.fa_size} />
+                    <p>Michael Richardson</p>
+                </a>
+                <a id="resume-link" href={ resume }title="Michael Richardson Resume" target="_blank" rel="noopener noreferrer" className="hvr-grow">
+                    <FontAwesomeIcon icon={ faFileAlt } size={this.fa_size} />
+                    <p>Resumé</p>
+                </a>
+            </div>
+        );
     }
 }
 

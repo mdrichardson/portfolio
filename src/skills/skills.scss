@@ -1,4 +1,5 @@
 @import '../global-variables.scss';
+@import '../animations.scss';
 
 #Skills {
     min-height: 60vh;
@@ -84,6 +85,25 @@
         #databases li::before {
             background-color: $yellow;
             grid-column-start: 3;
+        }
+
+        & > * {
+            &.animated {
+                opacity: 0;
+                animation: fade-in 1s ease-out;
+                animation-fill-mode: forwards;
+
+                &:nth-child(2) {
+                    animation-delay: 0.2s;
+                }
+                &:nth-child(3) {
+                    animation-delay: 0.4s;
+                }
+            }
+
+            &:not(.animated) {
+                opacity: 0;
+            }
         }
     }
 }

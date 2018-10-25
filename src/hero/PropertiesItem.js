@@ -2,10 +2,11 @@ import React from 'react';
 import { EasterEgg } from '../misc/EasterEgg';
 
 class PropertiesItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: '',
-      easterEgg: [],
+    constructor(props) {
+        super(props);
+        this.state = { value: '', // Track the value of the boolean input
+                       easterEgg: [], // Track which EasterEggs are being triggered so we can pass them as props
+                      }
     }
   }
 
@@ -49,21 +50,20 @@ class PropertiesItem extends React.Component {
     }
 
     render() {
-      return(
-        <p>
-          <label htmlFor={ this.props.name }>{ this.props.name }: 
-            <input type="text"
-              className="bool"
-              name={ this.props.name }
-              value={ this.state.value }
-              onChange={ this.handleChange }
-              onBlur={ this.easterEgg }
-              onKeyPress={ this.handleKeyPress }
-            />,{/* Comma is necessary */}
-          </label>
-        </p>
-      )
-    }
-}
+        return(
+            <p>
+                <label htmlFor={ this.props.name }>{ this.props.name }: 
+                    <input type="text"
+                    className="bool"
+                    name={ this.props.name }
+                    value={ this.state.value }
+                    onChange={ this.handleChange }
+                    onBlur={ this.easterEgg }
+                    onKeyPress={ this.handleKeyPress }
+                    />{ this.props.name !== 'great_to_work_with' ? ',' : ''} {/* Prevents comma on last item. Needs to change if property name changes */}
+                </label>
+            </p>
+            )
+        }
 
 export default PropertiesItem

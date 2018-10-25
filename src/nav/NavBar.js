@@ -12,12 +12,12 @@ import NavLinks from './NavLinks';
 
 class NavBar extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      animateClassName: 'load'
+    constructor(props) {
+        super(props);
+        this.state = {
+            animateClassName: 'load'  // Used for animating the nav bar expansion in mobile. 'load' just prevents it from loading when the page loads
+        }
     }
-  }
 
     // Always close the menu when we click on the inner links
     closeMenu = () => {

@@ -77,7 +77,7 @@ const FormikForm = withFormik({
     message: Yup.string().min(1).max(2000).required()
   }),
   handleSubmit(values, { props, setErrors, setSubmitting, setStatus }) {
-    // Log expand in Google Analytics
+    // Log submission in Google Analytics
     ReactGA.event({
       category: 'Contact',
       action: 'Submit'
@@ -126,21 +126,21 @@ class ContactForm extends React.Component {
     }
   }
 
-  // Try to get the user's IP address so we can limit their form submission frequency
-  componentDidMount() {
-    fetch('//api.ipify.org?format=json')
-      .then(res => res.json())
-      .then(res => { 
-        this.setState({ id: res.ip })
-      })
-    // If user blocks ipify (uBlock blocks it), we'll just make a string of their
-    // browser information and use that
-      .catch(err => {
-        console.error('IP error: ', err)
-        console.log('Using userAgent strings as \'unique\' identifier', err)
-        this.setState({ id: getUserData() })
-      })
-  }
+    // Try to get the user's IP address so we can limit their form submission frequency
+    componentDidMount() {
+        fetch('//api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(res => { 
+            this.setState({ id: res.ip })
+        })
+        // If user blocks ipify (uBlock blocks it), we'll just make a string of their
+        // browser information and use that
+        .catch(err => {
+            console.error('Unable to get IP address: ', err)
+            console.log('Using userAgent strings as \'unique\' identifier for submission limitation purposes', err)
+            this.setState({ id: getUserData() })
+        })
+    }
 
   render() {
     return (

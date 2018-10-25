@@ -2,16 +2,17 @@ import React from 'react';
 import imageSRC from '../../images/res-filterer.png'
 
 const RESfilterer = {
-  id: 'res-filterer',
-  name: 'RES Domain Filterer',
-  url: null,
-  github: 'https://github.com/mdrichardson/RES-Domain-Filterer',
-  image: imageSRC,
-  tools: [
-    'Python',
-    'RES'
-  ],
-  short_desc: <span>Scrapes domains from selected pages of <a href="mediabiasfactcheck.com" target="_blank" rel="noopener noreferrer">MediaBiasFactCheck </a> 
+    id: 'res-filterer',
+    name: 'RES Domain Filterer',
+    url: null,
+    github: 'https://github.com/mdrichardson/RES-Domain-Filterer',
+    image: imageSRC,
+    tools: [
+        'Python',
+        'RES'
+    ],
+    // Spans have to be used in order to use HTML within the object
+    short_desc: <span>Scrapes domains from selected pages of <a href="mediabiasfactcheck.com" target="_blank" rel="noopener noreferrer">MediaBiasFactCheck </a> 
                         and adds them to Reddit Enhancement Suite's Domain Filters</span>,
   long_desc: <span>This is a command-line tool written in Python that scrapes domains from selected pages of 
     <a href="mediabiasfactcheck.com" target="_blank" rel="noopener noreferrer"> MediaBiasFactCheck</a> and adds them to Reddit Enhancement Suite's Domain Filters. 
