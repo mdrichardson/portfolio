@@ -101,6 +101,11 @@
             border-radius: 0.25em;
             box-shadow: $giantShadow;
 
+            @include one-thousand {
+              padding: 1vw 2vw 2vw 2vw;
+              margin: 0;
+            }
+
             #single-article-title {
                 margin: auto 0;
                 margin-bottom: 0.75em;
@@ -110,6 +115,10 @@
                 text-shadow: $smallShadow;
                 text-align: left;
                 font-size: 5rem;
+
+                @include one-thousand {
+                  font-size: 4vw;
+                }
             }
 
             * {
@@ -133,8 +142,6 @@
 
                 li {
                     margin-left: 2em;
-                    font-size: 1.75rem;
-                    line-height: 150%;
                     color: $black;
                 }
 
