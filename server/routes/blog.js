@@ -48,7 +48,7 @@ router.get('/tags', (async (req, res) => {
 
 // Get all blog articles
 router.get('/articles',(async (req, res, next) => {
-    let articles = await Article.find();
+    let articles = await Article.find().sort([['createdAt', 'descending']]);
     const publishedArticles = articles.filter(article => article.isPublished);
     return res.send(publishedArticles)
   }));
