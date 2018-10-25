@@ -67,9 +67,12 @@ class App extends Component {
                     <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('projects') } }  topOffset="50%"/>
                     <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('about') } }  bottomOffset="50%"/>
                     <div id="about-section">
-                        <About />
-                        <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('contact') } }  bottomOffset="50%"/>
-                        <Contact />
+                      <About />
+                      <div id="related">
+                        <RelatedArticles sectionTitle="blog" loadAll={ true }/>
+                      </div>
+                      <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('contact') } }  bottomOffset="50%"/>
+                      <Contact />
                     </div>
                 </main>
                 { /* broken-notification is shown when Easter Egg is activated */ }
@@ -84,23 +87,9 @@ class App extends Component {
                         <div id="dismiss" onClick={ this.clearUpdateNotification }>DISMISS</div>
                     </div>
                 </div>
+                <Footer />
+                <div id="broken-notification"><p>You broke something. Return the value to <span>true</span> to fix it!</p></div>
             </div>
-            <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('projects') } }  bottomOffset="50%"/>
-            <Projects />
-            <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('projects') } }  topOffset="50%"/>
-            <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('about') } }  bottomOffset="50%"/>
-            <div id="about-section">
-              <About />
-              <div id="related">
-                <RelatedArticles sectionTitle="blog" loadAll={ true }/>
-              </div>
-              <Waypoint onEnter={ () => { this.fixNav(); this.setActiveComponent('contact') } }  bottomOffset="50%"/>
-              <Contact />
-            </div>
-          </main>
-          <Footer />
-          <div id="broken-notification"><p>You broke something. Return the value to <span>true</span> to fix it!</p></div>
-        </div>
       )
     }
 }
