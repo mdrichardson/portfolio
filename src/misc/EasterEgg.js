@@ -10,10 +10,14 @@ const errorStyle = [
 const dynamicClassesToHide = [
   'skillsItem',
   'project-container',
+  'main-image',
+  'short-desc',
+  'article-container',
   'submit',
   'looking-for',
   'navItem',
-  'bracket'
+  'bracket',
+  'svg-inline--fa'
 ]
 
 var dynamicElements = []
