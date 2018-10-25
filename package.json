@@ -115,19 +115,9 @@
     "extends": "react-app"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@types/react-syntax-highlighter": "0.0.7",
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.10.0",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "node-sass": "^4.9.3",
-    "prettier": "^1.14.3",
-=======
     "gh-pages": "^2.0.1",
     "node-sass": "^4.9.3",
     "npm-run-all": "^4.1.3",
->>>>>>> master
     "sass-loader": "^7.1.0"
   }
 }
