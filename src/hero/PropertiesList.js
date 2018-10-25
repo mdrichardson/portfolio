@@ -6,13 +6,13 @@ import PropertiesItem from './PropertiesItem';
 
 class PropertiesList extends React.Component {  
 
-    render() {
-        return(
-            this.props.list.map(property => (
-                <PropertiesItem name={ property.name } value={ property.value } key={property.id} egg={ property.easterEggs }/>
-            ))
-        )
-    }
+  render() {
+    return(
+      this.props.list.map(property => (
+        <PropertiesItem name={ property.name } value={ property.value } key={property.id} egg={ property.easterEggs }/>
+      ))
+    )
+  }
 
 } 
         

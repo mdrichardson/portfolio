@@ -19,13 +19,13 @@ ReactGA.pageview("/#Contact");
 ReactGA.pageview("/Blog");
 
 ReactDOM.render((
-    <Router history={ createHistory() }>
-        <Switch>
-            <Route exact path="/" component={ App } />
-            <Route path="/blog" component={ Blog } />
-            <Route component={ FourOhFour } />
-        </Switch>
-    </Router>
+  <Router history={ createHistory() }>
+    <Switch>
+      <Route exact path="/" component={ App } />
+      <Route path="/blog" component={ Blog } />
+      <Route component={ FourOhFour } />
+    </Switch>
+  </Router>
 ), document.getElementById('root')
 );
 registerServiceWorker();

@@ -3,25 +3,25 @@ import LookingForList from './LookingForList';
 
 class OtherDetails extends React.Component {
     state = {
-        lookingFor: [
-            {title: 'Full-Time Employment', looking: true},
-            {title: 'Weekend Contract Work', looking: true},
-            {title: 'Open to Offers', looking: false},
-            {title: 'Nothing', looking: false}
-        ],
-        location: 'Seattle',
+      lookingFor: [
+        {title: 'Full-Time Employment', looking: true},
+        {title: 'Weekend Contract Work', looking: true},
+        {title: 'Open to Offers', looking: false},
+        {title: 'Nothing', looking: false}
+      ],
+      location: 'Seattle',
     }
 
     render() {
-        return (
-            <div id="other-details">
-                <div id="location">
-                    <h2>Location</h2>
-                    <ul id="location-name"><li>{ this.state.location }</li></ul>
-                </div>
-                <LookingForList list={ this.state.lookingFor }/>
-            </div>
-        );
+      return (
+        <div id="other-details">
+          <div id="location">
+            <h2>Location</h2>
+            <ul id="location-name"><li>{ this.state.location }</li></ul>
+          </div>
+          <LookingForList list={ this.state.lookingFor }/>
+        </div>
+      );
     }
 }
 
