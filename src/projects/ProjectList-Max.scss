@@ -145,9 +145,10 @@
             width: 100%;
             border: 0 solid transparent;
             box-shadow: $smallShadow;
-            transition: border 0.25s ease-out;
-            animation: grow 0.75s ease-out;
-            transform-origin: right top;
+            transition: border 0.75s ease-out;
+            animation: grow 0.8s ease-out, only-down 0.85s ease-out;
+            animation-fill-mode: backwards;
+            will-change: auto;
         }
     }   
     h2 {
