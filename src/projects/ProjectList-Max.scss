@@ -7,13 +7,13 @@
 .project-container:not(.expanded) {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: 1fr auto auto auto 1fr auto;
+    grid-template-rows: 1fr auto auto auto auto auto;
     display: -ms-grid;
     -ms-grid-columns: 1.5fr 1fr;
     -ms-grid-rows: auto auto auto auto auto auto;
     transition: all 0.2s ease-out;
     will-change: position;
-    max-width: 80%;
+    max-width: 60%;
     margin-bottom: 5em;
     cursor: pointer;
 
@@ -30,7 +30,6 @@
         img {
             width: 100%;
             border: 0.7em solid rgba(161, 232, 175, 0.4);
-            transition: border 0.5s ease-out;
             box-shadow: $smallShadow;
             transition: border 0.5s ease-out;
         }
@@ -76,10 +75,11 @@
     }
 
     .short-desc {
-        grid-row: 3;
+        grid-row: 4;
         grid-column: 1;
-        -ms-grid-row: 3;
+        -ms-grid-row: 4;
         -ms-grid-column: 1;
+        align-self: center;
         margin: 0.1em 0;
         text-align: right;
         animation: fade-in 1s ease-out;
@@ -98,12 +98,13 @@
     }
 
     .read-more {
-        grid-row: 4;
+        grid-row: 5;
         grid-column: 1;
-        -ms-grid-row: 4;
+        -ms-grid-row: 5;
         -ms-grid-column: 1;
         display: block;
         margin-top: 0.3em;
+        align-self: end;
         justify-self: end;
         text-shadow: $smallShadow;
         color: $green;
