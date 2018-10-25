@@ -59,7 +59,7 @@ class NavBar extends React.Component {
           <AppBar position="static" id="nav" className={ this.props.navFixed ? "fixed" : "" }>
             <Toolbar id="toolbar">
               <Typography variant="title" id="header-name">
-                <span className={ !this.props.navFixed ? "hidden" : "shown" }>Michael Richardson</span>
+                <span className={ !this.props.navFixed && this.props.navHrHidden !== true ? "hidden" : "shown" }>Michael Richardson</span>
               </Typography>
               <div id="menu-container" className={ this.state.animateClassName }>
                 <div id="menu-background"  className={ this.state.animateClassName } style={ window.scrollY >= 64 ? { } : { background: 'none' } }></div>
