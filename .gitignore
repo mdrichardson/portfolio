@@ -33,3 +33,7 @@ src/projects/temp.scss
 
 # SSL
 /ssl
+
+# Blog stuff
+/blog-posts
+/public/blog-images
