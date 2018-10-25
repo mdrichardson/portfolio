@@ -10,6 +10,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import ReactGA from 'react-ga';
 import Waypoint from 'react-waypoint';
+
 class ProjectsList extends React.Component {
     constructor(props) {
         super(props);

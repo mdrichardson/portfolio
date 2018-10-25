@@ -5,6 +5,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import ArticlesList from './ArticlesList';
 import './articleView.css';
 import BlogApiService from '../BlogApiService';
+import LazyLoad from 'react-lazy-load';
 
 const articlesToDisplay = 3;
 
@@ -120,20 +121,22 @@ class RelatedArticles extends React.Component {
       } else {
         return (
           <StickyContainer>
-            <div id="related-container" className="section-container">
-              <div id="related-content" className="content-container">
-                <div id="related-articles-list">
-                  <ArticlesList articles={ this.state.displayedArticles }  activeTags={ this.state.activeTags }/>
+            <LazyLoad offsetVertical={1500}>
+              <div id="related-container" className="section-container">
+                <div id="related-content" className="content-container">
+                  <div id="related-articles-list">
+                    <ArticlesList articles={ this.state.displayedArticles }  activeTags={ this.state.activeTags }/>
+                  </div>
+                  <a id="view-blog" href="/blog" className="hvr-underline-from-center hvr-grow">View Blog</a>
                 </div>
-                <a id="view-blog" href="/blog" className="hvr-underline-from-center hvr-grow">View Blog</a>
+                <div className="section-title">
+                  <Sticky bottomOffset={130}>
+                    {({ style, isSticky }) =>
+                      <img style={ style } className={ isSticky ? "sticky" : "" } src={ this.state.sectionTitle } alt={ this.props.sectionTitle === 'blog' ? 'Blog' : 'Related' } />}
+                  </Sticky>
+                </div>
               </div>
-              <div className="section-title">
-                <Sticky bottomOffset={130}>
-                  {({ style, isSticky }) =>
-                    <img style={ style } className={ isSticky ? "sticky" : "" } src={ this.state.sectionTitle } alt={ this.props.sectionTitle === 'blog' ? 'Blog' : 'Related' } />}
-                </Sticky>
-              </div>
-            </div>
+            </LazyLoad>
           </StickyContainer>
         )
       }

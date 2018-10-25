@@ -8,6 +8,7 @@ import Portfolio from './project-details/Portfolio';
 import Blog from './project-details/Blog';
 import RESfilterer from './project-details/RESfilterer';
 import { StickyContainer, Sticky } from 'react-sticky';
+import LazyLoad from 'react-lazy-load';
 
 class Projects extends React.Component {
   constructor(props) {
@@ -32,17 +33,19 @@ class Projects extends React.Component {
   render() {
     return (
       <StickyContainer>
-        <div id="Projects" className="section-container">
-          <div id="project-list" className="content-container">
-            <ProjectList list={this.state.projects} />
+        <LazyLoad offsetVertical={1000}>
+          <div id="Projects" className="section-container">
+            <div id="project-list" className="content-container">
+              <ProjectList list={this.state.projects} />
+            </div>
+            <div className="section-title">
+              <Sticky bottomOffset={130}>
+                {({ style, isSticky }) =>
+                  <img style={ style } className={ isSticky ? "sticky" : "" } src={ projectsTitle } alt="Projects" />}
+              </Sticky>
+            </div>
           </div>
-          <div className="section-title">
-            <Sticky bottomOffset={130}>
-              {({ style, isSticky }) =>
-                <img style={ style } className={ isSticky ? "sticky" : "" } src={ projectsTitle } alt="Projects" />}
-            </Sticky>
-          </div>
-        </div>
+        </LazyLoad>
       </StickyContainer>
     );
   }
