@@ -54,7 +54,7 @@ class NavLinks extends React.Component {
 
     render() {
       return(
-        <ul id="menu">
+        <ul id={ this.props.useId || "menu"}>
           <li className="navItem">
             <NavLink to={ this.state.homeLink } scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Home</NavLink>
           </li>

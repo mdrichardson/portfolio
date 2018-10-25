@@ -9,7 +9,7 @@ class Footer extends React.Component {
       <div id="footer" className="section-container">
         <div id="footer-container">
           <p id="copyright">© 2018 <span id="footer-name">Michael Richardson</span>, All Rights Reserved</p>
-          <NavLinks />
+          <NavLinks useId="footer-menu"/>
         </div>
       </div>
     )

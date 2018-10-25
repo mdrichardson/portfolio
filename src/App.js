@@ -88,7 +88,6 @@ class App extends Component {
                     </div>
                 </div>
                 <Footer />
-                <div id="broken-notification"><p>You broke something. Return the value to <span>true</span> to fix it!</p></div>
             </div>
       )
     }
