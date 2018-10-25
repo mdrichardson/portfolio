@@ -15,7 +15,7 @@ const Portfolio = {
     'AWS',
     'Linux'
   ],
-  short_desc: 'You\'re here! Building this in React is definitely overkill, but I wanted the practice.',
+  short_desc: 'You\'re here! Building this in React is probably overkill, but I wanted the practice and I leaned a lot building it.',
   long_desc: 'Like many aspiring developers, I built this site to showcase my previous work and let you know ' +
                 'a little bit more about me. It\'s definitely overkill to build this in React, since it\'s mostly ' +
                 'a static site. However, this made it easier to integrate the blog.',
