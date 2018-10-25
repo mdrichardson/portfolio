@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faFileAlt } from '@fortawesome/free-solid-svg-icons';
+import resume from '../misc/RichardsonResume.pdf'
 
 class ContactLinks extends React.Component {
 
@@ -19,7 +20,7 @@ class ContactLinks extends React.Component {
                     <FontAwesomeIcon icon={ faLinkedin } size={this.fa_size} />
                     <p>Michael Richardson</p>
                 </a>
-                <a id="resume-link" href="https://www.mdrichardson.net/static/RichardsonResume.pdf" title="Michael Richardson Resume" target="_blank" rel="noopener noreferrer">
+                <a id="resume-link" href={ resume } title="Michael Richardson Resume" target="_blank" rel="noopener noreferrer" download={ resume }>
                     <FontAwesomeIcon icon={ faFileAlt } size={this.fa_size} />
                     <p>Resumé</p>
                 </a>
