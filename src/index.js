@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import './index.css';
 import App from './App';
+import Blog from './blog/Blog';
+import FourOhFour from './misc/FourOhFour';
 import registerServiceWorker from './registerServiceWorker';
 import ReactGA from 'react-ga';
 
@@ -13,11 +16,16 @@ ReactGA.pageview("/#Skills");
 ReactGA.pageview("/#Projects");
 ReactGA.pageview("/#About");
 ReactGA.pageview("/#Contact");
+ReactGA.pageview("/Blog");
 
 ReactDOM.render((
-    <Router>
-        <App />
-    </Router>
+  <Router history={ createHistory() }>
+    <Switch>
+      <Route exact path="/" component={ App } />
+      <Route path="/blog" component={ Blog } />
+      <Route component={ FourOhFour } />
+    </Switch>
+  </Router>
 ), document.getElementById('root')
 );
 registerServiceWorker();

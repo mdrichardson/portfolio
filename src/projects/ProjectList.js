@@ -26,17 +26,17 @@ class ProjectsList extends React.Component {
 
     // Expand the project. Triggers CSS animations
     expandIt = (key) => {
-        this.setState({ expandedKey: key })
-        // Log expand in Google Analytics
-        ReactGA.event({
-            category: 'ProjectExpand',
-            action: key
-          });
+      this.setState({ expandedKey: key })
+      // Log expand in Google Analytics
+      ReactGA.event({
+        category: 'ProjectExpand',
+        action: key
+      });
     }
 
     // Collapse the project. Triggers CSS animations
     collapseIt = () => {
-        this.setState({ expandedKey: null })
+      this.setState({ expandedKey: null })
     }
 
     // Animate entrance of each project individually on first visibility

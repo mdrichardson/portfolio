@@ -2,16 +2,17 @@
 
 $red: #F71735; // rgba(247, 23, 53, 1)
 $yellow: #FCAB10; // rgba(252, 171, 16, 1)
-$green: #a1e8af;
+$green: #A1E8AF; // rgba(161, 232, 175, 1)
 $blue: #2b4570; // rgba(43, 69, 112, 1)
 $gray: #A9BCD0;
-$black: #011627;
-$white: #FDFFFE;
+$black: #011627; // rgba(1,22,39, 1)
+$white: #FDFFFE; // rgba(253, 255, 254, 1)
 
 // Global fonts
 
 $headerFont: 'Lato';
 $textFont: 'Ubuntu';
+// Section Titles use News Cycle font, but are converted to SVGs
 
 // Media queries
 @mixin one-thousand {
@@ -40,11 +41,12 @@ $textFont: 'Ubuntu';
 $sectionTitleWidth: minmax(2.5rem, 3vw);
 $verticalSectionMargin: 5vw;
 $navHeight: 64px;
+$footerHeight: 60px;
 
 
 // Shadowing
 
-$giantShadow: 0.3rem 0.3rem 2rem rgba(0,0,0,0.1);
+$giantShadow: 0.3rem 0.3rem 2rem rgba(0,0,0,0.2);
 $bigShadow: 0.3rem 0.3rem 1rem rgba(0,0,0,0.3);
-$smallShadow: 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.05);
+$smallShadow: 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.1);
 $dropShadow: drop-shadow(0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1));

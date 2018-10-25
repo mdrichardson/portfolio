@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 let { google } = require('googleapis');
 const private = require('./private');
+const cors = require('cors');
 
 // Import private variables
 const port = private.PORT;
@@ -63,12 +64,33 @@ const credentials = {
 	cert: certificate,
 };
 
+// Set up CORS--for testing
+app.use(cors());
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect -- TODO: Remove localhost after testing
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, x-access-token');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+
 // Body parser middleware setup
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token");
     next();
   });
 
@@ -129,6 +151,17 @@ app.post('/send', (req, res) => {
         smtpTransport.close()
     });
 })
+
+// Init Blog
+const blog = require('./routes/blog');
+const blogAdmin = require('./routes/blogAdmin');
+
+app.use('/blog', blog);
+app.use('/blog/admin', blogAdmin);
+app.get('/', function(req, res){
+    res.send('Test successful!')
+})
+
 // Starting both http & https servers
 const httpsServer = https.createServer(credentials, app);
 

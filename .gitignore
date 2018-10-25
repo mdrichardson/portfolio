@@ -16,6 +16,7 @@
 .env.test.local
 .env.production.local
 .vscode
+temp.*
 
 npm-debug.log*
 yarn-debug.log*
@@ -29,11 +30,12 @@ src/**/*.css
 /server/node_modules
 /server/private.js
 src/projects/temp.scss
+/server/*.key
 /server/jwtRS256.key
 
 # SSL
 /ssl
 
-# Blog stuff
+# Ignore scratch efforts of blog posts
 /blog-posts
-/public/blog-images
+public/blog-images

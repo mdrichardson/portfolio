@@ -14,16 +14,16 @@ const RESfilterer = {
     // Spans have to be used in order to use HTML within the object
     short_desc: <span>Scrapes domains from selected pages of <a href="mediabiasfactcheck.com" target="_blank" rel="noopener noreferrer">MediaBiasFactCheck </a> 
                         and adds them to Reddit Enhancement Suite's Domain Filters</span>,
-    long_desc: <span>This is a command-line tool written in Python that scrapes domains from selected pages of 
-                <a href="mediabiasfactcheck.com" target="_blank" rel="noopener noreferrer"> MediaBiasFactCheck</a> and adds them to Reddit Enhancement Suite's Domain Filters. 
+  long_desc: <span>This is a command-line tool written in Python that scrapes domains from selected pages of 
+    <a href="mediabiasfactcheck.com" target="_blank" rel="noopener noreferrer"> MediaBiasFactCheck</a> and adds them to Reddit Enhancement Suite's Domain Filters. 
                 For example, I used this to hide the most biased and untrustworthy news sources (about 1200 unique domains) so that 
                 I no longer see them when browsing Reddit.</span>,
-    bullets: [
-        'Supports all bias categories from MediaBiasFactCheck',
-        'Users can select multiple categories and filter them all at once',
-        'File loading and saving is done using tKinter',
-        'Web scraping is done with requests'
-    ]
+  bullets: [
+    'Supports all bias categories from MediaBiasFactCheck',
+    'Users can select multiple categories and filter them all at once',
+    'File loading and saving is done using tKinter',
+    'Web scraping is done with requests'
+  ]
 }
 
 export default RESfilterer;

@@ -1,0 +1,133 @@
+@import '../../global-variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700');
+
+pre {
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.hljs {
+	background: rgba(1,22,39, 0.85);
+	padding: 1.5em 10em 1.5em 4em;
+	margin: 1.5em 2em;
+	width: auto;
+	display: inline-block;
+  overflow: auto;
+  
+  @include eight-hundred {
+    padding: 1em;
+	  margin: 1em 2em;
+  }
+
+	code {
+		padding: 0 !important;
+	}
+
+	* {
+		font-size: 1.5rem;
+		font-family: 'Ubuntu Mono', monospace;
+    background: none !important;
+
+    @include eight-hundred {
+      font-size: 1.25rem;
+    }
+	}
+
+	span {
+		color: $red;
+	}
+
+	.keyword {
+		font-weight: bold;
+	}
+
+	.keyword {
+		color: $yellow;
+	}
+
+	.function-variable,
+	.function {
+		color: $white;
+	}
+
+	.operator,
+	.punctuation {
+		color: $gray;
+	}
+
+	.number {
+		color: rgba(252, 171, 16, 0.75)
+	}
+}
+
+
+// .hljs {
+//     background: rgba(1,22,39, 0.75);
+//     padding: 1.5em 2em;
+//     margin: 1.5em 2em;
+//     width: auto;
+//     display: inline-block;
+//     overflow: auto;
+
+//     * {
+//         font-size: 1.5rem;
+//         font-family: 'Ubuntu Mono', monospace;
+//         background: none !important;
+//     }
+
+//     .hljs-keyword,
+//     .hljs-selector-tag,
+//     .hljs-literal,
+//     .hljs-section {
+//         color: $yellow;
+//         font-weight: bold;
+//     }
+
+//     .hljs-link {
+//         color: $white;
+//     }
+
+//     .hljs-subst,
+//     .hljs-params {
+//         color: $red;
+//     }
+
+//     .hljs-string {
+//         color: $yellow;
+//     }
+
+//     .hljs-title,
+//     .hljs-name,
+//     .hljs-type {
+//         color: $gray;
+//         font-weight: bold;
+//     }
+
+//     .hljs-attribute,
+//     .hljs-symbol,
+//     .hljs-bullet,
+//     .hljs-built_in,
+//     .hljs-addition,
+//     .hljs-variable,
+//     .hljs-template-tag,
+//     .hljs-template-variable,
+//     .hljs-comment,
+//     .hljs-quote,
+//     .hljs-deletion,
+//     .hljs-meta,
+//     .hljs-number {
+//         color: $gray;
+//     }
+
+//     .hljs-doctag,
+//     .hljs-strong {
+//         font-weight: bold;
+//     }
+
+//     .hljs-emphasis {
+//         font-style: italic;
+//     }
+// }
