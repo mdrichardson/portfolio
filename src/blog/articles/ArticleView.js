@@ -5,6 +5,7 @@ import RelatedArticles from './RelatedArticles';
 import CodeBlock from './CodeBlock';
 import FourOhFour from '../../misc/FourOhFour';
 import BlogApiService from '../BlogApiService';
+import ReactGA from 'react-ga';
 
 const ReactMarkdown = require('react-markdown');
 
@@ -30,6 +31,7 @@ class ArticleView extends React.Component {
         });
         const article = await articleRespose.json();
         this.setArticle(article);
+        ReactGA.pageview(`/blog/articles/${slug}`);
       } catch(err) {
         console.error(`Error fetching article: ${err}`);
       }
