@@ -33,6 +33,23 @@ class NavLinks extends React.Component {
       })
     }
 
+    // Because Related Articles are lazy loaded, clicking the contact link before they're loaded necessitates that we pause briefly before scrolling down
+    scrollToBottom = () => {
+      const position = document.body.scrollHeight;
+      window.scroll({
+        top: position,
+        left: 0,
+        behavior: 'smooth'
+      })
+      setTimeout(() => {
+        window.scroll({
+          top: position,
+          left: 0,
+          behavior: 'smooth'
+        })
+      }, 1500)
+    }
+
     // We set the home link programatically because if we leave it as '/#Home', 
     //   when we go to home from the blog, it will scroll down more than we want. This way, it starts at the top
     setHomeLink = () => {
@@ -71,7 +88,7 @@ class NavLinks extends React.Component {
             <Link to="/blog" onClick={ this.closeMenu }>Blog</Link>
           </li>
           <li className={ this.props.active === 'contact' ? "active navItem" : "navItem" }>
-            <NavLink to="/#Contact" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>Contact</NavLink>
+            <NavLink to="/#Contact" scroll={ this.scrollToBottom } onClick={ this.closeMenu }>Contact</NavLink>
           </li>
         </ul>
       )
