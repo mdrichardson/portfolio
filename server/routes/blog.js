@@ -71,7 +71,6 @@ router.get('/articles/:slug', (req, res) => {
     return Article.findOne({
         slug: req.params.slug
     }, (err, article) => {
-        console.log(article);
         if(err) {
             return res.sendStatus(404);
         } else if(article && article.isPublished) {

@@ -64,7 +64,7 @@ router.post('/register', (req, res) => {
                 user.password = hash;
                 user.save((error, registeredUser) => {
                     if (error) {
-                        console.log(error);
+                        console.error(error);
                     } else {
                         let payload = {
                             _id: registeredUser._id,
@@ -87,7 +87,7 @@ router.post('/login', (req, res) => {
     let userData = req.body;
     User.findOne({username: userData.username}, (error, user) => {
     if (error) {
-        console.log(error);
+        console.error(error);
     } else {
         if (!user) {
             res.status(401).send('Invalid Username');
@@ -119,7 +119,7 @@ router.post('/login', (req, res) => {
 const validateToken = (token) => {
     const response = jwt.verify(token, public_cert, { algorithm: 'RS256' }, function(err, decoded) {      
         if (err) {
-          console.log(err)
+          console.error(err)
           return false  
         } else {
           return decoded

@@ -115,7 +115,6 @@ app.post('/send', (req, res) => {
     } else {
         contact_log[date][id] = 1;
     }
-    console.log(contact_log);
 
     const output = `
         <p>You have a new contact request</p>
@@ -144,7 +143,7 @@ app.post('/send', (req, res) => {
     smtpTransport.sendMail(mailOptions, (error, info) => {
         if (error) {
             res.status(500).send('Unable to send contact form ', error);
-            return console.log(error);
+            return console.error(error);
         }
         console.log('Message sent: %s', info.messageId);
         res.status(200).send('Successfully Sent Contact Form');
