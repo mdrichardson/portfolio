@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Waypoint from 'react-waypoint';
+import BlogApiService from '../BlogApiService';
 
 const characterLimit = 250;
 
@@ -8,7 +9,7 @@ class ArticlesList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      animated: {} // Map of which articles (by id/key) have had their entrance animation played
+      animated: {}, // Map of which articles (by id/key) have had their entrance animation played
     }
   }
 
@@ -54,10 +55,13 @@ class ArticlesList extends React.Component {
                 <a key={ article._id }
                   id={ article._id }
                   className={ `article-container hvr-grow ${ this.state.animated[article._id] ? 'enter' : '' } ${ article.isPublished ? '' : 'unpublished'}` }
-                  href={ article.isPublished ? `/blog/articles/${article.slug}` : `/blog/admin/preview/${article.slug}`}>
+                  href={ BlogApiService.changeUrlIfOnGithub(article.isPublished ? `/blog/articles/${article.slug}` : `/blog/admin/preview/${article.slug}`) }>
                   <Waypoint onEnter={ () => this.animateEntrance(article._id) } bottomOffset="-22%"/> {/* bottomOffset is negative because waypoint needs to trigger when any part of article visible */ }
                   <div className="main-image">
-                    <img src={ article.image } alt={ article.title } style={{ objectPosition: `${ article.imageXOffsetPercent }% ${ article.imageYOffsetPercent }%`}}></img>
+                    <img src={ BlogApiService.changeUrlIfOnGithub(article.image) } 
+                      alt={ article.title } 
+                      style={{ objectPosition: `${ article.imageXOffsetPercent }% ${ article.imageYOffsetPercent }%`}}>
+                    </img>
                   </div>
                   <div className="article-date">
                     <div className="date-day">{ moment(article.createdAt).format('DD') }</div>

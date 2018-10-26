@@ -9,7 +9,7 @@ import EditPost from './admin/EditPost';
 import AdminToolbar from './admin/AdminToolbar';
 import Footer from '../footer/Footer';
 import { StickyContainer, Sticky } from 'react-sticky';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 class Blog extends React.Component {
   constructor(props) {
@@ -115,11 +115,13 @@ class Blog extends React.Component {
         <div id="blog-container">
           <NavBar navFixed={ this.state.navFixed } navHrHidden={ true } active={ 'blog' }/>
           <hr id ="blog-hr" className={ this.state.navFixed ? 'navFixed' : '' }/>
-          <Route exact path="/blog" component={ this.blogHome } />
-          <Route path="/blog/articles/:slug" component={ ArticleView } />
-          <Route path="/blog/admin/preview/:slug" component={ (props) => <ArticleView isPreview= { true } token={ this.validateToken.bind(this) } {...props}/>} />
-          <Route path="/blog/admin/newPost" component={ (props) => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token } {...props}/> }/>
-          <Route path="/blog/admin/edit/:slug" component={ (props) => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token } {...props}/>}/>
+          <Switch>
+            <Route exact path="/blog" component={ this.blogHome } />
+            <Route path="/blog/articles/:slug" component={ ArticleView } />
+            <Route path="/blog/admin/preview/:slug" component={ (props) => <ArticleView isPreview= { true } token={ this.validateToken.bind(this) } {...props}/>} />
+            <Route path="/blog/admin/newPost" component={ (props) => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token } {...props}/> }/>
+            <Route path="/blog/admin/edit/:slug" component={ (props) => <EditPost userIsAdmin={ this.state.userIsAdmin } token={ this.state.token } {...props}/>}/>
+          </Switch>
           { this.state.userIsAdmin ? <AdminToolbar /> : null }
           <Footer />
         </div>

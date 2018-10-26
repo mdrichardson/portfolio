@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Switch, Router } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Blog from './blog/Blog';
@@ -18,8 +17,10 @@ ReactGA.pageview("/#About");
 ReactGA.pageview("/#Contact");
 ReactGA.pageview("/Blog");
 
+
+// Must have basename in order for github pages to work
 ReactDOM.render((
-  <Router history={ createHistory() }>
+  <Router basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route exact path="/" component={ App } />
       <Route path="/blog" component={ Blog } />

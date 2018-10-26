@@ -4,6 +4,7 @@ import moment from 'moment';
 import RelatedArticles from './RelatedArticles';
 import CodeBlock from './CodeBlock';
 import FourOhFour from '../../misc/FourOhFour';
+import BlogApiService from '../BlogApiService';
 
 const ReactMarkdown = require('react-markdown');
 
@@ -14,8 +15,7 @@ class ArticleView extends React.Component {
       article: {
         tags: [],
         token: ''
-      },
-      redirectTimeLeft: 5
+      }
     }
   }
 
@@ -62,7 +62,10 @@ class ArticleView extends React.Component {
           <div id="article-view">
             <div id="article" className="section-container">
               <div id="single-main-image">
-                <img src={ this.state.article.image } alt={ this.state.article.title } style={{ objectPosition: `${ this.state.article.imageXOffsetPercent }% ${ this.state.article.imageYOffsetPercent }%`}}></img>
+                <img src={ BlogApiService.changeUrlIfOnGithub(this.state.article.image) } 
+                  alt={ this.state.article.title } 
+                  style={{ objectPosition: `${ this.state.article.imageXOffsetPercent }% ${ this.state.article.imageYOffsetPercent }%`}}>
+                </img>
               </div>
               <div id="single-article-date">
                 <div id="single-date-day">{ moment(this.state.article.createdAt).format('DD') }</div>

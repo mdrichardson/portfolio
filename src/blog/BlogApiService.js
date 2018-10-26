@@ -72,6 +72,11 @@ const BlogApiService = {
     });
     const article = articleRespose.json();
     return await article
+  },
+  changeUrlIfOnGithub: (url) => {
+    const pathname = new URL(window.location.href).pathname;
+    const onGithub = pathname.includes('portfolio');
+    return onGithub ? `/portfolio${ url }` : url
   }
 }
 
