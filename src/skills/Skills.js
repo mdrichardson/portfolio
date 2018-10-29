@@ -59,7 +59,7 @@ class Skills extends React.Component {
           items: [
             'MongoDB',
             'SQLite',
-            'Postgres'
+            'PostgreSQL'
           ]
         }
       }

@@ -10,7 +10,7 @@ const FUTpuppeteer = {
     'Python',
     'Selenium',
     'SQLite',
-    'Postgres'
+    'PostgreSQL'
   ],
   short_desc: 'Auto-clicking bot used to buy and sell players on EA’s FIFA 18 Ultimate Team web app',
   long_desc: 'This is an auto-clicking bot that utilizes Selenium to buy and sell players on EA Sports ' +

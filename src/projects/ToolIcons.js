@@ -76,7 +76,7 @@ const iconMap = {
   'Python': <FontAwesomeIcon icon={faPython} size={fa_size} />,
   'Selenium': seleniumSVG,
   'SQLite': sqlSVG,
-  'Postgres': postgresSVG,
+  'PostgreSQL': postgresSVG,
   'React': <FontAwesomeIcon icon={faReact} size={fa_size} />,
   'JavaScript': <FontAwesomeIcon icon={faJs} size={fa_size} />,
   'Sass': <FontAwesomeIcon icon={faSass} size={fa_size} />,
