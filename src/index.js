@@ -8,6 +8,11 @@ import FourOhFour from './misc/FourOhFour';
 import registerServiceWorker from './registerServiceWorker';
 import ReactGA from 'react-ga';
 
+// IE11 Polyfills
+import 'core-js/es7/array';
+import 'url-polyfill';
+import 'babel-polyfill';
+
 // Enable Google Analytics and track the hash pages
 ReactGA.initialize('UA-126123529-1');
 ReactGA.pageview("/#Home");

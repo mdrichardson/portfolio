@@ -20,3 +20,7 @@ Object.assign = require('object-assign');
 if (process.env.NODE_ENV === 'test') {
   require('raf').polyfill(global);
 }
+
+
+// IE11 polyfills
+require('core-js/es7/array');
