@@ -49,6 +49,9 @@ class Skills extends React.Component {
             'Express',
             'Selenium',
             'Wordpress',
+            'Bot Framework',
+            'AWS',
+            'Azure',
             'Git',
             'APIs',
             'Linux'
