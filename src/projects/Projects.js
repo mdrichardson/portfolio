@@ -9,6 +9,7 @@ import Blog from './project-details/Blog';
 import RESfilterer from './project-details/RESfilterer';
 import { StickyContainer, Sticky } from 'react-sticky';
 import LazyLoad from 'react-lazy-load';
+import BeerRecommender from './project-details/BeerRecommender';
 
 class Projects extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Projects extends React.Component {
       projects: [
         Portfolio,
         Blog,
+        BeerRecommender,
         TreatDispenser,
         FUTpuppeteer,
         RESfilterer

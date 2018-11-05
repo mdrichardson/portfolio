@@ -67,8 +67,17 @@ const seleniumSVG = (<svg style={{padding: '0.3em'}} xmlns='http://www.w3.org/20
   />
 </svg>)
 
+const azureSVG = (<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50'
+viewBox='0 0 50 50'>
+    <g id='Page-1'>
+        <path id='Combined-Shape' d='M11.423,44.326l23.623-4.156L22.894,25.748l6.328-17.346L50,44.33L11.423,44.326z M27.566,5.67L11.469,40.109v-0.034H0l12.717-21.975L27.566,5.67z'
+        />
+    </g>
+</svg>)
+
 const iconMap = {
   'Angular 6': <FontAwesomeIcon icon={faAngular} size={fa_size} />,
+  'Azure': azureSVG,
   'TypeScript': typescriptSVG,
   'Node.js': <FontAwesomeIcon icon={faNodeJs} size={fa_size} />,
   'MongoDB': mongodbSVG,
