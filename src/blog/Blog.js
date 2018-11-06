@@ -92,10 +92,16 @@ class Blog extends React.Component {
     }
 
     handleScroll = () => {
-      if (window.scrollY >= 50) {
-        this.fixNav();
-      } else {
-        this.unfixNav();
+      // Formik forms reload when anything is re-rendered, so if we're on a page using Formik (newPost), we need to prevent anything from re-rendering
+      const pathname = new URL(window.location.href).pathname;
+      if (!pathname.includes('newPost')) {
+        if (window.scrollY >= 50) {
+          console.log('fix')
+          this.fixNav();
+        } else {
+          console.log('unfix')
+          this.unfixNav();
+        }
       }
     }
 
