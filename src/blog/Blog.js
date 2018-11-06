@@ -92,14 +92,12 @@ class Blog extends React.Component {
     }
 
     handleScroll = () => {
-      // Formik forms reload when anything is re-rendered, so if we're on a page using Formik (newPost), we need to prevent anything from re-rendering
+      // Admin toolbar seems to cause everything to reload when scrolling. We can prevent this by disabling the nav fix/unfix for all the admin pages
       const pathname = new URL(window.location.href).pathname;
-      if (!pathname.includes('newPost')) {
+      if (!pathname.includes('admin')) {
         if (window.scrollY >= 50) {
-          console.log('fix')
           this.fixNav();
         } else {
-          console.log('unfix')
           this.unfixNav();
         }
       }
