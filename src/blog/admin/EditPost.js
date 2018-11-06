@@ -159,7 +159,9 @@ class NewPost extends React.Component {
       tags: [],
       article: {
         summary: '', // Only some variables are declared just to make things easier
-        tags: [] 
+        tags: [],
+        imageXOffsetPercent: 50,
+        imageYOffsetPercent: 50
       },
       isEdit: false,
       slug: '',
