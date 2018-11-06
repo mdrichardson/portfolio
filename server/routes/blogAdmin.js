@@ -243,6 +243,17 @@ router.post('/article', upload.single('image'), (async (req, res, next) => {
       });
     }
 
+    if(!body.tags) {
+      return res.status(422).json({
+        errors: {
+          tags: 'is required',
+        },
+      });
+    } else {
+      const tags = body.tags.split(',');
+      body.tags = tags;
+    }
+
     if(body.isPublished === 'undefined' || body.isPublished === null || !body.isPublished) {
         body.isPublished = false;
     }

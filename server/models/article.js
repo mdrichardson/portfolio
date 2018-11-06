@@ -10,7 +10,7 @@ const ArticleSchema = new Schema({
   imageYOffsetPercent: Number,
   summary: String,
   body: String,
-  tags: Array,
+  tags: [{type: String}],
   isPublished: Boolean
 }, { timestamps: true });
 
