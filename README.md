@@ -21,7 +21,7 @@ Like many aspiring developers, I built this site to showcase my previous work an
 * Hosted on an AWS EC2 instance running Ubuntu and Apache
 * 100s on all Lighthouse Audits:
 
-![Lighthouse Scores](https://www.mdrichardson.net/static/media/lighthouse.59e521b5.png)
+![Lighthouse Scores](https://github.com/mdrichardson/portfolio/raw/master/src/images/lighthouse.png)
 
 * ...Did you find any easter eggs?
 
