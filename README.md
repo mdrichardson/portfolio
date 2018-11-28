@@ -2,7 +2,7 @@
 
 **Note: Some enterprise firewalls seem to block [https://www.mdrichardson.net](mdrichardson.net). If you'd still like to view my portfolio, you can go to [the GitHub Pages version](https://mdrichardson.github.io/portfolio). However GitHub Pages works a little funny with React Router and some content may not load. Use this as a last resort.**
 
-Like many aspiring developers, I built this site to showcase my previous work and let you know a little bit more about me. It's definitely overkill to build this in React, since it's mostly a static site. However, this sets me up well for when I eventually add a blog.
+Like many aspiring developers, I built this site to showcase my previous work and let you know a little bit more about me. It's definitely overkill to build this in React, since it's mostly a static site. However, it made it easy to add my blog to it.
 
 ## Portfolio Website
 
