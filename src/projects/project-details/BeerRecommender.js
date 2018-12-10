@@ -18,8 +18,8 @@ const BeerRecommender = {
   bullets: [
     'Uses a machine learning-based service for natural language recognition',
     'Implements multi-turn conversations and user interrupts for “help” and “cancel”',
-    'Utilizes two Microsoft APIs to proivde nearest store to purchase recommended beer',
     'Uses custom LUIS choice prompt class that first looks for LUIS intents and if not found, prevents a list of valid options',
+    'Built in under 3 days'
   ]
 }
 
