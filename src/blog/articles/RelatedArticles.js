@@ -79,7 +79,7 @@ class RelatedArticles extends React.Component {
         }
       })
       // We always want to display articlesToDisplay, but we might not have enough relevant tags, so this should add the newest, that haven't been added and aren't related
-      if (remainingArticles > 0 && articlesInCaseUnderLimit.length > 0) {
+      if (remainingArticles > 0 && articlesInCaseUnderLimit && articlesInCaseUnderLimit.length > 0) {
         articlesInCaseUnderLimit.forEach(article => {
           if (remainingArticles > 0 && this.props.currentArticle !== article._id) {
             this.addArticleToDisplayedArticles(article);
@@ -114,7 +114,7 @@ class RelatedArticles extends React.Component {
     }
 
     render() {
-      if (this.state.articles.length === 0) {
+      if (!this.state.articles || this.state.articles.length === 0) {
         return (
           <p>Loading...</p>
         )

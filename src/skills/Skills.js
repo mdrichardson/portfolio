@@ -32,6 +32,7 @@ class Skills extends React.Component {
           title: 'Languages',
           items: [
             'JavaScript/TypeScript',
+            'C#',
             'Python',
             'C/C++',
             'SASS/CSS',
@@ -43,9 +44,9 @@ class Skills extends React.Component {
         tools: {
           title: 'Tools',
           items: [
+            'Node.js',
             'Angular 1 and 6',
             'React',
-            'Node.js',
             'Express',
             'Selenium',
             'Wordpress',
@@ -60,6 +61,7 @@ class Skills extends React.Component {
         databases: {
           title: 'Databases',
           items: [
+            'CosmosDB',
             'MongoDB',
             'SQLite',
             'PostgreSQL'

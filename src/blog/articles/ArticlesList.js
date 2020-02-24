@@ -15,7 +15,7 @@ class ArticlesList extends React.Component {
 
     shortenSummaryIfNecessary = (summary) => {
       let outputSummary = '';
-      if (summary.length > characterLimit) {
+      if (summary && summary.length > characterLimit) {
         outputSummary = `${ summary.substring(0, characterLimit) } ...`
       } else {
         outputSummary = summary;
