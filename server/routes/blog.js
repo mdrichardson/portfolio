@@ -14,17 +14,14 @@ const db = private.DB_URL;
 
 // Connect to db
 var connectOptions = {
-    user: private.DB_USER,
-    pass: private.DB_PASS,
-    auth: {
-      authdb: private.DB_ADMIN_DB
-    },
-    useNewUrlParser: true
-  }
+    dbName: private.DB_NAME,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+};
 
-  mongoose.connect(db, connectOptions, err => {
+mongoose.connect(db, connectOptions, err => {
     if (err) {
-        console.error('Error!' + err)
+        console.error('Error! ' + err)
     } else {
         console.log('Connected to mongodb!')
     }

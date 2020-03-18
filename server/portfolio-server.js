@@ -13,6 +13,7 @@ const refresh_token = private.OAUTH2_REFRESH;
 const email = private.EMAIL;
 
 // Set up Google SMTP client
+// https://medium.com/swlh/multi-purposes-mailing-api-using-nodemailer-gmail-google-oauth-28de49118d77
 let OAuth2 = google.auth.OAuth2;
 let OAuth2Client = new OAuth2(
     oauth2_id,
@@ -26,7 +27,14 @@ OAuth2Client.setCredentials({
 // Initialize access token variable
 let accessToken = '';
 // Get access token
-OAuth2Client.refreshAccessToken((err, tokens) => accessToken = tokens.access_token);
+OAuth2Client.refreshAccessToken((err, tokens) => {
+    if (err) {
+        console.error(err);
+    } else {
+        accessToken = tokens.access_token
+    }
+});
+
 // SMTP Settings
 let smtpTransport = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -37,8 +45,7 @@ let smtpTransport = nodemailer.createTransport({
         user: email,
         clientId: oauth2_id,
         clientSecret: oauth2_secret,
-        refreshToken: refresh_token,
-        accessToken: accessToken
+        refreshToken: refresh_token
     },
     tls: {
         rejectUnauthorized: false
