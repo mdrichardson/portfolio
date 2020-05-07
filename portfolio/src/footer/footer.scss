@@ -1,0 +1,78 @@
+@import '../global-variables.scss';
+
+#footer {
+    padding: 0 3vw;
+    background: $black;
+    height: $footerHeight;
+
+    #footer-container {
+        grid-column: 2;
+        -ms-grid-column: 2;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        align-self: center;
+
+        #copyright {
+            flex: 1 0 auto;
+            @include six-hundred {
+                font-size: 2.5vw;
+            }
+
+            #footer-name {
+                font-weight: bold;
+                font-size: 1.5rem;
+
+                @include six-hundred {
+                    font-size: 3vw;
+                }
+            }
+
+            @include one-thousand {
+                text-align: center;
+            }
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-flow: row nowrap;
+            align-self: center;
+            justify-content: space-between;
+            margin-left: auto;
+            flex: 1 0 auto;
+            max-width: 600px;
+
+            @include one-thousand {
+                display: none;
+            }
+
+            li {
+
+                flex: 1 1 auto;
+                text-align: center;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                line-height: $footerHeight;
+    
+                &:hover {
+                    background-color: $yellow;
+                    transition: background-color 0.5s ease-out;
+                }
+    
+                a {
+                    flex: 1 0 400px;
+                    display: block;
+                    text-decoration: none;
+                    color: $white;
+                    font-size: 1.5rem;
+    
+                    &:visited {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}

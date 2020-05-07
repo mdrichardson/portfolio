@@ -1,0 +1,15 @@
+# base image
+FROM node:12.2.0-alpine
+
+WORKDIR /server
+
+ENV PATH /server/node_modules/.bin:$PATH
+
+RUN apk add --update curl \
+  && rm -rf /var/cache/apk/*
+RUN apk --no-cache add --virtual builds-deps build-base python
+
+COPY package.json /server/package.json
+RUN npm install
+
+CMD ["node", "portfolio-server"]

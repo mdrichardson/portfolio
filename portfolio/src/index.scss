@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu|Lato:400,700');
+@import './global-variables.scss';
+
+// Set root font size to 12px (for Lighthouse mobile audit)
+html {
+    font-size: 75%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    :not(h1), :not(h2), :not(h3), :not(h4), :not(h5), :not(h6) {
+        font-family: $textFont, sans-serif;
+        color: $white;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $headerFont, sans-serif;
+    font-weight: bold;
+    color: $white;
+}
+
+body {
+    background: $red; /* Old browsers */
+    background: -moz-linear-gradient(45deg, $yellow 0%, $red 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, $yellow 0%,$red 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, $yellow 0%,$red 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$red,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background-repeat: no-repeat;
+    background-size: 100% 250vh;
+    overflow-x: hidden;
+
+    @include six-hundred {
+        background-size: 100% 350vh;
+    }
+}
+
+#about-section {
+    min-height: 100vh;
+    background: #fcab10; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #fcab10 0%, #f8312e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #fcab10 0%,#f8312e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #fcab10 0%,#f8312e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcab10', endColorstr='#f8312e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+// Custom Scrollbar - webkit-only
+
+::-webkit-scrollbar {
+    width: 1em;
+    height: 1em;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $gray;
+    border-radius: 2em;
+
+    &:hover {
+        background: $yellow;
+    }
+
+    &:active {
+        background: $red;
+    }
+}
+::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece {
+    
+    background: $black;
+
+    &:hover {
+        background: $yellow;
+    }
+
+    &:active {
+        background: $black;
+    } 
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+// Sections
+
+.section-container {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: $sectionTitleWidth 1fr $sectionTitleWidth;
+    -ms-grid-columns: $sectionTitleWidth 1fr $sectionTitleWidth;
+    grid-template-rows: 1fr;
+    -ms-grid-rows: 1fr;
+    align-items: flex-start;
+    padding: $verticalSectionMargin 3vw;
+
+    .content-container {
+        padding: 5em 5vw;
+    }
+}
+
+.sticky {
+    margin-top: 8em;
+}
+
+.section-title {
+    opacity: 0.7;
+    align-self: start;
+    padding-top: 5em;
+}
+
+// Font Sizes
+
+p {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+}
+
+li {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.statement {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    font-family: $headerFont;
+    font-weight: bold;
+    text-shadow: $smallShadow;
+}
+
+.small-text {
+    font-size: 1.2rem;
+    line-height: 1.25rem;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2.25rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+@include one-thousand {
+    p {
+        font-size: 1.5rem;
+        line-height: 1.85rem;
+    }
+    
+    li {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+    
+    .statement {
+        font-size: 2.5rem;
+        line-height: 2.75rem;
+        font-family: $headerFont;
+        font-weight: bold;
+        text-shadow: $smallShadow;
+    }
+    
+    .small-text {
+        font-size: 1.2rem;
+        line-height: 1.25rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2.25rem;
+    }
+    
+    h3 {
+        font-size: 2rem;
+    }
+    
+    h4 {
+        font-size: 1.75rem;
+    }
+}
+
+@include eight-hundred {
+    p {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
+    
+    li {
+        font-size: 1.15rem;
+        line-height: 1.45rem;
+    }
+    
+    .statement {
+        font-size: 2rem;
+        line-height: 2.5rem;
+        font-family: $headerFont;
+        font-weight: bold;
+        text-shadow: $smallShadow;
+    }
+    
+    .small-text {
+        font-size: 1.2rem;
+        line-height: 1.25rem;
+    }
+    
+    h1 {
+        font-size: 2.25rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.75rem;
+    }
+    
+    h4 {
+        font-size: 1.5rem;
+    }
+}

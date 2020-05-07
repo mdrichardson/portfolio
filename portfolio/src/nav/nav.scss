@@ -1,0 +1,208 @@
+@import '../global-variables.scss';
+@import '../animations.scss';
+
+#nav {
+    box-shadow: none;
+    background: none;
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        background: #f95725; /* Old browsers */
+        background: -moz-linear-gradient(45deg, #f95725 0%, #f71735 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg, #f95725 0%,#f71735 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg, #f95725 0%,#f71735 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f95725', endColorstr='#f71735',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        animation: down 0.3s ease-out, fade-in 0.5s ease-out;
+    }
+
+    &:not(.fixed) {
+        height: $navHeight;
+    }
+}
+
+#toolbar {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr minmax(400px, 40vw);
+    -ms-grid-columns: 1fr minmax(400px, 40vw);
+    height: $navHeight;
+
+    @include eight-hundred {
+        & {
+            grid-template-columns: 1fr auto;
+            -ms-grid-columns: 1fr auto;
+        }
+    }
+
+    #header-name {
+        grid-column: 1;
+        -ms-grid-column: 1;
+        -ms-grid-row-align: center;
+        color: $white;
+        font-family: $headerFont, sans-serif;
+        font-weight: bold;
+        font-size: 2rem;
+
+        .hidden {
+            opacity: 0;
+            transition: opacity 0.3s;
+
+            @include six-hundred {
+                opacity: 1;
+            }
+        }
+
+        .shown {
+            opacity: 1;
+            transition: opacity 1s;
+        }
+
+        @include six-hundred {
+            opacity: 1;
+        }
+    }
+
+    @include eight-hundred {
+        #menu-container {
+            display: none;
+
+            &.animated {
+                display: block;
+                position: absolute;
+                top: 64px;
+                right: 0;
+                width: 275px;
+
+               #menu-background {
+                    display: block;
+                    position: absolute;
+                    width: 275px;
+                    height: 300px;
+                    background: #f95725; /* Old browsers */
+                    background: -moz-linear-gradient(45deg, #f95725 0%, #f71735 100%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(45deg, #f95725 0%,#f71735 100%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(45deg, #f95725 0%,#f71735 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f95725', endColorstr='#f71735',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+                    animation: fade-in 0.5s ease-out, big-down 0.5s ease-out;
+                }
+
+                #menu {
+                    display: flex;
+                    flex-direction: column;
+                    height: 300px;
+                    align-items: center;
+                    z-index: 3;
+
+                    li {
+                        opacity: 0;
+
+                        &:nth-child(1) {
+                            animation: menu-slide-right 0.25s ease-in 0.38s, fade-in 0.75s ease-in 0.28s;
+                            animation-fill-mode: forwards;   
+                        }
+
+                        &:nth-child(2) {
+                            animation: menu-slide-right 0.25s ease-in 0.4s, fade-in 0.75s ease-in 0.3s;
+                            animation-fill-mode: forwards;   
+                        }
+                        &:nth-child(3) {
+                            animation: menu-slide-right 0.25s ease-in 0.42s, fade-in 0.75s ease-in 0.32s;
+                            animation-fill-mode: forwards;   
+                        }
+                        &:nth-child(4) {
+                            animation: menu-slide-right 0.25s ease-in 0.44s, fade-in 0.75s ease-in 0.34s;
+                            animation-fill-mode: forwards;   
+                        }
+                        &:nth-child(5) {
+                            animation: menu-slide-right 0.25s ease-in 0.46s, fade-in 0.75s ease-in 0.36s;
+                            animation-fill-mode: forwards;   
+                        }
+                        &:nth-child(6) {
+                            animation: menu-slide-right 0.25s ease-in 0.48s, fade-in 0.75s ease-in 0.38s;
+                            animation-fill-mode: forwards;   
+                        }
+                    }
+                }
+            }
+        }
+
+        #hamburger-menu {
+            display: block !important;
+            justify-self: end;
+        }
+    }
+    #menu-container {
+        grid-column: 2;
+        -ms-grid-column: 2;
+
+        #menu {
+            display: flex;
+            flex-flow: row nowrap;
+    
+            #menu-background {
+                display: none;
+            }
+    
+            li {
+                flex: 1 1 auto;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: $navHeight;
+
+                &:hover {
+                    background-color: $yellow;
+                    transition: background-color 0.5s ease-out;
+                }
+    
+                a {
+                    flex: 1 1 auto;
+                    display: block;
+                    text-decoration: none;
+                    color: $white;
+                    font-size: 1.5rem;
+                    height: 100%;
+                    width: 100%;
+                    line-height: $navHeight;
+    
+                    &:visited {
+                        color: $white;
+                    }
+                }
+    
+                &.active {
+                    border-bottom: 0.2rem solid $white;
+    
+                    a {
+                        margin-bottom: -0.2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    #hamburger-menu {
+        display: none;
+    }
+}
+
+#menu-hr {
+    margin: 0px 50px;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $white;
+    transition: margin-bottom 0.5s ease;
+
+    &.animated {
+        animation: swing-out 0.75s ease-out;
+        animation-fill-mode: forwards;
+    }
+
+    &:not(.load):not(.animated) {
+        animation: swing-in 0.25s ease-out;
+    }
+}

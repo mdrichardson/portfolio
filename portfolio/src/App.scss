@@ -1,0 +1,60 @@
+@import './global-variables.scss';
+@import './animations.scss';
+
+
+// For EasterEgg
+#broken-notification {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    padding: 0.2em;
+    bottom: 0;
+    font-size: 2.5rem;
+    background-color: $red;
+    color: $white;
+    text-align: center;
+    animation: only-up 1s ease-out, fade-in 1s ease-out;
+
+    span {
+        color: $yellow;
+    }
+}
+
+// For Content Update Notification
+#update-notification {
+    // display: none;
+    display: none;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    position: fixed;
+    max-width: 800px;
+    padding: 0.3em 2em;
+    bottom: 0;
+    right: 0;
+    font-size: 2rem;
+    background-color: $black;
+    color: $white;
+    text-align: center;
+    animation: only-up 1s ease-out, fade-in 1s ease-out;
+
+    @include eight-hundred {
+        font-size: 3vw;
+    }
+
+    @include six-hundred {
+        font-size: 4vw;
+    }
+
+    #update-actions {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+
+        #refresh, #dismiss {
+            flex: 0 1 auto;
+            cursor: pointer;
+            color: $yellow;
+            margin-left: 2em;
+        }
+    }
+}
