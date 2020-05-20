@@ -8,4 +8,4 @@ node /server/portfolio-server & \
 # nginx
 nginx -g 'daemon off;'
 
-# docker kill portfolio & docker build --rm -t portfolio . & docker run -p 4430:443 -p 8000:80 --name portfolio --rm portfolio
+# docker kill portfolio & docker build --rm -t portfolio . & docker run -p 4430:443 -p 8000:80 -p 3100:3100 --name portfolio --rm portfolio

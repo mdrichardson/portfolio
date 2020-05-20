@@ -26,11 +26,12 @@ FROM nginx:stable-alpine
 
 EXPOSE 443
 EXPOSE 80
+EXPOSE 3100
 
 RUN apk add --update --no-cache ca-certificates npm nodejs python g++ make && rm -rf /var/cache/apk/*
 
 COPY --from=backend /server /server
-COPY --from=frontend /portfolio/public /usr/share/nginx/html
+COPY --from=frontend /portfolio/build /usr/share/nginx/html
 
 ENV NODE_ENV=production
 ENV VIRTUAL_HOST=mdrichardson.net
@@ -43,5 +44,3 @@ COPY ./certs/mdrichardson.net /etc/letsencrypt/live/mdrichardson.net
 COPY ./start.sh /start.sh
 
 CMD ["sh", "/start.sh"]
-
-# TODO: Add Letsencrypt

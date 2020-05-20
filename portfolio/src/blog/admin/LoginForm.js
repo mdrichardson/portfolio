@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
       event.preventDefault();
       this.setState({ isSubmitting: true });
       try {
-        const res = await fetch('https://www.mdrichardson.net:3100/blog/admin/login', {
+        const res = await fetch('https://portfolio-server.mdrichardson.net/blog/admin/login', {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

@@ -45,7 +45,7 @@ class Blog extends React.Component {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const res = await fetch('https://www.mdrichardson.net:3100/blog/admin/validateToken', {
+          const res = await fetch('https://portfolio-server.mdrichardson.net/blog/admin/validateToken', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

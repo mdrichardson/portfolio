@@ -84,7 +84,7 @@ const FormikForm = withFormik({
     });
     setSubmitting(true);
     values.id = props.id;
-    fetch('https://www.mdrichardson.net:3100/send', {
+    fetch('https://portfolio-server.mdrichardson.net/send', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values)

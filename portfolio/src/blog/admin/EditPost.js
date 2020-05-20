@@ -120,11 +120,11 @@ const FormikForm = withFormik({
     let headers;
     let data;
     if (values.isEdit) {
-      url =`https://www.mdrichardson.net:3100/blog/admin/article/edit/${values.slug}`;
+      url =`https://portfolio-server.mdrichardson.net/blog/admin/article/edit/${values.slug}`;
       headers = { 'x-access-token': values.token, 'Content-Type': 'application/json' };
       data = JSON.stringify(values);
     } else {
-      url = 'https://www.mdrichardson.net:3100/blog/admin/article';
+      url = 'https://portfolio-server.mdrichardson.net/blog/admin/article';
       headers = { 'x-access-token': values.token };
       data = new FormData();
       for (var key in values) {

@@ -1,4 +1,4 @@
-const blogUrl = 'https://www.mdrichardson.net:3100/blog/';
+const blogUrl = 'https://portfolio-server.mdrichardson.net/blog/';
 const tagsUrl = `${blogUrl}tags/`
 const articlesUrl = `${blogUrl}articles/`
 const blogAdminUrl = `${blogUrl}admin/`
