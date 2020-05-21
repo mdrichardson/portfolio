@@ -17,6 +17,19 @@ const urls = {
 }
 
 const BlogApiService = {
+  blogIsUp: async() => {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => {
+        controller.abort();
+      }, 300);
+      const res = await(fetch(urls.blog, {signal: controller.signal}));
+      clearTimeout(timeout);
+      return res.status === 200 ? true : false;
+    } catch (err) {
+      return false;
+    }
+  },
   getTags: async () => {
     try {
       const tagsResponse = await fetch(urls.tags);
@@ -49,7 +62,7 @@ const BlogApiService = {
     try {
       const articlesRespose = await fetch(urls.articles);
       const articles = articlesRespose.json();
-      return await articles
+      return articles && articles.length > 0 ? articles : [];
     } catch(err) {
       console.error(`Error fetching articles: ${err}`);
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
 import { NavLink as Link } from 'react-router-dom';
+import BlogApiService from '../blog/BlogApiService';
 
 class NavLinks extends React.Component {
 
@@ -8,7 +9,8 @@ class NavLinks extends React.Component {
     super(props);
     this.state = {
       animateClassName: 'load',
-      homeLink: ''
+      homeLink: '',
+      blogIsUp: false
     }
   }
 
@@ -66,6 +68,7 @@ class NavLinks extends React.Component {
     }
 
     componentDidMount() {
+      BlogApiService.blogIsUp().then((result) => this.setState({ blogIsUp: result }));
       this.setHomeLink();
     }
 
@@ -84,9 +87,12 @@ class NavLinks extends React.Component {
           <li className={ this.props.active === 'about' ? "active navItem" : "navItem" }>
             <NavLink to="/#About" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>About</NavLink>
           </li>
+          {
+          this.blogIsUp && 
           <li className={ this.props.active === 'blog' ? "active navItem" : "navItem" }>
             <Link to="/blog" onClick={ this.closeMenu }>Blog</Link>
           </li>
+          }
           <li className={ this.props.active === 'contact' ? "active navItem" : "navItem" }>
             <NavLink to="/#Contact" scroll={ this.scrollToBottom } onClick={ this.closeMenu }>Contact</NavLink>
           </li>

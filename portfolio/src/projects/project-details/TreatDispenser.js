@@ -5,7 +5,7 @@ import React from 'react';
 const TreatDispenser = {
   id: 'treat-dispenser',
   name: 'Treat Dispenser',
-  url: 'https://treat.mdrichardson.net',
+  url: null,
   github: 'https://github.com/mdrichardson/treat-dispenser',
   image: imageSRC,
   tools: [

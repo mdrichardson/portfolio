@@ -4,7 +4,7 @@ import React from 'react';
 const BeerRecommender = {
   id: 'beer-recommender',
   name: 'beerRecommenderBot',
-  url: 'https://beerbot.mdrichardson.net',
+  url: null,
   github: 'https://github.com/mdrichardson/beerRecommenderBot/',
   image: imageSRC,
   tools: [

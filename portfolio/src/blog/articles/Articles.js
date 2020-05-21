@@ -12,7 +12,8 @@ class Articles extends React.Component {
       tags: [],
       activeTags: {},
       userIsAdmin: false,
-      token: ''
+      token: '',
+      blogIsUp: false
     }
   }
 
@@ -60,10 +61,13 @@ class Articles extends React.Component {
     }
 
     componentDidMount() {
-      this.getTags();
-      this.getArticles();
-      if (!this.isCancelled && this.props.userIsAdmin && this.props.token !== '') {
-        this.getUnPublishedArticles(this.props.token);
+      BlogApiService.blogIsUp().then((result) => this.setState({ blogIsUp: result }));
+      if (this.blogIsUp) {
+        this.getTags();
+        this.getArticles();
+        if (!this.isCancelled && this.props.userIsAdmin && this.props.token !== '') {
+          this.getUnPublishedArticles(this.props.token);
+        }
       }
     }
 
@@ -74,13 +78,14 @@ class Articles extends React.Component {
       if (newProps.token !== this.props.token) {
         this.setState({ token: newProps.token });
       }
-      if (this.state.userIsAdmin && newProps.token !== '') {
+      if (this.state.userIsAdmin && newProps.token !== '' && this.blogIsUp) {
         this.getUnPublishedArticles(newProps.token);
         this.isCancelled = true;
       }
     }
 
     render() {
+      if (!this.blogIsUp) return null;
       return (
         <div>
           <div id="articles-filter">

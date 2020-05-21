@@ -16,7 +16,8 @@ class RelatedArticles extends React.Component {
       articles: [],
       activeTags: {},
       displayedArticles: [],
-      sectionTitle: null
+      sectionTitle: null,
+      blogIsUp: false
     }
   }
 
@@ -25,9 +26,12 @@ class RelatedArticles extends React.Component {
     }
 
     getArticles = async () => {
-      const articles = await BlogApiService.getArticles();
-      this.setArticles(await articles);
-      this.loadAllArticlesIfNecessary();
+      if (this.blogIsUp) {
+        const articles = await BlogApiService.getArticles();
+        this.setArticles(await articles);
+        this.loadAllArticlesIfNecessary();
+
+      }
     }
 
     setArticles = (articles) => {
@@ -42,6 +46,7 @@ class RelatedArticles extends React.Component {
     }
 
     componentDidMount() {
+      BlogApiService.blogIsUp().then((result) => this.setState({ blogIsUp: result }));
       this.setSectionTitle();
       this.getArticles();
     }
@@ -114,6 +119,8 @@ class RelatedArticles extends React.Component {
     }
 
     render() {
+      if (!this.state.blogIsUp) return null;
+      if (this.state.blogIsUp) console.error('what');
       if (!this.state.articles || this.state.articles.length === 0) {
         return (
           <p>Loading...</p>

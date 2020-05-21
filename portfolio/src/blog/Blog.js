@@ -10,6 +10,7 @@ import AdminToolbar from './admin/AdminToolbar';
 import Footer from '../footer/Footer';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { Route, Switch } from 'react-router-dom';
+import BlogApiService from './BlogApiService';
 
 class Blog extends React.Component {
   constructor(props) {
@@ -17,7 +18,8 @@ class Blog extends React.Component {
     this.state = {
       userIsAdmin: false,
       navFixed: false,
-      token: ''
+      token: '',
+      blogIsUp: false
     }
   }
 
@@ -106,6 +108,7 @@ class Blog extends React.Component {
     componentDidMount() {
       document.onkeydown = this.watchForLoginHotkeys;
       !this.isCancelled && this.validateToken();
+      BlogApiService.blogIsUp().then((result) => this.setState({ blogIsUp: result }));
       this.watchForScroll();
     }
 
@@ -115,6 +118,7 @@ class Blog extends React.Component {
     }
 
     render() {
+      if (!this.blogIsUp) return null;
       return (
         <div id="blog-container">
           <NavBar navFixed={ this.state.navFixed } navHrHidden={ true } active={ 'blog' }/>
