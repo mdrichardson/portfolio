@@ -1,5 +1,4 @@
-import imageSRC from '../../images/beer-recommender.png'
-import React from 'react';
+import imageSRC from '../../images/beer-recommender.png';
 
 const BeerRecommender = {
   id: 'beer-recommender',

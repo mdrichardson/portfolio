@@ -120,7 +120,6 @@ class RelatedArticles extends React.Component {
 
     render() {
       if (!this.state.blogIsUp) return null;
-      if (this.state.blogIsUp) console.error('what');
       if (!this.state.articles || this.state.articles.length === 0) {
         return (
           <p>Loading...</p>
