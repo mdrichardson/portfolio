@@ -60,8 +60,8 @@ const BlogApiService = {
   },
   getArticles: async () => {
     try {
-      const articlesRespose = await fetch(urls.articles);
-      const articles = articlesRespose.json();
+      const articlesResponse = await fetch(urls.articles);
+      const articles = await articlesResponse.json();
       return articles && articles.length > 0 ? articles : [];
     } catch(err) {
       console.error(`Error fetching articles: ${err}`);

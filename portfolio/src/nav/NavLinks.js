@@ -88,7 +88,7 @@ class NavLinks extends React.Component {
             <NavLink to="/#About" scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })} onClick={ this.closeMenu }>About</NavLink>
           </li>
           {
-          this.blogIsUp && 
+          this.state.blogIsUp && 
           <li className={ this.props.active === 'blog' ? "active navItem" : "navItem" }>
             <Link to="/blog" onClick={ this.closeMenu }>Blog</Link>
           </li>

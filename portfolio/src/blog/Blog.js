@@ -118,7 +118,7 @@ class Blog extends React.Component {
     }
 
     render() {
-      if (!this.blogIsUp) return null;
+      if (!this.state.blogIsUp) return null;
       return (
         <div id="blog-container">
           <NavBar navFixed={ this.state.navFixed } navHrHidden={ true } active={ 'blog' }/>

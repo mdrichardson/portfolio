@@ -26,12 +26,9 @@ class RelatedArticles extends React.Component {
     }
 
     getArticles = async () => {
-      if (this.blogIsUp) {
-        const articles = await BlogApiService.getArticles();
-        this.setArticles(await articles);
-        this.loadAllArticlesIfNecessary();
-
-      }
+      const articles = await BlogApiService.getArticles();
+      this.setArticles(await articles);
+      this.loadAllArticlesIfNecessary();
     }
 
     setArticles = (articles) => {
