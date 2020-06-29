@@ -44,6 +44,7 @@ class Skills extends React.Component {
         tools: {
           title: 'Tools',
           items: [
+            'Docker',
             'Node.js',
             'Angular 1 and 6',
             'React',
