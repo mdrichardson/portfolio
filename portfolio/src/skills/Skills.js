@@ -34,11 +34,6 @@ class Skills extends React.Component {
             'JavaScript/TypeScript',
             'C#',
             'Python',
-            'C/C++',
-            'SASS/CSS',
-            'PHP',
-            'JSON',
-            'HTML',
           ]
         },
         tools: {
@@ -46,7 +41,7 @@ class Skills extends React.Component {
           items: [
             'Docker',
             'Node.js',
-            'Angular 1 and 6',
+            'Angular',
             'React',
             'Express',
             'Selenium',
@@ -55,7 +50,6 @@ class Skills extends React.Component {
             'AWS',
             'Azure',
             'Git',
-            'APIs',
             'Linux'
           ]
         },

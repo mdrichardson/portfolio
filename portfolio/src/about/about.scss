@@ -51,8 +51,8 @@
                     animation-fill-mode: forwards;
                 }
 
-                &.wife:hover::before, &.focus:hover::before {
-                    content: 'I seriously lucked out with her. She\'s amazing';
+                &.family:hover::before, &.focus:hover::before {
+                    content: 'My wife and daughter are amazing!';
                 }
                 &.dog:hover::before, &.focus:hover::before {
                     content: 'Trip is my spunky, goofy Norwegian Buhund, whom I built the treat dispenser for';

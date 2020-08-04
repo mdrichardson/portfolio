@@ -11,8 +11,8 @@ class OtherDetails extends React.Component {
         this.setState({
             lookingFor: [
                 {title: 'Full-Time Employment', looking: true},
-                {title: 'Weekend Contract Work', looking: true},
-                {title: 'Open to Offers', looking: false},
+                {title: 'Weekend Contract Work', looking: false},
+                {title: 'Open to Offers', looking: true},
                 {title: 'Nothing', looking: false}
             ],
             location: 'Seattle',

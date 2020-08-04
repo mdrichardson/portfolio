@@ -23,7 +23,7 @@ const AboutMeText =
         <p>
             { /* Multiple  classes are used ('games' and 'games') so that if a multi-word activity ('video games') is has a line break in the
                     middle, the tooltip pops up on the appropriate line */ }
-            Outside of programming, I enjoy spending time with my <span className="wife hover-text">wife</span> and my <span className="dog hover-text">dog</span>,&nbsp;
+            Outside of programming, I enjoy spending time with my <span className="family hover-text">family</span> and my <span className="dog hover-text">dog</span>,&nbsp;
             watching either the <span className="cougs hover-text">Cougars</span> or the <span className="sounders hover-text">Sounders</span>,&nbsp;
             playing <span className="games hover-text">video </span><span className="games hover-text">games</span> and&nbsp;
             <span className="guitar hover-text">guitar</span>, <span className="homebrewing hover-text">homebrewing </span>
