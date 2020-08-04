@@ -1,6 +1,4 @@
 import imageSRC from '../../images/treat-dispenser.png'
-import { HashLink as Link } from 'react-router-hash-link';
-import React from 'react';
 
 const TreatDispenser = {
   id: 'treat-dispenser',
@@ -24,7 +22,7 @@ const TreatDispenser = {
         'Works in Chrome, Edge, and IE',
         'Treat dispenser hardware was programmed by me, using C/C++',
         // Spans have to be used in order to use HTML within the object
-        <span>If you'd like to test it, <Link to="/#Contact">contact me</Link> for the login details</span>
+        // <span>If you'd like to test it, <Link to="/#Contact">contact me</Link> for the login details</span>
     ]
 }
 

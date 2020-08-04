@@ -11,7 +11,7 @@ const BeerRecommender = {
     'TypeScript',
     'Azure',
   ],
-  short_desc: 'Intelligent web chat bot that provides beer recommendations. Built in under days.',
+  short_desc: 'Intelligent web chat bot that provides beer recommendations. Built in under 3 days.',
   long_desc: 'This is an intelligent web chat bot built using the Microsoft Bot Framework, Node SDK v4. It gets user beer flavor preferences and ' +
               'recommends the matching beer style, and then provides a recommendation for a new beer to try and displays where they can purchase it.',
   bullets: [

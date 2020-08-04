@@ -1,10 +1,12 @@
 import React from 'react';
 import LookingForList from './LookingForList';
+import RelocateToList from './RelocateToList';
 
 class OtherDetails extends React.Component {
     state = {
         lookingFor: [],
         location: '',
+        relocate: []
     }
 
     componentDidMount() {
@@ -16,6 +18,10 @@ class OtherDetails extends React.Component {
                 {title: 'Nothing', looking: false}
             ],
             location: 'Seattle',
+            relocate: [
+                { location: 'Portland, OR', willing: true },
+                { location: 'Out of Country', willing: true }
+            ]
         })
     }
 
@@ -26,6 +32,7 @@ class OtherDetails extends React.Component {
                     <h2>Location</h2>
                     <ul id="location-name"><li>{ this.state.location }</li></ul>
                 </div>
+                <RelocateToList list={ this.state.relocate }/>
                 <LookingForList list={ this.state.lookingFor }/>
             </div>
         );

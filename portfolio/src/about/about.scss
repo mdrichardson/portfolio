@@ -69,8 +69,14 @@
                 &.homebrewing:hover::before, &.focus:hover::before {
                     content: 'Beer tastes better when you make it yourself. My best is a chocolate hazelnut brown with a hint of orange';
                 }
+                &.coffee:hover::before, &.focus:hover::before {
+                    content: 'I\'m torn between my V60 and Aeropress. Someday, I\'ll DIY a fully-automatic pour-over frankenstein brewer';
+                }
                 &.guitar:hover::before, &.focus:hover::before {
                     content: 'I\'m self-taught and have a beautiful PRS Singlecut';
+                }
+                &.guitar:hover::before, &.focus:hover::before {
+                    content: 'I\'m not exactly good, but oh man is it a great way to relieve stress!';
                 }
                 &.outdoors:hover::before, &.focus:hover::before {
                     content: 'Cliché, I know, but we really do live in the best area for outdoor activities';
@@ -166,7 +172,7 @@
                 justify-content: space-around;
                 padding-left: 0;
 
-                #location, #looking-for {
+                #location, #looking-for, #relocate-to {
                     flex: 1 0 200px;
                     margin-bottom: 3.5vw;
                 }
