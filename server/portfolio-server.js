@@ -147,15 +147,24 @@ app.post('/send', (req, res) => {
     };
 
     // send mail with defined transport object
-    smtpTransport.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            res.status(500).send('Unable to send contact form ', error);
-            return console.error(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-        res.status(200).send('Successfully Sent Contact Form');
-        smtpTransport.close()
-    });
+    console.log('Sending email...');
+    try {
+        smtpTransport.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error(error);
+                res.status(500).send('Unable to send contact form ', error);
+                return console.error(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+            res.status(200).send('Successfully Sent Contact Form');
+            smtpTransport.close()
+        });
+    } catch (err) {
+        const error = `Unable to send email:\n${ JSON.stringify(err, null, 2) }`;
+        console.error(error);
+        res.status(500).send(error);
+        return console.error(error);
+    }
 })
 
 // Init Blog

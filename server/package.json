@@ -4,6 +4,7 @@
   "description": "Server for portfolio site",
   "main": "portfolio-server.js",
   "scripts": {
+    "start": "node portfolio-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Michael Richardson",
